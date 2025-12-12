@@ -1,0 +1,973 @@
+\chapter{Architecture 3 tiers}
+
+\section{Architecture 3 tiers}
+
+L'architecture Destiny Raid Companion suit une approche 3-tiers classique avec séparation nette entre présentation, logique métier et données. Cette séparation permet une maintenance simplifiée, une scalabilité indépendante de chaque couche et une meilleure testabilité. Chaque tier est déployable indépendamment avec des interfaces bien définies.
+
+\subsection{Couche Présentation (Frontend)}
+
+Le frontend est développé en React 18 avec TypeScript, utilisant Vite comme bundler pour des performances optimales. L'interface suit les principes Mobile First et respecte les normes d'accessibilité WCAG 2.1. L'état global est géré via React Context et useReducer pour une complexité maîtrisée.
+
+\textbf{Technologies de présentation :}
+\begin{itemize}
+    \item \textbf{Framework :} React 18 avec Functional Components + Hooks
+    \item \textbf{Typage :} TypeScript pour la sécurité et la maintenabilité
+    \item \textbf{Bundler :} Vite pour le développement rapide et build optimisé
+    \item \textbf{Styling :} TailwindCSS + CSS Modules pour la cohérence design
+    \item \textbf{Routing :} React Router v6 avec lazy loading
+    \item \textbf{HTTP Client :} Axios avec intercepteurs pour l'authentification
+    \item \textbf{État global :} React Context + useReducer (Redux-like sans complexité)
+    \item \textbf{Validation :} Zod pour la validation runtime des données
+\end{itemize}
+
+\textbf{Structure des composants :}
+\begin{verbatim}
+src/
++-- components/                    # Composants réutilisables
+|   +-- common/                    # Composants génériques
+|   |   +-- Header/
+|   |   +-- Navigation/
+|   |   +-- LoadingSpinner/
+|   |   +-- ErrorBoundary/
+|   +-- guides/                    # Fonctionnalité guides
+|   |   +-- GuideList.tsx
+|   |   +-- GuideViewer.tsx
+|   |   +-- StepNavigation.tsx
+|   +-- squads/                    # Fonctionnalité escouades
+|   |   +-- SquadManager.tsx
+|   |   +-- MemberList.tsx
+|   |   +-- InvitationSystem.tsx
+|   +-- calendar/                  # Fonctionnalité calendrier
+|   |   +-- CalendarView.tsx
+|   |   +-- SessionCreator.tsx
+|   +-- profile/                   # Fonctionnalité profil
+|       +-- UserProfile.tsx
+|       +-- BadgeCollection.tsx
++-- hooks/                         # Hooks personnalisés
+|   +-- useAuth.ts
+|   +-- useSquads.ts
+|   +-- useGuides.ts
++-- services/                      # Appels API
+|   +-- api.ts
+|   +-- authService.ts
++-- utils/                         # Fonctions utilitaires
+|   +-- formatters.ts
+|   +-- validators.ts
+\end{verbatim}
+
+\subsection{Couche Logique Métier (Backend)}
+
+Le backend utilise Node.js avec Express.js, structuré selon le pattern Controller-Service-Repository. Cette architecture sépare clairement les responsabilités : les contrôleurs gèrent les requêtes HTTP, les services contiennent la logique métier, et les repositories l'accès aux données.
+
+\subsubsection{Controller}
+
+Les contrôleurs gèrent exclusivement la couche HTTP : validation des entrées, transformation des sorties, et gestion des codes de statut. Ils délèguent la logique métier aux services.
+
+\begin{lstlisting}[language=JavaScript]
+// squadController.js
+class SquadController {
+  async createSquad(req, res) {
+    try {
+      // Validation des données d'entrée
+      const validation = squadSchema.safeParse(req.body);
+      if (!validation.success) {
+        return res.status(400).json({
+          error: 'Données invalides',
+          details: validation.error.issues
+        });
+      }
+
+      // Appel du service métier
+      const squad = await this.squadService.createSquad(
+        validation.data, 
+        req.user.id
+      );
+
+      // Réponse standardisée
+      res.status(201).json({
+        success: true,
+        data: squad,
+        message: 'Escouade créée avec succès'
+      });
+    } catch (error) {
+      // Gestion centralisée des erreurs
+      if (error instanceof BusinessError) {
+        return res.status(400).json({
+          success: false,
+          error: error.message
+        });
+      }
+      next(error);
+    }
+  }
+}
+\end{lstlisting}
+
+\subsubsection{Service}
+
+Les services contiennent le cœur de la logique métier : règles de gestion, validation métier, orchestration des opérations, et gestion des transactions.
+
+\begin{lstlisting}[language=JavaScript]
+// squadService.js
+class SquadService {
+  async createSquad(squadData, leaderId) {
+    // Validation métier
+    if (squadData.maxMembers > 12) {
+      throw new BusinessError('Une escouade ne peut pas dépasser 12 membres');
+    }
+
+    // Vérification des limites utilisateur
+    const userSquadCount = await this.squadRepository.countByUser(leaderId);
+    if (userSquadCount >= 5) {
+      throw new BusinessError('Limite de 5 escouades par utilisateur atteinte');
+    }
+
+    // Transaction pour cohérence des données
+    return await this.db.transaction(async (trx) => {
+      // Création de l'escouade
+      const squad = await this.squadRepository.create(trx, {
+        ...squadData,
+        leader_id: leaderId
+      });
+
+      // Ajout du leader comme membre
+      await this.squadMemberRepository.create(trx, {
+        squad_id: squad.id,
+        user_id: leaderId,
+        role: 'leader'
+      });
+
+      // Audit de l'action
+      await this.auditService.log(trx, {
+        action: 'squad_created',
+        user_id: leaderId,
+        metadata: { squad_id: squad.id }
+      });
+
+      return squad;
+    });
+  }
+}
+\end{lstlisting}
+
+\subsubsection{Repository (DAO)}
+
+Les repositories abstraient l'accès aux données, fournissant une interface uniforme quel que soit le système de stockage sous-jacent (PostgreSQL, Redis, etc.).
+
+\begin{lstlisting}[language=JavaScript]
+// squadRepository.js
+class SquadRepository {
+  async create(trx, squadData) {
+    return await trx.squad.create({
+      data: {
+        name: squadData.name,
+        description: squadData.description,
+        leader_id: squadData.leader_id,
+        max_members: squadData.maxMembers,
+        is_public: squadData.isPublic ?? true,
+        settings: squadData.settings || {}
+      },
+      include: {
+        leader: {
+          select: { id: true, display_name: true }
+        }
+      }
+    });
+  }
+
+  async countByUser(userId) {
+    return await this.db.squad.count({
+      where: {
+        OR: [
+          { leader_id: userId },
+          { members: { some: { user_id: userId } } }
+        ]
+      }
+    });
+  }
+}
+\end{lstlisting}
+
+\subsection{Couche Données (Database)}
+
+Une architecture multi-base optimisée pour chaque type d'usage : PostgreSQL pour les données transactionnelles, Redis pour le cache et sessions, et éventuellement MongoDB pour les logs et analytics.
+
+\textbf{Architecture des données :}
+\begin{itemize}
+    \item \textbf{PostgreSQL :} Données transactionnelles (utilisateurs, escouades, sessions)
+    \item \textbf{Redis :} Cache sessions, données d'API Bungie, rate limiting
+    \item \textbf{ORM :} Prisma pour PostgreSQL avec migrations versionnées
+    \item \textbf{Cache :} Stratégie multi-niveaux avec Redis et cache HTTP
+\end{itemize}
+
+\begin{lstlisting}[language=JavaScript]
+// schema.prisma
+model User {
+  id           Int      @id @default(autoincrement())
+  bungie_id    String   @unique
+  display_name String
+  email        String?
+  created_at   DateTime @default(now())
+  last_login   DateTime?
+  role         UserRole @default(PLAYER)
+  
+  squads_led   Squad[]  @relation("SquadLeader")
+  squad_members SquadMember[]
+  sessions_created Session[]
+}
+
+model Squad {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  leader_id   Int
+  created_at  DateTime @default(now())
+  is_public   Boolean  @default(true)
+  max_members Int      @default(6)
+  
+  leader      User     @relation("SquadLeader", fields: [leader_id], references: [id])
+  members     SquadMember[]
+  sessions    Session[]
+}
+
+model Session {
+  id           Int       @id @default(autoincrement())
+  squad_id     Int
+  raid_id      Int
+  scheduled_at DateTime
+  status       SessionStatus @default(SCHEDULED)
+  created_by   Int
+  created_at   DateTime  @default(now())
+  
+  squad        Squad     @relation(fields: [squad_id], references: [id])
+  raid         Raid      @relation(fields: [raid_id], references: [id])
+  creator      User      @relation(fields: [created_by], references: [id])
+}
+\end{lstlisting}
+
+\subsection{Communication entre les tiers}
+
+Communication via APIs REST avec JSON, WebSocket pour le temps réel, et messages asynchrones pour les opérations longues. Toutes les communications sont sécurisées avec HTTPS et authentifiées via JWT.
+
+\textbf{Flux de communication 3 tiers :}
+\begin{verbatim}
+    +=====================================================================+
+    |                  ARCHITECTURE DESTINY RAID COMPANION               |
+    +=====================================================================+
+
+    +-------------------+    HTTP/HTTPS + WebSocket   +-------------------+
+    |   TIER 1           | <-----------------------> |   TIER 2           |
+    |   PRESENTATION     |     JSON/REST + JWT        |   LOGIQUE METIER   |
+    |   React + Vite     |                           |   Node.js + Express|
+    |                   |                           |                   |
+    |   +-------------+ |     • Guides interactifs   |   +-------------+ |
+    |   | Composants  | |     • Gestion escouades    |   | Contrôleurs | |
+    |   | React       | |     • Calendrier temps réel|   | Services    | |
+    |   +-------------+ |                           |   +-------------+ |
+    +-------------------+                           +-------------------+
+                                                              |
+                                                              | SQL + Prisma
+                                                              | Redis Pub/Sub
+                                                              v
+                                                    +-------------------+
+                                                    |   TIER 3           |
+                                                    |   DONNEES          |
+                                                    |                   |
+                                                    |   +-------------+ |
+                                                    |   | PostgreSQL  | |
+                                                    |   | Redis       | |
+                                                    |   +-------------+ |
+                                                    +-------------------+
+
+    Flux principaux :
+    1. Authentification OAuth Bungie → JWT generation
+    2. Consultation guides → Cache Redis + Fallback API Bungie  
+    3. Gestion escouades → Transactions PostgreSQL
+    4. Calendrier temps réel → WebSocket + Redis Pub/Sub
+    5. Notifications → Queue asynchrone + Email/SMS
+\end{verbatim}
+
+\subsection{Avantages de l'architecture 3 tiers}
+
+La séparation en 3 tiers offre maintenabilité, scalabilité indépendante, testabilité et sécurité renforcée. Chaque couche peut évoluer indépendamment et être optimisée spécifiquement.
+
+\textbf{Avantages de l'architecture 3 tiers :}
+\begin{itemize}
+    \item \textbf{Séparation des responsabilités :} 
+    \begin{itemize}
+        \item Frontend : UX/UI et interactions utilisateur
+        \item Backend : Logique métier et règles de gestion
+        \item Données : Persistance et intégrité des données
+    \end{itemize}
+    
+    \item \textbf{Scalabilité indépendante :}
+    \begin{itemize}
+        \item Frontend : CDN + cache statique
+        \item Backend : Load balancing + microservices
+        \item Données : Réplication + sharding
+    \end{itemize}
+    
+    \item \textbf{Maintenabilité :}
+    \begin{itemize}
+        \item Modifications isolées par tier
+        \item Tests unitaires par couche facilités
+        \item Déploiement continu indépendant
+    \end{itemize}
+    
+    \item \textbf{Sécurité :}
+    \begin{itemize}
+        \item Authentification centralisée au niveau backend
+        \item Validation des données à chaque couche
+        \item Audit logs complets
+    \end{itemize}
+    
+    \item \textbf{Performance :}
+    \begin{itemize}
+        \item Cache stratégique à chaque niveau
+        \item Optimisations spécifiques par tier
+        \item Load balancing et CDN
+    \end{itemize}
+    
+    \item \textbf{Testabilité :}
+    \begin{itemize}
+        \item Tests unitaires isolés par couche
+        \item Mocks et stubs facilités
+        \item Tests d'intégration contrôlés
+    \end{itemize}
+\end{itemize}
+
+\section{Développement Frontend}
+
+React 18 avec TypeScript pour la robustesse, Vite pour les performances de build, TailwindCSS pour la cohérence design, et une architecture composants modulaire axée sur la réutilisabilité et l'accessibilité.
+
+Organisation par fonctionnalités métier avec séparation claire entre composants présentationnels et conteneurs. Implémentation de lazy loading et code splitting pour optimiser les performances.
+
+Respect strict des standards WCAG 2.1 niveau AA avec tests automatisés via axe-core. Mesures continues avec Lighthouse et optimisation des Core Web Vitals.
+
+\textbf{Structure des composants avancée :}
+\begin{verbatim}
+src/
++-- components/
+|   +-- common/                    # Composants dumb/presentationnels
+|   |   +-- ui/                    # Primitives UI
+|   |   |   +-- Button/
+|   |   |   |   +-- Button.tsx
+|   |   |   |   +-- Button.test.tsx
+|   |   |   |   +-- Button.stories.tsx
+|   |   |   +-- Modal/
+|   |   |   +-- Input/
+|   |   +-- layout/                # Layout components
+|   |       +-- Header/
+|   |       +-- Sidebar/
+|   +-- features/                  # Composants smart/conteneurs
+|       +-- guides/
+|       |   +-- GuideViewer/
+|       |   |   +-- index.tsx      # Conteneur
+|       |   |   +-- GuideViewer.tsx # Présentationnel
+|       |   |   +-- hooks.ts       # Hooks spécifiques
+|       |   +-- GuideList/
+|       +-- squads/
+|       +-- calendar/
++-- hooks/                         # Hooks métier réutilisables
+|   +-- useAuth.ts
+|   +-- useSquads.ts
+|   +-- useWebSocket.ts
++-- stores/                        # État global (Context)
+|   +-- authStore.ts
+|   +-- squadStore.ts
+\end{verbatim}
+
+\textbf{Exemple de composant GuideViewer :}
+\begin{verbatim}
+interface GuideViewerProps {
+  guideId: string;
+  onStepChange?: (step: number) => void;
+  onComplete?: () => void;
+}
+
+const GuideViewer: React.FC<GuideViewerProps> = ({
+  guideId,
+  onStepChange,
+  onComplete
+}) => {
+  const { guide, loading, error } = useGuide(guideId);
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const handleStepChange = useCallback((step: number) => {
+    setCurrentStep(step);
+    onStepChange?.(step);
+  }, [onStepChange]);
+
+  if (loading) {
+    return <LoadingSpinner aria-label="Chargement du guide" />;
+  }
+
+  if (error) {
+    return <ErrorMessage error={error} />;
+  }
+
+  return (
+    <section 
+      className="guide-viewer"
+      role="article"
+      aria-labelledby="guide-title"
+    >
+      <h1 id="guide-title">{guide?.title}</h1>
+      
+      <nav aria-label="Navigation des étapes du guide">
+        <StepNavigation
+          steps={guide?.steps || []}
+          currentStep={currentStep}
+          onStepChange={handleStepChange}
+        />
+      </nav>
+
+      <div className="step-content">
+        <StepContent 
+          step={guide?.steps[currentStep]}
+          aria-live="polite"
+        />
+      </div>
+
+      <button
+        onClick={() => onComplete?.()}
+        aria-label="Marquer le guide comme terminé"
+        className="btn-primary"
+      >
+        Terminer le guide
+      </button>
+    </section>
+  );
+};
+
+export default GuideViewer;
+\end{verbatim}
+
+\textbf{Rapport Lighthouse actuel :}
+\begin{verbatim}
+{
+  "categories": {
+    "performance": { 
+      "score": 0.94,
+      "details": {
+        "first-contentful-paint": "1.2s",
+        "largest-contentful-paint": "2.1s", 
+        "cumulative-layout-shift": "0.05",
+        "total-blocking-time": "120ms"
+      }
+    },
+    "accessibility": { 
+      "score": 0.98,
+      "details": {
+        "color-contrast": "Pass",
+        "aria-attributes": "Pass",
+        "keyboard-navigation": "Pass"
+      }
+    },
+    "best-practices": { "score": 0.95 },
+    "seo": { "score": 0.92 },
+    "pwa": { "score": 0.88 }
+  }
+}
+\end{verbatim}
+
+\section{Développement Backend}
+
+Le backend implémente une API REST avec Express.js suivant le pattern Controller/Service/Repository pour une séparation claire des responsabilités. La validation des données utilise Joi pour garantir la cohérence des entrées. La gestion d'erreur centralisée assure des réponses API standardisées et facilite le debugging.
+
+L'authentification JWT sécurise les endpoints avec des middlewares de vérification et refresh token. La documentation OpenAPI/Swagger facilite l'intégration frontend et la maintenance. L'architecture est conçue pour la scalabilité avec gestion du cache Redis et file d'attente pour les opérations asynchrones.
+
+\textbf{Structure backend :}
+\begin{verbatim}
+src/
++-- controllers/                   # Gestion des requêtes HTTP
+|   +-- authController.js
+|   +-- squadController.js
+|   +-- guideController.js
+|   +-- sessionController.js
++-- services/                      # Logique métier pure
+|   +-- authService.js
+|   +-- squadService.js
+|   +-- guideService.js
+|   +-- notificationService.js
+|   +-- bungieApiService.js
++-- repositories/                  # Accès aux données abstrait
+|   +-- userRepository.js
+|   +-- squadRepository.js
+|   +-- guideRepository.js
++-- middleware/                    # Middlewares Express
+|   +-- auth.js
+|   +-- validation.js
+|   +-- rateLimit.js
+|   +-- errorHandler.js
+|   +-- cache.js
++-- routes/                        # Définition des routes
+|   +-- index.js
+|   +-- auth.js
+|   +-- squads.js
++-- utils/                         # Utilitaires
+    +-- logger.js
+    +-- apiResponse.js
+\end{verbatim}
+
+\begin{lstlisting}[language=JavaScript]
+const Joi = require('joi');
+
+// Schéma de validation avec Joi
+const createSquadSchema = Joi.object({
+  name: Joi.string().min(3).max(100).required(),
+  description: Joi.string().max(500).optional(),
+  maxMembers: Joi.number().min(1).max(12).default(6),
+  isPublic: Joi.boolean().default(true),
+  settings: Joi.object({
+    language: Joi.string().default('fr'),
+    experienceLevel: Joi.string().valid('beginner', 'intermediate', 'expert')
+  }).optional()
+});
+
+// Contrôleur de création d'escouade
+const createSquad = async (req, res, next) => {
+  try {
+    // Validation des données avec Joi
+    const { error, value } = createSquadSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({
+        success: false,
+        error: 'Données invalides',
+        details: error.details
+      });
+    }
+
+    const squadData = value;
+    const userId = req.user.id;
+
+    // Appel du service métier
+    const squad = await squadService.createSquad(squadData, userId);
+
+    // Audit log
+    await auditService.logAction('squad_created', userId, {
+      squadId: squad.id,
+      squadName: squad.name
+    });
+
+    // Réponse standardisée
+    res.status(201).json({
+      success: true,
+      data: squad,
+      message: 'Escouade créée avec succès'
+    });
+
+  } catch (error) {
+    // Gestion centralisée des erreurs métier
+    if (error.name === 'BusinessError') {
+      return res.status(400).json({
+        success: false,
+        error: error.message
+      });
+    }
+
+    // Journalisation des erreurs techniques
+    logger.error('Error creating squad', {
+      userId: req.user.id,
+      error: error.message,
+      stack: error.stack
+    });
+
+    next(error);
+  }
+};
+
+module.exports = { createSquad };
+\end{lstlisting}
+
+\begin{lstlisting}[language=JavaScript]
+// Service de gestion des escouades
+class SquadService {
+  async createSquad(squadData, leaderId) {
+    // Validation métier
+    if (squadData.maxMembers > 12) {
+      throw new Error('Une escouade ne peut pas dépasser 12 membres');
+    }
+
+    // Vérification des limites utilisateur
+    const userSquadCount = await this.squadRepository.countByUser(leaderId);
+    if (userSquadCount >= 5) {
+      throw new Error('Limite de 5 escouades par utilisateur atteinte');
+    }
+
+    // Transaction pour cohérence des données
+    return await this.db.transaction(async (trx) => {
+      // Création de l'escouade
+      const squad = await this.squadRepository.create(trx, {
+        ...squadData,
+        leader_id: leaderId
+      });
+
+      // Ajout automatique du leader
+      await this.squadMemberRepository.create(trx, {
+        squad_id: squad.id,
+        user_id: leaderId,
+        role: 'leader'
+      });
+
+      // Invalidation du cache
+      await this.cacheService.delete(`user_squads:${leaderId}`);
+
+      // Notification asynchrone
+      this.notificationQueue.add('squad_created', {
+        squadId: squad.id,
+        leaderId: leaderId
+      });
+
+      return squad;
+    });
+  }
+
+  async getSquadWithMembers(squadId) {
+    // Pattern Cache-Aside
+    const cacheKey = `squad:${squadId}:members`;
+    const cached = await this.cacheService.get(cacheKey);
+    
+    if (cached) {
+      return JSON.parse(cached);
+    }
+
+    // Cache miss - lecture base
+    const squad = await this.squadRepository.findByIdWithMembers(squadId);
+    
+    if (squad) {
+      // Mise en cache avec TTL
+      await this.cacheService.setex(
+        cacheKey, 
+        300, // 5 minutes
+        JSON.stringify(squad)
+      );
+    }
+
+    return squad;
+  }
+}
+
+module.exports = SquadService;
+\end{lstlisting}
+
+\begin{lstlisting}[language=JavaScript]
+// Middleware d'authentification JWT
+const authenticateToken = async (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      error: 'Token d\'accès manquant'
+    });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await userRepository.findById(decoded.userId);
+    
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        error: 'Utilisateur non trouvé'
+      });
+    }
+
+    req.user = user;
+    next();
+  } catch (error) {
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({
+        success: false,
+        error: 'Token expiré'
+      });
+    }
+    
+    return res.status(403).json({
+      success: false,
+      error: 'Token invalide'
+    });
+  }
+};
+
+// Middleware de gestion d'erreur centralisée
+const errorHandler = (err, req, res, next) => {
+  logger.error('Unhandled error', {
+    url: req.url,
+    method: req.method,
+    userId: req.user?.id,
+    error: err.message,
+    stack: err.stack
+  });
+
+  // Erreur de validation Joi
+  if (err.isJoi) {
+    return res.status(400).json({
+      success: false,
+      error: 'Données invalides',
+      details: err.details
+    });
+  }
+
+  // Erreur métier
+  if (err.name === 'BusinessError') {
+    return res.status(400).json({
+      success: false,
+      error: err.message
+    });
+  }
+
+  // Erreur base de données
+  if (err.code === '23505') { // Violation de contrainte unique
+    return res.status(409).json({
+      success: false,
+      error: 'Une ressource avec cet identifiant existe déjà'
+    });
+  }
+
+  // Erreur générique
+  res.status(500).json({
+    success: false,
+    error: 'Erreur interne du serveur'
+  });
+};
+
+module.exports = { authenticateToken, errorHandler };
+\end{lstlisting}
+
+\section{Gestion des données}
+
+La couche données utilise Prisma comme ORM pour PostgreSQL avec des migrations versionnées. Redis gère le cache et les sessions avec une stratégie TTL adaptée. L'architecture sépare les données transactionnelles (PostgreSQL) des données de cache/analytics (Redis) pour optimiser les performances.
+
+Les requêtes sont optimisées avec des index stratégiques et le lazy loading est évité via des requêtes eager avec Prisma. Le pattern Repository abstrait l'accès aux données et facilite les tests unitaires. Les transactions garantissent la cohérence des opérations métier complexes.
+
+\begin{lstlisting}[language=JavaScript]
+// schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  bungie_id    String   @unique
+  display_name String   @db.VarChar(50)
+  email        String?
+  created_at   DateTime @default(now())
+  last_login   DateTime?
+  role         UserRole @default(PLAYER)
+  membership_type Int?
+  
+  // Relations
+  squads_led   Squad[]  @relation("SquadLeader")
+  squad_members SquadMember[]
+  sessions_created Session[] @relation("SessionCreator")
+  badges       UserBadge[]
+  
+  @@map("users")
+}
+
+model Squad {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(100)
+  description String?
+  leader_id   Int
+  created_at  DateTime @default(now())
+  is_public   Boolean  @default(true)
+  max_members Int      @default(6)
+  settings    Json?
+  
+  // Relations
+  leader      User     @relation("SquadLeader", fields: [leader_id], references: [id], onDelete: Cascade)
+  members     SquadMember[]
+  sessions    Session[]
+  
+  @@map("squads")
+  @@index([leader_id])
+  @@index([created_at])
+}
+
+model SquadMember {
+  id        Int      @id @default(autoincrement())
+  squad_id  Int
+  user_id   Int
+  role      SquadRole @default(MEMBER)
+  joined_at DateTime @default(now())
+  
+  // Relations
+  squad Squad @relation(fields: [squad_id], references: [id], onDelete: Cascade)
+  user  User  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  
+  @@unique([squad_id, user_id])
+  @@map("squad_members")
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=JavaScript]
+// SquadRepository.js
+class SquadRepository {
+  async createWithMembers(trx, squadData, leaderId) {
+    // Création atomique de l'escouade avec son leader
+    return await trx.squad.create({
+      data: {
+        name: squadData.name,
+        description: squadData.description,
+        leader_id: leaderId,
+        max_members: squadData.maxMembers,
+        is_public: squadData.isPublic,
+        settings: squadData.settings,
+        // Création simultanée du membre leader
+        members: {
+          create: {
+            user_id: leaderId,
+            role: 'leader'
+          }
+        }
+      },
+      include: {
+        leader: {
+          select: {
+            id: true,
+            display_name: true,
+            bungie_id: true
+          }
+        },
+        members: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                display_name: true,
+                bungie_id: true
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
+  async findSquadsWithStats(userId) {
+    // Requête optimisée avec agrégations
+    const whereClause = userId ? {
+      OR: [
+        { leader_id: userId },
+        { members: { some: { user_id: userId } } }
+      ]
+    } : { is_public: true };
+
+    return await this.db.squad.findMany({
+      where: whereClause,
+      include: {
+        _count: {
+          select: {
+            members: true,
+            sessions: {
+              where: {
+                status: 'completed'
+              }
+            }
+          }
+        },
+        leader: {
+          select: {
+            display_name: true,
+            bungie_id: true
+          }
+        },
+        sessions: {
+          take: 1,
+          orderBy: { scheduled_at: 'desc' },
+          select: {
+            scheduled_at: true,
+            status: true
+          }
+        }
+      },
+      orderBy: { created_at: 'desc' }
+    });
+  }
+
+  async countUserSquads(userId) {
+    return await this.db.squad.count({
+      where: {
+        OR: [
+          { leader_id: userId },
+          { members: { some: { user_id: userId } } }
+        ]
+      }
+    });
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=JavaScript]
+// CacheService.js
+class CacheService {
+  constructor(redisClient) {
+    this.redis = redisClient;
+    this.config = {
+      bungie: { ttl: 3600, prefix: 'bungie:' },
+      guides: { ttl: 1800, prefix: 'guides:' },
+      sessions: { ttl: 86400, prefix: 'session:' },
+      queries: { ttl: 300, prefix: 'query:' }
+    };
+  }
+
+  async cacheBungieData(key, data) {
+    const cacheKey = `${this.config.bungie.prefix}${key}`;
+    await this.redis.setex(
+      cacheKey,
+      this.config.bungie.ttl,
+      JSON.stringify(data)
+    );
+  }
+
+  async getCachedBungieData(key) {
+    const cacheKey = `${this.config.bungie.prefix}${key}`;
+    const cached = await this.redis.get(cacheKey);
+    return cached ? JSON.parse(cached) : null;
+  }
+
+  async cacheUserSquads(userId, squads) {
+    const cacheKey = `${this.config.queries.prefix}user_squads:${userId}`;
+    await this.redis.setex(
+      cacheKey,
+      this.config.queries.ttl,
+      JSON.stringify(squads)
+    );
+  }
+
+  async getUserSquads(userId) {
+    const cacheKey = `${this.config.queries.prefix}user_squads:${userId}`;
+    const cached = await this.redis.get(cacheKey);
+    
+    if (cached) {
+      return JSON.parse(cached);
+    }
+    return null;
+  }
+
+  async invalidateUserSquads(userId) {
+    const cacheKey = `${this.config.queries.prefix}user_squads:${userId}`;
+    await this.redis.del(cacheKey);
+  }
+}
+\end{lstlisting}
+
+\section{Liens utiles}
+
+\begin{itemize}
+    \item OpenAPI/Swagger: \url{https://swagger.io/specification/}
+    \item WCAG: \url{https://www.w3.org/WAI/standards-guidelines/wcag/}
+    \item Lighthouse: \url{https://developers.google.com/web/tools/lighthouse}
+    \item PostgreSQL Tutorial: \url{https://www.postgresql.org/docs/current/tutorial.html}
+    \item MongoDB Aggregation: \url{https://www.mongodb.com/docs/manual/aggregation/}
+    \item Prisma Documentation: \url{https://www.prisma.io/docs/}
+\end{itemize}

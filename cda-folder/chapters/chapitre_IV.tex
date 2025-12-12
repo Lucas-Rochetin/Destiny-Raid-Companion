@@ -1,0 +1,849 @@
+\chapter{Conception fonctionnelle et technique}
+
+\textbf{IMPORTANT :} Cette phase de conception est \textbf{CRUCIALE} et doit être \textbf{COMPLÈTEMENT TERMINÉE} avant de commencer le développement. Le jury attend une conception solide et documentée qui justifie tous vos choix techniques.
+
+Dans ce chapitre, vous devez présenter votre conception fonctionnelle et technique complète. Cette phase détermine la réussite de votre projet et doit être soigneusement planifiée et documentée.
+
+\textbf{Votre approche de conception :} \textit{Notre méthodologie suit une approche itérative centrée sur l'utilisateur, avec validation continue des choix techniques via des prototypes et des tests utilisateurs. Le processus inclut la modélisation UML, la conception de la base de données, et la validation de l'architecture technique avant toute implémentation. Chaque composant est documenté avec ses spécifications techniques détaillées, ses interfaces et ses contraintes de performance.}
+
+\section{Use Cases et diagrammes UML}
+
+Les Use Cases modélisent les interactions entre les acteurs et le système pour identifier les fonctionnalités essentielles. Cette approche centrée utilisateur garantit que le système répond aux besoins métier réels. Les diagrammes UML facilitent la communication entre les équipes techniques et métier, réduisant les risques d'incompréhension.
+
+La modélisation des cas d'usage permet d'identifier les flux principaux et alternatifs, ainsi que les cas d'erreur à gérer. Cette analyse préalable guide la conception technique et les tests d'acceptation.
+
+\textbf{Acteurs principaux identifiés :}
+\begin{itemize}
+    \item \textbf{Joueur Débutant :} Nouvel utilisateur cherchant à comprendre les mécaniques de raid
+    \item \textbf{Joueur Expérimenté :} Utilisateur régulier optimisant son gameplay
+    \item \textbf{Leader d'Escouade :} Responsable de la coordination d'équipe
+    \item \textbf{Administrateur :} Gestionnaire de contenu et modérateur
+    \item \textbf{Système Bungie API :} Source externe de données de jeu
+\end{itemize}
+
+\textbf{Cas d'usage critiques modélisés :}
+\begin{itemize}
+    \item \textbf{UC001 :} Authentification OAuth avec Bungie.net
+    \item \textbf{UC002 :} Consultation guide interactif de raid
+    \item \textbf{UC003 :} Création et gestion d'escouade
+    \item \textbf{UC004 :} Planification de session de raid
+    \item \textbf{UC005 :} Attribution et consultation de badges
+    \item \textbf{UC006 :} Synchronisation des données de profil
+    \item \textbf{UC007 :} Gestion administrative du contenu
+\end{itemize}
+
+\textbf{Diagramme Use Case détaillé :}
+\begin{verbatim}
+                    +-----------------------------------------------+
+                    |        Destiny 2 Raid Companion               |
+                    +-----------------------+-----------------------+
+                                            |
+    +---------------+       +----------------+----------------+       +---------------+
+    | Joueur        |       | Leader         |                |       | Administrateur|
+    | Débutant      |       | d'Escouade     |                |       | Système       |
+    +---------------+       +----------------+                |       +---------------+
+        |                       |                             |             |
+        |-- Consulter guides    |-- Créer escouade            |-- Gérer contenu
+        |-- Suivre guide étape  |-- Planifier session         |-- Modérer utilisateurs
+        |-- Rejoindre escouade  |-- Inviter membres           |-- Voir analytics
+        |-- Voir équipements    |-- Attribuer rôles           |-- Gérer badges
+        |-- Obtenir badges      |-- Gérer calendrier          |-- Configurer système
+        |-- Synchroniser profil |-- Analyser performances     
+                                |-- Générer rapports          
+\end{verbatim}
+
+\textbf{Spécifications des cas d'usage critiques :}
+
+\textbf{UC002 - Consultation guide interactif :}
+\begin{itemize}
+    \item \textbf{Préconditions :} Utilisateur authentifié, guide disponible
+    \item \textbf{Flux principal :}
+    \begin{enumerate}
+        \item Utilisateur sélectionne un raid dans la liste
+        \item Système charge le guide interactif
+        \item Utilisateur navigue entre les étapes
+        \item Système affiche mécaniques détaillées avec illustrations
+        \item Utilisateur consulte les recommandations d'équipement
+    \end{enumerate}
+    \item \textbf{Flux alternatif :} Guide non disponible → Message d'erreur avec délai estimation
+    \item \textbf{Postconditions :} Historique de consultation mis à jour
+\end{itemize}
+
+\textbf{UC004 - Planification de session :}
+\begin{itemize}
+    \item \textbf{Préconditions :} Leader authentifié, escouade existante
+    \item \textbf{Flux principal :}
+    \begin{enumerate}
+        \item Leader accède au calendrier
+        \item Sélectionne date et créneau horaire
+        \item Choisit le raid et la difficulté
+        \item Invite les membres de l'escouade
+        \item Système envoie les notifications
+        \item Session créée dans tous les agendas
+    \end{enumerate}
+    \item \textbf{Flux alternatif :} Conflit de planning → Suggestion de créneaux alternatifs
+    \item \textbf{Postconditions :} Session planifiée, membres notifiés
+\end{itemize}
+
+\section{Diagrammes de séquence}
+
+Les diagrammes de séquence détaillent les interactions temporelles entre les différents composants du système pour chaque cas d'usage. Cette modélisation précise les responsabilités de chaque couche (présentation, logique métier, données) et facilite l'implémentation technique.
+
+\textbf{Diagramme de séquence - Authentification OAuth :}
+\begin{verbatim}
+Utilisateur    Frontend    Backend    API Bungie    PostgreSQL
+    |             |           |           |             |
+    |-- Click --->|           |           |             |
+    |             |-- Redirect to Bungie OAuth -------->|
+    |             |           |           |             |
+    |<-- Redirect avec code --|           |             |
+    |             |           |           |             |
+    |             |-- POST /auth/callback ------------->|
+    |             |           |-- POST token exchange ->|
+    |             |           |           |             |
+    |             |           |<-- Access Token --------|
+    |             |           |-- GET user profile ---->|
+    |             |           |           |             |
+    |             |           |<-- User Data ---------- |
+    |             |           |-- UPSERT user --------> |
+    |             |           |           |             |
+    |             |<-- JWT Token + User Data ---------- |
+    |<-- Logged In -----------|           |             |
+\end{verbatim}
+
+\textbf{Diagramme de séquence - Consultation guide avec cache :}
+\begin{verbatim}
+Utilisateur    Frontend    Backend    Redis    PostgreSQL    API Bungie
+    |             |           |          |          |            |
+    |-- GET ----->|           |          |          |            |
+    |             |-- GET /guides/raid ->|          |            |
+    |             |           |-- GET cache ------->|            |
+    |             |           |<-- CACHE HIT -------|            |
+    |             |<-- 200 OK -----------|          |            |
+    |<-- Guide affiché -------|          |          |            |
+    |             |           |          |          |            |
+    |             |           |-- CACHE MISS ------>|            |
+    |             |           |-- SELECT guide ---->|            |
+    |             |           |<-- Guide Data ------|            |
+    |             |           |-- SET cache ------->|            |
+    |             |           |-- GET equipment recommendations->|
+    |             |           |<-- Equipment Data --|            |
+    |             |<-- 200 OK avec données ---------|            |
+    |<-- Guide complet ------|           |          |            |
+\end{verbatim}
+
+\textbf{Gestion d'erreurs détaillée :}
+\begin{itemize}
+    \item \textbf{Timeout API Bungie :} Retry automatique (3 tentatives) + Fallback cache
+    \item \textbf{Données corrompues :} Validation schema JSON + Logging erreur
+    \item \textbf{Utilisateur non autorisé :} Redirection login + Message contextuel
+    \item \textbf{Rate limiting :} Backoff exponentiel + Queue de requêtes
+\end{itemize}
+
+\section{Conception de l'interface graphique}
+
+La conception graphique s'appuie sur une charte graphique cohérente avec l'univers Destiny 2. L'approche "Mobile First" garantit une expérience optimale sur tous les devices.
+
+\subsection{Architecture des composants React}
+
+\textbf{Structure modulaire des composants :}
+\begin{verbatim}
+src/
+├── components/
+│   ├── common/
+│   │   ├── Header/
+│   │   ├── Navigation/
+│   │   ├── LoadingSpinner/
+│   │   └── ErrorBoundary/
+│   ├── guides/
+│   │   ├── GuideList/
+│   │   ├── GuideViewer/
+│   │   ├── StepNavigation/
+│   │   └── EquipmentRecommendations/
+│   ├── squads/
+│   │   ├── SquadManager/
+│   │   ├── MemberList/
+│   │   ├── InvitationSystem/
+│   │   └── RoleManagement/
+│   ├── calendar/
+│   │   ├── CalendarView/
+│   │   ├── SessionCreator/
+│   │   ├── AvailabilityChecker/
+│   │   └── NotificationCenter/
+│   └── profile/
+│       ├── UserProfile/
+│       ├── BadgeCollection/
+│       ├── StatisticsDashboard/
+│       └── SettingsPanel/
+├── hooks/
+│   ├── useAuth.js
+│   ├── useSquads.js
+│   ├── useGuides.js
+│   └── useCalendar.js
+└── services/
+    ├── api.js
+    ├── cache.js
+    └── websocket.js
+\end{verbatim}
+
+\textbf{Spécifications des composants critiques :}
+
+\textbf{GuideViewer Component :}
+\begin{itemize}
+    \item \textbf{Props :} guideId, stepNumber, onStepChange, onComplete
+    \item \textbf{State :} currentStep, completedSteps, userProgress
+    \item \textbf{Methods :} loadGuide(), navigateStep(), markComplete()
+    \item \textbf{Events :} stepChanged, guideCompleted, errorOccurred
+    \item \textbf{Performance :} Lazy loading des images, Memoization des données
+\end{itemize}
+
+\textbf{SquadManager Component :}
+\begin{itemize}
+    \item \textbf{Props :} squadId, isLeader, onUpdate
+    \item \textbf{State :} squadMembers, pendingInvitations, squadSettings
+    \item \textbf{Methods :} inviteMember(), removeMember(), updateRole()
+    \item \textbf{Real-time :} WebSocket pour updates en temps réel
+\end{itemize}
+
+\subsection{Charte graphique détaillée}
+
+\textbf{Système de design complet :}
+
+\textbf{Palette de couleurs :}
+\begin{itemize}
+    \item \textbf{Primaire :} \#0A0E17 (Noir bleuté Destiny) - Backgrounds principaux
+    \item \textbf{Secondaire :} \#FF6B35 (Orange Vex) - Actions, boutons principaux
+    \item \textbf{Accent :} \#00E0FF (Cyano énergie) - Liens, highlights
+    \item \textbf{Neutre :} \#2D3748 (Gris foncé) - Textes, bordures
+    \item \textbf{Succès :} \#4CAF50 (Vert) - Confirmations, statuts positifs
+    \item \textbf{Alerte :} \#FFC107 (Jaune) - Avertissements
+    \item \textbf{Erreur :} \#F44336 (Rouge) - Erreurs, suppressions
+\end{itemize}
+
+\textbf{Typographie :}
+\begin{itemize}
+    \item \textbf{Principale :} Inter (weights: 300, 400, 500, 600, 700)
+    \item \textbf{Hiérarchie :}
+    \begin{itemize}
+        \item H1: 2.5rem (40px) - Weight 700 - Line height 1.2
+        \item H2: 2rem (32px) - Weight 600 - Line height 1.3
+        \item H3: 1.5rem (24px) - Weight 500 - Line height 1.4
+        \item Body: 1rem (16px) - Weight 400 - Line height 1.5
+        \item Small: 0.875rem (14px) - Weight 300 - Line height 1.4
+    \end{itemize}
+\end{itemize}
+
+\textbf{Espacement (8px grid system) :}
+\begin{itemize}
+    \item \textbf{Base unit :} 8px
+    \item \textbf{Marges :} 8px, 16px, 24px, 32px, 48px, 64px
+    \item \textbf{Padding :} 4px, 8px, 12px, 16px, 24px
+    \item \textbf{Border radius :} 4px (small), 8px (medium), 16px (large)
+\end{itemize}
+
+\textbf{Composants UI standardisés :}
+\begin{itemize}
+    \item \textbf{Boutons :} 3 variantes (primaire, secondaire, ghost)
+    \item \textbf{Inputs :} États normal, focus, error, disabled
+    \item \textbf{Cartes :} Shadows: sm (0 1px 2px), md (0 4px 6px), lg (0 10px 15px)
+    \item \textbf{Modals :} Overlay 50\% opacity, animation slide-in
+\end{itemize}
+
+\subsection{Maquettes et prototypes}
+
+\textbf{Workflow de conception :}
+\begin{enumerate}
+    \item \textbf{Wireframes basse fidélité :} Validation structure et flux utilisateur
+    \item \textbf{Maquettes moyenne fidélité :} Intégration charte graphique
+    \item \textbf{Prototypes interactifs :} Tests utilisabilité avec Figma
+    \item \textbf{Maquettes haute fidélité :} Spécifications développeurs
+\end{enumerate}
+
+\textbf{Pages principales conçues :}
+\begin{itemize}
+    \item \textbf{Landing Page :} Présentation features + Call-to-action
+    \item \textbf{Dashboard :} Vue d'ensemble activités + Accès rapides
+    \item \textbf{Guide Viewer :} Navigation étapes + Visualisation mécaniques
+    \item \textbf{Squad Management :} Liste membres + Gestion rôles + Invitations
+    \item \textbf{Calendar :} Vue mensuelle/semaine + Création sessions
+    \item \textbf{Profile :} Statistiques + Badges + Historique
+\end{itemize}
+
+\section{Conception de base de données}
+
+La conception suit la méthode Merise avec validation des contraintes métier et optimisation des performances.
+
+\subsection{Modèle Conceptuel de Données (MCD)}
+
+\textbf{Entités principales et relations :}
+
+\textbf{Entité USER :}
+\begin{itemize}
+    \item \textbf{Attributs :} user\_id (PK), bungie\_id (UNIQUE), display\_name, email, created\_at, last\_login, role, membership\_type
+    \item \textbf{Relations :} Possède BADGE (1,n), Membre de SQUAD (1,n), Crée SESSION (1,n)
+\end{itemize}
+
+\textbf{Entité SQUAD :}
+\begin{itemize}
+    \item \textbf{Attributs :} squad\_id (PK), name, description, leader\_id (FK), created\_at, settings\_json
+    \item \textbf{Relations :} Contient USER (1,n), Planifie SESSION (1,n)
+\end{itemize}
+
+\textbf{Entité RAID :}
+\begin{itemize}
+    \item \textbf{Attributs :} raid\_id (PK), name, difficulty, estimated\_time, description, mechanics\_json
+    \item \textbf{Relations :} Inclut dans SESSION (1,n), Documenté dans GUIDE (1,1)
+\end{itemize}
+
+\textbf{Diagramme MCD complet :}
+\begin{verbatim}
+USER (1,n) -- POSSEDE -- (0,n) BADGE
+USER (1,n) -- MEMBRE_DE -- (1,n) SQUAD
+SQUAD (1,n) -- PLANIFIE -- (1,n) SESSION
+SESSION (1,1) -- CONCERNE -- (1,1) RAID
+RAID (1,1) -- DOCUMENTE_DANS -- (1,1) GUIDE
+GUIDE (1,n) -- CONTIENT -- (1,n) GUIDE_STEP
+EQUIPMENT (1,n) -- RECOMMANDE_POUR -- (0,n) RAID
+\end{verbatim}
+
+\subsection{Modèle Logique de Données (MLD)}
+
+\textbf{Schéma relationnel normalisé :}
+
+\textbf{Table USERS :}
+\begin{lstlisting}[language=SQL]
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    bungie_id VARCHAR(100) UNIQUE NOT NULL,
+    display_name VARCHAR(50) NOT NULL,
+    email VARCHAR(255),
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    last_login TIMESTAMPTZ,
+    role USER_ROLE DEFAULT 'player',
+    membership_type INTEGER,
+    profile_data JSONB,
+    CONSTRAINT chk_display_name_length CHECK (LENGTH(display_name) >= 2)
+);
+\end{lstlisting}
+
+\textbf{Table SQUADS :}
+\begin{lstlisting}[language=SQL]
+CREATE TABLE squads (
+    squad_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    leader_id INTEGER NOT NULL REFERENCES users(user_id),
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    settings_json JSONB DEFAULT '{}',
+    is_public BOOLEAN DEFAULT true,
+    max_members INTEGER DEFAULT 6,
+    CONSTRAINT chk_squad_name_length CHECK (LENGTH(name) >= 3),
+    CONSTRAINT chk_max_members_range CHECK (max_members BETWEEN 1 AND 12)
+);
+\end{lstlisting}
+
+\textbf{Table SESSIONS :}
+\begin{lstlisting}[language=SQL]
+CREATE TABLE sessions (
+    session_id SERIAL PRIMARY KEY,
+    squad_id INTEGER NOT NULL REFERENCES squads(squad_id),
+    raid_id INTEGER NOT NULL REFERENCES raids(raid_id),
+    scheduled_at TIMESTAMPTZ NOT NULL,
+    status SESSION_STATUS DEFAULT 'scheduled',
+    created_by INTEGER NOT NULL REFERENCES users(user_id),
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    completed_at TIMESTAMPTZ,
+    notes TEXT,
+    CONSTRAINT chk_scheduled_future CHECK (scheduled_at > NOW()),
+    CONSTRAINT chk_completion_logic CHECK (
+        (status = 'completed' AND completed_at IS NOT NULL) OR 
+        (status != 'completed' AND completed_at IS NULL)
+    )
+);
+\end{lstlisting}
+
+\subsection{Modèle Physique de Données (MPD)}
+
+\textbf{Optimisations performances :}
+
+\textbf{Index stratégiques :}
+\begin{lstlisting}[language=SQL]
+-- Index pour recherches utilisateurs
+CREATE INDEX idx_users_bungie_id ON users(bungie_id);
+CREATE INDEX idx_users_display_name ON users(display_name);
+CREATE INDEX idx_users_last_login ON users(last_login DESC);
+
+-- Index pour gestion escouades
+CREATE INDEX idx_squads_leader_id ON squads(leader_id);
+CREATE INDEX idx_squads_created_at ON squads(created_at DESC);
+CREATE INDEX idx_squads_is_public ON squads(is_public) WHERE is_public = true;
+
+-- Index pour planning sessions
+CREATE INDEX idx_sessions_squad_id ON sessions(squad_id);
+CREATE INDEX idx_sessions_scheduled_at ON sessions(scheduled_at);
+CREATE INDEX idx_sessions_status ON sessions(status);
+CREATE INDEX idx_sessions_squad_scheduled ON sessions(squad_id, scheduled_at);
+
+-- Index pour recherches full-text
+CREATE INDEX idx_guides_title ON guides USING gin(to_tsvector('english', title));
+CREATE INDEX idx_raids_name ON raids USING gin(to_tsvector('english', name));
+\end{lstlisting}
+
+\textbf{Stratégie de partitionnement :}
+\begin{lstlisting}[language=SQL]
+-- Partitionnement des logs d'activité par mois
+CREATE TABLE activity_logs_2025_01 PARTITION OF activity_logs
+    FOR VALUES FROM ('2025-01-01') TO ('2025-02-01');
+
+CREATE TABLE activity_logs_2025_02 PARTITION OF activity_logs
+    FOR VALUES FROM ('2025-02-01') TO ('2025-03-01');
+\end{lstlisting}
+
+\textbf{Architecture multi-base :}
+\begin{itemize}
+    \item \textbf{PostgreSQL :} Données transactionnelles (utilisateurs, escouades, sessions)
+    \item \textbf{MongoDB :} Logs d'API, données analytiques, profils étendus
+    \item \textbf{Redis :} Cache sessions, données d'API Bungie, queues
+\end{itemize}
+
+\section{Architecture technique détaillée}
+
+L'architecture 3-tiers est conçue pour la scalabilité et la maintenabilité.
+
+\subsection{Couche Présentation (Frontend)}
+
+\textbf{Stack technique complète :}
+\begin{itemize}
+    \item \textbf{Framework :} React 18+ avec Functional Components + Hooks
+    \item \textbf{Bundler :} Vite pour le développement rapide
+    \item \textbf{Styling :} TailwindCSS + CSS Modules pour les composants complexes
+    \item \textbf{State Management :} React Context + useReducer pour l'état global
+    \item \textbf{Routing :} React Router v6 avec lazy loading
+    \item \textbf{HTTP Client :} Axios avec intercepteurs pour l'authentification
+    \item \textbf{Validation :} Zod pour la validation des schémas
+    \item \textbf{Testing :} Jest + React Testing Library + Cypress
+\end{itemize}
+
+\textbf{Structure des services frontend :}
+
+\textbf{Service d'authentification :}
+\begin{lstlisting}[language=JavaScript]
+class AuthService {
+  async loginWithBungie() {
+    const authUrl = this.buildBungieAuthUrl();
+    window.location.href = authUrl;
+  }
+  
+  async handleOAuthCallback(code) {
+    const response = await api.post('/auth/callback', { code });
+    this.storeTokens(response.data);
+    return this.getUserProfile();
+  }
+  
+  async refreshToken() {
+    const refreshToken = this.getRefreshToken();
+    const response = await api.post('/auth/refresh', { refreshToken });
+    this.storeTokens(response.data);
+  }
+  
+  isTokenExpired() {
+    const expiresAt = localStorage.getItem('token_expires_at');
+    return Date.now() >= parseInt(expiresAt);
+  }
+}
+\end{lstlisting}
+
+\subsection{Couche Métier (Backend)}
+
+\textbf{Architecture Node.js/Express :}
+
+\textbf{Structure des modules :}
+\begin{verbatim}
+src/
+├── controllers/
+│   ├── authController.js
+│   ├── squadController.js
+│   ├── guideController.js
+│   └── sessionController.js
+├── services/
+│   ├── authService.js
+│   ├── bungieService.js
+│   ├── squadService.js
+│   └── notificationService.js
+├── models/
+│   ├── User.js
+│   ├── Squad.js
+│   ├── Session.js
+│   └── Guide.js
+├── middleware/
+│   ├── auth.js
+│   ├── validation.js
+│   ├── rateLimit.js
+│   └── errorHandler.js
+└── utils/
+    ├── logger.js
+    ├── cache.js
+    └── validators.js
+\end{verbatim}
+
+\textbf{Service de gestion d'escouades :}
+\begin{lstlisting}[language=JavaScript]
+class SquadService {
+  async createSquad(squadData, leaderId) {
+    // Validation des données
+    const validation = squadSchema.safeParse(squadData);
+    if (!validation.success) {
+      throw new ValidationError(validation.error);
+    }
+    
+    // Vérification des limites
+    const userSquadCount = await this.getUserSquadCount(leaderId);
+    if (userSquadCount >= MAX_SQUADS_PER_USER) {
+      throw new BusinessError('Limite d\'escouades atteinte');
+    }
+    
+    // Création transaction
+    return db.transaction(async (trx) => {
+      const squad = await Squad.create(trx, {
+        ...squadData,
+        leader_id: leaderId
+      });
+      
+      // Ajout du leader comme membre
+      await SquadMember.create(trx, {
+        squad_id: squad.id,
+        user_id: leaderId,
+        role: 'leader',
+        joined_at: new Date()
+      });
+      
+      // Audit log
+      await AuditLog.create(trx, {
+        action: 'squad_created',
+        user_id: leaderId,
+        squad_id: squad.id,
+        metadata: { squad_name: squad.name }
+      });
+      
+      return squad;
+    });
+  }
+}
+\end{lstlisting}
+
+\textbf{Middleware d'authentification :}
+\begin{lstlisting}[language=JavaScript]
+const authenticateToken = async (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  
+  if (!token) {
+    return res.status(401).json({ error: 'Token manquant' });
+  }
+  
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decoded.userId);
+    
+    if (!user) {
+      return res.status(401).json({ error: 'Utilisateur non trouvé' });
+    }
+    
+    req.user = user;
+    next();
+  } catch (error) {
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({ error: 'Token expiré' });
+    }
+    return res.status(403).json({ error: 'Token invalide' });
+  }
+};
+\end{lstlisting}
+
+\subsection{Couche Données}
+
+\textbf{Configuration PostgreSQL :}
+\begin{lstlisting}[language=SQL]
+-- Configuration des performances
+ALTER SYSTEM SET shared_buffers = '1GB';
+ALTER SYSTEM SET work_mem = '64MB';
+ALTER SYSTEM SET maintenance_work_mem = '256MB';
+ALTER SYSTEM SET effective_cache_size = '3GB';
+
+-- Configuration de la réplication
+ALTER SYSTEM SET wal_level = 'replica';
+ALTER SYSTEM SET max_wal_senders = 10;
+ALTER SYSTEM SET hot_standby = 'on';
+
+-- Redémarrage pour appliquer les changements
+SELECT pg_reload_conf();
+\end{lstlisting}
+
+\textbf{Stratégie Redis :}
+\begin{itemize}
+    \item \textbf{Cache :} TTL 1 heure pour les guides, 5 minutes pour les données utilisateur
+    \item \textbf{Sessions :} TTL 24 heures avec refresh à l'activité
+    \item \textbf{Rate Limiting :} Compteurs par utilisateur et endpoint
+    \item \textbf{Queue :} Jobs asynchrones pour notifications et rapports
+\end{itemize}
+
+\section{Stratégie de tests}
+
+La stratégie de tests suit l'approche pyramidale avec automatisation complète.
+
+\subsection{Couverture de tests}
+
+\textbf{Objectifs de couverture :}
+\begin{itemize}
+    \item \textbf{Tests unitaires :} 80\%+ (Jest)
+    \item \textbf{Tests d'intégration :} 70\%+ (Supertest)
+    \item \textbf{Tests E2E :} 100\% des parcours critiques (Cypress)
+    \item \textbf{Tests de performance :} Load testing (k6)
+\end{itemize}
+
+\textbf{Structure des tests :}
+
+\textbf{Tests unitaires services :}
+\begin{lstlisting}[language=JavaScript]
+describe('SquadService', () => {
+  describe('createSquad', () => {
+    it('should create squad with valid data', async () => {
+      const mockLeader = { id: 1, squad_count: 2 };
+      const squadData = { name: 'Test Squad', description: 'Test' };
+      
+      userRepository.getUserSquadCount.mockResolvedValue(2);
+      squadRepository.create.mockResolvedValue({ id: 1, ...squadData });
+      
+      const result = await squadService.createSquad(squadData, mockLeader.id);
+      
+      expect(result).toHaveProperty('id', 1);
+      expect(result.name).toBe('Test Squad');
+      expect(userRepository.getUserSquadCount).toHaveBeenCalledWith(1);
+    });
+    
+    it('should throw error when user exceeds squad limit', async () => {
+      const mockLeader = { id: 1, squad_count: 5 };
+      userRepository.getUserSquadCount.mockResolvedValue(5);
+      
+      await expect(
+        squadService.createSquad({ name: 'Test' }, mockLeader.id)
+      ).rejects.toThrow('Limite d\'escouades atteinte');
+    });
+  });
+});
+\end{lstlisting}
+
+\textbf{Tests d'intégration API :}
+\begin{lstlisting}[language=JavaScript]
+describe('Squad API', () => {
+  describe('POST /api/squads', () => {
+    it('should create squad with authentication', async () => {
+      const authToken = await createTestUser();
+      const squadData = { name: 'API Test Squad' };
+      
+      const response = await request(app)
+        .post('/api/squads')
+        .set('Authorization', `Bearer ${authToken}`)
+        .send(squadData)
+        .expect(201);
+      
+      expect(response.body).toHaveProperty('id');
+      expect(response.body.name).toBe('API Test Squad');
+      expect(response.body.leader_id).toBe(1);
+    });
+    
+    it('should reject unauthenticated requests', async () => {
+      await request(app)
+        .post('/api/squads')
+        .send({ name: 'Test' })
+        .expect(401);
+    });
+  });
+});
+\end{lstlisting}
+
+\subsection{Automatisation des tests}
+
+\textbf{Pipeline de tests GitHub Actions :}
+\begin{lstlisting}[language=yaml]
+name: Test Pipeline
+on: [push, pull_request]
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with: { node-version: '18' }
+      - run: npm ci
+      - run: npm run test:unit
+      - uses: codecov/codecov-action@v3
+        
+  integration-tests:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14
+        env: { POSTGRES_PASSWORD: test }
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm run test:integration
+      
+  e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:e2e
+\end{lstlisting}
+
+\section{Plan de déploiement et infrastructure}
+
+L'infrastructure est conçue pour la haute disponibilité et la scalabilité.
+
+\subsection{Architecture de déploiement}
+
+\textbf{Environnements multiples :}
+\begin{itemize}
+    \item \textbf{Development :} Docker Compose local
+    \item \textbf{Staging :} Vercel (Frontend) + Heroku (Backend)
+    \item \textbf{Production :} AWS ECS (Backend) + Vercel (Frontend) + RDS PostgreSQL
+\end{itemize}
+
+\textbf{Configuration Docker :}
+
+\textbf{Dockerfile Backend :}
+\begin{lstlisting}[language=dockerfile]
+FROM node:18-alpine
+WORKDIR /app
+
+# Installation des dépendances
+COPY package*.json ./
+RUN npm ci --only=production
+
+# Copie du code
+COPY . .
+
+# Sécurité
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
+USER nextjs
+
+# Exposition du port
+EXPOSE 4000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:4000/health || exit 1
+
+CMD ["node", "src/server.js"]
+\end{lstlisting}
+
+\textbf{docker-compose.yml :}
+\begin{lstlisting}[language=yaml]
+version: '3.8'
+services:
+  frontend:
+    build: ./frontend
+    ports: ["3000:3000"]
+    environment:
+      - REACT_APP_API_URL=http://localhost:4000
+    depends_on: [backend]
+    
+  backend:
+    build: ./backend
+    ports: ["4000:4000"]
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://user:pass@db:5432/raidcompanion
+      - REDIS_URL=redis://redis:6379
+      - BUNGIE_API_KEY=${BUNGIE_API_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+        
+  db:
+    image: postgres:14
+    environment:
+      - POSTGRES_DB=raidcompanion
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d raidcompanion"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  postgres_data:
+\end{lstlisting}
+
+\subsection{CI/CD et monitoring}
+
+\textbf{Pipeline de déploiement :}
+\begin{verbatim}
+Pipeline GitHub Actions:
+1. Code Quality Checks (ESLint, Prettier)
+2. Security Scanning (Snyk, npm audit)
+3. Unit Tests + Coverage Report
+4. Build Application
+5. Integration Tests
+6. Docker Image Build + Security Scan
+7. Push to Container Registry
+8. Deploy to Staging
+9. E2E Tests on Staging
+10. Manual Approval for Production
+11. Blue-Green Deployment to Production
+12. Post-Deployment Smoke Tests
+13. Monitoring + Alerting Setup
+\end{verbatim}
+
+\textbf{Configuration de monitoring :}
+\begin{itemize}
+    \item \textbf{Métriques applicatives :} Response time, Error rate, Throughput
+    \item \textbf{Métriques système :} CPU, Memory, Disk I/O, Network
+    \item \textbf{Métriques base de données :} Query performance, Connections, Locks
+    \item \textbf{Alerting :} Slack notifications, PagerDuty pour les incidents critiques
+\end{itemize}
+
+\textbf{Plan de reprise d'activité :}
+\begin{itemize}
+    \item \textbf{Sauvegardes :} Automatiques quotidiennes + WAL shipping
+    \item \textbf{Restoration :} Process documenté avec RTO < 4 heures
+    \item \textbf{Scaling :} Auto-scaling basé sur la charge CPU et mémoire
+    \item \textbf{Failover :} Base de données en mode cluster avec réplication
+\end{itemize}
+
+\section{Liens utiles}
+
+\begin{itemize}
+    \item Documentation React: \url{https://reactjs.org/docs}
+    \item TailwindCSS: \url{https://tailwindcss.com/docs}
+    \item Node.js Best Practices: \url{https://github.com/goldbergyoni/nodebestpractices}
+    \item PostgreSQL Documentation: \url{https://www.postgresql.org/docs/}
+    \item Docker Documentation: \url{https://docs.docker.com/}
+    \item GitHub Actions: \url{https://docs.github.com/actions}
+    \item Jest Testing: \url{https://jestjs.io/docs}
+    \item Cypress E2E Testing: \url{https://docs.cypress.io/}
+    \item Bungie API Documentation: \url{https://bungie-net.github.io/}
+    \item OWASP Security Guidelines: \url{https://cheatsheetseries.owasp.org/}
+\end{itemize}
