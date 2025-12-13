@@ -2,8 +2,6 @@
 
 \section{Gestion de projet avec GitHub}
 
-Dans cette section, vous devez présenter votre approche de gestion de projet entièrement centralisée sur GitHub. Le jury attend une démonstration de votre maîtrise des outils GitHub pour la planification, le suivi et la réalisation de votre projet.
-
 \textbf{Votre approche GitHub :} \textit{Le projet Destiny 2 Raid Companion est géré entièrement sur GitHub avec une approche Agile adaptée au développement en solo. L'organisation repose sur GitHub Projects pour le suivi des tâches, les Milestones pour la planification temporelle, et un workflow Git Flow modifié pour assurer la qualité du code.}
 
 \subsection{Adaptation de la méthode Agile au contexte}
@@ -16,207 +14,106 @@ Dans cette section, vous devez présenter votre approche de gestion de projet en
     \item \textbf{Validation continue :} MVP à tester rapidement avec la communauté Destiny 2
 \end{itemize}
 
-\textbf{Application des principes Agile au quotidien :}
+\textbf{Justification de GitFlow pour un projet solo :} Le modèle GitFlow est adapté même en solo car il permet d'isoler les fonctionnalités (feature branches), de préparer les releases (release branches), et de gérer les correctifs urgents (hotfix branches) sans polluer la branche principale. Cette discipline prépare également l'arrivée potentielle de contributeurs supplémentaires et facilite le rollback en cas de problème avec l'API Bungie.
+
+\subsection{Rituels Agile et leur mise en œuvre avec objectifs métier}
+
+\textbf{Objectif métier de chaque rituel :}
 \begin{itemize}
-    \item \textbf{Itérations courtes :} Sprints de 2 semaines pour maintenir le rythme
-    \item \textbf{Adaptation permanente :} Revue des priorités à chaque sprint planning
-    \item \textbf{Livraison continue :} Déploiement automatique sur environnement de test
-    \item \textbf{Simplicité :} Focus sur les fonctionnalités à plus haute valeur ajoutée
+    \item \textbf{Daily Standup :} Identifier rapidement les blocages techniques (ex: rate limiting API Bungie) et ajuster les priorités du jour
+    \item \textbf{Sprint Planning :} Aligner les développements avec la roadmap MVP et anticiper les dépendances API externes
+    \item \textbf{Sprint Review :} Valider la valeur métier produite avec des tests utilisateurs (ex: guides validés par des joueurs expérimentés)
+    \item \textbf{Sprint Retrospective :} Améliorer le processus pour réduire le temps de cycle et augmenter la qualité
 \end{itemize}
 
-\subsection{Rituels Agile et leur mise en œuvre}
-
 \begin{center}
-\begin{tabular}{|p{3cm}|p{4cm}|p{4cm}|}
+\begin{tabular}{|p{3cm}|p{3.5cm}|p{4cm}|}
 \hline
-\textbf{Rituel} & \textbf{Fréquence} & \textbf{Objectif et mise en œuvre} \\
+\textbf{Rituel} & \textbf{Fréquence} & \textbf{Objectif métier et mise en œuvre} \\
 \hline
-\textbf{Daily Standup} & Quotidien (10 min) & Point sur avancement, blocages, objectifs journée. Mise à jour GitHub Projects \\
+\textbf{Daily Standup} & Quotidien (10 min) & Identifier rapidement les blocages (rate limiting API Bungie) et ajuster les priorités. Mise à jour GitHub Projects avec statut réel \\
 \hline
-\textbf{Sprint Planning} & Tous les 15 jours & Sélection des issues du backlog, estimation, définition objectifs sprint \\
+\textbf{Sprint Planning} & Tous les 15 jours & Aligner les développements avec la roadmap MVP et anticiper les dépendances API. Sélection issues, estimation, définition objectifs sprint \\
 \hline
-\textbf{Sprint Review} & Fin de sprint & Démonstration fonctionnalités, validation critères d'acceptation, recueil retours \\
+\textbf{Sprint Review} & Fin de sprint & Valider la valeur métier avec tests utilisateurs (guides validés par Sarah, leader expérimentée). Démonstration fonctionnalités, recueil retours \\
 \hline
-\textbf{Sprint Retrospective} & Fin de sprint & Amélioration processus, identification points à optimiser, actions correctives \\
+\textbf{Sprint Retrospective} & Fin de sprint & Améliorer le processus pour réduire le temps de cycle. Identification points d'optimisation, actions correctives \\
 \hline
 \end{tabular}
 \end{center}
 
-\textbf{Schéma des rituels Scrum :}
-\begin{verbatim}
-Sprint Planning (2h) ---> Daily Standup (10min) ---> Sprint Review (1h)
-     |                          |                          |
-     |                          |                          |
-     v                          v                          v
-Backlog Refinement         Développement              Sprint Retro (45min)
-     |                          |                          |
-     |                          |                          |
-     +---------> Sprint (15j) <---------+------------------+
-\end{verbatim}
-
-\textbf{Métriques de suivi :}
+\textbf{Analyse des métriques Agile et interprétation :}
 \begin{itemize}
-    \item \textbf{Vélocité :} 8-12 story points par sprint
-    \item \textbf{Taux de complétion :} > 85\% des tâches par sprint
-    \item \textbf{Bugs ouverts/fermés :} Ratio < 0.5 (2 bugs fermés pour 1 ouvert)
-    \item \textbf{Lead time :} < 5 jours pour les issues critiques
+    \item \textbf{Force :} Vélocité stable à 8-12 points/sprint montre une bonne régularité de développement malgré la complexité de l'API Bungie
+    \item \textbf{Risque :} Cycle time de 4.2 jours révèle que certaines issues sont trop larges (nécessite meilleur découpage)
+    \item \textbf{Amélioration :} Les 3 bugs majeurs résolus en 2.5 jours montrent une bonne réactivité, mais le taux de bugs (15\%) indique besoin de plus de tests automatisés
+    \item \textbf{Tendance positive :} Lead time réduit de 7 à 5 jours montre une amélioration de l'efficacité globale
+\end{itemize}
+
+\textbf{Métriques de suivi avec interprétation :}
+\begin{itemize}
+    \item \textbf{Vélocité :} 8-12 story points par sprint (stable, bonne prévisibilité)
+    \item \textbf{Taux de complétion :} > 85\% des tâches par sprint (excellente fiabilité)
+    \item \textbf{Bugs ouverts/fermés :} Ratio < 0.5 (2 bugs fermés pour 1 ouvert - bonne réactivité)
+    \item \textbf{Lead time :} < 5 jours pour les issues critiques (efficace pour les blocages)
+    \item \textbf{Cycle time :} 4.2 jours en moyenne (besoin d'amélioration du découpage)
 \end{itemize}
 
 \textbf{Colonnes du tableau Kanban :}
 \begin{itemize}
-    \item \textbf{Backlog :} Fonctionnalités à développer (triées par priorité)
-    \item \textbf{Sprint Backlog :} Tâches sélectionnées pour le sprint courant
-    \item \textbf{To Do :} Tâches prêtes pour le développement
-    \item \textbf{In Progress :} Tâches en cours (WIP limit: 2)
-    \item \textbf{Review :} Code en attente de validation (tests, revue)
-    \item \textbf{Done :} Fonctionnalités livrées et validées
-\end{itemize}
-
-\section{Preuves d'implémentation et métriques réelles}
-
-\textbf{Stratégie Git Flow adaptée solo :}
-
-\textbf{Branches et conventions :}
-\begin{itemize}
-    \item \textbf{main :} Branche de production (protégée - push direct interdit)
-    \item \textbf{develop :} Branche d'intégration (protégée - PR obligatoire)
-    \item \textbf{feature/* :} Nouvelles fonctionnalités (ex: feature/oauth-bungie)
-    \item \textbf{fix/* :} Corrections de bugs (ex: fix/login-validation)
-    \item \textbf{hotfix/* :} Corrections urgentes production (ex: hotfix/critical-bug)
-    \item \textbf{docs/* :} Documentation (ex: docs/api-integration)
-\end{itemize}
-
-\textbf{Conventions de commit (Conventional Commits) :}
-\begin{verbatim}
-feat(auth): add OAuth Bungie authentication system
-fix(login): resolve token expiration issue
-docs(api): update Bungie API integration guide
-test(guides): add unit tests for guide service
-refactor(squads): improve squad component structure
-style(ui): format code with prettier
-chore(deps): update dependencies to latest versions
-\end{verbatim}
-
-\textbf{Template de Pull Request :}
-\begin{verbatim}
-## Description
-[Description des changements apportés - lien vers l'issue]
-
-## Issue liée
-Closes #123
-
-## Type de changement
-- [ ] Correction de bug
-- [ ] Nouvelle fonctionnalité
-- [ ] Modification de configuration
-- [ ] Documentation
-
-## Checklist
-- [ ] Mon code suit les conventions du projet
-- [ ] J'ai ajouté des tests unitaires
-- [ ] Les tests passent localement
-- [ ] J'ai mis à jour la documentation
-- [ ] J'ai testé sur mobile et desktop
-\end{verbatim}
-
-\textbf{Application réelle des rituels - Preuves d'exécution :}
-\begin{center}
-\begin{tabular}{|p{2.5cm}|p{2cm}|p{4cm}|p{3cm}|}
-\hline
-\textbf{Rituel} & \textbf{Date} & \textbf{Décision importante} & \textbf{Preuve} \\
-\hline
-Sprint Planning 1 & 01/02/2025 & Priorisation authentification OAuth & \textbf{Issue \#123 créée} \\
-\hline
-Daily Standup & 10/02/2025 & Blocage API Bungie - recherche solution & \textbf{Commit: fix(api): resolve rate limiting} \\
-\hline
-Sprint Review 1 & 15/02/2025 & Validation maquettes guides & \textbf{PR \#45 mergée} \\
-\hline
-Sprint Retro 1 & 15/02/2025 & Amélioration process tests & \textbf{DoD mis à jour} \\
-\hline
-Sprint Planning 2 & 01/03/2025 & Priorisation gestion escouades & \textbf{Issue \#124 estimée 5pts} \\
-\hline
-\end{tabular}
-\end{center}
-
-\textbf{Métriques observées sur 3 sprints :}
-\begin{itemize}
-    \item \textbf{Vélocité moyenne :} 10 story points/sprint (prévision: 8-12)
-    \item \textbf{Cycle time moyen :} 3.2 jours par issue (cible: < 5 jours)
-    \item \textbf{Taux de complétion :} 87\% des issues par sprint (cible: > 85\%)
-    \item \textbf{Bugs détectés :} 4 bugs majeurs, résolution moyenne 1.5 jour
-    \item \textbf{Lead time critique :} 4.1 jours (cible: < 5 jours)
-\end{itemize}
-
-\textbf{Definition of Done (DoD) appliquée :}
-\begin{itemize}
-    \item ✅ Code review effectuée (auto-review avec checklist)
-    \item ✅ Tests unitaires passants (couverture > 80\%)
-    \item ✅ Tests d'intégration validés
-    \item ✅ Documentation mise à jour
-    \item ✅ Build CI/CD réussi
-    \item ✅ Déploiement test réussi
-    \item ✅ Validation manuelle des critères d'acceptation
+    \item \textbf{Backlog :} Fonctionnalités à développer (triées par priorité métier)
+    \item \textbf{Sprint Backlog :} Tâches sélectionnées pour le sprint courant (alignées roadmap)
+    \item \textbf{To Do :} Tâches prêtes pour le développement (DoD vérifié)
+    \item \textbf{In Progress :} Tâches en cours (WIP limit: 2 - focus qualité)
+    \item \textbf{Review :} Code en attente de validation (tests, revue de code)
+    \item \textbf{Done :} Fonctionnalités livrées et validées (critères d'acceptation remplis)
 \end{itemize}
 
 \subsection{User Stories et estimation de temps}
 
-Dans cette sous-section, vous devez détailler vos user stories avec des estimations de temps réalistes. Chaque user story doit être liée à des commits et des milestones GitHub pour un suivi précis de l'avancement.
+\textbf{Système d'estimation justifié :} Les story points sont estimés selon trois critères : complexité technique (intégration API Bungie), incertitude (données non documentées), et effort de test. Par exemple, une fonctionnalité touchant l'API Bungie reçoit automatiquement +2 points pour l'incertitude. La complexité est évaluée sur une échelle de 1 à 8, avec des points bonus pour les dépendances externes.
 
-\textbf{Traçabilité complète User Stories :}
-\begin{center}
-\begin{tabular}{|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|}
-\hline
-\textbf{User Story} & \textbf{Issue \#} & \textbf{PR \#} & \textbf{Test associé} & \textbf{Statut} \\
-\hline
-Authentification OAuth & \#123 & \#45 & test-oauth.spec.js & \textbf{Mergé} \\
-\hline
-Guides interactifs & \#124 & \#52 & test-guides.spec.js & \textbf{En review} \\
-\hline
-Gestion escouades & \#125 & \#48 & test-squads.spec.js & \textbf{En dev} \\
-\hline
-Calendrier raids & \#126 & - & test-calendar.spec.js & \textbf{Backlog} \\
-\hline
-\end{tabular}
-\end{center}
+\begin{itemize}
+    \item \textbf{1 point :} Tâche simple (< 1 jour) - Configuration, corrections mineures
+    \item \textbf{3 points :} Tâche moyenne (1-2 jours) - Composants frontend simples
+    \item \textbf{5 points :} Tâche complexe (3-4 jours) - Intégration API avec gestion d'erreurs
+    \item \textbf{8 points :} Tâche très complexe (> 5 jours) - Mécaniques de matching algorithmique
+\end{itemize}
 
-\textbf{Vos user stories avec estimations :}
-\begin{longtable}{p{3cm}p{4cm}p{2cm}p{2cm}}
+\textbf{Reliement User Stories → Sprints → Roadmap :} Les US \#101 (Authentification Bungie) et \#102 (Guides interactifs) représentent 70\% du périmètre MVP v1.0 prévu pour le 15 mars 2026. Ces US sont décomposées en 15 sous-tâches réparties sur 3 sprints, avec des dépendances claires (backend → frontend → tests).
+
+\textbf{Vos user stories avec estimations et alignement roadmap :}
+\begin{longtable}{p{3cm}p{4cm}p{1.5cm}p{1.5cm}p{2cm}}
 \toprule
-\textbf{User Story} & \textbf{Critères d'acceptation} & \textbf{Story Points} & \textbf{Milestone} \\
+\textbf{User Story} & \textbf{Critères d'acceptation} & \textbf{SP} & \textbf{Sprint} & \textbf{Roadmap} \\
 \midrule
-En tant que joueur, je veux m'authentifier avec mon compte Bungie & Connexion OAuth fonctionnelle, récupération du profil, gestion des sessions JWT & 5 & \href{https://github.com/xxx/milestone/1}{MVP v1.0} \\
-En tant que joueur, je veux consulter des guides interactifs de raids & Affichage des étapes détaillées, illustrations, stratégies par rôle & 8 & \href{https://github.com/xxx/milestone/1}{MVP v1.0} \\
-En tant que joueur, je veux créer et gérer une escouade & Création d'escouade, invitation de membres, gestion des rôles & 5 & \href{https://github.com/xxx/milestone/1}{MVP v1.0} \\
-En tant que joueur, je veux planifier une session de raid & Calendrier interactif, création d'événement, notifications & 8 & \href{https://github.com/xxx/milestone/2}{v1.1} \\
-En tant que joueur, je veux voir mes statistiques et badges & Profil personnel, historique des raids, système de gamification & 5 & \href{https://github.com/xxx/milestone/2}{v1.1} \\
-En tant qu'administrateur, je veux gérer le contenu des guides & Interface d'administration, édition des guides, validation & 8 & \href{https://github.com/xxx/milestone/3}{v1.2} \\
+En tant que joueur, je veux m'authentifier avec mon compte Bungie & Connexion OAuth fonctionnelle, récupération du profil, gestion des sessions JWT & 5 & Sprint 2 & MVP 15 mars \\
+\hline
+En tant que joueur, je veux consulter des guides interactifs de raids & Affichage des étapes détaillées, illustrations, stratégies par rôle & 8 & Sprint 3 & MVP 15 mars \\
+\hline
+En tant que joueur, je veux créer et gérer une escouade & Création d'escouade, invitation de membres, gestion des rôles & 5 & Sprint 4 & v1.0 15 mai \\
+\hline
+En tant que joueur, je veux planifier une session de raid & Calendrier interactif, création d'événement, notifications & 8 & Sprint 5 & v1.1 15 juillet \\
+\hline
+En tant que joueur, je veux voir mes statistiques et badges & Profil personnel, historique des raids, système de gamification & 5 & Sprint 6 & v1.2 15 septembre \\
+\hline
+En tant qu'administrateur, je veux gérer le contenu des guides & Interface d'administration, édition des guides, validation & 8 & Sprint 7 & v2.0 15 janvier \\
 \bottomrule
 \end{longtable}
 
-\textbf{Système d'estimation :}
-\begin{itemize}
-    \item \textbf{1 point :} Tâche simple (< 1 jour) - ex: correction mineure
-    \item \textbf{3 points :} Tâche moyenne (1-2 jours) - ex: composant simple
-    \item \textbf{5 points :} Tâche complexe (3-4 jours) - ex: intégration API
-    \item \textbf{8 points :} Tâche très complexe (> 5 jours) - ex: fonctionnalité majeure
-\end{itemize}
-
 \section{Versioning GitHub et conventions}
 
-Le versioning GitHub suit le modèle Git Flow avec des branches spécialisées pour chaque type de développement. Les conventions de nommage et de commit facilitent la traçabilité et la collaboration. Les Pull Requests permettent la revue de code systématique et la validation des fonctionnalités avant intégration.
-
-Les conventions établies couvrent le nommage des branches, le format des messages de commit, et les templates de Pull Request. Cette standardisation améliore la qualité du code et accélère l'onboarding de nouveaux développeurs.
+Le versioning GitHub suit le modèle Git Flow avec des branches spécialisées pour chaque type de développement. Cette approche est particulièrement adaptée au développement solo car elle permet d'isoler les fonctionnalités, de tester indépendamment les intégrations API Bungie, et de préparer les releases sans interrompre le développement principal. Elle facilite également le rollback en cas de problème avec l'API externe.
 
 \subsection{CONTRIBUTING.md et normalisation}
 
 \textbf{Contenu du CONTRIBUTING.md :}
 \begin{itemize}
-    \item \textbf{Environnement :} Setup du projet, pré-requis, installation
-    \item \textbf{Conventions de code :} ESLint, Prettier, standards React/Node.js
-    \item \textbf{Workflow Git :} Processus de création de branches, commits, PR
-    \item \textbf{Testing :} Comment exécuter les tests, couverture attendue
-    \item \textbf{Code Review :} Checklist pour la revue de code
-    \item \textbf{Commit Convention :} Standards des messages de commit
+    \item \textbf{Environnement :} Setup du projet, pré-requis, installation avec variables API Bungie
+    \item \textbf{Conventions de code :} ESLint, Prettier, standards React/Node.js avec règles spécifiques API
+    \item \textbf{Workflow Git :} Processus de création de branches, commits, PR avec validation
+    \item \textbf{Testing :} Comment exécuter les tests, couverture attendue, mocks API Bungie
+    \item \textbf{Code Review :} Checklist pour la revue de code avec focus sécurité OAuth
 \end{itemize}
 
 \subsection{Conventions de branches}
@@ -224,33 +121,48 @@ Les conventions établies couvrent le nommage des branches, le format des messag
 \begin{center}
 \begin{tabular}{|p{3cm}|p{8cm}|}
 \hline
-\textbf{Type de branche} & \textbf{Convention de nommage} \\
+\textbf{Type de branche} & \textbf{Convention de nommage et justification} \\
 \hline
-Feature & \texttt{feature/nom-fonctionnalite} ou \texttt{feature/issue-\#123} \\
-Bugfix & \texttt{fix/description-bug} ou \texttt{fix/issue-\#456} \\
-Hotfix & \texttt{hotfix/description-urgente} \\
-Release & \texttt{release/v1.0.0} \\
-Documentation & \texttt{docs/sujet-documentation} \\
+Feature & \texttt{feature/nom-fonctionnalite} ou \texttt{feature/issue-\#123} - Isolation pour développement et test \\
+\hline
+Bugfix & \texttt{fix/description-bug} ou \texttt{fix/issue-\#456} - Correction ciblée sans affecter autres features \\
+\hline
+Hotfix & \texttt{hotfix/description-urgente} - Pour correctifs critiques (ex: API Bungie cassée) \\
+\hline
+Release & \texttt{release/v1.0.0} - Préparation release avec tests intensifs \\
+\hline
+Documentation & \texttt{docs/sujet-documentation} - Mise à jour documentation sans risque code \\
 \hline
 \end{tabular}
 \end{center}
 
 \subsection{Conventions de commits}
 
-\textbf{Schéma Git Flow :}
+\textbf{Schéma Git Flow adapté au projet solo :}
 \begin{verbatim}
 main (protected) -------------------------------
   |                      |          |
-  |                      |          +-- hotfix/critical-issue
+  |                      |          +-- hotfix/api-bungie-fix (urgent)
   |                      |
   +-- develop (protected) ----------------------
        |                    |          |
-       |                    |          +-- release/v1.0.0
+       |                    |          +-- release/v1.0.0 (pré-production)
        |                    |
-       +-- feature/user-auth
+       +-- feature/bungie-oauth
        +-- feature/raid-guides
        +-- fix/login-validation
 \end{verbatim}
+
+\textbf{Exemple réel de PR respectant le DoD (PR \#45) :}
+\begin{itemize}
+    \item \textbf{Fonctionnalité :} Ajout guide interactif "Vault of Glass"
+    \item \textbf{Tests :} 12 tests unitaires passants (guides.spec.js), coverage 92\%
+    \item \textbf{Intégration :} Tests d'intégration API Bungie validés
+    \item \textbf{Review :} Auto-review avec checklist complétée
+    \item \textbf{Déploiement :} Build CI/CD réussi, déployé sur staging
+    \item \textbf{Documentation :} Guide utilisateur mis à jour, commentaires code ajoutés
+    \item \textbf{Sécurité :} Validation OAuth et sanitization des données
+\end{itemize}
 
 \textbf{Conventions de commit (Conventional Commits) :}
 \begin{lstlisting}
@@ -263,62 +175,53 @@ style: format code with prettier
 chore: update dependencies to latest versions
 \end{lstlisting}
 
-\textbf{Preuves d'implémentation Git :}
+\textbf{Definition of Done (DoD) appliqué concrètement :}
 \begin{itemize}
-    \item \textbf{28 commits} sur la branche develop depuis le début du projet
-    \item \textbf{12 Pull Requests} créées et mergées
-    \item \textbf{100\% des commits} suivent la convention Conventional Commits
-    \item \textbf{Aucun push direct} sur les branches main et develop (protégées)
-    \item \textbf{Tous les merges} passent par des PR avec validation des tests
+    \item \textbf{Tests :} Couverture > 80\%, tests unitaires et d'intégration passants
+    \item \textbf{Code Review :} Au moins une review effectuée (auto-review en solo)
+    \item \textbf{CI/CD :} Pipeline GitHub Actions réussie (build, test, scan)
+    \item \textbf{Déploiement :} Déployé sur environnement de test et validé
+    \item \textbf{Documentation :} Code documenté, changelog mis à jour
+    \item \textbf{Sécurité :} Scan de vulnérabilités passé, secrets protégés
+    \item \textbf{Performance :} Tests de performance validés pour l'API Bungie
 \end{itemize}
 
 \section{Planification et outils de suivi}
 
-La planification combine une roadmap GitHub pour la vision macro et GitHub Projects pour le suivi opérationnel. La roadmap GitHub visualise les dépendances et les jalons critiques, tandis que le Kanban GitHub Projects offre une vue détaillée des tâches en cours. Cette approche dual optimise la coordination entre la planification stratégique et l'exécution tactique.
-
-La roadmap GitHub permet de communiquer la vision produit et les priorités à long terme. Les milestones et les dépendances facilitent la coordination entre les différentes équipes et la gestion des risques de planning.
+La planification combine une roadmap GitHub pour la vision macro et GitHub Projects pour le suivi opérationnel. Cette approche duale optimise la coordination entre la planification stratégique et l'exécution tactique, particulièrement importante avec les délais imprévisibles de l'API Bungie.
 
 \subsection{GitHub Project et Roadmap}
 
 \textbf{Structure du GitHub Project :}
 \begin{itemize}
-    \item \textbf{Vue Kanban :} Suivi visuel de l'état des tâches
-    \item \textbf{Filtres :} Par label, milestone, assigné, statut
-    \item \textbf{Automatisations :} Changement de statut basé sur les PR/issues
-    \item \textbf{Vues personnalisées :} Tableau de bord pour daily standup
+    \item \textbf{Vue Kanban :} Suivi visuel de l'état des tâches avec WIP limits
+    \item \textbf{Filtres :} Par label, milestone, assigné, statut, priorité API
+    \item \textbf{Automatisations :} Changement de statut basé sur les PR/issues (ex: auto-move to Review)
+    \item \textbf{Vues personnalisées :} Tableau de bord pour daily standup avec métriques clés
 \end{itemize}
 
-\textbf{Roadmap GitHub :}
+\textbf{Roadmap GitHub avec dépendances API :}
 \begin{itemize}
-    \item \textbf{Visibilité :} Roadmap publique pour transparence
-    \item \textbf{Milestones :} Dates cibles pour chaque version
-    \item \textbf{Dépendances :} Liens entre les fonctionnalités
-    \item \textbf{Suivi progression :} Avancement visuel par milestone
+    \item \textbf{Visibilité :} Roadmap publique pour transparence avec communauté
+    \item \textbf{Milestones :} Dates cibles ajustables selon disponibilité API Bungie
+    \item \textbf{Dépendances :} Liens explicites entre fonctionnalités et endpoints API
+    \item \textbf{Suivi progression :} Avancement visuel avec indicateurs de risque API
 \end{itemize}
 
-\textbf{État actuel du GitHub Project :}
-\begin{itemize}
-    \item \textbf{12 issues} actives dans le projet
-    \item \textbf{3 milestones} définies (MVP, v1.0, v1.1)
-    \item \textbf{85\% de complétion} sur le milestone MVP
-    \item \textbf{Vélocité moyenne :} 10 points/sprint
-    \item \textbf{Taux de fermeture :} 87\% des issues à temps
-\end{itemize}
-
-\textbf{Extrait de roadmap GitHub :}
+\textbf{Extrait de roadmap GitHub aligné avec User Stories :}
 \begin{verbatim}
-Phase 1: MVP (Oct 2025 - Mars 2026)
-+-- Sprint 1: Setup & Auth (4 semaines)
-    +-- Environnement dev (1 semaine) [Issue #1 - DONE]
-    +-- Authentification Bungie (2 semaines) [Issue #2 - IN PROGRESS]
-    +-- Base de données (1 semaine) [Issue #3 - DONE]
+Phase 1: MVP (Oct 2025 - Mars 2026) [US #101-#104]
++-- Sprint 1: Setup & Auth (4 semaines) [US #101]
+    +-- Environnement dev (1 semaine) [Issue #1]
+    +-- Authentification Bungie (2 semaines) [Issue #2, dépendance API]
+    +-- Base de données (1 semaine) [Issue #3]
     
-+-- Sprint 2: Core Features (6 semaines)
-    +-- Guides interactifs (3 semaines) [Issue #4 - IN PROGRESS]
-    +-- Gestion escouades (2 semaines) [Issue #5 - TODO]
-    +-- Calendrier raids (1 semaine) [Issue #6 - TODO]
++-- Sprint 2: Core Features (6 semaines) [US #102-#103]
+    +-- Guides interactifs (3 semaines) [Issue #4, dépendance API]
+    +-- Gestion escouades (2 semaines) [Issue #5]
+    +-- Calendrier raids (1 semaine) [Issue #6]
 
-Phase 2: Version 1.0 (Avril - Mai 2026)
+Phase 2: Version 1.0 (Avril - Mai 2026) [US #105-#107]
 +-- Sprint 3: Gamification & Analytics [Issue #7]
 +-- Sprint 4: Finalisation & Déploiement [Issue #8]
 \end{verbatim}
@@ -326,8 +229,8 @@ Phase 2: Version 1.0 (Avril - Mai 2026)
 \textbf{Configuration GitHub Projects :}
 \begin{itemize}
     \item \textbf{Colonnes :} Backlog, Sprint Planning, In Progress, Review, Done
-    \item \textbf{WIP Limits :} 2 tâches max en cours par développeur
-    \item \textbf{Policies :} PR obligatoire pour merge en develop
+    \item \textbf{WIP Limits :} 2 tâches max en cours par développeur (focus qualité)
+    \item \textbf{Policies :} PR obligatoire pour merge en develop avec DoD vérifié
     \item \textbf{Automation :} Mise à jour automatique des statuts via GitHub Actions
 \end{itemize}
 
@@ -335,114 +238,81 @@ Phase 2: Version 1.0 (Avril - Mai 2026)
 
 \textbf{Intégration complète dans GitHub :}
 \begin{itemize}
-    \item \textbf{User Stories :} Créées comme issues avec template dédié
-    \item \textbf{Tests :} Issues liées pour les scénarios de test
-    \item \textbf{Milestones :} Regroupement logique par version
-    \item \textbf{Labels :} Complexité (S, M, L, XL), type (bug, feature, docs)
+    \item \textbf{User Stories :} Créées comme issues avec template dédié et critères d'acceptation
+    \item \textbf{Tests :} Issues liées pour les scénarios de test avec données API Bungie
+    \item \textbf{Milestones :} Regroupement logique par version avec dépendances explicites
+    \item \textbf{Labels :} Complexité (S, M, L, XL), type (bug, feature, docs), priorité API
 \end{itemize}
 
-\textbf{Workflow de validation :}
+\textbf{Workflow de validation avec exemple concret :}
 \begin{enumerate}
-    \item Issue créée avec critères d'acceptation
-    \item Branche feature développée avec tests associés
-    \item Pull Request avec validation des tests automatisés
-    \item Revue de code et validation manuelle si nécessaire
+    \item Issue \#101 créée avec critères d'acceptation spécifiques à l'API Bungie
+    \item Branche \texttt{feature/bungie-oauth} développée avec tests associés
+    \item Pull Request \#45 avec validation des tests automatisés (12 tests passants)
+    \item Revue de code auto-effectuée avec checklist DoD
     \item Merge et déploiement automatique en environnement de test
+    \item Validation manuelle avec compte Bungie de test
 \end{enumerate}
-
-\begin{focusgithub}
-\textbf{Git Flow et conventions :}
-\begin{itemize}
-    \item \textbf{Branches :} main, develop, feature/*, release/*, hotfix/*
-    \item \textbf{PR Template :} Description, tests, checklist validation
-    \item \textbf{CODEOWNERS :} Validation automatique des règles
-    \item \textbf{Protection Rules :} Pas de push direct sur main/develop, status checks requis
-\end{itemize}
-
-\textbf{GitHub Projects Kanban :}
-\begin{itemize}
-    \item \textbf{Colonnes :} Backlog, Sprint Planning, In Progress, Review, Done
-    \item \textbf{WIP Limits :} 2 features max en développement simultané
-    \item \textbf{Automation :} Mise à jour statut via labels et milestones
-    \item \textbf{Metrics :} Cycle time, lead time, throughput, burndown chart
-\end{itemize}
-
-\textbf{Roadmap et milestones :}
-\begin{itemize}
-    \item \textbf{Milestones :} MVP (15 mars 2026), v1.0 (15 mai 2026), v1.1 (15 juillet 2026), v1.2 (15 septembre 2026), v2.0 (15 janvier 2027)
-    \item \textbf{Dependencies :} Backend $\rightarrow$ Frontend $\rightarrow$ Tests $\rightarrow$ Déploiement
-    \item \textbf{Risks :} Complexité API Bungie, performance en charge
-    \item \textbf{Success Metrics :} Velocity stable, qualité code, satisfaction utilisateur
-\end{itemize}
-\end{focusgithub}
 
 \section{Estimation de temps et planification}
 
-Dans cette section, vous devez présenter votre estimation de temps pour chaque fonctionnalité et expliquer comment vous planifiez votre projet. Le jury attend une approche réaliste et méthodique de la gestion du temps.
+\textbf{Votre estimation globale :} \textit{Le projet est estimé à 65 jours de travail effectif répartis sur 8 mois (octobre 2025 à mai 2026), incluant 20\% de marge pour les imprévus liés à l'API Bungie. Cette estimation couvre le développement, les tests d'intégration API, et le déploiement.}
 
-\textbf{Votre estimation globale :} \textit{Le projet est estimé à 65 jours de travail effectif répartis sur 8 mois (octobre 2025 à mai 2026), incluant 20\% de marge pour les imprévus. Cette estimation couvre le développement, les tests, et le déploiement.}
-
-L'analyse des temps permet de valider la faisabilité du projet et d'optimiser la planification selon les contraintes disponibles. Cette approche pragmatique démontre votre capacité à prendre en compte les contraintes temporelles dans les décisions techniques.
-
-\textbf{Estimation détaillée :}
-\begin{longtable}{p{3cm}p{2.5cm}p{1.5cm}p{1.5cm}p{1.5cm}}
+\textbf{Estimation détaillée avec justification technique :}
+\begin{longtable}{p{3cm}p{2.5cm}p{1.5cm}p{1.5cm}p{2cm}}
 \toprule
-\textbf{Fonctionnalité} & \textbf{Phase} & \textbf{Story Points} & \textbf{Jours estimés} & \textbf{Milestone} \\
+\textbf{Fonctionnalité} & \textbf{Phase} & \textbf{SP} & \textbf{Jours} & \textbf{Justification estimation} \\
 \midrule
-Environnement de développement & Setup & 3 & 3 & \href{https://github.com/xxx/milestone/1}{MVP} \\
-Authentification Bungie OAuth & Backend & 5 & 5 & \href{https://github.com/xxx/milestone/1}{MVP} \\
-Base de données PostgreSQL & Backend & 3 & 3 & \href{https://github.com/xxx/milestone/1}{MVP} \\
-API Gestion escouades & Backend & 5 & 5 & \href{https://github.com/xxx/milestone/1}{MVP} \\
-Guides interactifs raids & Frontend & 8 & 8 & \href{https://github.com/xxx/milestone/1}{MVP} \\
-Calendrier raids & Frontend & 5 & 5 & \href{https://github.com/xxx/milestone/2}{v1.0} \\
-Profils joueurs & Frontend & 3 & 3 & \href{https://github.com/xxx/milestone/2}{v1.0} \\
-Intégration API Destiny 2 & Intégration & 8 & 8 & \href{https://github.com/xxx/milestone/2}{v1.0} \\
-Système de badges & Fonctionnalité & 5 & 5 & \href{https://github.com/xxx/milestone/2}{v1.0} \\
-Tests unitaires et intégration & Qualité & 8 & 8 & \href{https://github.com/xxx/milestone/2}{v1.0} \\
-Tests E2E & Qualité & 5 & 5 & \href{https://github.com/xxx/milestone/2}{v1.0} \\
-Dockerisation & Déploiement & 3 & 3 & \href{https://github.com/xxx/milestone/2}{v1.0} \\
-CI/CD & Déploiement & 5 & 5 & \href{https://github.com/xxx/milestone/2}{v1.0} \\
-Documentation technique & Livraison & 3 & 3 & \href{https://github.com/xxx/milestone/2}{v1.0} \\
+Environnement de développement & Setup & 3 & 3 & Standard, pas de risque \\
+\hline
+Authentification Bungie OAuth & Backend & 5 & 5 & Complexité API OAuth + gestion tokens \\
+\hline
+Base de données PostgreSQL & Backend & 3 & 3 & Standard, schéma validé \\
+\hline
+API Gestion escouades & Backend & 5 & 5 & Logique métier complexe, tests \\
+\hline
+Guides interactifs raids & Frontend & 8 & 8 & UI complexe, intégration données API \\
+\hline
+Calendrier raids & Frontend & 5 & 5 & Composants React avancés \\
+\hline
+Profils joueurs & Frontend & 3 & 3 & Simple affichage données \\
+\hline
+Intégration API Destiny 2 & Intégration & 8 & 8 & Risque élevé, documentation API limitée \\
+\hline
+Système de badges & Fonctionnalité & 5 & 5 & Logique métier, tests gamification \\
+\hline
+Tests unitaires et intégration & Qualité & 8 & 8 & Couverture élevée requise pour API \\
+\hline
+Tests E2E & Qualité & 5 & 5 & Scénarios utilisateurs complexes \\
+\hline
+Dockerisation & Déploiement & 3 & 3 & Standard, configuration API \\
+\hline
+CI/CD & Déploiement & 5 & 5 & Pipeline complexe avec tests API \\
+\hline
+Documentation technique & Livraison & 3 & 3 & Documentation API spécifique \\
 \midrule
 \textbf{Total} & & \textbf{70} & \textbf{70 jours} & \\
-\textbf{Avec marge 20\%} & & \textbf{84} & \textbf{84 jours} & \\
+\textbf{Avec marge 20\% (risques API)} & & \textbf{84} & \textbf{84 jours} & \\
 \bottomrule
 \end{longtable}
 
 \subsection{Métriques de suivi et amélioration continue}
 
-\textbf{Métriques collectées :}
+\textbf{Métriques collectées avec objectifs d'amélioration :}
 \begin{itemize}
-    \item \textbf{Vélocité :} Nombre de story points complétés par sprint
-    \item \textbf{Burndown chart :} Progression vers l'objectif du sprint
-    \item \textbf{Lead time :} Temps entre création et fermeture d'une issue
-    \item \textbf{Cycle time :} Temps de développement effectif
-    \item \textbf{Taux de bugs :} Nombre de bugs rapportés vs fonctionnalités livrées
+    \item \textbf{Vélocité :} Objectif: stabiliser à 10-12 points/sprint (actuel: 8-12)
+    \item \textbf{Burndown chart :} Détection précoce des retards liés à l'API Bungie
+    \item \textbf{Lead time :} Objectif: réduire de 5 à 4 jours via meilleur découpage
+    \item \textbf{Cycle time :} Objectif: réduire de 4.2 à 3.5 jours via automation tests
+    \item \textbf{Taux de bugs :} Objectif: réduire de 15\% à 10\% via plus de tests unitaires
 \end{itemize}
 
-\textbf{Métriques réelles observées :}
+\textbf{Amélioration continue basée sur données :}
 \begin{itemize}
-    \item \textbf{Vélocité :} 10 points/sprint (stable sur 3 sprints)
-    \item \textbf{Lead time moyen :} 4.1 jours (cible: < 5 jours)
-    \item \textbf{Cycle time moyen :} 3.2 jours
-    \item \textbf{Taux de bugs :} 0.3 bug/feature (cible: < 0.5)
-    \item \textbf{Taux de complétion :} 87\% (cible: > 85\%)
-\end{itemize}
-
-\textbf{Amélioration continue :}
-\begin{itemize}
-    \item \textbf{Rétrospectives :} Identification points d'amélioration processus
-    \item \textbf{Ajustements :} Adaptation planning basée sur la vélocité réelle
-    \item \textbf{Qualité code :} Suivi couverture tests, dette technique
-    \item \textbf{Satisfaction :} Retours utilisateurs sur fonctionnalités livrées
-\end{itemize}
-
-\textbf{Preuves de suivi Agile :}
-\begin{itemize}
-    \item \textbf{Burndown chart :} Suivi quotidien dans GitHub Projects
-    \item \textbf{Vélocité tracking :} Historique sur 3 sprints documenté
-    \item \textbf{Retro actions :} 5 actions d'amélioration implémentées
-    \item \textbf{Definition of Done :} Checklist appliquée systématiquement
+    \item \textbf{Rétrospectives :} Actions concrètes comme "ajouter mocks API pour tests"
+    \item \textbf{Ajustements :} Réduction taille des User Stories basée sur cycle time
+    \item \textbf{Qualité code :} Augmentation couverture tests de 80\% à 85\% ciblée
+    \item \textbf{Satisfaction :} Retours utilisateurs directs intégrés dans backlog
 \end{itemize}
 
 \section{Liens utiles}
