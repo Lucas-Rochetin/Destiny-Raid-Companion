@@ -1,258 +1,225 @@
-\chapter{Déploiement et CI/CD (suite)}
+\chapter{Déploiement et intégration continue (CI/CD)}
 
-\subsection{Script de Déploiement Blue-Green}
+\section{Cadre et objectifs du déploiement}
 
-\begin{lstlisting}[language=bash]
-#!/bin/bash
-# scripts/deploy-blue-green.sh
-set -e
-ENVIRONMENT=$1
-IMAGE_TAG=$2
-TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+Le déploiement de l’application \textit{Destiny Raid Companion} vise à garantir une mise en production fiable, reproductible et cohérente avec les contraintes d’un projet individuel de niveau Concepteur Développeur d’Applications.
 
-echo "Starting blue-green deployment to $ENVIRONMENT with image tag $IMAGE_TAG"
+L’approche retenue repose sur :
+\begin{itemize}
+    \item la containerisation de l’application avec Docker,
+    \item l’automatisation des tests et du build via GitHub Actions,
+    \item une séparation claire entre intégration continue (CI) et déploiement (CD),
+    \item une supervision minimale post-déploiement.
+\end{itemize}
 
-# Déterminer les services actuels et nouveaux
-CURRENT_COLOR=$(docker service ls --filter name=destiny-app --format "{{.Name}}" | grep -o "blue\|green" || echo "blue")
-if [ "$CURRENT_COLOR" = "blue" ]; then
-    ACTIVE_SERVICE="destiny-app-blue"
-    NEW_SERVICE="destiny-app-green"
-    NEW_COLOR="green"
-else
-    ACTIVE_SERVICE="destiny-app-green"
-    NEW_SERVICE="destiny-app-blue"
-    NEW_COLOR="blue"
-fi
+Les choix techniques sont volontairement simples et réalistes afin de rester cohérents avec un contexte de projet solo.
 
-echo "Current active service: $ACTIVE_SERVICE"
-echo "Deploying new service: $NEW_SERVICE ($NEW_COLOR)"
+\section{Containerisation de l’application avec Docker}
 
-# Créer le nouveau service
-docker service create \
-    --name $NEW_SERVICE \
-    --with-registry-auth \
-    --replicas 1 \
-    --update-delay 10s \
-    --update-parallelism 1 \
-    --update-order start-first \
-    --restart-condition on-failure \
-    --restart-delay 5s \
-    --restart-max-attempts 3 \
-    --limit-memory 512M \
-    --reserve-memory 256M \
-    --env NODE_ENV=production \
-    --env BUNGIE_API_KEY=$BUNGIE_API_KEY \
-    --env DATABASE_URL=$DATABASE_URL \
-    --env REDIS_URL=$REDIS_URL \
-    --secret bungie_api_key \
-    --secret database_url \
-    --network destiny-network \
-    ghcr.io/username/destiny-raid-companion:$IMAGE_TAG
+\subsection{Architecture des services}
 
-# Attendre que le nouveau service soit healthy
-echo "Waiting for new service to be healthy..."
-for i in {1..30}; do
-    HEALTH=$(docker service inspect $NEW_SERVICE --format "{{.UpdateStatus.State}}")
-    if [ "$HEALTH" = "completed" ]; then
-        echo "New service is healthy!"
-        break
-    fi
-    echo "Waiting... ($i/30)"
-    sleep 5
-done
+L’application est structurée autour de deux composants principaux :
+\begin{itemize}
+    \item un \textbf{backend Node.js} exposant une API REST,
+    \item un \textbf{frontend HTML/CSS/JavaScript} consommant l’API.
+\end{itemize}
 
-if [ "$HEALTH" != "completed" ]; then
-    echo "ERROR: New service failed to become healthy"
-    docker service rm $NEW_SERVICE
-    exit 1
-fi
+Cette architecture permet une séparation claire des responsabilités tout en restant simple à déployer.
 
-# Mettre à jour le load balancer
-sed -i "s/destiny-app-$CURRENT_COLOR/destiny-app-$NEW_COLOR/g" /etc/nginx/upstreams.conf
-nginx -s reload
+\subsection{Dockerfile Backend (Node.js)}
 
-# Scale up le nouveau service, scale down l'ancien
-docker service scale $NEW_SERVICE=2
-docker service scale $ACTIVE_SERVICE=0
-sleep 30  # Attendre le drainage des connexions
+\begin{lstlisting}[language=dockerfile]
+FROM node:18-alpine
 
-# Supprimer l'ancien service
-docker service rm $ACTIVE_SERVICE
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
 
-# Mettre à jour les labels
-docker service update $NEW_SERVICE --label-add deploy.color=$NEW_COLOR --label-add deploy.timestamp=$TIMESTAMP
+EXPOSE 3000
+ENV NODE_ENV=production
 
-echo "Blue-green deployment completed successfully!"
-echo "Active service: $NEW_SERVICE"
-echo "Previous service: $ACTIVE_SERVICE (removed)"
+CMD ["node", "index.js"]
 \end{lstlisting}
 
-\section{Infrastructure et Monitoring}
+Ce Dockerfile permet :
+\begin{itemize}
+    \item un environnement Node.js stable,
+    \item une installation reproductible des dépendances,
+    \item un démarrage simple de l’API.
+\end{itemize}
 
-L'infrastructure de Destiny Raid Companion est déployée sur une plateforme cloud avec auto-scaling basé sur la charge. Le monitoring complet inclut des métriques applicatives (performance des guides, succès des appels API Bungie), des métriques business (nombre d'escouades créées, guides consultés), et des alertes automatiques.
+\subsection{Dockerfile Frontend (HTML / CSS / JavaScript)}
 
-\subsection{Configuration Prometheus pour Métriques Personnalisées}
+\begin{lstlisting}[language=dockerfile]
+FROM nginx:alpine
+
+COPY ./public /usr/share/nginx/html
+EXPOSE 80
+\end{lstlisting}
+
+Le frontend est servi par Nginx, ce qui permet :
+\begin{itemize}
+    \item un chargement rapide des pages,
+    \item une configuration simple,
+    \item une séparation claire avec la logique backend.
+\end{itemize}
+
+\subsection{Orchestration avec Docker Compose}
 
 \begin{lstlisting}[language=yaml]
-# monitoring/prometheus.yml
-global:
-  scrape_interval: 15s
-  evaluation_interval: 15s
+version: "3.8"
 
-rule_files: ["alerts.yml"]
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
 
-scrape_configs:
-  - job_name: 'destiny-app'
-    static_configs: [{ targets: ['destiny-app:3000'] }]
-    metrics_path: '/api/metrics'
-    params: { format: ['prometheus'] }
-  
-  - job_name: 'bungie-api'
-    static_configs: [{ targets: ['destiny-app:3000'] }]
-    metrics_path: '/api/bungie/metrics'
-  
-  - job_name: 'postgres'
-    static_configs: [{ targets: ['postgres-exporter:9187'] }]
-  
-  - job_name: 'redis'
-    static_configs: [{ targets: ['redis-exporter:9121'] }]
-  
-  - job_name: 'node'
-    static_configs: [{ targets: ['node-exporter:9100'] }]
-
-alerting:
-  alertmanagers: [{ static_configs: [{ targets: ['alertmanager:9093'] }] }]
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - BUNGIE_API_KEY=${BUNGIE_API_KEY}
 \end{lstlisting}
 
-\subsection{Métriques Personnalisées Destiny}
+Docker Compose permet de lancer l’application complète avec une seule commande.
 
-\begin{lstlisting}[language=JavaScript]
-// src/metrics/destinyMetrics.js
-const client = require('prom-client');
-const register = new client.Registry();
+\section{Gestion des environnements et des variables}
 
-// Métriques API Bungie
-const bungieApiCalls = new client.Counter({
-  name: 'destiny_bungie_api_calls_total',
-  help: 'Total number of Bungie API calls',
-  labelNames: ['endpoint', 'method', 'status']
-});
+Les données sensibles (clé API Bungie) sont stockées dans des variables d’environnement et ne figurent jamais dans le code source.
 
-const bungieApiLatency = new client.Histogram({
-  name: 'destiny_bungie_api_latency_seconds',
-  help: 'Bungie API response latency',
-  labelNames: ['endpoint'],
-  buckets: [0.1, 0.5, 1, 2, 5]
-});
+Un fichier \texttt{.env} est utilisé en local, tandis que les secrets sont configurés dans GitHub Actions pour les déploiements automatisés.
 
-// Métriques guides
-const guideViews = new client.Counter({
-  name: 'destiny_guide_views_total',
-  help: 'Total number of guide views',
-  labelNames: ['raid', 'difficulty']
-});
+\section{Intégration continue (CI)}
 
-// Métriques escouades
-const squadsCreated = new client.Counter({
-  name: 'destiny_squads_created_total',
-  help: 'Total number of squads created',
-  labelNames: ['raid']
-});
+\subsection{Objectifs de la CI}
 
-// Métriques utilisateurs
-const activeUsers = new client.Gauge({
-  name: 'destiny_active_users',
-  help: 'Number of currently active users'
-});
+L’intégration continue vise à :
+\begin{itemize}
+    \item détecter rapidement les erreurs,
+    \item garantir la qualité du code,
+    \item empêcher l’intégration de code non fonctionnel.
+\end{itemize}
 
-// Enregistrement des métriques
-[ bungieApiCalls, bungieApiLatency, guideViews, squadsCreated, activeUsers ]
-  .forEach(metric => register.registerMetric(metric));
-
-// Middleware de collecte
-const metricsMiddleware = (req, res, next) => {
-  const start = Date.now();
-  res.on('finish', () => {
-    const duration = (Date.now() - start) / 1000;
-    
-    if (req.path.includes('/api/bungie/')) {
-      const endpoint = req.path.split('/').pop();
-      bungieApiCalls.inc({ endpoint, method: req.method, status: res.statusCode });
-      bungieApiLatency.observe({ endpoint }, duration);
-    }
-    
-    if (req.path.includes('/guides/') && req.method === 'GET') {
-      const raid = req.params.raidId;
-      guideViews.inc({ raid });
-    }
-  });
-  next();
-};
-
-module.exports = { metricsMiddleware, register };
-\end{lstlisting}
-
-\subsection{Alertes Personnalisées pour Destiny Companion}
+\subsection{Pipeline GitHub Actions}
 
 \begin{lstlisting}[language=yaml]
-# monitoring/alerts.yml
-groups:
-  - name: destiny-api-alerts
-    rules:
-      - alert: HighBungieAPILatency
-        expr: histogram_quantile(0.95, rate(destiny_bungie_api_latency_seconds_bucket[5m])) > 2
-        for: 5m
-        labels: { severity: warning, service: bungie-api }
-        annotations:
-          summary: "High latency on Bungie API calls"
-          description: "Bungie API latency P95 is {{ $value }}s (threshold: 2s)"
-      
-      - alert: BungieAPIFailureRate
-        expr: rate(destiny_bungie_api_calls_total{status=~"5.."}[5m]) / rate(destiny_bungie_api_calls_total[5m]) > 0.05
-        for: 2m
-        labels: { severity: critical, service: bungie-api }
-        annotations:
-          summary: "High Bungie API failure rate"
-          description: "Bungie API failure rate is {{ $value | humanizePercentage }} (threshold: 5%)"
-      
-      - alert: GuidePopularityDrop
-        expr: rate(destiny_guide_views_total[1h]) / rate(destiny_guide_views_total[1h] offset 1d) < 0.5
-        for: 1h
-        labels: { severity: warning, service: guides }
-        annotations:
-          summary: "Significant drop in guide views"
-          description: "Guide views dropped by {{ $value | humanizePercentage }} compared to yesterday"
-      
-      - alert: SquadCreationFailure
-        expr: rate(destiny_squads_created_total[10m]) == 0
-        for: 30m
-        labels: { severity: critical, service: squads }
-        annotations:
-          summary: "No squads created in 30 minutes"
-          description: "Squad creation service may be down"
+name: CI Destiny Companion
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Installation Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Installation des dépendances
+        run: |
+          cd backend
+          npm ci
+
+      - name: Lint du code
+        run: |
+          cd backend
+          npm run lint
+
+      - name: Tests unitaires
+        run: |
+          cd backend
+          npm test
 \end{lstlisting}
 
-\subsection{Tableau de Bord Grafana - Métriques Clés}
+\section{Quality Gates}
 
-\begin{center}
-\begin{tabular}{|p{3.5cm}|p{3cm}|p{3cm}|}
-\hline
-\textbf{Dashboard} & \textbf{Métriques Principales} & \textbf{Seuils d'Alerte} \\
-\hline
-Performance API Bungie & Latence P95, taux succès, quota usage & Latence > 2s, succès < 95\%, quota > 80\% \\
-\hline
-Utilisation Guides & Vues par raid, temps moyen, popularité & Abandon > 50\%, temps < 30s \\
-\hline
-Activité Escouades & Créations, sessions réussies, taille moyenne & Sessions échouées > 20\% \\
-\hline
-Performance Applicative & CPU, mémoire, débit, erreurs & CPU > 80\%, mémoire > 85\%, erreurs > 5\% \\
-\hline
-Croissance Utilisateurs & Nouveaux inscrits, actifs, rétention & Churn > 10\%, croissance < 5\% \\
-\hline
-\end{tabular}
-\end{center}
+Le pipeline CI applique les règles suivantes :
+\begin{itemize}
+    \item les tests doivent réussir,
+    \item le linting ne doit produire aucune erreur,
+    \item le pipeline est bloqué en cas d’échec.
+\end{itemize}
 
-\section{Documentation Opérationnelle}
+Ces contrôles garantissent une validation continue minimale mais efficace.
 
-La documentation opérationnelle pour Destiny Raid Companion inclut des runbooks détaillés pour les scénarios courants, des procédures d'urgence, et des guides de dépannage.
- 
+\section{Déploiement continu (CD)}
+
+\subsection{Principe de déploiement}
+
+Le déploiement est déclenché uniquement après validation complète de la CI.  
+L’image Docker est reconstruite puis redémarrée sur le serveur cible.
+
+Cette approche limite les risques tout en restant simple à maintenir.
+
+\subsection{Commandes de déploiement}
+
+\begin{verbatim}
+docker-compose build
+docker-compose up -d
+\end{verbatim}
+
+\section{Monitoring et logs}
+
+\subsection{Logs applicatifs}
+
+Les logs générés par l’application Node.js sont accessibles via Docker :
+
+\begin{verbatim}
+docker logs destiny-backend
+\end{verbatim}
+
+Ils permettent de diagnostiquer rapidement les erreurs applicatives.
+
+\subsection{Surveillance basique}
+
+Les éléments surveillés sont :
+\begin{itemize}
+    \item disponibilité de l’API,
+    \item erreurs serveur,
+    \item temps de réponse.
+\end{itemize}
+
+Ces indicateurs sont suffisants pour un projet individuel.
+
+\section{Documentation de déploiement}
+
+\subsection{Prérequis}
+
+\begin{itemize}
+    \item Docker installé,
+    \item accès à un terminal,
+    \item clé API Bungie valide.
+\end{itemize}
+
+\subsection{Lancement de l’application}
+
+\begin{verbatim}
+docker-compose up -d
+\end{verbatim}
+
+\subsection{Arrêt et redémarrage}
+
+\begin{verbatim}
+docker-compose down
+docker-compose up -d
+\end{verbatim}
+
+\section{Conclusion}
+
+Ce chapitre présente une chaîne CI/CD complète et réaliste, adaptée à un projet de niveau Concepteur Développeur d’Applications.
+
+La mise en œuvre de Docker, GitHub Actions et des quality gates démontre une compréhension concrète des enjeux de déploiement, tout en respectant les contraintes d’un projet individuel.
