@@ -396,12 +396,6 @@ INPUT ./chapters/chapitre_VIII.tex
 INPUT ./chapters/chapitre_VIII.tex
 INPUT ./chapters/chapitre_VIII.tex
 INPUT chapters/chapitre_VIII.tex
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT ./chapters/chapitre_IX.tex
 INPUT ./chapters/chapitre_IX.tex
 INPUT ./chapters/chapitre_IX.tex

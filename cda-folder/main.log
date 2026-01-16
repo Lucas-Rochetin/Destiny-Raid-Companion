@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Homebrew) (preloaded format=xelatex 2025.10.11)  19 DEC 2025 21:27
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Homebrew) (preloaded format=xelatex 2025.10.11)  16 JAN 2026 11:09
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1268,40 +1268,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 31--31
 [5
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 45--48
+Underfull \hbox (badness 10000) in paragraph at lines 38--41
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--56
+Underfull \hbox (badness 10000) in paragraph at lines 47--49
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--66
+Underfull \hbox (badness 10000) in paragraph at lines 57--59
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--75
+Underfull \hbox (badness 10000) in paragraph at lines 66--68
 
  []
 
 
-Overfull \hbox (56.58354pt too wide) in paragraph at lines 88--89
+Overfull \hbox (56.58354pt too wide) in paragraph at lines 81--82
 []\TU/Helvetica(0)/b/n/10.95 Atteignable : \TU/Helvetica(0)/m/n/10.95 Version 1
 .0 livrable en 8 mois avec stack technique maîtrisée (React/Node.js/PostgreSQL)
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--95
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
 
  []
 
 
 
 [6]
+Underfull \hbox (badness 10000) in paragraph at lines 97--99
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 104--106
 
  []
@@ -1312,12 +1317,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 111--113
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--120
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 129--131
+Underfull \hbox (badness 10000) in paragraph at lines 122--124
 
  []
 
@@ -1325,7 +1325,7 @@ File: assets/diagramme.png Graphic file (type bmp)
 <assets/diagramme.png>
 
 LaTeX Font Warning: Font shape `TU/Helvetica(0)/m/sc' undefined
-(Font)              using `TU/Helvetica(0)/m/n' instead on input line 138.
+(Font)              using `TU/Helvetica(0)/m/n' instead on input line 131.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -2657,27 +2657,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 292--293
 [28]
 Chapitre 4.
 
-Overfull \hbox (44.89703pt too wide) in paragraph at lines 41--41
+Overfull \hbox (44.89703pt too wide) in paragraph at lines 37--37
 []    \TU/lmtt/m/n/10.95 +---------------+       +----------------+------------
 ----+       +---------------+[] 
  []
 
 
-Overfull \hbox (44.89703pt too wide) in paragraph at lines 42--42
+Overfull \hbox (44.89703pt too wide) in paragraph at lines 38--38
 []    \TU/lmtt/m/n/10.95 | Joueur        |       | Leader         |            
     |       | Administrateur|[] 
  []
 
 
-Overfull \hbox (44.89703pt too wide) in paragraph at lines 43--43
+Overfull \hbox (44.89703pt too wide) in paragraph at lines 39--39
 []    \TU/lmtt/m/n/10.95 | Débutant      |       | d'Escouade     |            
     |       | Système       |[] 
  []
 
 
-Overfull \hbox (44.89703pt too wide) in paragraph at lines 44--44
+Overfull \hbox (44.89703pt too wide) in paragraph at lines 40--40
 []    \TU/lmtt/m/n/10.95 +---------------+       +----------------+            
     |       +---------------+[] 
+ []
+
+
+Overfull \hbox (39.14828pt too wide) in paragraph at lines 43--43
+[]        \TU/lmtt/m/n/10.95 |-- Suivre guide étape  |-- Planifier session     
+    |-- Modérer utilisateurs[] 
+ []
+
+
+Overfull \hbox (4.65579pt too wide) in paragraph at lines 44--44
+[]        \TU/lmtt/m/n/10.95 |-- Rejoindre escouade  |-- Inviter membres       
+    |-- Voir analytics[] 
+ []
+
+
+Overfull \hbox (27.65079pt too wide) in paragraph at lines 46--46
+[]        \TU/lmtt/m/n/10.95 |-- Obtenir badges      |-- Gérer calendrier      
+    |-- Configurer système[] 
  []
 
 
@@ -2685,23 +2703,6 @@ Overfull \hbox (44.89703pt too wide) in paragraph at lines 44--44
 [29
 
 ]
-Overfull \hbox (39.14828pt too wide) in paragraph at lines 47--47
-[]        \TU/lmtt/m/n/10.95 |-- Suivre guide étape  |-- Planifier session     
-    |-- Modérer utilisateurs[] 
- []
-
-
-Overfull \hbox (4.65579pt too wide) in paragraph at lines 48--48
-[]        \TU/lmtt/m/n/10.95 |-- Rejoindre escouade  |-- Inviter membres       
-    |-- Voir analytics[] 
- []
-
-
-Overfull \hbox (27.65079pt too wide) in paragraph at lines 50--50
-[]        \TU/lmtt/m/n/10.95 |-- Obtenir badges      |-- Gérer calendrier      
-    |-- Configurer système[] 
- []
-
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
 t;!
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
@@ -2769,9 +2770,6 @@ Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-
-
-[31]
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
@@ -2801,6 +2799,9 @@ Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+
+
+[31]
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
@@ -2873,11 +2874,11 @@ File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 
 [34]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 427.
+
 
 [35]
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 431.
-
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
@@ -3088,9 +3089,6 @@ Chapitre 7.
 
 
 [73]
-Overfull \vbox (761.26924pt too high) has occurred while \output is active []
-
-
 
 [74]
 
@@ -3098,177 +3096,67 @@ Overfull \vbox (761.26924pt too high) has occurred while \output is active []
 
 [76]
 
-[77]
+[77]) (./chapters/chapitre_VIII.tex
 
 [78]
-
-[79]) (./chapters/chapitre_VIII.tex
-
-[80]
 Chapitre 8.
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 3.
+Overfull \hbox (51.11906pt too wide) in paragraph at lines 1--1
+|\TU/Helvetica(0)/b/n/24.88 Déploiement et intégration continue (CI/CD)| 
+ []
 
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/ls
-tlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/ls
-tlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
 
-[81
+[79
 
 ]
+
+[80]
+
+[81]) (./chapters/chapitre_IX.tex
 
 [82]
-
-[83]
-
-[84]
-Underfull \hbox (badness 5133) in paragraph at lines 240--240
-[]\TU/Helvetica(0)/b/n/10.95 Métriques Prin-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--242
-[]\TU/Helvetica(0)/m/n/10.95 Performance API
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--242
-[]\TU/Helvetica(0)/m/n/10.95 Latence P95,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--242
-\TU/Helvetica(0)/m/n/10.95 taux succès,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--243
-[]\TU/Helvetica(0)/m/n/10.95 Latence > 2s,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 242--243
-\TU/Helvetica(0)/m/n/10.95 succès < 95%,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--244
-[]\TU/Helvetica(0)/m/n/10.95 Vues par raid,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--244
-\TU/Helvetica(0)/m/n/10.95 temps moyen,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 246--246
-[]\TU/Helvetica(0)/m/n/10.95 Créations, ses-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 246--246
-\TU/Helvetica(0)/m/n/10.95 sions réussies,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 246--247
-[]\TU/Helvetica(0)/m/n/10.95 Sessions
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 246--247
-\TU/Helvetica(0)/m/n/10.95 échouées >
- []
-
-
-Underfull \hbox (badness 5711) in paragraph at lines 248--248
-[]\TU/Helvetica(0)/m/n/10.95 Performance Appli-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 248--248
-[]\TU/Helvetica(0)/m/n/10.95 CPU, mémoire,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 250--250
-[]\TU/Helvetica(0)/m/n/10.95 Croissance Utilisa-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 250--250
-[]\TU/Helvetica(0)/m/n/10.95 Nouveaux ins-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 250--250
-\TU/Helvetica(0)/m/n/10.95 crits, actifs,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 250--251
-[]\TU/Helvetica(0)/m/n/10.95 Churn > 10%,
- []
-
-) (./chapters/chapitre_IX.tex
-
-[85]
-
-[86
-
-]
 Chapitre 9.
 
 
+[83
+
+]
+
+[84]
+
+[85]
+Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+
+
+[86]
+
 [87]
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+
 
 [88]
-
-[89]
-
-[90]
-Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-
-
-[91]
-
-[92]
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-
-
-[93]
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-
-
-[94]
-Overfull \hbox (5.44647pt too wide) in paragraph at lines 539--540
+Overfull \hbox (5.44647pt too wide) in paragraph at lines 474--475
 []\TU/Helvetica(0)/m/n/10.95 PostgreSQL Security Guide : [][]$[][][][][] [] [] 
 [] [][][] [] [][][][][][][][][][] [] [][][] [] [][][][] [] [][][][][][][] [] []
 [][][][][][][] [] [][][][]$[][] 
@@ -3276,54 +3164,54 @@ Overfull \hbox (5.44647pt too wide) in paragraph at lines 539--540
 
 ) (./chapters/chapitre_X.tex
 
-[95]
+[89]
 
-[96
+[90
 
 ]
 Chapitre 10.
 Missing character: There is no ^^Z ("1A) in font pzdr!
 
 
-[97]
+[91]
 Overfull \hbox (17.89479pt too wide) in paragraph at lines 63--74
  [] 
  []
 
 
 
-[98]
+[92]
 Overfull \hbox (4.32161pt too wide) in paragraph at lines 128--139
  [] 
  []
 
 
 
-[99]) (./chapters/chapitre_XI.tex
+[93]) (./chapters/chapitre_XI.tex
 
-[100]
+[94]
 Chapitre 11.
 
 
-[101
+[95
 
 ]
 
-[102]
+[96]
 
-[103]
+[97]
 
-[104]
+[98]
 
-[105]
+[99]
 
-[106]
+[100]
 
-[107]
+[101]
 
-[108])
+[102])
 
-[109] (./main.aux)
+[103] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -3333,15 +3221,15 @@ L3 programming layer <2025-01-18>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 9479CB3D93CC8D6E4C3662C4B0198C0E;21475.
+(rerunfilecheck)             Checksum: C817B65FE1BB47B0A3B2B658849C5F66;24018.
  ) 
 Here is how much of TeX's memory you used:
- 34217 strings out of 473832
- 703777 string characters out of 5719381
- 1940040 words of memory out of 5000000
- 56749 multiletter control sequences out of 15000+600000
+ 33978 strings out of 473832
+ 700431 string characters out of 5719381
+ 1936212 words of memory out of 5000000
+ 56514 multiletter control sequences out of 15000+600000
  564911 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,12n,101p,812b,1969s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,12n,101p,851b,1944s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (109 pages, 3508068 bytes).
+Output written on main.xdv (103 pages, 3273684 bytes).

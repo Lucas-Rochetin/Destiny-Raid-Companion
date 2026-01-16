@@ -6,7 +6,7 @@ La stratégie de tests suit la pyramide de tests avec une base solide de tests u
 
 Les tests de performance mesurent la latence P95 et le débit de l'application sous charge. Les tests de sécurité automatisés détectent les vulnérabilités communes. La qualité du code est surveillée avec SonarQube pour maintenir un niveau de qualité constant.
 
-\begin{exemple}
+
 \textbf{Pyramide de tests :}
 \begin{verbatim}
                     +===================================+
@@ -33,7 +33,7 @@ Les tests de performance mesurent la latence P95 et le débit de l'application s
                     +===================================+
 \end{verbatim}
 
-\begin{exemple}
+
 \textbf{Exemple de test unitaire (1/2) :}
 \begin{lstlisting}[language=JavaScript]
 // Test unitaire pour le service de projet
@@ -51,9 +51,8 @@ describe('ProjectService', () => {
     projectService = new ProjectService(mockRepository);
   });
 \end{lstlisting}
-\end{exemple}
 
-\begin{exemple}
+
 \textbf{Exemple de test unitaire (2/2) :}
 \begin{lstlisting}[language=JavaScript]
   describe('createProject', () => {
@@ -86,7 +85,7 @@ describe('ProjectService', () => {
   });
 });
 \end{lstlisting}
-\end{exemple}
+
 
 \textbf{Exemple de test d'intégration :}
 \begin{lstlisting}[language=JavaScript]
@@ -131,27 +130,8 @@ describe('Project API Integration', () => {
   });
 });
 \end{lstlisting}
-\end{exemple}
 
-\begin{conseil}
-\begin{itemize}
-    \item Implémenter la pyramide de tests (unitaires, intégration, E2E)
-    \item Maintenir une couverture de code élevée (>80\%)
-    \item Automatiser l'exécution des tests dans la CI/CD
-    \item Tester les cas d'erreur et les cas limites
-    \item Documenter les stratégies de test et les conventions
-\end{itemize}
-\end{conseil}
 
-\begin{jury}
-\begin{itemize}
-    \item Quelle est votre stratégie de tests ?
-    \item Quelle est votre couverture de code ?
-    \item Comment testez-vous les cas d'erreur ?
-    \item Vos tests sont-ils automatisés ?
-    \item Comment mesurez-vous la qualité de vos tests ?
-\end{itemize}
-\end{jury}
 
 \section{Tests de performance}
 
@@ -159,7 +139,7 @@ Les tests de performance utilisent k6 pour simuler des charges réalistes et mes
 
 Le monitoring en production surveille les métriques de performance en temps réel avec des alertes automatiques. Les tests de charge réguliers valident la capacité de l'application à supporter la croissance du trafic.
 
-\begin{exemple}
+
 \textbf{Script de test de performance k6 (1/2) :}
 \begin{lstlisting}[language=JavaScript]
 import http from 'k6/http';
@@ -184,9 +164,9 @@ export let options = {
   }
 };
 \end{lstlisting}
-\end{exemple}
 
-\begin{exemple}
+
+
 \textbf{Script de test de performance k6 (2/2) :}
 \begin{lstlisting}[language=JavaScript]
 export default function() {
@@ -227,9 +207,9 @@ export default function() {
   sleep(1);
 }
 \end{lstlisting}
-\end{exemple}
 
-\begin{exemple}
+
+
 \textbf{Résultats de performance :}
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
@@ -244,27 +224,7 @@ Mémoire & < 2GB & 1.2GB & \mycheckmark \\
 \hline
 \end{tabular}
 \end{center}
-\end{exemple}
 
-\begin{conseil}
-\begin{itemize}
-    \item Définir des objectifs de performance mesurables
-    \item Utiliser k6 pour les tests de charge automatisés
-    \item Surveiller les métriques en production
-    \item Optimiser les goulots d'étranglement identifiés
-    \item Planifier des tests de performance réguliers
-\end{itemize}
-\end{conseil}
-
-\begin{jury}
-\begin{itemize}
-    \item Quels sont vos objectifs de performance ?
-    \item Comment mesurez-vous les performances ?
-    \item Avez-vous identifié des goulots d'étranglement ?
-    \item Vos tests de charge sont-ils réalistes ?
-    \item Comment surveillez-vous les performances en production ?
-\end{itemize}
-\end{jury}
 
 \section{Qualité du code avec SonarQube}
 
@@ -274,7 +234,7 @@ Les règles de qualité sont configurées selon les standards de l'équipe et le
 
 Lighthouse mesure automatiquement les performances, l'accessibilité, les bonnes pratiques et le SEO des applications web. L'intégration dans la CI/CD permet de surveiller ces métriques à chaque déploiement et d'alerter en cas de régression.
 
-\begin{exemple}
+
 \textbf{Configuration SonarQube :}
 \begin{lstlisting}[language=yaml]
 # sonar-project.properties
@@ -298,9 +258,9 @@ sonar.coverage.exclusions=tests/**,**/*.test.js
 sonar.qualitygate.wait=true
 sonar.qualitygate.timeout=300
 \end{lstlisting}
-\end{exemple}
 
-\begin{exemple}
+
+
 \textbf{Rapport de qualité SonarQube :}
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
@@ -346,7 +306,7 @@ const saveUserData = (data) => {
   return savedData;
 };
 \end{lstlisting}
-\end{exemple}
+
 
 \begin{focusgithub}
 \textbf{Intégration SonarQube dans GitHub Actions :}
@@ -396,27 +356,7 @@ jobs:
 \end{itemize}
 \end{focusgithub}
 
-\begin{conseil}
-\begin{itemize}
-    \item Intégrer SonarQube dans votre pipeline CI/CD
-    \item Intégrer Lighthouse CI pour surveiller les performances web
-    \item Définir des seuils de qualité appropriés
-    \item Corriger les code smells et vulnérabilités détectés
-    \item Surveiller les métriques de qualité dans le temps
-    \item Former l'équipe aux bonnes pratiques de qualité
-\end{itemize}
-\end{conseil}
 
-\begin{jury}
-\begin{itemize}
-    \item Comment mesurez-vous la qualité de votre code ?
-    \item Quels sont vos scores Lighthouse pour les performances et l'accessibilité ?
-    \item Vos métriques de qualité sont-elles satisfaisantes ?
-    \item Comment gérez-vous les code smells détectés ?
-    \item Avez-vous intégré la qualité dans votre CI/CD ?
-    \item Comment améliorez-vous la qualité en continu ?
-\end{itemize}
-\end{jury}
 
 \section{Liens utiles}
 

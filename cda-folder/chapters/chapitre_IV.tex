@@ -1,10 +1,6 @@
 \chapter{Conception fonctionnelle et technique}
 
-\textbf{IMPORTANT :} Cette phase de conception est \textbf{CRUCIALE} et doit être \textbf{COMPLÈTEMENT TERMINÉE} avant de commencer le développement. Le jury attend une conception solide et documentée qui justifie tous vos choix techniques.
-
-Dans ce chapitre, vous devez présenter votre conception fonctionnelle et technique complète. Cette phase détermine la réussite de votre projet et doit être soigneusement planifiée et documentée.
-
-\textbf{Votre approche de conception :} \textit{Notre méthodologie suit une approche itérative centrée sur l'utilisateur, avec validation continue des choix techniques via des prototypes et des tests utilisateurs. Le processus inclut la modélisation UML, la conception de la base de données, et la validation de l'architecture technique avant toute implémentation. Chaque composant est documenté avec ses spécifications techniques détaillées, ses interfaces et ses contraintes de performance.}
+\textbf{Notre approche de conception :} \textit{Notre méthodologie suit une approche itérative centrée sur l'utilisateur, avec validation continue des choix techniques via des prototypes et des tests utilisateurs. Le processus inclut la modélisation UML, la conception de la base de données, et la validation de l'architecture technique avant toute implémentation. Chaque composant est documenté avec ses spécifications techniques détaillées, ses interfaces et ses contraintes de performance.}
 
 \section{Use Cases et diagrammes UML}
 
@@ -713,7 +709,7 @@ L'infrastructure est conçue pour la haute disponibilité et la scalabilité.
 \textbf{Environnements multiples :}
 \begin{itemize}
     \item \textbf{Development :} Docker Compose local
-    \item \textbf{Staging :} Vercel (Frontend) + Heroku (Backend)
+    \item \textbf{Staging :} Vercel (Frontend) + AWS ECS (Backend)
     \item \textbf{Production :} AWS ECS (Backend) + Vercel (Frontend) + RDS PostgreSQL
 \end{itemize}
 

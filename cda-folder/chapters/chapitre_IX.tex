@@ -32,7 +32,7 @@ Docker & 24.0 & 25.0 & BuildKit optimisé \\
 \end{tabular}
 \end{center}}
 
-\begin{exemple}
+
 \textbf{Exemple de veille Node.js :}
 \begin{verbatim}
 Node.js 20.11.0 (LTS) - Gaming APIs Optimization
@@ -71,17 +71,8 @@ class DependencyMonitor {
   }
 }
 \end{lstlisting}
-\end{exemple}
 
-\begin{conseil}
-\begin{itemize}
-    \item Surveiller les changements API Bungie mensuellement
-    \item Tester les nouvelles versions Node.js en sandbox
-    \item Maintenir les dépendances npm à jour
-    \item Documenter les breaking changes
-    \item Participer aux communautés gaming JavaScript
-\end{itemize}
-\end{conseil}
+
 
 \section{Sécurité applicative}
 
@@ -94,7 +85,7 @@ class DependencyMonitor {
     \item \textbf{DDoS Protection :} Rate limiting adapté aux quotas Bungie
 \end{itemize}}
 
-\begin{exemple}
+
 \textbf{Chiffrement des tokens Bungie :}
 \begin{lstlisting}[language=JavaScript]
 const crypto = require('crypto');
@@ -142,17 +133,8 @@ function validateRaidGuide(guideData) {
   return value;
 }
 \end{lstlisting}
-\end{exemple}
 
-\begin{conseil}
-\begin{itemize}
-    \item Valider toutes les données entrantes de l'API Bungie
-    \item Chiffrer les tokens OAuth sensibles
-    \item Implémenter PKCE pour l'authentification Bungie
-    \item Loguer toutes les tentatives d'authentification
-    \item Mettre en place des audits de sécurité réguliers
-\end{itemize}
-\end{conseil}
+
 
 \section{Architecture Docker}
 
@@ -175,7 +157,7 @@ monitoring & prom/prometheus & 9090 & Métriques \\
 \end{tabular}
 \end{center}}
 
-\begin{exemple}
+
 \textbf{Dockerfile backend optimisé :}
 \begin{lstlisting}[language=dockerfile]
 FROM node:20-alpine AS builder
@@ -215,17 +197,8 @@ services:
       interval: 10s
       timeout: 5s
 \end{lstlisting}
-\end{exemple}
 
-\begin{conseil}
-\begin{itemize}
-    \item Utiliser des utilisateurs non-root dans les conteneurs
-    \item Configurer des health checks pour tous les services
-    \item Optimiser les builds avec multi-stage
-    \item Scanner les images pour vulnérabilités
-    \item Versionner les configurations Docker
-\end{itemize}
-\end{conseil}
+
 
 \section{Base de données PostgreSQL}
 
@@ -238,7 +211,7 @@ services:
     \item Triggers pour l'audit automatique
 \end{itemize}}
 
-\begin{exemple}
+
 \textbf{Tables principales :}
 \begin{lstlisting}[language=SQL]
 -- Table des utilisateurs
@@ -273,17 +246,8 @@ CREATE INDEX idx_squads_leader_id ON squads(leader_id);
 CREATE INDEX idx_raid_sessions_scheduled ON raid_sessions(scheduled_at);
 CREATE INDEX idx_raid_sessions_status ON raid_sessions(status);
 \end{lstlisting}
-\end{exemple}
 
-\begin{conseil}
-\begin{itemize}
-    \item Utiliser les types appropriés (TIMESTAMPTZ pour dates)
-    \item Créer des index sur les colonnes de jointure
-    \item Implémenter des contraintes de clé étrangère
-    \item Utiliser JSONB pour données semi-structurées
-    \item Mettre en place des sauvegardes régulières
-\end{itemize}
-\end{conseil}
+
 
 \section{Monitoring et métriques}
 
@@ -306,7 +270,7 @@ Uptime API & > 99.5\% & 99.8\% & ✅ \\
 \end{tabular}
 \end{center}}
 
-\begin{exemple}
+
 \textbf{Alertes Prometheus :}
 \begin{lstlisting}[language=yaml]
 groups:
@@ -347,17 +311,7 @@ class SecurityMonitor {
   }
 }
 \end{lstlisting}
-\end{exemple}
 
-\begin{conseil}
-\begin{itemize}
-    \item Configurer des alertes pour les métriques critiques
-    \item Monitorer les performances de l'API Bungie
-    \item Suivre le taux d'erreur des authentifications
-    \item Auditer régulièrement les dépendances
-    \item Documenter les incidents de sécurité
-\end{itemize}
-\end{conseil}
 
 \section{Plan de réponse aux incidents}
 
@@ -378,7 +332,7 @@ Faible & Cosmétique & < 24h & CSS incorrect \\
 \end{tabular}
 \end{center}}
 
-\begin{exemple}
+
 \textbf{Procédure incident critique :}
 \begin{verbatim}
 1. Détection via monitoring (1 min)
@@ -415,17 +369,7 @@ const incidentChecklist = {
   ]
 };
 \end{lstlisting}
-\end{exemple}
 
-\begin{conseil}
-\begin{itemize}
-    \item Préparer des procédures d'urgence documentées
-    \item Former l'équipe aux plans de réponse
-    \item Tester régulièrement les procédures
-    \item Maintenir une communication transparente
-    \item Documenter les leçons apprises
-\end{itemize}
-\end{conseil}
 
 \section{Améliorations continues}
 
@@ -456,7 +400,7 @@ Q4 2026 & Pentest complet & 0 critical & External \\
     \item Temps réponse incidents : 45min → 15min (-67\%)
 \end{itemize}}
 
-\begin{exemple}
+
 \textbf{Intégration CI/CD sécurité :}
 \begin{lstlisting}[language=yaml]
 name: Security Scan
@@ -498,17 +442,8 @@ class SecurityAudit {
   }
 }
 \end{lstlisting}
-\end{exemple}
 
-\begin{conseil}
-\begin{itemize}
-    \item Automatiser les audits de sécurité
-    \item Intégrer les scans dans la CI/CD
-    \item Mesurer régulièrement les améliorations
-    \item Former continuellement l'équipe
-    \item Participer aux communautés sécurité
-\end{itemize}
-\end{conseil}
+
 
 \section{Conclusion}
 
