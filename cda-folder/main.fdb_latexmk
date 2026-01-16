@@ -1,10 +1,10 @@
 # Fdb version 4
-["xdvipdfmx"] 1768558170.30413 "main.xdv" "main.pdf" "main" 1768558171.25845 0
-  "main.xdv" 1768558170.03356 3273684 d3d1b520d62c9e9d5fa6ea41168f3b35 "xelatex"
+["xdvipdfmx"] 1768562623.24427 "main.xdv" "main.pdf" "main" 1768562624.34892 0
+  "main.xdv" 1768562623.08613 3230400 881108b5da6ff8738487e17538429509 "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
-["xelatex"] 1768558166.13587 "main.tex" "main.xdv" "main" 1768558171.25587 0
+["xelatex"] 1768562620.68051 "main.tex" "main.xdv" "main" 1768562624.3473 0
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/map/fontname/texfonts.map" 1741388039 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1741388039 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1741388039 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -186,12 +186,17 @@
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1741388039 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/web2c/texmf.cnf" 1741388039 42151 79f67285bdd95beca4d137b380b4b9e5 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-var/web2c/xetex/xelatex.fmt" 1741388039 5640238 8fea318a4c232c4627afdc9ab6fcea8c ""
+  "assets/Capture_Milestones.png" 1768554020.29749 78762 eff325705017b03ff652a610de7b73f5 ""
+  "assets/capture_US.png" 1768553985.85335 178293 f2a498d5cfc8501461f69c32d444cb12 ""
+  "assets/diagramme-seq-auth.png" 1768561688.58796 246896 0f296c2050759e164de56e35eaa4b164 ""
+  "assets/diagramme-seq-consult.png" 1768561924.82092 291602 a97d6ea0e6d502c51337190baff7f62c ""
   "assets/diagramme.png" 1765270752.96341 129017 141cb390b7455533ba4d70adcc969285 ""
+  "assets/diagramme_user_case.png" 1768561859.06222 42929 0302c6497476f2f3c532f06ef5fb834d ""
   "assets/image.png" 1765547102.37091 24341 0c3885378f02ba9362c8034841536490 ""
   "chapters/chapitre_I.tex" 1768518206.72645 9524 e1880de45f1e203fb419eb69c55f81d4 ""
-  "chapters/chapitre_II.tex" 1768518356.78392 32628 d4654d44404434b699bb29d820e5ef5d ""
-  "chapters/chapitre_III.tex" 1768557295.31864 18771 3406a84545694492e911b9531097bf7b ""
-  "chapters/chapitre_IV.tex" 1768557291.33369 31186 99e3e0bfdd96455758f1deb7489b11f6 ""
+  "chapters/chapitre_II.tex" 1768562616.28751 30365 345c5e56a54dee895ac63c9fd7be018b ""
+  "chapters/chapitre_III.tex" 1768562416.46861 17686 1150ea085fe4ad88fd010dffb26e150e ""
+  "chapters/chapitre_IV.tex" 1768562521.77956 28258 50e0f43b140482b463fbd7cb83bd5b64 ""
   "chapters/chapitre_IX.tex" 1768558161.38004 13381 5bc62a23fe1a073204d40e60b910d393 ""
   "chapters/chapitre_V.tex" 1765585859.28333 30135 aadb33a34e069ff93bd9e8d4e359b01c ""
   "chapters/chapitre_VI.tex" 1766175006.86672 24290 4fc9f2dba1853f9bb9714d742bc30095 ""
@@ -199,10 +204,10 @@
   "chapters/chapitre_VIII.tex" 1766177016.0106 5864 9bd7627750ea26972ddf2032153b9109 ""
   "chapters/chapitre_X.tex" 1765547102.37281 8704 b2a24541085f7ffea66ac8eec1802a8c ""
   "chapters/chapitre_XI.tex" 1765547102.37297 14963 005adc272332d43c82878d7509f46cb9 ""
-  "main.aux" 1768558170.02837 18456 ccb541047b6b1d28fcd9518397d11ade "xelatex"
-  "main.out" 1768558170.03132 24018 c817b65fe1bb47b0a3b2b658849c5f66 "xelatex"
+  "main.aux" 1768562623.08263 19415 743fce09db1ca2c14376bbb56a38b9b8 "xelatex"
+  "main.out" 1768562623.08458 24018 c817b65fe1bb47b0a3b2b658849c5f66 "xelatex"
   "main.tex" 1768497415.52609 9615 e337ff3359253976516b366af102aeef ""
-  "main.toc" 1768558170.03182 11537 f5123a9bddc4f0b6c3c6a4346ec082a4 "xelatex"
+  "main.toc" 1768562623.08513 11541 7d3b9ce9de2692dca6d2e96ecd8838de "xelatex"
   (generated)
   "main.aux"
   "main.log"

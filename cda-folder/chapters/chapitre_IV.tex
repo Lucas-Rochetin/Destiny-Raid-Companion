@@ -29,24 +29,12 @@ La modélisation des cas d'usage permet d'identifier les flux principaux et alte
 \end{itemize}
 
 \textbf{Diagramme Use Case détaillé :}
-\begin{verbatim}
-                    +-----------------------------------------------+
-                    |        Destiny 2 Raid Companion               |
-                    +-----------------------+-----------------------+
-                                            |
-    +---------------+       +----------------+----------------+       +---------------+
-    | Joueur        |       | Leader         |                |       | Administrateur|
-    | Débutant      |       | d'Escouade     |                |       | Système       |
-    +---------------+       +----------------+                |       +---------------+
-        |                       |                             |             |
-        |-- Consulter guides    |-- Créer escouade            |-- Gérer contenu
-        |-- Suivre guide étape  |-- Planifier session         |-- Modérer utilisateurs
-        |-- Rejoindre escouade  |-- Inviter membres           |-- Voir analytics
-        |-- Voir équipements    |-- Attribuer rôles           |-- Gérer badges
-        |-- Obtenir badges      |-- Gérer calendrier          |-- Configurer système
-        |-- Synchroniser profil |-- Analyser performances     
-                                |-- Générer rapports          
-\end{verbatim}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/diagramme_user_case.png}
+    \caption{Diagramme Use Case}
+    \label{fig:contexte}
+\end{figure}
 
 \textbf{Spécifications des cas d'usage critiques :}
 
@@ -86,47 +74,20 @@ La modélisation des cas d'usage permet d'identifier les flux principaux et alte
 Les diagrammes de séquence détaillent les interactions temporelles entre les différents composants du système pour chaque cas d'usage. Cette modélisation précise les responsabilités de chaque couche (présentation, logique métier, données) et facilite l'implémentation technique.
 
 \textbf{Diagramme de séquence - Authentification OAuth :}
-\begin{verbatim}
-Utilisateur    Frontend    Backend    API Bungie    PostgreSQL
-    |             |           |           |             |
-    |-- Click --->|           |           |             |
-    |             |-- Redirect to Bungie OAuth -------->|
-    |             |           |           |             |
-    |<-- Redirect avec code --|           |             |
-    |             |           |           |             |
-    |             |-- POST /auth/callback ------------->|
-    |             |           |-- POST token exchange ->|
-    |             |           |           |             |
-    |             |           |<-- Access Token --------|
-    |             |           |-- GET user profile ---->|
-    |             |           |           |             |
-    |             |           |<-- User Data ---------- |
-    |             |           |-- UPSERT user --------> |
-    |             |           |           |             |
-    |             |<-- JWT Token + User Data ---------- |
-    |<-- Logged In -----------|           |             |
-\end{verbatim}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/diagramme-seq-auth.png}
+    \caption{Diagramme de séquence - Authentification OAuth}
+    \label{fig:contexte}
+\end{figure}
 
 \textbf{Diagramme de séquence - Consultation guide avec cache :}
-\begin{verbatim}
-Utilisateur    Frontend    Backend    Redis    PostgreSQL    API Bungie
-    |             |           |          |          |            |
-    |-- GET ----->|           |          |          |            |
-    |             |-- GET /guides/raid ->|          |            |
-    |             |           |-- GET cache ------->|            |
-    |             |           |<-- CACHE HIT -------|            |
-    |             |<-- 200 OK -----------|          |            |
-    |<-- Guide affiché -------|          |          |            |
-    |             |           |          |          |            |
-    |             |           |-- CACHE MISS ------>|            |
-    |             |           |-- SELECT guide ---->|            |
-    |             |           |<-- Guide Data ------|            |
-    |             |           |-- SET cache ------->|            |
-    |             |           |-- GET equipment recommendations->|
-    |             |           |<-- Equipment Data --|            |
-    |             |<-- 200 OK avec données ---------|            |
-    |<-- Guide complet ------|           |          |            |
-\end{verbatim}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/diagramme-seq-consult.png}
+    \caption{Diagramme de séquence - Consultation guide avec cache}
+    \label{fig:contexte}
+\end{figure}
 
 \textbf{Gestion d'erreurs détaillée :}
 \begin{itemize}

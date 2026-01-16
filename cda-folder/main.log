@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Homebrew) (preloaded format=xelatex 2025.10.11)  16 JAN 2026 11:09
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Homebrew) (preloaded format=xelatex 2025.10.11)  16 JAN 2026 12:23
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1065,7 +1065,23 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'french'.
- (./main.aux)
+ (./main.aux
+
+LaTeX Warning: Label `fig:contexte' multiply defined.
+
+
+LaTeX Warning: Label `fig:contexte' multiply defined.
+
+
+LaTeX Warning: Label `fig:contexte' multiply defined.
+
+
+LaTeX Warning: Label `fig:contexte' multiply defined.
+
+
+LaTeX Warning: Label `fig:contexte' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 278.
@@ -2171,6 +2187,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 574--574
 
 
 [18]
+File: assets/Capture_Milestones.png Graphic file (type bmp)
+<assets/Capture_Milestones.png>
+
 
 [19]) (./chapters/chapitre_III.tex
 
@@ -2183,52 +2202,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--33
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 34--35
-[]\TU/Helvetica(0)/m/n/10.95 Identifier rapidement
+[]\TU/Helvetica(0)/m/sc/10.95 Identifier rapidement
  []
 
 
 Underfull \hbox (badness 4168) in paragraph at lines 34--35
-\TU/Helvetica(0)/m/n/10.95 les blocages (rate li-
+\TU/Helvetica(0)/m/sc/10.95 les blocages (rate li-
  []
 
 
 Underfull \hbox (badness 1383) in paragraph at lines 34--35
-\TU/Helvetica(0)/m/n/10.95 miting API Bungie) et
+\TU/Helvetica(0)/m/sc/10.95 miting API Bungie) et
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 34--35
-\TU/Helvetica(0)/m/n/10.95 ajuster les priorités.
+\TU/Helvetica(0)/m/sc/10.95 ajuster les priorités.
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 34--35
-\TU/Helvetica(0)/m/n/10.95 Mise à jour GitHub
+\TU/Helvetica(0)/m/sc/10.95 Mise à jour GitHub
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 34--35
-\TU/Helvetica(0)/m/n/10.95 Projects avec statut
+\TU/Helvetica(0)/m/sc/10.95 Projects avec statut
  []
 
 
 Underfull \hbox (badness 4673) in paragraph at lines 36--37
-\TU/Helvetica(0)/m/n/10.95 MVP et anticiper les
+\TU/Helvetica(0)/m/sc/10.95 MVP et anticiper les
  []
 
 
 Underfull \hbox (badness 2698) in paragraph at lines 38--39
-\TU/Helvetica(0)/m/n/10.95 avec tests utilisateurs
+\TU/Helvetica(0)/m/sc/10.95 avec tests utilisateurs
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 38--39
-\TU/Helvetica(0)/m/n/10.95 tée). Démonstration
+\TU/Helvetica(0)/m/sc/10.95 tée). Démonstration
  []
 
 
 Underfull \hbox (badness 4621) in paragraph at lines 38--39
-\TU/Helvetica(0)/m/n/10.95 fonctionnalités, recueil
+\TU/Helvetica(0)/m/sc/10.95 fonctionnalités, recueil
  []
 
 
@@ -2238,12 +2257,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--40
 
 
 Underfull \hbox (badness 1163) in paragraph at lines 40--41
-\TU/Helvetica(0)/m/n/10.95 pour réduire le temps
+\TU/Helvetica(0)/m/sc/10.95 pour réduire le temps
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 40--41
-\TU/Helvetica(0)/m/n/10.95 points d’optimisation,
+\TU/Helvetica(0)/m/sc/10.95 points d’optimisation,
  []
 
 
@@ -2261,393 +2280,253 @@ Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-te
 t;!
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
 t;!
+File: assets/capture_US.png Graphic file (type bmp)
+<assets/capture_US.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--88
-[]|\TU/Helvetica(0)/b/n/10.95 Critères d’accepta-
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+[]\TU/lmtt/m/n/10.95 feature/nom-fonctionnalite \TU/Helvetica(0)/m/sc/10.95 ou
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--90
-[]|\TU/Helvetica(0)/m/n/10.95 En tant que
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+\TU/lmtt/m/n/10.95 feature/issue-#123 \TU/Helvetica(0)/m/sc/10.95 - Isolation p
+our dé-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--90
-\TU/Helvetica(0)/m/n/10.95 joueur, je veux
+Underfull \hbox (badness 2285) in paragraph at lines 117--118
+[]\TU/lmtt/m/n/10.95 fix/description-bug \TU/Helvetica(0)/m/sc/10.95 ou \TU/lmt
+t/m/n/10.95 fix/issue-#456 \TU/Helvetica(0)/m/sc/10.95 -
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--90
-\TU/Helvetica(0)/m/n/10.95 m’authentifier
- []
-
-
-Underfull \hbox (badness 6300) in paragraph at lines 90--90
-\TU/Helvetica(0)/m/n/10.95 tionnelle, récupération
- []
-
-
-Underfull \hbox (badness 2181) in paragraph at lines 90--90
-\TU/Helvetica(0)/m/n/10.95 du profil, gestion des
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 90--91
-[]|\TU/Helvetica(0)/m/n/10.95 MVP 15
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 92--92
-[]|\TU/Helvetica(0)/m/n/10.95 En tant que
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 92--92
-\TU/Helvetica(0)/m/n/10.95 joueur, je veux
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 92--92
-\TU/Helvetica(0)/m/n/10.95 consulter des
- []
-
-
-Underfull \hbox (badness 5446) in paragraph at lines 92--92
-[]|\TU/Helvetica(0)/m/n/10.95 Affichage des étapes
- []
-
-
-Underfull \hbox (badness 1371) in paragraph at lines 92--92
-\TU/Helvetica(0)/m/n/10.95 détaillées, illustrations,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 92--93
-[]|\TU/Helvetica(0)/m/n/10.95 MVP 15
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
-[]|\TU/Helvetica(0)/m/n/10.95 En tant que
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
-\TU/Helvetica(0)/m/n/10.95 joueur, je veux
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
-\TU/Helvetica(0)/m/n/10.95 créer et gérer
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
-[]|\TU/Helvetica(0)/m/n/10.95 Création d’escouade,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 96--96
-[]|\TU/Helvetica(0)/m/n/10.95 En tant que
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 96--96
-\TU/Helvetica(0)/m/n/10.95 joueur, je veux
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 96--96
-\TU/Helvetica(0)/m/n/10.95 planifier une
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 96--96
-[]|\TU/Helvetica(0)/m/n/10.95 Calendrier interactif,
- []
-
-
-Underfull \hbox (badness 6348) in paragraph at lines 96--96
-\TU/Helvetica(0)/m/n/10.95 création d’événement,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 96--97
-[]|\TU/Helvetica(0)/m/n/10.95 v1.1 15
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 98--98
-[]|\TU/Helvetica(0)/m/n/10.95 En tant que
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 98--98
-\TU/Helvetica(0)/m/n/10.95 joueur, je veux
- []
-
-
-Underfull \hbox (badness 5741) in paragraph at lines 98--98
-\TU/Helvetica(0)/m/n/10.95 voir mes statis-
- []
-
-
-Underfull \hbox (badness 4168) in paragraph at lines 98--98
-\TU/Helvetica(0)/m/n/10.95 rique des raids, sys-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
-[]|\TU/Helvetica(0)/m/n/10.95 v1.2 15
- []
-
-
-Underfull \hbox (badness 4673) in paragraph at lines 100--100
-[]|\TU/Helvetica(0)/m/n/10.95 Interface d’administra-
+Underfull \hbox (badness 1701) in paragraph at lines 121--122
+[]\TU/lmtt/m/n/10.95 release/v1.0.0 \TU/Helvetica(0)/m/sc/10.95 - Préparation r
+elease avec
  []
 
 
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
-[]\TU/lmtt/m/n/10.95 feature/nom-fonctionnalite \TU/Helvetica(0)/m/n/10.95 ou
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
-\TU/lmtt/m/n/10.95 feature/issue-#123 \TU/Helvetica(0)/m/n/10.95 - Isolation po
-ur dé-
- []
-
-
-Underfull \hbox (badness 2285) in paragraph at lines 128--129
-[]\TU/lmtt/m/n/10.95 fix/description-bug \TU/Helvetica(0)/m/n/10.95 ou \TU/lmtt
-/m/n/10.95 fix/issue-#456 \TU/Helvetica(0)/m/n/10.95 -
- []
-
-
-Underfull \hbox (badness 1701) in paragraph at lines 132--133
-[]\TU/lmtt/m/n/10.95 release/v1.0.0 \TU/Helvetica(0)/m/n/10.95 - Préparation re
-lease avec
- []
-
-
 
 [24]
 
 [25]
-Overfull \hbox (7.58614pt too wide) in paragraph at lines 264--265
+Overfull \hbox (7.58614pt too wide) in paragraph at lines 253--254
 []|\TU/Helvetica(0)/b/n/10.95 Justification
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--266
-[]|\TU/Helvetica(0)/m/n/10.95 Environnement
+Underfull \hbox (badness 10000) in paragraph at lines 255--255
+[]|\TU/Helvetica(0)/m/sc/10.95 Environnement
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--266
-\TU/Helvetica(0)/m/n/10.95 de développe-
+Underfull \hbox (badness 10000) in paragraph at lines 255--255
+\TU/Helvetica(0)/m/sc/10.95 de développe-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--267
-[]|\TU/Helvetica(0)/m/n/10.95 Standard,
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
+[]|\TU/Helvetica(0)/m/sc/10.95 Standard,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--267
-\TU/Helvetica(0)/m/n/10.95 pas de
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
+\TU/Helvetica(0)/m/sc/10.95 pas de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--268
-[]|\TU/Helvetica(0)/m/n/10.95 Authentification
+Underfull \hbox (badness 10000) in paragraph at lines 257--257
+[]|\TU/Helvetica(0)/m/sc/10.95 Authentification
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
-[]|\TU/Helvetica(0)/m/n/10.95 Complexité
+Underfull \hbox (badness 10000) in paragraph at lines 257--258
+[]|\TU/Helvetica(0)/m/sc/10.95 Complexité
  []
 
 
-Underfull \hbox (badness 3930) in paragraph at lines 268--269
-\TU/Helvetica(0)/m/n/10.95 API OAuth
+Underfull \hbox (badness 3930) in paragraph at lines 257--258
+\TU/Helvetica(0)/m/sc/10.95 API OAuth
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
-\TU/Helvetica(0)/m/n/10.95 + gestion
+Underfull \hbox (badness 10000) in paragraph at lines 257--258
+\TU/Helvetica(0)/m/sc/10.95 + gestion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
-[]|\TU/Helvetica(0)/m/n/10.95 Standard,
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
+[]|\TU/Helvetica(0)/m/sc/10.95 Standard,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
-\TU/Helvetica(0)/m/n/10.95 schéma
+Underfull \hbox (badness 10000) in paragraph at lines 259--260
+\TU/Helvetica(0)/m/sc/10.95 schéma
  []
 
 
-Underfull \hbox (badness 2318) in paragraph at lines 272--272
-[]|\TU/Helvetica(0)/m/n/10.95 API Gestion es-
+Underfull \hbox (badness 2318) in paragraph at lines 261--261
+[]|\TU/Helvetica(0)/m/sc/10.95 API Gestion es-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--273
-[]|\TU/Helvetica(0)/m/n/10.95 Logique
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
+[]|\TU/Helvetica(0)/m/sc/10.95 Logique
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--273
-\TU/Helvetica(0)/m/n/10.95 métier
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
+\TU/Helvetica(0)/m/sc/10.95 métier
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--273
-\TU/Helvetica(0)/m/n/10.95 complexe,
+Underfull \hbox (badness 10000) in paragraph at lines 261--262
+\TU/Helvetica(0)/m/sc/10.95 complexe,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
-[]|\TU/Helvetica(0)/m/n/10.95 UI com-
+Underfull \hbox (badness 10000) in paragraph at lines 263--264
+[]|\TU/Helvetica(0)/m/sc/10.95 UI com-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
-\TU/Helvetica(0)/m/n/10.95 plexe,
+Underfull \hbox (badness 10000) in paragraph at lines 263--264
+\TU/Helvetica(0)/m/sc/10.95 plexe,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
-\TU/Helvetica(0)/m/n/10.95 intégration
+Underfull \hbox (badness 10000) in paragraph at lines 263--264
+\TU/Helvetica(0)/m/sc/10.95 intégration
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
-\TU/Helvetica(0)/m/n/10.95 données
+Underfull \hbox (badness 10000) in paragraph at lines 263--264
+\TU/Helvetica(0)/m/sc/10.95 données
  []
 
 
-Overfull \hbox (4.56526pt too wide) in paragraph at lines 276--277
-[]|\TU/Helvetica(0)/m/n/10.95 Composants
+Overfull \hbox (4.56526pt too wide) in paragraph at lines 265--266
+[]|\TU/Helvetica(0)/m/sc/10.95 Composants
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
-\TU/Helvetica(0)/m/n/10.95 React
+Underfull \hbox (badness 10000) in paragraph at lines 265--266
+\TU/Helvetica(0)/m/sc/10.95 React
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--280
-[]|\TU/Helvetica(0)/m/n/10.95 Intégration API
+Underfull \hbox (badness 10000) in paragraph at lines 269--269
+[]|\TU/Helvetica(0)/m/sc/10.95 Intégration API
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
-[]|\TU/Helvetica(0)/m/n/10.95 Risque
+Underfull \hbox (badness 10000) in paragraph at lines 269--270
+[]|\TU/Helvetica(0)/m/sc/10.95 Risque
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
-\TU/Helvetica(0)/m/n/10.95 élevé,
+Underfull \hbox (badness 10000) in paragraph at lines 269--270
+\TU/Helvetica(0)/m/sc/10.95 élevé,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
-\TU/Helvetica(0)/m/n/10.95 documen-
+Underfull \hbox (badness 10000) in paragraph at lines 269--270
+\TU/Helvetica(0)/m/sc/10.95 documen-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
-\TU/Helvetica(0)/m/n/10.95 tation API
+Underfull \hbox (badness 10000) in paragraph at lines 269--270
+\TU/Helvetica(0)/m/sc/10.95 tation API
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--282
-[]|\TU/Helvetica(0)/m/n/10.95 Système de
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
+[]|\TU/Helvetica(0)/m/sc/10.95 Système de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--283
-[]|\TU/Helvetica(0)/m/n/10.95 Logique
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
+[]|\TU/Helvetica(0)/m/sc/10.95 Logique
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--283
-\TU/Helvetica(0)/m/n/10.95 métier,
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
+\TU/Helvetica(0)/m/sc/10.95 métier,
  []
 
 
-Underfull \hbox (badness 1072) in paragraph at lines 282--283
-\TU/Helvetica(0)/m/n/10.95 tests gami-
+Underfull \hbox (badness 1072) in paragraph at lines 271--272
+\TU/Helvetica(0)/m/sc/10.95 tests gami-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 284--285
-[]|\TU/Helvetica(0)/m/n/10.95 Couverture
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
+[]|\TU/Helvetica(0)/m/sc/10.95 Couverture
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 284--285
-\TU/Helvetica(0)/m/n/10.95 élevée re-
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
+\TU/Helvetica(0)/m/sc/10.95 élevée re-
  []
 
 
-Underfull \hbox (badness 5446) in paragraph at lines 284--285
-\TU/Helvetica(0)/m/n/10.95 quise pour
+Underfull \hbox (badness 5446) in paragraph at lines 273--274
+\TU/Helvetica(0)/m/sc/10.95 quise pour
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--287
-[]|\TU/Helvetica(0)/m/n/10.95 Scénarios
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
+[]|\TU/Helvetica(0)/m/sc/10.95 Scénarios
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--287
-\TU/Helvetica(0)/m/n/10.95 utilisateurs
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
+\TU/Helvetica(0)/m/sc/10.95 utilisateurs
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
-[]|\TU/Helvetica(0)/m/n/10.95 Standard,
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
+[]|\TU/Helvetica(0)/m/sc/10.95 Standard,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
-\TU/Helvetica(0)/m/n/10.95 configura-
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
+\TU/Helvetica(0)/m/sc/10.95 configura-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--291
-[]|\TU/Helvetica(0)/m/n/10.95 Pipeline
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
+[]|\TU/Helvetica(0)/m/sc/10.95 Pipeline
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--291
-\TU/Helvetica(0)/m/n/10.95 complexe
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
+\TU/Helvetica(0)/m/sc/10.95 complexe
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--291
-\TU/Helvetica(0)/m/n/10.95 avec tests
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
+\TU/Helvetica(0)/m/sc/10.95 avec tests
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--292
-[]|\TU/Helvetica(0)/m/n/10.95 Documentation
+Underfull \hbox (badness 10000) in paragraph at lines 281--281
+[]|\TU/Helvetica(0)/m/sc/10.95 Documentation
  []
 
 
-Overfull \hbox (16.745pt too wide) in paragraph at lines 292--293
-[]|\TU/Helvetica(0)/m/n/10.95 Documentation
+Overfull \hbox (16.745pt too wide) in paragraph at lines 281--282
+[]|\TU/Helvetica(0)/m/sc/10.95 Documentation
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--293
-\TU/Helvetica(0)/m/n/10.95 API spéci-
+Underfull \hbox (badness 10000) in paragraph at lines 281--282
+\TU/Helvetica(0)/m/sc/10.95 API spéci-
  []
 
 [26]
@@ -2656,48 +2535,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 292--293
 
 [28]
 Chapitre 4.
+File: assets/diagramme_user_case.png Graphic file (type bmp)
+<assets/diagramme_user_case.png>
 
-Overfull \hbox (44.89703pt too wide) in paragraph at lines 37--37
-[]    \TU/lmtt/m/n/10.95 +---------------+       +----------------+------------
-----+       +---------------+[] 
- []
-
-
-Overfull \hbox (44.89703pt too wide) in paragraph at lines 38--38
-[]    \TU/lmtt/m/n/10.95 | Joueur        |       | Leader         |            
-    |       | Administrateur|[] 
- []
+LaTeX Warning: Float too large for page by 384.2106pt on input line 37.
 
 
-Overfull \hbox (44.89703pt too wide) in paragraph at lines 39--39
-[]    \TU/lmtt/m/n/10.95 | Débutant      |       | d'Escouade     |            
-    |       | Système       |[] 
- []
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Overfull \hbox (44.89703pt too wide) in paragraph at lines 40--40
-[]    \TU/lmtt/m/n/10.95 +---------------+       +----------------+            
-    |       +---------------+[] 
- []
-
-
-Overfull \hbox (39.14828pt too wide) in paragraph at lines 43--43
-[]        \TU/lmtt/m/n/10.95 |-- Suivre guide étape  |-- Planifier session     
-    |-- Modérer utilisateurs[] 
- []
-
-
-Overfull \hbox (4.65579pt too wide) in paragraph at lines 44--44
-[]        \TU/lmtt/m/n/10.95 |-- Rejoindre escouade  |-- Inviter membres       
-    |-- Voir analytics[] 
- []
-
-
-Overfull \hbox (27.65079pt too wide) in paragraph at lines 46--46
-[]        \TU/lmtt/m/n/10.95 |-- Obtenir badges      |-- Gérer calendrier      
-    |-- Configurer système[] 
- []
-
+Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
+t;!
 
 
 [29
@@ -2705,34 +2552,118 @@ Overfull \hbox (27.65079pt too wide) in paragraph at lines 46--46
 ]
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
 t;!
-Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
-t;!
+File: assets/diagramme-seq-auth.png Graphic file (type bmp)
+<assets/diagramme-seq-auth.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: assets/diagramme-seq-consult.png Graphic file (type bmp)
+<assets/diagramme-seq-consult.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 
 
 [30]
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
@@ -2742,232 +2673,155 @@ Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 
 
 [31]
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-
 
 [32]
-
-[33]
 (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/ls
 tlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 
-[34]
+[33]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 427.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 388.
+
+
+[34]
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 
 
 [35]
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-
 
 [36]
 
@@ -2977,19 +2831,19 @@ Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 
 [39]
 
-[40]
+[40]) (./chapters/chapitre_V.tex
 
-[41]) (./chapters/chapitre_V.tex
+[41]
 
 [42]
-Chapitre 5.
 
+[43]
 
-[43
+[44
 
 ]
+Chapitre 5.
 
-[44]
 
 [45]
 
@@ -3017,88 +2871,92 @@ Chapitre 5.
 
 [57]
 
-[58]) (./chapters/chapitre_VI.tex
+[58]
 
 [59]
 
-[60
+[60]) (./chapters/chapitre_VI.tex
+
+[61]
+
+[62
 
 ]
 Chapitre 6.
 
 
-[61]
-Overfull \vbox (515.18521pt too high) has occurred while \output is active []
-
-
-
-[62]
-
 [63]
-Overfull \vbox (513.49431pt too high) has occurred while \output is active []
+Overfull \vbox (515.18521pt too high) has occurred while \output is active []
 
 
 
 [64]
 
 [65]
+Overfull \vbox (513.49431pt too high) has occurred while \output is active []
+
+
 
 [66]
+
+[67]
+
+[68]
 Overfull \vbox (1221.40343pt too high) has occurred while \output is active []
 
 
 
-[67]
+[69]
 Underfull \hbox (badness 1371) in paragraph at lines 520--521
-[]\TU/Helvetica(0)/m/n/10.95 Sécurité et prévention
+[]\TU/Helvetica(0)/m/sc/10.95 Sécurité et prévention
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 523--524
-[]\TU/Helvetica(0)/m/n/10.95 Contribution commu-
+[]\TU/Helvetica(0)/m/sc/10.95 Contribution commu-
  []
 
 
 
-[68]
-
-[69]
-
 [70]
+
+[71]
+
+[72]
 Overfull \hbox (18.12175pt too wide) in paragraph at lines 726--727
-[]\TU/Helvetica(0)/m/n/10.95 CNIL RGPD pour les jeux vidéo : [][]$[][][][][] []
- [] [] [][][] [] [][][][] [] [][] [] [][] [] [][][][][][][][][][][][][][][][][]
-[][][][][][][][][][][][][][][][]$[][] 
+[]\TU/Helvetica(0)/m/sc/10.95 CNIL RGPD pour les jeux vidéo : [][]$[][][][][] [
+] [] [] [][][] [] [][][][] [] [][] [] [][] [] [][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][]$[][] 
  []
 
 
 Overfull \hbox (0.32909pt too wide) in paragraph at lines 730--731
-[]\TU/Helvetica(0)/m/n/10.95 Guide RGPD pour développeurs : [][]$[][][][][] [] 
-[] [] [][][] [] [][][][] [] [][] [] [][] [] [][][][][][][][][][][][][][][][][][
-][][][][][][][][][][]$[][] 
+[]\TU/Helvetica(0)/m/sc/10.95 Guide RGPD pour développeurs : [][]$[][][][][] []
+ [] [] [][][] [] [][][][] [] [][] [] [][] [] [][][][][][][][][][][][][][][][][]
+[][][][][][][][][][][]$[][] 
  []
 
 ) (./chapters/chapitre_VII.tex
 
-[71]
+[73]
 
-[72
+[74
 
 ]
 Chapitre 7.
 
 
-[73]
-
-[74]
-
 [75]
 
 [76]
 
-[77]) (./chapters/chapitre_VIII.tex
+[77]
 
 [78]
+
+[79]) (./chapters/chapitre_VIII.tex
+
+[80]
 Chapitre 8.
 
 Overfull \hbox (51.11906pt too wide) in paragraph at lines 1--1
@@ -3107,99 +2965,95 @@ Overfull \hbox (51.11906pt too wide) in paragraph at lines 1--1
 
 
 
-[79
+[81
 
 ]
 
-[80]
-
-[81]) (./chapters/chapitre_IX.tex
-
 [82]
+
+[83]) (./chapters/chapitre_IX.tex
+
+[84]
 Chapitre 9.
 
 
-[83
+[85
 
 ]
-
-[84]
-
-[85]
-Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-
 
 [86]
 
 [87]
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
 =tex-text;!
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
 =tex-text;!
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
 =tex-text;!
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
 =tex-text;!
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
-=tex-text;!
-Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+Missing character: There is no ✅ (U+2705) in font Helvetica Oblique/AAT:mapping
 =tex-text;!
 
 
 [88]
+
+[89]
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+Missing character: There is no → (U+2192) in font Helvetica Oblique/AAT:mapping
+=tex-text;!
+
+
+[90]
 Overfull \hbox (5.44647pt too wide) in paragraph at lines 474--475
-[]\TU/Helvetica(0)/m/n/10.95 PostgreSQL Security Guide : [][]$[][][][][] [] [] 
-[] [][][] [] [][][][][][][][][][] [] [][][] [] [][][][] [] [][][][][][][] [] []
-[][][][][][][] [] [][][][]$[][] 
+[]\TU/Helvetica(0)/m/sc/10.95 PostgreSQL Security Guide : [][]$[][][][][] [] []
+ [] [][][] [] [][][][][][][][][][] [] [][][] [] [][][][] [] [][][][][][][] [] [
+][][][][][][][] [] [][][][]$[][] 
  []
 
 ) (./chapters/chapitre_X.tex
 
-[89]
+[91]
 
-[90
+[92
 
 ]
 Chapitre 10.
 Missing character: There is no ^^Z ("1A) in font pzdr!
 
 
-[91]
+[93]
 Overfull \hbox (17.89479pt too wide) in paragraph at lines 63--74
  [] 
  []
 
 
 
-[92]
+[94]
 Overfull \hbox (4.32161pt too wide) in paragraph at lines 128--139
  [] 
  []
 
 
 
-[93]) (./chapters/chapitre_XI.tex
+[95]) (./chapters/chapitre_XI.tex
 
-[94]
+[96]
 Chapitre 11.
 
 
-[95
+[97
 
 ]
-
-[96]
-
-[97]
 
 [98]
 
@@ -3209,9 +3063,13 @@ Chapitre 11.
 
 [101]
 
-[102])
+[102]
 
-[103] (./main.aux)
+[103]
+
+[104])
+
+[105] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -3220,16 +3078,19 @@ L3 programming layer <2025-01-18>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: C817B65FE1BB47B0A3B2B658849C5F66;24018.
  ) 
 Here is how much of TeX's memory you used:
- 33978 strings out of 473832
- 700431 string characters out of 5719381
- 1936212 words of memory out of 5000000
- 56514 multiletter control sequences out of 15000+600000
+ 34022 strings out of 473832
+ 701900 string characters out of 5719381
+ 1937680 words of memory out of 5000000
+ 56553 multiletter control sequences out of 15000+600000
  564911 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,12n,101p,851b,1944s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,12n,101p,851b,1946s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (103 pages, 3273684 bytes).
+Output written on main.xdv (105 pages, 3230400 bytes).
