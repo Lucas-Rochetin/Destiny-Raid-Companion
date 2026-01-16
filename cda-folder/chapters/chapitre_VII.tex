@@ -8,30 +8,12 @@ Les tests de performance mesurent la latence P95 et le débit de l'application s
 
 
 \textbf{Pyramide de tests :}
-\begin{verbatim}
-                    +===================================+
-                    |           TESTS E2E               |
-                    |        (Cypress/Playwright)       |
-                    |         Peu nombreux, lents       |
-                    |         Couverture globale        |
-                    +===================================+
-                              |
-                              |
-                    +===================================+
-                    |        TESTS D'INTEGRATION        |
-                    |        (Jest/Supertest)           |
-                    |         Nombre modere             |
-                    |         Interactions composants   |
-                    +===================================+
-                              |
-                              |
-                    +===================================+
-                    |         TESTS UNITAIRES           |
-                    |            (Jest)                 |
-                    |         Nombreux, rapides          |
-                    |         Couverture detaillee       |
-                    +===================================+
-\end{verbatim}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/pyramide_test.png}
+    \caption{Pyramide de tests}
+    \label{fig:contexte}
+\end{figure}
 
 
 \textbf{Exemple de test unitaire (1/2) :}
@@ -308,7 +290,6 @@ const saveUserData = (data) => {
 \end{lstlisting}
 
 
-\begin{focusgithub}
 \textbf{Intégration SonarQube dans GitHub Actions :}
 \begin{lstlisting}[language=yaml]
 name: Quality Gate
@@ -354,7 +335,6 @@ jobs:
     \item \textbf{Best Practices :} 88/100 (objectif: >85)
     \item \textbf{SEO :} 90/100 (objectif: >85)
 \end{itemize}
-\end{focusgithub}
 
 
 

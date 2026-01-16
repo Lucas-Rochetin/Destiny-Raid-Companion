@@ -234,127 +234,38 @@ La conception suit la méthode Merise avec validation des contraintes métier et
 
 \textbf{Entités principales et relations :}
 
-\textbf{Entité USER :}
-\begin{itemize}
-    \item \textbf{Attributs :} user\_id (PK), bungie\_id (UNIQUE), display\_name, email, created\_at, last\_login, role, membership\_type
-    \item \textbf{Relations :} Possède BADGE (1,n), Membre de SQUAD (1,n), Crée SESSION (1,n)
-\end{itemize}
-
-\textbf{Entité SQUAD :}
-\begin{itemize}
-    \item \textbf{Attributs :} squad\_id (PK), name, description, leader\_id (FK), created\_at, settings\_json
-    \item \textbf{Relations :} Contient USER (1,n), Planifie SESSION (1,n)
-\end{itemize}
-
-\textbf{Entité RAID :}
-\begin{itemize}
-    \item \textbf{Attributs :} raid\_id (PK), name, difficulty, estimated\_time, description, mechanics\_json
-    \item \textbf{Relations :} Inclut dans SESSION (1,n), Documenté dans GUIDE (1,1)
-\end{itemize}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/entite-relation.png}
+    \caption{Entités principales et relations}
+    \label{fig:contexte}
+\end{figure}
 
 \textbf{Diagramme MCD complet :}
-\begin{verbatim}
-USER (1,n) -- POSSEDE -- (0,n) BADGE
-USER (1,n) -- MEMBRE_DE -- (1,n) SQUAD
-SQUAD (1,n) -- PLANIFIE -- (1,n) SESSION
-SESSION (1,1) -- CONCERNE -- (1,1) RAID
-RAID (1,1) -- DOCUMENTE_DANS -- (1,1) GUIDE
-GUIDE (1,n) -- CONTIENT -- (1,n) GUIDE_STEP
-EQUIPMENT (1,n) -- RECOMMANDE_POUR -- (0,n) RAID
-\end{verbatim}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/diagramme_MCD.png}
+    \caption{Diagramme MCD complet}
+    \label{fig:contexte}
+\end{figure}
 
 \subsection{Modèle Logique de Données (MLD)}
 
-\textbf{Schéma relationnel normalisé :}
-
-\textbf{Table USERS :}
-\begin{lstlisting}[language=SQL]
-CREATE TABLE users (
-    user_id SERIAL PRIMARY KEY,
-    bungie_id VARCHAR(100) UNIQUE NOT NULL,
-    display_name VARCHAR(50) NOT NULL,
-    email VARCHAR(255),
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    last_login TIMESTAMPTZ,
-    role USER_ROLE DEFAULT 'player',
-    membership_type INTEGER,
-    profile_data JSONB,
-    CONSTRAINT chk_display_name_length CHECK (LENGTH(display_name) >= 2)
-);
-\end{lstlisting}
-
-\textbf{Table SQUADS :}
-\begin{lstlisting}[language=SQL]
-CREATE TABLE squads (
-    squad_id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    description TEXT,
-    leader_id INTEGER NOT NULL REFERENCES users(user_id),
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    settings_json JSONB DEFAULT '{}',
-    is_public BOOLEAN DEFAULT true,
-    max_members INTEGER DEFAULT 6,
-    CONSTRAINT chk_squad_name_length CHECK (LENGTH(name) >= 3),
-    CONSTRAINT chk_max_members_range CHECK (max_members BETWEEN 1 AND 12)
-);
-\end{lstlisting}
-
-\textbf{Table SESSIONS :}
-\begin{lstlisting}[language=SQL]
-CREATE TABLE sessions (
-    session_id SERIAL PRIMARY KEY,
-    squad_id INTEGER NOT NULL REFERENCES squads(squad_id),
-    raid_id INTEGER NOT NULL REFERENCES raids(raid_id),
-    scheduled_at TIMESTAMPTZ NOT NULL,
-    status SESSION_STATUS DEFAULT 'scheduled',
-    created_by INTEGER NOT NULL REFERENCES users(user_id),
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    completed_at TIMESTAMPTZ,
-    notes TEXT,
-    CONSTRAINT chk_scheduled_future CHECK (scheduled_at > NOW()),
-    CONSTRAINT chk_completion_logic CHECK (
-        (status = 'completed' AND completed_at IS NOT NULL) OR 
-        (status != 'completed' AND completed_at IS NULL)
-    )
-);
-\end{lstlisting}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/schema-MLD.png}
+    \caption{Schéma relationnel normalisé}
+    \label{fig:contexte}
+\end{figure}
 
 \subsection{Modèle Physique de Données (MPD)}
 
-\textbf{Optimisations performances :}
-
-\textbf{Index stratégiques :}
-\begin{lstlisting}[language=SQL]
--- Index pour recherches utilisateurs
-CREATE INDEX idx_users_bungie_id ON users(bungie_id);
-CREATE INDEX idx_users_display_name ON users(display_name);
-CREATE INDEX idx_users_last_login ON users(last_login DESC);
-
--- Index pour gestion escouades
-CREATE INDEX idx_squads_leader_id ON squads(leader_id);
-CREATE INDEX idx_squads_created_at ON squads(created_at DESC);
-CREATE INDEX idx_squads_is_public ON squads(is_public) WHERE is_public = true;
-
--- Index pour planning sessions
-CREATE INDEX idx_sessions_squad_id ON sessions(squad_id);
-CREATE INDEX idx_sessions_scheduled_at ON sessions(scheduled_at);
-CREATE INDEX idx_sessions_status ON sessions(status);
-CREATE INDEX idx_sessions_squad_scheduled ON sessions(squad_id, scheduled_at);
-
--- Index pour recherches full-text
-CREATE INDEX idx_guides_title ON guides USING gin(to_tsvector('english', title));
-CREATE INDEX idx_raids_name ON raids USING gin(to_tsvector('english', name));
-\end{lstlisting}
-
-\textbf{Stratégie de partitionnement :}
-\begin{lstlisting}[language=SQL]
--- Partitionnement des logs d'activité par mois
-CREATE TABLE activity_logs_2025_01 PARTITION OF activity_logs
-    FOR VALUES FROM ('2025-01-01') TO ('2025-02-01');
-
-CREATE TABLE activity_logs_2025_02 PARTITION OF activity_logs
-    FOR VALUES FROM ('2025-02-01') TO ('2025-03-01');
-\end{lstlisting}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{assets/modele-MPD.png}
+    \caption{Modèle Physique de Données}
+    \label{fig:contexte}
+\end{figure}
 
 \textbf{Architecture multi-base :}
 \begin{itemize}
