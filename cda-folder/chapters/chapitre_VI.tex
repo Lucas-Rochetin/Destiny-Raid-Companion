@@ -6,7 +6,7 @@ La sécurité applicative s'appuie sur les recommandations OWASP Top 10 pour pro
 
 Les headers de sécurité (CSP, HSTS, X-Frame-Options) renforcent la protection au niveau HTTP. La validation stricte des entrées utilisateur et la sanitisation des données réduisent les risques d'injection et de manipulation.
 
-\begin{exemple}
+
 \textbf{Middleware de sécurité Express spécifique au projet :}
 \begin{lstlisting}[language=JavaScript]
 const helmet = require('helmet');
@@ -102,7 +102,7 @@ const raidSchema = z.object({
   estimatedTime: z.number().min(15).max(180)
 });
 \end{lstlisting}
-\end{exemple}
+
 
 \textbf{Stratégie de sécurité pour l'API Bungie :}
 \begin{itemize}
@@ -113,21 +113,12 @@ const raidSchema = z.object({
     \item \textbf{Validation de signature :} Vérification des webhooks Bungie avec clés HMAC
 \end{itemize}
 
-\begin{conseil}
-\begin{itemize}
-    \item Implémenter les protections OWASP Top 10 spécifiques aux données jeu
-    \item Configurer CSP pour autoriser uniquement Bungie.net et vos domaines
-    \item Utiliser le rate limiting adapté aux patterns d'usage des joueurs
-    \item Valider strictement les données provenant de l'API Bungie
-    \item Tester la sécurité avec des outils comme OWASP ZAP et npm audit
-\end{itemize}
-\end{conseil}
 
 \section{Authentification et autorisation}
 
 L'authentification utilise OAuth 2.0 avec Bungie.net comme fournisseur d'identité, combiné avec JWT pour la gestion des sessions internes. Les tokens d'accès Bungie sont stockés de manière sécurisée avec chiffrement et rotation automatique. Le système d'autorisation implémente des rôles spécifiques (Joueur, Leader, Admin) avec des permissions granulaires adaptées aux besoins de la plateforme.
 
-\begin{exemple}
+\vspace{0.5cm}
 \textbf{Configuration OAuth Bungie et JWT :}
 \begin{lstlisting}[language=JavaScript]
 const axios = require('axios');
@@ -225,7 +216,7 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 \end{lstlisting}
-\end{exemple}
+
 
 \textbf{Système de rôles et permissions spécifique :}
 \begin{lstlisting}[language=JavaScript]
@@ -326,21 +317,12 @@ router.put('/guides/:id',
 );
 \end{lstlisting}
 
-\begin{conseil}
-\begin{itemize}
-    \item Utiliser OAuth Bungie comme source de vérité pour l'authentification
-    \item Implémenter un système de double token (Bungie + interne)
-    \item Créer des rôles adaptés aux besoins des joueurs Destiny 2
-    \item Loguer toutes les vérifications de permission pour l'audit
-    \item Prévoir la révocation rapide en cas de compromission
-\end{itemize}
-\end{conseil}
 
 \section{Conformité RGPD}
 
 La conformité RGPD est cruciale pour une plateforme hébergeant des données de joueurs. Un registre des traitements spécifique a été établi, détaillant chaque type de donnée collectée, sa finalité, sa base légale et sa durée de conservation. Les droits des utilisateurs sont implémentés via une interface dédiée dans le profil utilisateur.
 
-\begin{exemple}
+\vspace{0.5cm}
 \textbf{Registre des traitements pour Destiny Raid Companion :}
 \begin{lstlisting}[language=JavaScript]
 const gdprRegistry = {
@@ -500,8 +482,8 @@ const gdprController = {
   }
 };
 \end{lstlisting}
-\end{exemple}
 
+\vspace{0.5cm}
 \textbf{Mesures techniques de protection des données :}
 \begin{itemize}
     \item \textbf{Chiffrement :} AES-256 pour les données sensibles au repos
@@ -510,7 +492,7 @@ const gdprController = {
     \item \textbf{Sauvegarde :} Chiffrées et stockées dans une zone séparée
     \item \textbf{Suppression :} Processus en 2 étapes (marquage puis suppression définitive)
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Politique de conservation des données :}
 \begin{center}
 \begin{tabular}{|p{4cm}|p{3cm}|p{4cm}|}
@@ -526,15 +508,6 @@ Logs d'audit & 7 ans & Obligations légales \\
 \end{tabular}
 \end{center}
 
-\begin{conseil}
-\begin{itemize}
-    \item Créer un registre des traitements spécifique aux données jeu
-    \item Implémenter une interface utilisateur pour les droits RGPD
-    \item Chiffrer spécifiquement les tokens OAuth et données sensibles
-    \item Mettre en place une politique de conservation justifiée
-    \item Documenter les transferts internationaux (API Bungie)
-\end{itemize}
-\end{conseil}
 
 \section{Sécurité des données et monitoring}
 

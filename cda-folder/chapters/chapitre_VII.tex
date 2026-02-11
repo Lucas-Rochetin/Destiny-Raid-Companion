@@ -6,7 +6,7 @@ La stratégie de tests suit la pyramide de tests avec une base solide de tests u
 
 Les tests de performance mesurent la latence P95 et le débit de l'application sous charge. Les tests de sécurité automatisés détectent les vulnérabilités communes. La qualité du code est surveillée avec SonarQube pour maintenir un niveau de qualité constant.
 
-
+\vspace{0.5cm}
 \textbf{Pyramide de tests :}
 \begin{figure}[h]
     \centering
@@ -121,7 +121,7 @@ Les tests de performance utilisent k6 pour simuler des charges réalistes et mes
 
 Le monitoring en production surveille les métriques de performance en temps réel avec des alertes automatiques. Les tests de charge réguliers valident la capacité de l'application à supporter la croissance du trafic.
 
-
+\vspace{0.5cm}
 \textbf{Script de test de performance k6 (1/2) :}
 \begin{lstlisting}[language=JavaScript]
 import http from 'k6/http';
@@ -216,7 +216,7 @@ Les règles de qualité sont configurées selon les standards de l'équipe et le
 
 Lighthouse mesure automatiquement les performances, l'accessibilité, les bonnes pratiques et le SEO des applications web. L'intégration dans la CI/CD permet de surveiller ces métriques à chaque déploiement et d'alerter en cas de régression.
 
-
+\vspace{0.5cm}
 \textbf{Configuration SonarQube :}
 \begin{lstlisting}[language=yaml]
 # sonar-project.properties
@@ -258,7 +258,7 @@ Sécurité & A & A & \mycheckmark \\
 \hline
 \end{tabular}
 \end{center}
-
+\vspace{0.5cm}
 \textbf{Exemple de correction de code smell :}
 \begin{lstlisting}[language=JavaScript]
 // AVANT : Méthode trop longue

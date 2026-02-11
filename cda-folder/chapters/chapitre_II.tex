@@ -81,7 +81,7 @@ Satisfaction utilisateur & Sondage NPS & Mensuel & N/A & ≥ 4.5/5 \\
 \hline
 \end{tabular}
 \end{center}
-
+\vspace{0.5cm}
 \textbf{Preuves GitHub Projects :}
 
 \textbf{Board GitHub Project - Extrait :}
@@ -105,14 +105,14 @@ Done (3 issues):
 - #120 Architecture technique
 - #118 Étude marché
 \end{verbatim}
-
+\vspace{0.5cm}
 \textbf{Milestones GitHub :}
 \begin{itemize}
     \item \textbf{MVP v1.0} (15 mars 2026) : 45 story points, 85\% complété
     \item \textbf{Version 1.1} (15 mai 2026) : 35 story points, 0\% complété
     \item \textbf{Version 1.2} (15 juillet 2026) : 25 story points, 0\% complété
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{PV de validation utilisateur :}
 
 \textbf{Séance de validation technique - 15 février 2026}
@@ -134,7 +134,7 @@ Done (3 issues):
     \end{itemize}
     \item \textbf{Sign-off :} Tous les participants ont validé les spécifications fonctionnelles
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Traçabilité User Stories - Issues GitHub :}
 \begin{center}
 \begin{tabular}{|p{2cm}|p{2.5cm}|p{2cm}|p{2cm}|p{2cm}|}
@@ -183,8 +183,6 @@ Profils joueurs & \#127 & Engagement utilisateur & +25\% & \textbf{Backlog} \\
 \hline
 \textbf{Alternative} & \textbf{Avantages} & \textbf{Inconvénients} & \textbf{Raison rejet} \\
 \hline
-MongoDB & Flexibilité schéma, performance écriture & Manque intégrité relationnelle & Critique pour données utilisateurs \\
-\hline
 MySQL & Maturité, performance & Moins bon support JSON, écosystème & PostgreSQL offre meilleures perfs JSON \\
 \hline
 TypeORM & Popularité, support multiple DB & Expérience développeur moins bonne & Prisma offre meilleure type-safety \\
@@ -199,8 +197,9 @@ Firebase & Développement rapide, real-time & Vendor lock-in, coût scaling & Au
 \section{Tableau MoSCoW justifié}
 
 \textbf{Tableau MoSCoW détaillé avec justification :}
+\vspace{0.5cm}
 \begin{center}
-    \begin{tabular}{|l|l|l|l|}
+    \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
         \hline
         \textbf{Priorité} & \textbf{Fonctionnalité} & \textbf{Pourquoi} & \textbf{Valeur métier} \\
         \hline
@@ -228,7 +227,7 @@ Firebase & Développement rapide, real-time & Vendor lock-in, coût scaling & Au
         \hline
     \end{tabular}
 \end{center}
-
+\vspace{0.5cm}
 \textbf{Périmètre MVP - GitHub Milestone :}
 \begin{itemize}
     \item \textbf{Milestone: MVP v1.0} - Date cible: 15 mars 2026
@@ -257,6 +256,7 @@ Et il autorise l'application
 Alors il est redirigé vers son tableau de bord personnel
 Et son profil est synchronisé avec l'API Bungie
 Et un token JWT est généré et stocké sécurisé
+
 \end{verbatim}
 
 \textbf{Scénario 2: Consultation guide interactif raid}
@@ -268,6 +268,7 @@ Et les mécaniques sont expliquées avec illustrations
 Et le temps estimé est affiché (45-60 minutes)
 Et les recommandations d'équipement sont visibles
 Et la navigation entre étapes est fluide
+
 \end{verbatim}
 
 \textbf{Scénario 3: Création et gestion d'escouade}
@@ -280,6 +281,7 @@ Alors les invitations sont envoyées et visibles en attente
 Et l'escouade apparaît dans la liste avec statut "En recrutement"
 Et les membres peuvent accepter/refuser les invitations
 Et le leader peut gérer les rôles et permissions
+
 \end{verbatim}
 
 \textbf{Scénario 4: Planification session de raid}
@@ -292,11 +294,13 @@ Alors la session est créée dans le calendrier partagé
 Et tous les membres reçoivent une notification
 Et les disponibilités sont collectées automatiquement
 Et les conflits de planning sont détectés et signalés
+
 \end{verbatim}
 
 \section{Cibles et parties prenantes}
 
 \textbf{Matrice des risques et mitigation :}
+\vspace{0.5cm}
 \begin{center}
     \begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{3cm}|p{3cm}|}
         \hline
@@ -314,7 +318,7 @@ Et les conflits de planning sont détectés et signalés
         \hline
     \end{tabular}
 \end{center}
-
+\vspace{0.5cm}
 \textbf{Personae détaillés :}
 
 \textbf{Thomas - Le Débutant Motivé (25 ans)}
@@ -332,7 +336,7 @@ Et les conflits de planning sont détectés et signalés
     \item \textbf{Objectifs:} Compléter son premier raid dans les 2 semaines
     \item \textbf{Scénario d'usage:} Consultation guide → Recherche équipe bienveillante → Session apprentissage → Feedback
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Sarah - La Leader Expérimentée (30 ans)}
 \begin{itemize}
     \item \textbf{Profil:} Joueuse vétéran, 2000+ heures, leader de clan, 3 raids/semaine
@@ -348,7 +352,7 @@ Et les conflits de planning sont détectés et signalés
     \item \textbf{Objectifs:} Réduire le temps d'organisation de 50\%, améliorer rétention équipe
     \item \textbf{Scénario d'usage:} Création escouade → Planification rapide → Gestion membres → Analyse performances
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Alex - Le Stratège Data (35 ans)}
 \begin{itemize}
     \item \textbf{Profil:} Créateur de contenu, théoricien, min-maxer, analyse données
@@ -363,8 +367,9 @@ Et les conflits de planning sont détectés et signalés
     \item \textbf{Objectifs:} Créer des guides optimisés basés sur les données, building théorie
     \item \textbf{Scénario d'usage:} Analyse statistiques → Tests stratégies → Création guides → Partage communauté
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Matrice d'influence des parties prenantes :}
+\vspace{0.5cm}
 \begin{center}
     \begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{3cm}|}
         \hline
@@ -409,8 +414,9 @@ Et les conflits de planning sont détectés et signalés
         \hline
     \end{tabular}
 \end{center}
-
+\vspace{0.5cm}
 \textbf{Fonctionnalités Back Office :}
+\vspace{0.5cm}
 \begin{center}
     \begin{tabular}{|p{3cm}|p{6cm}|p{2cm}|}
         \hline
@@ -428,8 +434,9 @@ Et les conflits de planning sont détectés et signalés
         \hline
     \end{tabular}
 \end{center}
-
+\vspace{0.5cm}
 \textbf{Matrice des droits d'accès (principe moindre privilège) :}
+\vspace{0.5cm}
 \begin{center}
     \begin{tabular}{|p{3cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
         \hline
@@ -453,8 +460,9 @@ Et les conflits de planning sont détectés et signalés
         \hline
     \end{tabular}
 \end{center}
-
+\vspace{0.5cm}
 \textbf{Exigences de confidentialité RGPD :}
+\vspace{0.5cm}
 \begin{center}
     \begin{tabular}{|p{3cm}|p{8cm}|}
         \hline
@@ -478,7 +486,7 @@ Et les conflits de planning sont détectés et signalés
         \hline
     \end{tabular}
 \end{center}
-
+\vspace{0.5cm}
 \textbf{Processus d'authentification sécurisé :}
 \begin{itemize}
     \item \textbf{Flux nominal:} Redirection OAuth Bungie → Callback → Validation code → JWT generation → Session establishment
@@ -520,9 +528,9 @@ Et les conflits de planning sont détectés et signalés
         \item Intégration Discord webhooks
     \end{itemize}
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Parcours utilisateurs complets MVP :}
-
+\vspace{0.5cm}
 \textbf{Parcours 1: Premier raid réussi (Thomas - Débutant)}
 \begin{enumerate}
     \item Arrive sur landing page avec présentation features
@@ -544,8 +552,9 @@ Et les conflits de planning sont détectés et signalés
     \item Rappel automatique envoyé 1h avant la session
     \item Post-session: enregistrement statistiques et feedback équipe
 \end{enumerate}
-
+\vspace{0.5cm}
 \textbf{Plan de test de validation MVP :}
+\vspace{0.5cm}
 \begin{itemize}
     \item \textbf{Date:} 1-7 avril 2026 (2 semaines avant release production)
     \item \textbf{Participants:} 8 utilisateurs recrutés (3 débutants, 3 expérimentés, 2 leaders)
@@ -554,8 +563,9 @@ Et les conflits de planning sont détectés et signalés
     \item \textbf{Métriques évaluées:} Taux de succès parcours, temps completion, score SUS, satisfaction globale
     \item \textbf{Livrable:} Rapport de validation détaillé avec recommandations et décision go/no-go release
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{KPI par fonctionnalité MVP :}
+\vspace{0.5cm}
 \begin{center}
     \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|}
         \hline
@@ -586,7 +596,7 @@ Et les conflits de planning sont détectés et signalés
     \caption{User stories}
     \label{fig:contexte}
 \end{figure}
-
+\vspace{0.5cm}
 \textbf{Milestone: Version 1.1 - 15 juillet 2026}
 \begin{itemize}
     \item Chat en temps réel intégré pour les escouades
@@ -596,7 +606,7 @@ Et les conflits de planning sont détectés et signalés
     \item Support multilingue (anglais/français)
     \item Intégration API étendue avec plus de données Bungie
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Milestone: Version 1.2 - 15 septembre 2026}
 \begin{itemize}
     \item Analytics avancées et rapports détaillés pour leaders
@@ -606,7 +616,7 @@ Et les conflits de planning sont détectés et signalés
     \item Système de recommandation de groupes intelligent
     \item \textbf{Objectif utilisateurs:} 300 utilisateurs actifs mensuels
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Milestone: Version 2.0 - 15 janvier 2027}
 \begin{itemize}
     \item Application mobile React Native (iOS/Android)
@@ -616,7 +626,7 @@ Et les conflits de planning sont détectés et signalés
     \item Marketplace d'équipements et builds (si applicable CGU)
     \item \textbf{Objectif utilisateurs:} 500+ utilisateurs actifs mensuels
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Indicateurs de progression et succès :}
 \begin{itemize}
     \item \textbf{Code qualité:} Couverture tests > 80\%, dette technique < 5\%, sécurité A+

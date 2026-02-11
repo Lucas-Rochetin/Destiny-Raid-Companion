@@ -41,7 +41,7 @@
 \hline
 \end{tabular}
 \end{center}
-
+\vspace{0.5cm}
 \textbf{Analyse des métriques Agile et interprétation :}
 \begin{itemize}
     \item \textbf{Force :} Vélocité stable à 8-12 points/sprint montre une bonne régularité de développement malgré la complexité de l'API Bungie
@@ -49,7 +49,7 @@
     \item \textbf{Amélioration :} Les 3 bugs majeurs résolus en 2.5 jours montrent une bonne réactivité, mais le taux de bugs (15\%) indique besoin de plus de tests automatisés
     \item \textbf{Tendance positive :} Lead time réduit de 7 à 5 jours montre une amélioration de l'efficacité globale
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Métriques de suivi avec interprétation :}
 \begin{itemize}
     \item \textbf{Vélocité :} 8-12 story points par sprint (stable, bonne prévisibilité)
@@ -141,7 +141,7 @@ main (protected) ---------
        +-- feature/raid-guides
        +-- fix/login-validation
 \end{verbatim}
-
+\vspace{0.5cm}
 \textbf{Exemple réel de PR respectant le DoD (PR \#45) :}
 \begin{itemize}
     \item \textbf{Fonctionnalité :} Ajout guide interactif "Vault of Glass"
@@ -152,7 +152,7 @@ main (protected) ---------
     \item \textbf{Documentation :} Guide utilisateur mis à jour, commentaires code ajoutés
     \item \textbf{Sécurité :} Validation OAuth et sanitization des données
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Conventions de commit (Conventional Commits) :}
 \begin{lstlisting}
 feat: add OAuth Bungie authentication system
@@ -163,7 +163,7 @@ refactor: improve raid guide component structure
 style: format code with prettier
 chore: update dependencies to latest versions
 \end{lstlisting}
-
+\vspace{0.5cm}
 \textbf{Definition of Done (DoD) appliqué concrètement :}
 \begin{itemize}
     \item \textbf{Tests :} Couverture > 80\%, tests unitaires et d'intégration passants
@@ -188,7 +188,7 @@ La planification combine une roadmap GitHub pour la vision macro et GitHub Proje
     \item \textbf{Automatisations :} Changement de statut basé sur les PR/issues (ex: auto-move to Review)
     \item \textbf{Vues personnalisées :} Tableau de bord pour daily standup avec métriques clés
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Roadmap GitHub avec dépendances API :}
 \begin{itemize}
     \item \textbf{Visibilité :} Roadmap publique pour transparence avec communauté
@@ -196,7 +196,7 @@ La planification combine une roadmap GitHub pour la vision macro et GitHub Proje
     \item \textbf{Dépendances :} Liens explicites entre fonctionnalités et endpoints API
     \item \textbf{Suivi progression :} Avancement visuel avec indicateurs de risque API
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Extrait de roadmap GitHub aligné avec User Stories :}
 \begin{verbatim}
 Phase 1: MVP (Oct 2025 - Mars 2026) [US #101-#104]
@@ -214,7 +214,7 @@ Phase 2: Version 1.0 (Avril - Mai 2026) [US #105-#107]
 +-- Sprint 3: Gamification & Analytics [Issue #7]
 +-- Sprint 4: Finalisation & Déploiement [Issue #8]
 \end{verbatim}
-
+\vspace{0.5cm}
 \textbf{Configuration GitHub Projects :}
 \begin{itemize}
     \item \textbf{Colonnes :} Backlog, Sprint Planning, In Progress, Review, Done
@@ -232,7 +232,7 @@ Phase 2: Version 1.0 (Avril - Mai 2026) [US #105-#107]
     \item \textbf{Milestones :} Regroupement logique par version avec dépendances explicites
     \item \textbf{Labels :} Complexité (S, M, L, XL), type (bug, feature, docs), priorité API
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Workflow de validation avec exemple concret :}
 \begin{enumerate}
     \item Issue \#101 créée avec critères d'acceptation spécifiques à l'API Bungie
@@ -245,10 +245,10 @@ Phase 2: Version 1.0 (Avril - Mai 2026) [US #105-#107]
 
 \section{Estimation de temps et planification}
 
-\textbf{Votre estimation globale :} \textit{Le projet est estimé à 65 jours de travail effectif répartis sur 8 mois (octobre 2025 à mai 2026), incluant 20\% de marge pour les imprévus liés à l'API Bungie. Cette estimation couvre le développement, les tests d'intégration API, et le déploiement.}
-
+\textbf{Estimation globale :} \textit{Le projet est estimé à 65 jours de travail effectif répartis sur 8 mois (octobre 2025 à mai 2026), incluant 20\% de marge pour les imprévus liés à l'API Bungie. Cette estimation couvre le développement, les tests d'intégration API, et le déploiement.}
+\vspace{0.5cm}
 \textbf{Estimation détaillée avec justification technique :}
-\begin{longtable}{p{3cm}p{2.5cm}p{1.5cm}p{1.5cm}p{2cm}}
+\begin{longtable}{|p{3cm}|p{2.5cm}|p{1.5cm}|p{1.5cm}|p{3cm}|}
 \toprule
 \textbf{Fonctionnalité} & \textbf{Phase} & \textbf{SP} & \textbf{Jours} & \textbf{Justification estimation} \\
 \midrule
@@ -295,7 +295,7 @@ Documentation technique & Livraison & 3 & 3 & Documentation API spécifique \\
     \item \textbf{Cycle time :} Objectif: réduire de 4.2 à 3.5 jours via automation tests
     \item \textbf{Taux de bugs :} Objectif: réduire de 15\% à 10\% via plus de tests unitaires
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Amélioration continue basée sur données :}
 \begin{itemize}
     \item \textbf{Rétrospectives :} Actions concrètes comme "ajouter mocks API pour tests"

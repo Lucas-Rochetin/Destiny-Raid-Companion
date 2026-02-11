@@ -7,7 +7,7 @@ L'architecture Destiny Raid Companion suit une approche 3-tiers classique avec s
 \subsection{Couche Présentation (Frontend)}
 
 Le frontend est développé en React 18 avec TypeScript, utilisant Vite comme bundler pour des performances optimales. L'interface suit les principes Mobile First et respecte les normes d'accessibilité WCAG 2.1. L'état global est géré via React Context et useReducer pour une complexité maîtrisée.
-
+\vspace{0.5cm}
 \textbf{Technologies de présentation :}
 \begin{itemize}
     \item \textbf{Framework :} React 18 avec Functional Components + Hooks
@@ -19,7 +19,7 @@ Le frontend est développé en React 18 avec TypeScript, utilisant Vite comme bu
     \item \textbf{État global :} React Context + useReducer (Redux-like sans complexité)
     \item \textbf{Validation :} Zod pour la validation runtime des données
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Structure des composants :}
 \begin{verbatim}
 src/
@@ -191,7 +191,7 @@ class SquadRepository {
 \subsection{Couche Données (Database)}
 
 Une architecture multi-base optimisée pour chaque type d'usage : PostgreSQL pour les données transactionnelles, Redis pour le cache et sessions, et éventuellement MongoDB pour les logs et analytics.
-
+\vspace{0.5cm}
 \textbf{Architecture des données :}
 \begin{itemize}
     \item \textbf{PostgreSQL :} Données transactionnelles (utilisateurs, escouades, sessions)
@@ -248,49 +248,19 @@ model Session {
 \subsection{Communication entre les tiers}
 
 Communication via APIs REST avec JSON, WebSocket pour le temps réel, et messages asynchrones pour les opérations longues. Toutes les communications sont sécurisées avec HTTPS et authentifiées via JWT.
-
+\vspace{0.5cm}
 \textbf{Flux de communication 3 tiers :}
-\begin{verbatim}
-    +=====================================================================+
-    |                  ARCHITECTURE DESTINY RAID COMPANION               |
-    +=====================================================================+
-
-    +-------------------+    HTTP/HTTPS + WebSocket   +-------------------+
-    |   TIER 1           | <-----------------------> |   TIER 2           |
-    |   PRESENTATION     |     JSON/REST + JWT        |   LOGIQUE METIER   |
-    |   React + Vite     |                           |   Node.js + Express|
-    |                   |                           |                   |
-    |   +-------------+ |     • Guides interactifs   |   +-------------+ |
-    |   | Composants  | |     • Gestion escouades    |   | Contrôleurs | |
-    |   | React       | |     • Calendrier temps réel|   | Services    | |
-    |   +-------------+ |                           |   +-------------+ |
-    +-------------------+                           +-------------------+
-                                                              |
-                                                              | SQL + Prisma
-                                                              | Redis Pub/Sub
-                                                              v
-                                                    +-------------------+
-                                                    |   TIER 3           |
-                                                    |   DONNEES          |
-                                                    |                   |
-                                                    |   +-------------+ |
-                                                    |   | PostgreSQL  | |
-                                                    |   | Redis       | |
-                                                    |   +-------------+ |
-                                                    +-------------------+
-
-    Flux principaux :
-    1. Authentification OAuth Bungie → JWT generation
-    2. Consultation guides → Cache Redis + Fallback API Bungie  
-    3. Gestion escouades → Transactions PostgreSQL
-    4. Calendrier temps réel → WebSocket + Redis Pub/Sub
-    5. Notifications → Queue asynchrone + Email/SMS
-\end{verbatim}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{assets/architecture_destiny.png}
+    \caption{Architecture 3 tiers de Destiny Raid Companion}
+    \label{fig:contexte}
+\end{figure}
 
 \subsection{Avantages de l'architecture 3 tiers}
 
 La séparation en 3 tiers offre maintenabilité, scalabilité indépendante, testabilité et sécurité renforcée. Chaque couche peut évoluer indépendamment et être optimisée spécifiquement.
-
+\vspace{0.5cm}
 \textbf{Avantages de l'architecture 3 tiers :}
 \begin{itemize}
     \item \textbf{Séparation des responsabilités :} 
@@ -376,7 +346,7 @@ src/
 |   +-- authStore.ts
 |   +-- squadStore.ts
 \end{verbatim}
-
+\vspace{0.5cm}
 \textbf{Exemple de composant GuideViewer :}
 \begin{verbatim}
 interface GuideViewerProps {
@@ -442,7 +412,7 @@ const GuideViewer: React.FC<GuideViewerProps> = ({
 
 export default GuideViewer;
 \end{verbatim}
-
+\vspace{0.5cm}
 \textbf{Rapport Lighthouse actuel :}
 \begin{verbatim}
 {
@@ -476,7 +446,7 @@ export default GuideViewer;
 Le backend implémente une API REST avec Express.js suivant le pattern Controller/Service/Repository pour une séparation claire des responsabilités. La validation des données utilise Joi pour garantir la cohérence des entrées. La gestion d'erreur centralisée assure des réponses API standardisées et facilite le debugging.
 
 L'authentification JWT sécurise les endpoints avec des middlewares de vérification et refresh token. La documentation OpenAPI/Swagger facilite l'intégration frontend et la maintenance. L'architecture est conçue pour la scalabilité avec gestion du cache Redis et file d'attente pour les opérations asynchrones.
-
+\vspace{0.5cm}
 \textbf{Structure backend :}
 \begin{verbatim}
 src/

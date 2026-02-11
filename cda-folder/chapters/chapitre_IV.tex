@@ -7,7 +7,7 @@
 Les Use Cases modélisent les interactions entre les acteurs et le système pour identifier les fonctionnalités essentielles. Cette approche centrée utilisateur garantit que le système répond aux besoins métier réels. Les diagrammes UML facilitent la communication entre les équipes techniques et métier, réduisant les risques d'incompréhension.
 
 La modélisation des cas d'usage permet d'identifier les flux principaux et alternatifs, ainsi que les cas d'erreur à gérer. Cette analyse préalable guide la conception technique et les tests d'acceptation.
-
+\vspace{0.5cm}
 \textbf{Acteurs principaux identifiés :}
 \begin{itemize}
     \item \textbf{Joueur Débutant :} Nouvel utilisateur cherchant à comprendre les mécaniques de raid
@@ -16,7 +16,7 @@ La modélisation des cas d'usage permet d'identifier les flux principaux et alte
     \item \textbf{Administrateur :} Gestionnaire de contenu et modérateur
     \item \textbf{Système Bungie API :} Source externe de données de jeu
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Cas d'usage critiques modélisés :}
 \begin{itemize}
     \item \textbf{UC001 :} Authentification OAuth avec Bungie.net
@@ -27,17 +27,17 @@ La modélisation des cas d'usage permet d'identifier les flux principaux et alte
     \item \textbf{UC006 :} Synchronisation des données de profil
     \item \textbf{UC007 :} Gestion administrative du contenu
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Diagramme Use Case détaillé :}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{assets/diagramme_user_case.png}
+    \includegraphics[width=0.3\textwidth]{assets/diagramme_user_case.png}
     \caption{Diagramme Use Case}
     \label{fig:contexte}
 \end{figure}
-
+\vspace{0.5cm}
 \textbf{Spécifications des cas d'usage critiques :}
-
+\vspace{0.5cm}
 \textbf{UC002 - Consultation guide interactif :}
 \begin{itemize}
     \item \textbf{Préconditions :} Utilisateur authentifié, guide disponible
@@ -52,7 +52,7 @@ La modélisation des cas d'usage permet d'identifier les flux principaux et alte
     \item \textbf{Flux alternatif :} Guide non disponible → Message d'erreur avec délai estimation
     \item \textbf{Postconditions :} Historique de consultation mis à jour
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{UC004 - Planification de session :}
 \begin{itemize}
     \item \textbf{Préconditions :} Leader authentifié, escouade existante
@@ -142,9 +142,9 @@ src/
     ├── cache.js
     └── websocket.js
 \end{verbatim}
-
+\vspace{0.5cm}
 \textbf{Spécifications des composants critiques :}
-
+\vspace{0.5cm}
 \textbf{GuideViewer Component :}
 \begin{itemize}
     \item \textbf{Props :} guideId, stepNumber, onStepChange, onComplete
@@ -153,7 +153,7 @@ src/
     \item \textbf{Events :} stepChanged, guideCompleted, errorOccurred
     \item \textbf{Performance :} Lazy loading des images, Memoization des données
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{SquadManager Component :}
 \begin{itemize}
     \item \textbf{Props :} squadId, isLeader, onUpdate
@@ -165,7 +165,7 @@ src/
 \subsection{Charte graphique détaillée}
 
 \textbf{Système de design complet :}
-
+\vspace{0.5cm}
 \textbf{Palette de couleurs :}
 \begin{itemize}
     \item \textbf{Primaire :} \#0A0E17 (Noir bleuté Destiny) - Backgrounds principaux
@@ -176,7 +176,7 @@ src/
     \item \textbf{Alerte :} \#FFC107 (Jaune) - Avertissements
     \item \textbf{Erreur :} \#F44336 (Rouge) - Erreurs, suppressions
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Typographie :}
 \begin{itemize}
     \item \textbf{Principale :} Inter (weights: 300, 400, 500, 600, 700)
@@ -189,7 +189,7 @@ src/
         \item Small: 0.875rem (14px) - Weight 300 - Line height 1.4
     \end{itemize}
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Espacement (8px grid system) :}
 \begin{itemize}
     \item \textbf{Base unit :} 8px
@@ -197,7 +197,7 @@ src/
     \item \textbf{Padding :} 4px, 8px, 12px, 16px, 24px
     \item \textbf{Border radius :} 4px (small), 8px (medium), 16px (large)
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Composants UI standardisés :}
 \begin{itemize}
     \item \textbf{Boutons :} 3 variantes (primaire, secondaire, ghost)
@@ -215,7 +215,7 @@ src/
     \item \textbf{Prototypes interactifs :} Tests utilisabilité avec Figma
     \item \textbf{Maquettes haute fidélité :} Spécifications développeurs
 \end{enumerate}
-
+\vspace{0.5cm}
 \textbf{Pages principales conçues :}
 \begin{itemize}
     \item \textbf{Landing Page :} Présentation features + Call-to-action
@@ -244,7 +244,7 @@ La conception suit la méthode Merise avec validation des contraintes métier et
 \textbf{Diagramme MCD complet :}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{assets/diagramme_MCD.png}
+    \includegraphics[width=0.4\textwidth]{assets/diagramme_MCD.png}
     \caption{Diagramme MCD complet}
     \label{fig:contexte}
 \end{figure}
@@ -684,7 +684,7 @@ Pipeline GitHub Actions:
 12. Post-Deployment Smoke Tests
 13. Monitoring + Alerting Setup
 \end{verbatim}
-
+\vspace{0.5cm}
 \textbf{Configuration de monitoring :}
 \begin{itemize}
     \item \textbf{Métriques applicatives :} Response time, Error rate, Throughput
@@ -692,7 +692,7 @@ Pipeline GitHub Actions:
     \item \textbf{Métriques base de données :} Query performance, Connections, Locks
     \item \textbf{Alerting :} Slack notifications, PagerDuty pour les incidents critiques
 \end{itemize}
-
+\vspace{0.5cm}
 \textbf{Plan de reprise d'activité :}
 \begin{itemize}
     \item \textbf{Sauvegardes :} Automatiques quotidiennes + WAL shipping

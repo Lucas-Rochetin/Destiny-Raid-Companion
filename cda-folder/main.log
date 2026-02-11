@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Homebrew) (preloaded format=xelatex 2025.10.11)  16 JAN 2026 17:11
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Homebrew) (preloaded format=xelatex 2025.11.7)  11 FEB 2026 14:40
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -8,11 +8,11 @@ entering extended mode
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/base/book.c
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/base/book.c
 ls
 Document Class: book 2024/06/29 v1.4n Standard LaTeX document class
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/base/bk11.c
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/base/bk11.c
 lo
 File: bk11.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 )
@@ -29,15 +29,15 @@ File: bk11.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 \belowcaptionskip=\skip50
 \bibindent=\dimen141
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/fontspec/fo
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/fontspec/fo
 ntspec.sty
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/l3packages/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/l3packages/
 xparse/xparse.sty
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/l3kernel/ex
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/l3kernel/ex
 pl3.sty
 Package: expl3 2025-01-18 L3 programming layer (loader) 
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/l3backend/l
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/l3backend/l
 3backend-xetex.def
 File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 \g__graphics_track_int=\count267
@@ -49,7 +49,7 @@ Package: xparse 2024-08-16 L3 Experimental document command parser
 )
 Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/fontspec/fo
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/fontspec/fo
 ntspec-xetex.sty
 Package: fontspec-xetex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTe
 X
@@ -68,13 +68,13 @@ X
 \l__fontspec_tmpb_dim=\dimen143
 \l__fontspec_tmpc_dim=\dimen144
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/base/fonten
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/base/fonten
 c.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/fontspec/fo
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/fontspec/fo
 ntspec.cfg)))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/base/inpute
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/base/inpute
 nc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks17
@@ -84,7 +84,7 @@ Package: inputenc 2024/02/08 v1.3d Input encoding file
 Package inputenc Warning: inputenc package ignored with utf8 based engines.
 
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/babel/bab
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/babel/bab
 el.sty
 Package: babel 2025/02/14 v25.4 The multilingual framework for pdfLaTeX, LuaLaT
 eX and XeLaTeX
@@ -92,12 +92,12 @@ eX and XeLaTeX
 \U@D=\dimen145
 \l@unhyphenated=\language90
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/babel/xeb
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/babel/xeb
 abel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count282
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/babel-fre
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/babel-fre
 nch/french.ldf
 Language: french 2024-07-25 v3.6c French support from the babel system
 Package babel Info: Hyphen rules for 'acadian' set to \l@french
@@ -131,27 +131,27 @@ Package french.ldf Info: No need for active punctuation characters
 \parindentFFN=\dimen153
 \FBfnindent=\dimen154
 ))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/babel/loc
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/babel/loc
 ale/fr/babel-french.tex
 Package babel Info: Importing font and identification data for french
 (babel)             from babel-fr.ini. Reported on input line 11.
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/carlisle/sc
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/carlisle/sc
 alefnt.sty)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/geometry/ge
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/geometry/ge
 ometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/graphics/ke
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/graphics/ke
 yval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks20
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/iftex/ifv
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/iftex/ifv
 tex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/iftex/ift
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/iftex/ift
 ex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
@@ -168,21 +168,21 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layoutvoffset=\dimen162
 \Gm@dimlist=\toks21
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/xcolor/xcol
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/xcolor/xcol
 or.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/graphics-cf
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/graphics-cf
 g/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: xetex.def on input line 274.
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/graphics-de
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/graphics-de
 f/xetex.def
 File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/graphics/ma
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/graphics/ma
 thcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -193,19 +193,19 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/graphics/gr
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/graphics/gr
 aphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/graphics/gr
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/graphics/gr
 aphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/graphics/tr
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/graphics/tr
 ig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/graphics-cf
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/graphics-cf
 g/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
@@ -214,32 +214,32 @@ Package graphics Info: Driver file: xetex.def on input line 106.
 \Gin@req@height=\dimen163
 \Gin@req@width=\dimen164
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/hyperref/hy
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/hyperref/hy
 perref.sty
 Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/kvsetkeys/k
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/kvsetkeys/k
 vsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/kvdefinek
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/kvdefinek
 eys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pdfescape
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pdfescape
 /pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/ltxcmds/l
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/ltxcmds/l
 txcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pdftexcmd
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pdftexcmd
 s/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/infwarerr
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/infwarerr
 /infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
@@ -247,34 +247,34 @@ Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode not found.
 ))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/hycolor/hyc
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/hycolor/hyc
 olor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/hyperref/na
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/hyperref/na
 meref.sty
 Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/refcount/re
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/refcount/re
 fcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/gettitles
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/gettitles
 tring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/kvoptions/k
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/kvoptions/k
 voptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count293
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/etoolbox/et
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/etoolbox/et
 oolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count294
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/stringenc
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/stringenc
 /stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
@@ -283,17 +283,17 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 \Hy@linkcounter=\count295
 \Hy@pagecounter=\count296
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/hyperref/pd
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/hyperref/pd
 1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/intcalc/i
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/intcalc/i
 ntcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count297
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/hyperref/pu
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/hyperref/pu
 enc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
 )
@@ -306,18 +306,18 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
 \c@Hy@tempcnt=\count298
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/url/url.sty
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
 \XeTeXLinkMargin=\dimen166
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/bitset/bi
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/bitset/bi
 tset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/bigintcal
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/bigintcal
 c/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
@@ -333,7 +333,7 @@ Package hyperref Info: Link coloring OFF on input line 6062.
 Package hyperref Info: Link coloring with OCG OFF on input line 6067.
 Package hyperref Info: PDF/A mode OFF on input line 6072.
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/base/atbegs
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/base/atbegs
 hi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
@@ -344,7 +344,7 @@ package with kernel methods
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/hyperref/hx
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/hyperref/hx
 etex.def
 File: hxetex.def 2024-11-05 v7.01l Hyperref driver for XeTeX
 \pdfm@box=\box53
@@ -353,17 +353,17 @@ File: hxetex.def 2024-11-05 v7.01l Hyperref driver for XeTeX
 \Fld@listcount=\count305
 \c@bookmark@seq@number=\count306
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/rerunfilech
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/rerunfilech
 eck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/base/atvery
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/base/atvery
 end-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/uniquecou
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/uniquecou
 nter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
@@ -372,7 +372,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip51
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/titlesec/ti
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/titlesec/ti
 tlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box54
@@ -385,7 +385,7 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \titlewidthlast=\dimen172
 \titlewidthfirst=\dimen173
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/fancyhdr/fa
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/fancyhdr/fa
 ncyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 
@@ -405,48 +405,48 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthR=\skip67
 \@temptokenb=\toks23
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/tcolorbox/t
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/tcolorbox/t
 colorbox.sty
 Package: tcolorbox 2024/10/22 version 6.4.1 text color boxes
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/pgf/fronten
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/pgf/fronten
 dlayer/tikz.sty
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/pgf/basicla
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/pgf/basicla
 yer/pgf.sty
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/pgf/utiliti
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/pgf/utiliti
 es/pgfrcs.sty
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/utili
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/utili
 ties/pgfutil-common.tex
 \pgfutil@everybye=\toks24
 \pgfutil@tempdima=\dimen174
 \pgfutil@tempdimb=\dimen175
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/utili
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/utili
 ties/pgfutil-latex.def
 \pgfutil@abb=\box55
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/utili
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/utili
 ties/pgfrcs.code.tex
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/pgf.r
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/pgf.r
 evision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
 Package: pgf 2023-01-15 v3.1.10 (3.1.10)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/pgf/basicla
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/pgf/basicla
 yer/pgfcore.sty
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/pgf/systeml
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/pgf/systeml
 ayer/pgfsys.sty
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/syste
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/syste
 mlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/utili
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/utili
 ties/pgfkeys.code.tex
 \pgfkeys@pathtoks=\toks25
 \pgfkeys@temptoks=\toks26
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/utili
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/utili
 ties/pgfkeyslibraryfiltered.code.tex
 \pgfkeys@tmptoks=\toks27
 ))
@@ -471,45 +471,45 @@ ties/pgfkeyslibraryfiltered.code.tex
 \t@pgf@tokc=\toks30
 \pgf@sys@id@count=\count311
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/syste
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/syste
 mlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
 Driver file for pgf: pgfsys-xetex.def
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/syste
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/syste
 mlayer/pgfsys-xetex.def
 File: pgfsys-xetex.def 2023-01-15 v3.1.10 (3.1.10)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/syste
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/syste
 mlayer/pgfsys-dvipdfmx.def
 File: pgfsys-dvipdfmx.def 2023-01-15 v3.1.10 (3.1.10)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/syste
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/syste
 mlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 )
 \pgfsys@objnum=\count312
 )))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/syste
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/syste
 mlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfsyssoftpath@smallbuffer@items=\count313
 \pgfsyssoftpath@bigbuffer@items=\count314
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/syste
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/syste
 mlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmath.code.tex
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathutil.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathparser.code.tex
 \pgfmath@dimen=\dimen186
 \pgfmath@count=\count315
@@ -518,33 +518,33 @@ pgfmathparser.code.tex
 \pgfmath@stack@operand=\toks32
 \pgfmath@stack@operation=\toks33
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathfunctions.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathfunctions.basic.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathfunctions.trigonometric.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathfunctions.random.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathfunctions.comparison.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathfunctions.base.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathfunctions.round.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathfunctions.misc.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathfunctions.integerarithmetics.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathcalc.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count316
 ))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfint.code.tex)
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@picminx=\dimen187
@@ -562,19 +562,19 @@ File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@zx=\dimen199
 \pgf@zy=\dimen256
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@path@lastx=\dimen257
 \pgf@path@lasty=\dimen258
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@shorten@end@additional=\dimen259
 \pgf@shorten@start@additional=\dimen260
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box57
@@ -582,97 +582,97 @@ File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@layerbox@main=\box59
 \pgf@picture@serial@count=\count317
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgflinewidth=\dimen261
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@pt@x=\dimen262
 \pgf@pt@y=\dimen263
 \pgf@pt@temp=\dimen264
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcoreobjects.code.tex
 File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcorepathprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfarrowsep=\dimen265
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen266
 \pgf@sys@shading@range@num=\count318
 \pgf@shadingcount=\count319
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfexternal@startupbox=\box60
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcoretransparency.code.tex
 File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcorepatterns.code.tex
 File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/basic
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/basic
 layer/pgfcorerdf.code.tex
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/modul
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/modul
 es/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfnodeparttextbox=\box61
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/modul
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/modul
 es/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/pgf/compati
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/pgf/compati
 bility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
 \pgf@nodesepstart=\dimen267
 \pgf@nodesepend=\dimen268
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/pgf/compati
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/pgf/compati
 bility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 ))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/pgf/utiliti
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/pgf/utiliti
 es/pgffor.sty
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/pgf/utiliti
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/pgf/utiliti
 es/pgfkeys.sty
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/utili
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/utili
 ties/pgfkeys.code.tex))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/pgf/math/pg
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/pgf/math/pg
 fmath.sty
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/math/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/math/
 pgfmath.code.tex))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/utili
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/utili
 ties/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 \pgffor@iter=\dimen269
@@ -680,11 +680,11 @@ Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 \pgffor@stack=\toks34
 \pgffor@toks=\toks35
 ))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/front
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/front
 endlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/libra
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/libra
 ries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@plot@mark@count=\count320
@@ -707,7 +707,7 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikznumberofcurrentchild=\count323
 \tikz@fig@count=\count324
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/modul
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/modul
 es/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfmatrixcurrentrow=\count325
@@ -716,22 +716,22 @@ File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 \tikz@expandcount=\count328
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/pgf/front
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/pgf/front
 endlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/tools/verba
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/tools/verba
 tim.sty
 Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks36
 \verbatim@line=\toks37
 \verbatim@in@stream=\read4
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/environ/env
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/environ/env
 iron.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/trimspaces/
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/trimspaces/
 trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
@@ -751,7 +751,7 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@temp=\box73
 \tcb@temp=\box74
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/enumitem/en
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/enumitem/en
 umitem.sty
 Package: enumitem 2025/02/06 v3.11 Customized lists
 \labelindent=\skip68
@@ -761,7 +761,7 @@ Package: enumitem 2025/02/06 v3.11 Customized lists
 \enit@count@id=\count332
 \enitdp@description=\count333
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/tools/longt
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/tools/longt
 able.sty
 Package: longtable 2024-10-27 v4.22 Multi-page Table package (DPC)
 \LTleft=\skip69
@@ -781,7 +781,7 @@ Package: longtable 2024-10-27 v4.22 Multi-page Table package (DPC)
 \c@LT@chunks=\count338
 \LT@p@ftn=\toks40
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/booktabs/bo
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/booktabs/bo
 oktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen283
@@ -802,7 +802,7 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@lastruleclass=\count342
 \@thisrulewidth=\dimen295
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/li
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/listings/li
 stings.sty
 \lst@mode=\count343
 \lst@gtempboxa=\box81
@@ -817,41 +817,41 @@ stings.sty
 \lst@lineno=\count348
 \lst@maxwidth=\dimen299
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/ls
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/listings/ls
 tpatch.sty
 File: lstpatch.sty 2024/09/23 1.10c (Carsten Heinz)
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/ls
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/listings/ls
 tmisc.sty
 File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 \c@lstnumber=\count349
 \lst@skipnumbers=\count350
 \lst@framebox=\box82
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/li
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/listings/li
 stings.cfg
 File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
 Package: listings 2024/09/23 1.10c (Carsten Heinz)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/pifo
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/psnfss/pifo
 nt.sty
 Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
 LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
 
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/upzd
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/psnfss/upzd
 .fd
 File: upzd.fd 2001/06/04 font definitions for U/pzd.
 )
 LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
 
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/psnfss/upsy
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/psnfss/upsy
 .fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
 ))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/csquotes/cs
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/csquotes/cs
 quotes.sty
 Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
 \csq@reset=\count351
@@ -862,18 +862,18 @@ Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
 \csq@tshold=\count356
 \csq@ltx@everypar=\toks42
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/csquotes/cs
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/csquotes/cs
 quotes.def
 File: csquotes.def 2024-04-04 v5.2o csquotes generic definitions (JAW)
 )
 Package csquotes Info: Trying to load configuration file 'csquotes.cfg'...
 Package csquotes Info: ... configuration file loaded successfully.
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/csquotes/cs
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/csquotes/cs
 quotes.cfg
 File: csquotes.cfg 
 ))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/tocloft/toc
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/tocloft/toc
 loft.sty
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
 Package tocloft Info: The document has chapter divisions on input line 51.
@@ -914,23 +914,23 @@ Package tocloft Info: The document has chapter divisions on input line 51.
 \cfttabindent=\skip105
 \cfttabnumwidth=\skip106
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/datetime2/d
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/datetime2/d
 atetime2.sty
 Package: datetime2 2021/03/21 v1.5.7 (NLCT) date and time formats
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/tracklang/t
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/tracklang/t
 racklang.sty
 Package: tracklang 2025/03/04 v1.6.5 (NLCT) Track Languages
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/tracklang
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/tracklang
 /tracklang.tex))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/xkeyval/xke
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/xkeyval/xke
 yval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/xkeyval/x
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/xkeyval/x
 keyval.tex
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/xkeyval/x
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/xkeyval/x
 kvutils.tex
 \XKV@toks=\toks43
 \XKV@tempa@toks=\toks44
@@ -938,45 +938,45 @@ kvutils.tex
 \XKV@depth=\count359
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/datetime2-f
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/datetime2-f
 rench/datetime2-french.ldf
 File: datetime2-french.ldf 2020/09/21 v1.03
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/iftex/ifx
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/iftex/ifx
 etex.sty
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/generic/iftex/ifl
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/generic/iftex/ifl
 uatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/datetime2-f
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/datetime2-f
 rench/datetime2-french-utf8.ldf
 File: datetime2-french-utf8.ldf 2020/09/21 v1.03
 )))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsmath/ams
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amsmath/ams
 math.sty
 Package: amsmath 2024/11/05 v2.17t AMS math features
 \@mathmargin=\skip107
 
 For additional information on amsmath, use the `?' option.
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsmath/ams
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amsmath/ams
 text.sty
 Package: amstext 2021/08/26 v2.01 AMS text
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsmath/ams
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amsmath/ams
 gen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks45
 \ex@=\dimen300
 ))
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsmath/ams
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amsmath/ams
 bsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen301
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsmath/ams
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amsmath/ams
 opn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
@@ -1028,7 +1028,7 @@ LaTeX Info: Redefining \Relbar on input line 970.
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsfonts/am
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amsfonts/am
 sfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
@@ -1037,7 +1037,7 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsfonts/am
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amsfonts/am
 ssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
@@ -1066,6 +1066,9 @@ Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'french'.
  (./main.aux
+
+LaTeX Warning: Label `fig:contexte' multiply defined.
+
 
 LaTeX Warning: Label `fig:contexte' multiply defined.
 
@@ -1234,14 +1237,14 @@ Package hyperref Info: Link coloring ON on input line 278.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 285
 .
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsfonts/um
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amsfonts/um
 sa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 285
 .
 
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/amsfonts/um
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/amsfonts/um
 sb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -1274,89 +1277,34 @@ Overfull \hbox (5.23633pt too wide) in paragraph at lines 323--328
 
 [4] (./chapters/chapitre_I.tex
 Chapitre 1.
-
-Underfull \hbox (badness 10000) in paragraph at lines 5--7
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 8--10
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 17--19
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 31--31
-
- []
-
+Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
+t;!
 
 
 [5
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 38--41
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--49
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 57--59
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 66--68
-
- []
-
-
-Overfull \hbox (56.58354pt too wide) in paragraph at lines 81--82
+Overfull \hbox (56.58354pt too wide) in paragraph at lines 103--104
 []\TU/Helvetica(0)/b/n/10.95 Atteignable : \TU/Helvetica(0)/m/n/10.95 Version 1
 .0 livrable en 8 mois avec stack technique maîtrisée (React/Node.js/PostgreSQL)
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--88
-
- []
-
-
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 97--99
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 104--106
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 111--113
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 122--124
-
- []
-
 File: assets/diagramme.png Graphic file (type bmp)
 <assets/diagramme.png>
 
+
 LaTeX Font Warning: Font shape `TU/Helvetica(0)/m/sc' undefined
-(Font)              using `TU/Helvetica(0)/m/n' instead on input line 131.
+(Font)              using `TU/Helvetica(0)/m/n' instead on input line 158.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1640,207 +1588,310 @@ Overfull \hbox (5.19081pt too wide) in paragraph at lines 152--152
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 186--186
-[]\TU/Helvetica(0)/m/n/10.95 Flexibilité
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--186
-\TU/Helvetica(0)/m/n/10.95 schéma, per-
- []
-
-
-Underfull \hbox (badness 1540) in paragraph at lines 186--186
-[]\TU/Helvetica(0)/m/n/10.95 Manque intégrité
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--187
-[]\TU/Helvetica(0)/m/n/10.95 Critique pour
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--187
-\TU/Helvetica(0)/m/n/10.95 données utilisa-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 188--188
 []\TU/Helvetica(0)/m/n/10.95 Maturité, perfor-
  []
 
 
-Underfull \hbox (badness 4096) in paragraph at lines 188--188
+Underfull \hbox (badness 4096) in paragraph at lines 186--186
 []\TU/Helvetica(0)/m/n/10.95 Moins bon sup-
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 188--188
+Underfull \hbox (badness 1142) in paragraph at lines 186--186
 \TU/Helvetica(0)/m/n/10.95 port JSON, éco-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
 \TU/Helvetica(0)/m/n/10.95 meilleures perfs
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--190
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
 []\TU/Helvetica(0)/m/n/10.95 Popularité, sup-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--190
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
 []\TU/Helvetica(0)/m/n/10.95 Expérience dé-
  []
 
 
-Underfull \hbox (badness 3568) in paragraph at lines 190--190
+Underfull \hbox (badness 3568) in paragraph at lines 188--188
 \TU/Helvetica(0)/m/n/10.95 veloppeur moins
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
 []\TU/Helvetica(0)/m/n/10.95 Prisma offre
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
 \TU/Helvetica(0)/m/n/10.95 meilleure type-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--192
+Underfull \hbox (badness 10000) in paragraph at lines 190--190
 []\TU/Helvetica(0)/m/n/10.95 Simplicité, zero-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--192
+Underfull \hbox (badness 10000) in paragraph at lines 190--190
 []\TU/Helvetica(0)/m/n/10.95 Limitations sca-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
 []\TU/Helvetica(0)/m/n/10.95 Inadapté pour
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--194
+Underfull \hbox (badness 10000) in paragraph at lines 192--192
 []\TU/Helvetica(0)/m/n/10.95 Développement
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--194
+Underfull \hbox (badness 10000) in paragraph at lines 192--192
 []\TU/Helvetica(0)/m/n/10.95 Vendor lock-in,
  []
 
 
-Underfull \hbox (badness 5036) in paragraph at lines 194--195
+Underfull \hbox (badness 5036) in paragraph at lines 192--193
 []\TU/Helvetica(0)/m/n/10.95 Autonomie tech-
  []
 
 
 
 [11]
-Overfull \hbox (147.2707pt too wide) in paragraph at lines 203--230
- [] 
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
+[]\TU/Helvetica(0)/m/n/10.95 Authentification
+ []
+
+
+Underfull \hbox (badness 3417) in paragraph at lines 206--206
+[]\TU/Helvetica(0)/m/n/10.95 Accès aux don-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--206
+\TU/Helvetica(0)/m/n/10.95 nées utilisateur,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--207
+[]\TU/Helvetica(0)/m/n/10.95 Condition sine
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--208
+[]\TU/Helvetica(0)/m/n/10.95 Cœur valeur
+ []
+
+
+Underfull \hbox (badness 1082) in paragraph at lines 208--208
+\TU/Helvetica(0)/m/n/10.95 ajoutée, différen-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
+[]\TU/Helvetica(0)/m/n/10.95 Résolution pro-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 210--210
+[]\TU/Helvetica(0)/m/n/10.95 Gestion es-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 210--210
+[]\TU/Helvetica(0)/m/n/10.95 Fonctionnalité
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 210--210
+\TU/Helvetica(0)/m/n/10.95 collaborative
+ []
+
+
+Underfull \hbox (badness 1552) in paragraph at lines 210--211
+[]\TU/Helvetica(0)/m/n/10.95 Rétention utilisa-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--212
+[]\TU/Helvetica(0)/m/n/10.95 Persistance
+ []
+
+
+Underfull \hbox (badness 3547) in paragraph at lines 212--212
+\TU/Helvetica(0)/m/n/10.95 données, perfor-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
+[]\TU/Helvetica(0)/m/n/10.95 Fondation tech-
+ []
+
+
+Underfull \hbox (badness 5077) in paragraph at lines 214--214
+[]\TU/Helvetica(0)/m/n/10.95 Calendrier colla-
+ []
+
+
+Underfull \hbox (badness 1552) in paragraph at lines 214--214
+\TU/Helvetica(0)/m/n/10.95 organisation me-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
+[]\TU/Helvetica(0)/m/n/10.95 Profil joueur +
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
+[]\TU/Helvetica(0)/m/n/10.95 Personnalisation
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
+\TU/Helvetica(0)/m/n/10.95 expérience utili-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--217
+[]\TU/Helvetica(0)/m/n/10.95 Engagement
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--218
+[]\TU/Helvetica(0)/m/n/10.95 Système de
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--220
+[]\TU/Helvetica(0)/m/n/10.95 Rappels ses-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--220
+\TU/Helvetica(0)/m/n/10.95 sions, engage-
+ []
+
+
+Underfull \hbox (badness 3547) in paragraph at lines 222--222
+[]\TU/Helvetica(0)/m/n/10.95 Coût développe-
+ []
+
+
+Underfull \hbox (badness 3417) in paragraph at lines 222--222
+\TU/Helvetica(0)/m/n/10.95 ment trop élevé
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
+[]\TU/Helvetica(0)/m/n/10.95 Report version
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--226
+[]\TU/Helvetica(0)/m/n/10.95 Streaming inté-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
+[]\TU/Helvetica(0)/m/n/10.95 Solutions dé-
  []
 
 
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 305--305
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 309--309
 []\TU/Helvetica(0)/m/n/10.95 Évolution API
  []
 
 
-Underfull \hbox (badness 1552) in paragraph at lines 305--305
+Underfull \hbox (badness 1552) in paragraph at lines 309--309
 []\TU/Helvetica(0)/m/n/10.95 Monitoring chan-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--305
+Underfull \hbox (badness 10000) in paragraph at lines 309--309
 \TU/Helvetica(0)/m/n/10.95 gements, tests
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--307
+Underfull \hbox (badness 10000) in paragraph at lines 311--311
 []\TU/Helvetica(0)/m/n/10.95 Faible adoption
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--307
+Underfull \hbox (badness 10000) in paragraph at lines 311--311
 []\TU/Helvetica(0)/m/n/10.95 Marketing com-
  []
 
 
-Underfull \hbox (badness 1546) in paragraph at lines 307--308
+Underfull \hbox (badness 1546) in paragraph at lines 311--312
 []\TU/Helvetica(0)/m/n/10.95 Pivot fonctionna-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--308
+Underfull \hbox (badness 10000) in paragraph at lines 311--312
 \TU/Helvetica(0)/m/n/10.95 lités, feedback
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--309
+Underfull \hbox (badness 10000) in paragraph at lines 313--313
 []\TU/Helvetica(0)/m/n/10.95 Problèmes per-
  []
 
 
-Underfull \hbox (badness 1852) in paragraph at lines 309--309
+Underfull \hbox (badness 1852) in paragraph at lines 313--313
 []\TU/Helvetica(0)/m/n/10.95 Tests de charge
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--309
+Underfull \hbox (badness 10000) in paragraph at lines 313--313
 \TU/Helvetica(0)/m/n/10.95 early, optimisa-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
 []\TU/Helvetica(0)/m/n/10.95 Scaling horizon-
  []
 
 
-Underfull \hbox (badness 5050) in paragraph at lines 311--311
+Underfull \hbox (badness 5050) in paragraph at lines 315--315
 \TU/Helvetica(0)/m/n/10.95 tomatiques, vali-
  []
 
 
-Underfull \hbox (badness 2418) in paragraph at lines 311--312
+Underfull \hbox (badness 2418) in paragraph at lines 315--316
 []\TU/Helvetica(0)/m/n/10.95 Restauration de-
  []
 
 
-Underfull \hbox (badness 2302) in paragraph at lines 313--313
+Underfull \hbox (badness 2302) in paragraph at lines 317--317
 []\TU/Helvetica(0)/m/n/10.95 Revue de sécu-
  []
 
 
-Underfull \hbox (badness 3428) in paragraph at lines 313--313
+Underfull \hbox (badness 3428) in paragraph at lines 317--317
 \TU/Helvetica(0)/m/n/10.95 rité, tests péné-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--314
+Underfull \hbox (badness 10000) in paragraph at lines 317--318
 []\TU/Helvetica(0)/m/n/10.95 Procédures
  []
 
 
-Underfull \hbox (badness 6842) in paragraph at lines 313--314
+Underfull \hbox (badness 6842) in paragraph at lines 317--318
 \TU/Helvetica(0)/m/n/10.95 d’urgence, revo-
  []
 
-
-
-[13]
-Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
-t;!
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
 t;!
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
@@ -1854,288 +1905,295 @@ t;!
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
 t;!
 
-Underfull \hbox (badness 10000) in paragraph at lines 371--372
+
+[14]
+Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
+t;!
+
+Underfull \hbox (badness 10000) in paragraph at lines 376--377
 []\TU/Helvetica(0)/b/n/10.95 Stratégie d’en-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--373
+Underfull \hbox (badness 10000) in paragraph at lines 378--378
 []\TU/Helvetica(0)/m/n/10.95 Utilisateurs fi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
 []\TU/Helvetica(0)/m/n/10.95 Validation conti-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
 \TU/Helvetica(0)/m/n/10.95 nue, feedback
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
 \TU/Helvetica(0)/m/n/10.95 régulier, beta
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 375--375
+Underfull \hbox (badness 10000) in paragraph at lines 380--380
 []\TU/Helvetica(0)/m/n/10.95 Développeur
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--377
+Underfull \hbox (badness 10000) in paragraph at lines 382--382
 []\TU/Helvetica(0)/m/n/10.95 Communauté
  []
 
 
-Underfull \hbox (badness 1824) in paragraph at lines 377--378
+Underfull \hbox (badness 1824) in paragraph at lines 382--383
 []\TU/Helvetica(0)/m/n/10.95 Implication early,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
 \TU/Helvetica(0)/m/n/10.95 recrutement
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
 \TU/Helvetica(0)/m/n/10.95 testeurs, com-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
 \TU/Helvetica(0)/m/n/10.95 munication
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 379--380
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
 []\TU/Helvetica(0)/m/n/10.95 Conformité aux
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 379--380
+Underfull \hbox (badness 1577) in paragraph at lines 384--385
 \TU/Helvetica(0)/m/n/10.95 CGU, monitoring
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 379--380
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
 \TU/Helvetica(0)/m/n/10.95 changements,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 381--382
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
 []\TU/Helvetica(0)/m/n/10.95 Recrutement
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 381--382
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
 \TU/Helvetica(0)/m/n/10.95 actif, reconnais-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 381--382
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
 \TU/Helvetica(0)/m/n/10.95 sance contribu-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 381--382
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
 \TU/Helvetica(0)/m/n/10.95 tion, feedback
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--384
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
 []\TU/Helvetica(0)/m/n/10.95 Documentation
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--384
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
 \TU/Helvetica(0)/m/n/10.95 complète,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--384
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
 \TU/Helvetica(0)/m/n/10.95 démonstra-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--384
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
 \TU/Helvetica(0)/m/n/10.95 tions, preuves
  []
 
 
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 398--398
+Underfull \hbox (badness 10000) in paragraph at lines 403--403
 []\TU/Helvetica(0)/m/n/10.95 Authentification
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--398
+Underfull \hbox (badness 10000) in paragraph at lines 403--403
 []\TU/Helvetica(0)/m/n/10.95 Connexion sécurisée via Bun-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--398
+Underfull \hbox (badness 10000) in paragraph at lines 403--403
 \TU/Helvetica(0)/m/n/10.95 gie.net, gestion sessions JWT,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--402
+Underfull \hbox (badness 10000) in paragraph at lines 407--407
 []\TU/Helvetica(0)/m/n/10.95 Gestion es-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--402
+Underfull \hbox (badness 10000) in paragraph at lines 407--407
 []\TU/Helvetica(0)/m/n/10.95 Création/modification escouades,
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 402--402
+Underfull \hbox (badness 1270) in paragraph at lines 407--407
 \TU/Helvetica(0)/m/n/10.95 invitation membres, gestion rôles
  []
 
 
-Underfull \hbox (badness 5077) in paragraph at lines 404--404
+Underfull \hbox (badness 5077) in paragraph at lines 409--409
 []\TU/Helvetica(0)/m/n/10.95 Calendrier colla-
  []
 
 
-Underfull \hbox (badness 2762) in paragraph at lines 404--404
+Underfull \hbox (badness 2762) in paragraph at lines 409--409
 []\TU/Helvetica(0)/m/n/10.95 Vue mensuelle/semaine, création
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 404--405
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
 []\TU/Helvetica(0)/m/n/10.95 Should
  []
 
 
-Underfull \hbox (badness 2343) in paragraph at lines 406--406
+Underfull \hbox (badness 2343) in paragraph at lines 411--411
 []\TU/Helvetica(0)/m/n/10.95 Statistiques jeu, historique raids,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--407
+Underfull \hbox (badness 10000) in paragraph at lines 411--412
 []\TU/Helvetica(0)/m/n/10.95 Should
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 408--408
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
 []\TU/Helvetica(0)/m/n/10.95 Recherche
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 408--408
+Underfull \hbox (badness 10000) in paragraph at lines 413--413
 []\TU/Helvetica(0)/m/n/10.95 Filtres par niveau, disponibilité,
  []
 
 
 
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 419--419
+Underfull \hbox (badness 10000) in paragraph at lines 425--425
 []\TU/Helvetica(0)/m/n/10.95 Administration
  []
 
 
-Underfull \hbox (badness 5008) in paragraph at lines 421--421
+Underfull \hbox (badness 5008) in paragraph at lines 427--427
 []\TU/Helvetica(0)/m/n/10.95 Gestion contenu
  []
 
 
-Underfull \hbox (badness 3568) in paragraph at lines 421--421
+Underfull \hbox (badness 3568) in paragraph at lines 427--427
 \TU/Helvetica(0)/m/n/10.95 lidation modifications, versioning,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 423--423
+Underfull \hbox (badness 10000) in paragraph at lines 429--429
 []\TU/Helvetica(0)/m/n/10.95 Analytics plate-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 423--423
+Underfull \hbox (badness 10000) in paragraph at lines 429--429
 []\TU/Helvetica(0)/m/n/10.95 Métriques engagement, per-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 423--423
+Underfull \hbox (badness 10000) in paragraph at lines 429--429
 \TU/Helvetica(0)/m/n/10.95 formance technique, erreurs,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 423--424
+Underfull \hbox (badness 10000) in paragraph at lines 429--430
 []\TU/Helvetica(0)/m/n/10.95 Should
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 425--425
+Underfull \hbox (badness 10000) in paragraph at lines 431--431
 []\TU/Helvetica(0)/m/n/10.95 Monitoring API Bungie, perfor-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 425--426
+Underfull \hbox (badness 10000) in paragraph at lines 431--432
 []\TU/Helvetica(0)/m/n/10.95 Should
  []
 
 
-Underfull \hbox (badness 2020) in paragraph at lines 427--427
+Underfull \hbox (badness 2020) in paragraph at lines 433--433
 []\TU/Helvetica(0)/m/n/10.95 Backup base données, restaura-
  []
 
 
-Overfull \hbox (7.21072pt too wide) in paragraph at lines 436--436
+Overfull \hbox (7.21072pt too wide) in paragraph at lines 443--443
 []\TU/Helvetica(0)/b/n/10.95 Anonyme| 
  []
 
 
-Underfull \hbox (badness 6608) in paragraph at lines 438--438
+Underfull \hbox (badness 6608) in paragraph at lines 445--445
 []\TU/Helvetica(0)/m/n/10.95 Voir guides pu-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 440--440
+Underfull \hbox (badness 10000) in paragraph at lines 447--447
 []\TU/Helvetica(0)/m/n/10.95 Connexion Bun-
  []
 
 
-Underfull \hbox (badness 5050) in paragraph at lines 444--444
+Underfull \hbox (badness 5050) in paragraph at lines 451--451
 []\TU/Helvetica(0)/m/n/10.95 Planifier session
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 448--448
+Underfull \hbox (badness 10000) in paragraph at lines 455--455
 []\TU/Helvetica(0)/m/n/10.95 Admin utilisa-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 452--452
+Underfull \hbox (badness 10000) in paragraph at lines 459--459
 []\TU/Helvetica(0)/m/n/10.95 Configuration
  []
 
 
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 463--463
+Underfull \hbox (badness 10000) in paragraph at lines 471--471
 []\TU/Helvetica(0)/m/n/10.95 Données collec-
  []
 
 
-Underfull \hbox (badness 1107) in paragraph at lines 467--468
+Underfull \hbox (badness 1107) in paragraph at lines 475--476
 []\TU/Helvetica(0)/m/n/10.95 Chiffrement AES-256 base PostgreSQL, se-
  []
 
 
-Underfull \hbox (badness 2443) in paragraph at lines 469--469
+Underfull \hbox (badness 2443) in paragraph at lines 477--477
 []\TU/Helvetica(0)/m/n/10.95 Durée conserva-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 473--473
+Underfull \hbox (badness 10000) in paragraph at lines 481--481
 []\TU/Helvetica(0)/m/n/10.95 Sécurité tech-
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 477--478
+Underfull \hbox (badness 1158) in paragraph at lines 485--486
 []\TU/Helvetica(0)/m/n/10.95 Désignation responsable conformité, registre
  []
 
@@ -2150,52 +2208,52 @@ t;!
 
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 562--562
+Underfull \hbox (badness 10000) in paragraph at lines 572--572
 []\TU/Helvetica(0)/b/n/10.95 Indicateur de
  []
 
 
-Underfull \hbox (badness 3417) in paragraph at lines 564--564
+Underfull \hbox (badness 3417) in paragraph at lines 574--574
 []\TU/Helvetica(0)/m/n/10.95 Taux de succès
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--566
+Underfull \hbox (badness 10000) in paragraph at lines 576--576
 []\TU/Helvetica(0)/m/n/10.95 Temps moyen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--566
+Underfull \hbox (badness 10000) in paragraph at lines 576--576
 \TU/Helvetica(0)/m/n/10.95 consultation
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 568--568
+Underfull \hbox (badness 10000) in paragraph at lines 578--578
 []\TU/Helvetica(0)/m/n/10.95 Gestion es-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 568--568
+Underfull \hbox (badness 10000) in paragraph at lines 578--578
 []\TU/Helvetica(0)/m/n/10.95 Nombre es-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 570--570
+Underfull \hbox (badness 10000) in paragraph at lines 580--580
 []\TU/Helvetica(0)/m/n/10.95 Temps moyen
  []
 
 
-Underfull \hbox (badness 1552) in paragraph at lines 570--570
+Underfull \hbox (badness 1552) in paragraph at lines 580--580
 \TU/Helvetica(0)/m/n/10.95 planification ses-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 574--574
+Underfull \hbox (badness 10000) in paragraph at lines 584--584
 []\TU/Helvetica(0)/m/n/10.95 Performance
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 574--574
+Underfull \hbox (badness 10000) in paragraph at lines 584--584
 []\TU/Helvetica(0)/m/n/10.95 Temps réponse
  []
 
@@ -2330,11 +2388,6 @@ elease avec
 [24]
 
 [25]
-Overfull \hbox (7.58614pt too wide) in paragraph at lines 253--254
-[]|\TU/Helvetica(0)/b/n/10.95 Justification
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 255--255
 []|\TU/Helvetica(0)/m/sc/10.95 Environnement
  []
@@ -2345,43 +2398,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 255--255
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
-[]|\TU/Helvetica(0)/m/sc/10.95 Standard,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
-\TU/Helvetica(0)/m/sc/10.95 pas de
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 257--257
 []|\TU/Helvetica(0)/m/sc/10.95 Authentification
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 257--258
-[]|\TU/Helvetica(0)/m/sc/10.95 Complexité
- []
-
-
-Underfull \hbox (badness 3930) in paragraph at lines 257--258
-\TU/Helvetica(0)/m/sc/10.95 API OAuth
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 257--258
-\TU/Helvetica(0)/m/sc/10.95 + gestion
+[]|\TU/Helvetica(0)/m/sc/10.95 Complexité API
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 259--260
 []|\TU/Helvetica(0)/m/sc/10.95 Standard,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
-\TU/Helvetica(0)/m/sc/10.95 schéma
  []
 
 
@@ -2391,47 +2419,27 @@ Underfull \hbox (badness 2318) in paragraph at lines 261--261
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 261--262
-[]|\TU/Helvetica(0)/m/sc/10.95 Logique
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 261--262
-\TU/Helvetica(0)/m/sc/10.95 métier
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 261--262
-\TU/Helvetica(0)/m/sc/10.95 complexe,
+[]|\TU/Helvetica(0)/m/sc/10.95 Logique métier
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 263--264
-[]|\TU/Helvetica(0)/m/sc/10.95 UI com-
+[]|\TU/Helvetica(0)/m/sc/10.95 UI complexe,
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 263--264
-\TU/Helvetica(0)/m/sc/10.95 plexe,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
-\TU/Helvetica(0)/m/sc/10.95 intégration
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
-\TU/Helvetica(0)/m/sc/10.95 données
- []
-
-
-Overfull \hbox (4.56526pt too wide) in paragraph at lines 265--266
-[]|\TU/Helvetica(0)/m/sc/10.95 Composants
+\TU/Helvetica(0)/m/sc/10.95 intégration don-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 265--266
-\TU/Helvetica(0)/m/sc/10.95 React
+[]|\TU/Helvetica(0)/m/sc/10.95 Composants
+ []
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 267--268
+[]|\TU/Helvetica(0)/m/sc/10.95 Simple affichage
  []
 
 
@@ -2440,23 +2448,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 269--269
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 269--270
-[]|\TU/Helvetica(0)/m/sc/10.95 Risque
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 269--270
-\TU/Helvetica(0)/m/sc/10.95 élevé,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 269--270
-\TU/Helvetica(0)/m/sc/10.95 documen-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 269--270
-\TU/Helvetica(0)/m/sc/10.95 tation API
+Underfull \hbox (badness 3568) in paragraph at lines 269--270
+\TU/Helvetica(0)/m/sc/10.95 cumentation API
  []
 
 
@@ -2466,67 +2459,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 271--271
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 271--272
-[]|\TU/Helvetica(0)/m/sc/10.95 Logique
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 271--272
-\TU/Helvetica(0)/m/sc/10.95 métier,
- []
-
-
-Underfull \hbox (badness 1072) in paragraph at lines 271--272
-\TU/Helvetica(0)/m/sc/10.95 tests gami-
+[]|\TU/Helvetica(0)/m/sc/10.95 Logique métier,
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 273--274
-[]|\TU/Helvetica(0)/m/sc/10.95 Couverture
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
-\TU/Helvetica(0)/m/sc/10.95 élevée re-
- []
-
-
-Underfull \hbox (badness 5446) in paragraph at lines 273--274
-\TU/Helvetica(0)/m/sc/10.95 quise pour
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 275--276
-[]|\TU/Helvetica(0)/m/sc/10.95 Scénarios
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 275--276
-\TU/Helvetica(0)/m/sc/10.95 utilisateurs
+[]|\TU/Helvetica(0)/m/sc/10.95 Couverture éle-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 277--278
-[]|\TU/Helvetica(0)/m/sc/10.95 Standard,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 277--278
-\TU/Helvetica(0)/m/sc/10.95 configura-
+[]|\TU/Helvetica(0)/m/sc/10.95 Standard, confi-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 279--280
-[]|\TU/Helvetica(0)/m/sc/10.95 Pipeline
+[]|\TU/Helvetica(0)/m/sc/10.95 Pipeline com-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--280
-\TU/Helvetica(0)/m/sc/10.95 complexe
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 279--280
-\TU/Helvetica(0)/m/sc/10.95 avec tests
+Underfull \hbox (badness 1132) in paragraph at lines 279--280
+\TU/Helvetica(0)/m/sc/10.95 plexe avec tests
  []
 
 
@@ -2535,13 +2488,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 281--281
  []
 
 
-Overfull \hbox (16.745pt too wide) in paragraph at lines 281--282
-[]|\TU/Helvetica(0)/m/sc/10.95 Documentation
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 281--282
-\TU/Helvetica(0)/m/sc/10.95 API spéci-
+[]|\TU/Helvetica(0)/m/sc/10.95 Documentation
  []
 
 [26]
@@ -2553,7 +2501,10 @@ Chapitre 4.
 File: assets/diagramme_user_case.png Graphic file (type bmp)
 <assets/diagramme_user_case.png>
 
-LaTeX Warning: Float too large for page by 384.2106pt on input line 37.
+Overfull \hbox (0.97475pt too wide) in paragraph at lines 31--43
+\TU/Helvetica(0)/b/n/10.95 Diagramme Use Case détaillé :  Spécifications des ca
+s d’usage critiques : UC002 - Consul-
+ []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -2567,123 +2518,17 @@ t;!
 ]
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
 t;!
-File: assets/diagramme-seq-auth.png Graphic file (type bmp)
-<assets/diagramme-seq-auth.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-File: assets/diagramme-seq-consult.png Graphic file (type bmp)
-<assets/diagramme-seq-consult.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 
 
 [30]
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+File: assets/diagramme-seq-auth.png Graphic file (type bmp)
+<assets/diagramme-seq-auth.png>
+File: assets/diagramme-seq-consult.png Graphic file (type bmp)
+<assets/diagramme-seq-consult.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
@@ -2692,57 +2537,161 @@ Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 
 
 [31]
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+
+
+[32]
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+
+
+[33]
 File: assets/entite-relation.png Graphic file (type bmp)
 <assets/entite-relation.png>
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: assets/diagramme_MCD.png Graphic file (type bmp)
 <assets/diagramme_MCD.png>
-
-LaTeX Warning: Float too large for page by 391.30786pt on input line 250.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -2759,7 +2708,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[32]
+[34]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 299.
 
@@ -2804,21 +2753,21 @@ Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 
 
-[33]
+[35]
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
 Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
@@ -2856,43 +2805,42 @@ Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 
 
-[34]
-(/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/listings/ls
+[36]
+(/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/tex/latex/listings/ls
 tlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
-
-[35]
-
-[36]
 
 [37]
 
 [38]
 
-[39]) (./chapters/chapitre_V.tex
+[39]
 
 [40]
 
-[41]
+[41]) (./chapters/chapitre_V.tex
 
 [42]
 
 [43]
 
 [44]
-
-[45]
-
-[46
-
-]
 Chapitre 5.
 
+
+[45
+
+]
+
+[46]
 
 [47]
 
 [48]
+File: assets/architecture_destiny.png Graphic file (type bmp)
+<assets/architecture_destiny.png>
+
 
 [49]
 
@@ -2916,66 +2864,57 @@ Chapitre 5.
 
 [59]
 
-[60]
+[60]) (./chapters/chapitre_VI.tex
 
 [61]
 
-[62]) (./chapters/chapitre_VI.tex
-
-[63]
-
-[64
+[62
 
 ]
 Chapitre 6.
 
 
+[63]
+
+[64]
+
 [65]
-Overfull \vbox (515.18521pt too high) has occurred while \output is active []
-
-
 
 [66]
 
 [67]
-Overfull \vbox (513.49431pt too high) has occurred while \output is active []
-
-
 
 [68]
 
 [69]
 
 [70]
-Overfull \vbox (1221.40343pt too high) has occurred while \output is active []
-
-
-
-[71]
-Underfull \hbox (badness 1371) in paragraph at lines 520--521
+Underfull \hbox (badness 1371) in paragraph at lines 502--503
 []\TU/Helvetica(0)/m/sc/10.95 Sécurité et prévention
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--524
+Underfull \hbox (badness 10000) in paragraph at lines 505--506
 []\TU/Helvetica(0)/m/sc/10.95 Contribution commu-
  []
 
 
+
+[71]
 
 [72]
 
 [73]
 
 [74]
-Overfull \hbox (18.12175pt too wide) in paragraph at lines 726--727
+Overfull \hbox (18.12175pt too wide) in paragraph at lines 699--700
 []\TU/Helvetica(0)/m/sc/10.95 CNIL RGPD pour les jeux vidéo : [][]$[][][][][] [
 ] [] [] [][][] [] [][][][] [] [][] [] [][] [] [][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][][][][]$[][] 
  []
 
 
-Overfull \hbox (0.32909pt too wide) in paragraph at lines 730--731
+Overfull \hbox (0.32909pt too wide) in paragraph at lines 703--704
 []\TU/Helvetica(0)/m/sc/10.95 Guide RGPD pour développeurs : [][]$[][][][][] []
  [] [] [][][] [] [][][][] [] [][] [] [][] [] [][][][][][][][][][][][][][][][][]
 [][][][][][][][][][][]$[][] 
@@ -2991,6 +2930,9 @@ Overfull \hbox (0.32909pt too wide) in paragraph at lines 730--731
 Chapitre 7.
 File: assets/pyramide_test.png Graphic file (type bmp)
 <assets/pyramide_test.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 
 [77]
@@ -3136,12 +3078,12 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: C817B65FE1BB47B0A3B2B658849C5F66;24018.
  ) 
 Here is how much of TeX's memory you used:
- 34032 strings out of 473832
- 702427 string characters out of 5719381
- 1944094 words of memory out of 5000000
- 56558 multiletter control sequences out of 15000+600000
+ 34035 strings out of 473832
+ 702651 string characters out of 5719382
+ 1542086 words of memory out of 5000000
+ 56560 multiletter control sequences out of 15000+600000
  564911 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,12n,101p,851b,1935s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,12n,101p,854b,1930s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (109 pages, 3147260 bytes).
+Output written on main.xdv (109 pages, 3115920 bytes).
