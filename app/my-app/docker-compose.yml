@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    image: lucasrochetin/destiny-raid-companion:latest
+    platform: linux/amd64
+    container_name: my-app-app
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
