@@ -1,6 +1,8 @@
 name: Deploy de Production
 
-on: [push]
+on: 
+  push:
+    branches: [ main ]
 
 jobs:
   test:
