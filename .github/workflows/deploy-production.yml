@@ -55,11 +55,6 @@ jobs:
             cd app
             docker compose build
 
-      - name: Tag images
-        run: |
-          docker ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-backend:latest
-          docker ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-frontend:latest
-
       - name: Push images
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-backend:latest
