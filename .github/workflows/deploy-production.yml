@@ -57,8 +57,8 @@ jobs:
 
       - name: Tag images
         run: |
-          docker tag destiny-raid-companion-backend ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-backend:latest
-          docker tag destiny-raid-companion-frontend ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-frontend:latest
+          docker ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-backend:latest
+          docker ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-frontend:latest
 
       - name: Push images
         run: |
