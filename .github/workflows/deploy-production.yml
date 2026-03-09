@@ -51,7 +51,9 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build images
-        run: docker compose -f docker-compose.yml build
+        run: |
+            cd app
+            docker compose build
 
       - name: Tag images
         run: |
