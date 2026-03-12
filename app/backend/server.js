@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 // API test
 app.get("/api", (req, res) => {
   res.json({ message: "API running" });
-});
+}); 
 
 // exemple de données
 let raids = [
