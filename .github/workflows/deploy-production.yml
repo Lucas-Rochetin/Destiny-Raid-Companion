@@ -79,4 +79,4 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-frontend:latest
 
             docker compose down
-            docker compose up
+            docker compose up -d
