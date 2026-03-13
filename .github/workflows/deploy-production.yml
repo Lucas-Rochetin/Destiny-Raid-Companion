@@ -1,4 +1,4 @@
-name: Deployment de Production
+name: Deploy de Production
 
 on:
   push:
