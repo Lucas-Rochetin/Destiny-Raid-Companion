@@ -59,3 +59,26 @@ jobs:
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-backend:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-frontend:latest
+
+  deploy:
+
+    needs: docker
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Deploy sur EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+
+          script: |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-backend:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-frontend:latest
+
+            cd destiny/destiny/app/
+
+            docker compose down
+            docker compose up -d
