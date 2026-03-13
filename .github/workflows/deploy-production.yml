@@ -78,5 +78,7 @@ jobs:
             docker pull ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-backend:latest
             docker pull ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-frontend:latest
 
+            cd destiny/destiny/app/
+
             docker compose down
             docker compose up -d
