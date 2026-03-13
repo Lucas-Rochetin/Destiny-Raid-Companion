@@ -1,10 +1,10 @@
-name: Deploy de Production
+name: Deployment de Production
 
 on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ main ]  
+    branches: [ main ]
 
 jobs:
 
