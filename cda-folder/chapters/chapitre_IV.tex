@@ -1,396 +1,225 @@
 \chapter{Conception fonctionnelle et technique}
 
-\textbf{Notre approche de conception :} \textit{Notre méthodologie suit une approche itérative centrée sur l'utilisateur, avec validation continue des choix techniques via des prototypes et des tests utilisateurs. Le processus inclut la modélisation UML, la conception de la base de données, et la validation de l'architecture technique avant toute implémentation. Chaque composant est documenté avec ses spécifications techniques détaillées, ses interfaces et ses contraintes de performance.}
+\textbf{Ma démarche de conception :} J'ai suivi une approche itérative : je modélise d'abord pour clarifier mes idées, je valide avec des utilisateurs, puis j'implémente. Cette méthode garantit que je réponds aux vrais besoins des joueurs.
 
-\section{Use Cases et diagrammes UML}
+\section{Les cas d'usage (Use Cases)}
 
-Les Use Cases modélisent les interactions entre les acteurs et le système pour identifier les fonctionnalités essentielles. Cette approche centrée utilisateur garantit que le système répond aux besoins métier réels. Les diagrammes UML facilitent la communication entre les équipes techniques et métier, réduisant les risques d'incompréhension.
+Avant la première ligne de code, j'ai listé toutes les interactions possibles avec l'application.
 
-La modélisation des cas d'usage permet d'identifier les flux principaux et alternatifs, ainsi que les cas d'erreur à gérer. Cette analyse préalable guide la conception technique et les tests d'acceptation.
-\vspace{0.5cm}
-\textbf{Acteurs principaux identifiés :}
+\subsection{Les acteurs du système}
+
 \begin{itemize}
-    \item \textbf{Joueur Débutant :} Nouvel utilisateur cherchant à comprendre les mécaniques de raid
-    \item \textbf{Joueur Expérimenté :} Utilisateur régulier optimisant son gameplay
-    \item \textbf{Leader d'Escouade :} Responsable de la coordination d'équipe
-    \item \textbf{Administrateur :} Gestionnaire de contenu et modérateur
-    \item \textbf{Système Bungie API :} Source externe de données de jeu
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Cas d'usage critiques modélisés :}
-\begin{itemize}
-    \item \textbf{UC001 :} Authentification OAuth avec Bungie.net
-    \item \textbf{UC002 :} Consultation guide interactif de raid
-    \item \textbf{UC003 :} Création et gestion d'escouade
-    \item \textbf{UC004 :} Planification de session de raid
-    \item \textbf{UC005 :} Attribution et consultation de badges
-    \item \textbf{UC006 :} Synchronisation des données de profil
-    \item \textbf{UC007 :} Gestion administrative du contenu
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Diagramme Use Case détaillé :}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.3\textwidth]{assets/diagramme_user_case.png}
-    \caption{Diagramme Use Case}
-    \label{fig:contexte}
-\end{figure}
-\vspace{0.5cm}
-\textbf{Spécifications des cas d'usage critiques :}
-\vspace{0.5cm}
-\textbf{UC002 - Consultation guide interactif :}
-\begin{itemize}
-    \item \textbf{Préconditions :} Utilisateur authentifié, guide disponible
-    \item \textbf{Flux principal :}
-    \begin{enumerate}
-        \item Utilisateur sélectionne un raid dans la liste
-        \item Système charge le guide interactif
-        \item Utilisateur navigue entre les étapes
-        \item Système affiche mécaniques détaillées avec illustrations
-        \item Utilisateur consulte les recommandations d'équipement
-    \end{enumerate}
-    \item \textbf{Flux alternatif :} Guide non disponible → Message d'erreur avec délai estimation
-    \item \textbf{Postconditions :} Historique de consultation mis à jour
-\end{itemize}
-\vspace{0.5cm}
-\textbf{UC004 - Planification de session :}
-\begin{itemize}
-    \item \textbf{Préconditions :} Leader authentifié, escouade existante
-    \item \textbf{Flux principal :}
-    \begin{enumerate}
-        \item Leader accède au calendrier
-        \item Sélectionne date et créneau horaire
-        \item Choisit le raid et la difficulté
-        \item Invite les membres de l'escouade
-        \item Système envoie les notifications
-        \item Session créée dans tous les agendas
-    \end{enumerate}
-    \item \textbf{Flux alternatif :} Conflit de planning → Suggestion de créneaux alternatifs
-    \item \textbf{Postconditions :} Session planifiée, membres notifiés
+    \item \textbf{Joueur débutant :} Veut apprendre les raids et trouver une équipe bienveillante
+    \item \textbf{Joueur expérimenté :} Veut organiser ses sessions rapidement
+    \item \textbf{Leader d'escouade :} Gère une équipe et suit la progression
+    \item \textbf{Administrateur :} Modère les contenus
+    \item \textbf{Système Bungie (API) :} Fournit les données de jeu
 \end{itemize}
 
-\section{Diagrammes de séquence}
+\subsection{Les cas d'usage principaux}
 
-Les diagrammes de séquence détaillent les interactions temporelles entre les différents composants du système pour chaque cas d'usage. Cette modélisation précise les responsabilités de chaque couche (présentation, logique métier, données) et facilite l'implémentation technique.
+\begin{itemize}
+    \item \textbf{UC001 :} Se connecter avec son compte Bungie
+    \item \textbf{UC002 :} Consulter un guide de raid interactif
+    \item \textbf{UC003 :} Créer et gérer une escouade
+    \item \textbf{UC004 :} Planifier une session de raid
+    \item \textbf{UC005 :} Gagner et consulter des badges
+    \item \textbf{UC006 :} Synchroniser ses données de jeu
+\end{itemize}
 
-\textbf{Diagramme de séquence - Authentification OAuth :}
+\subsection{Exemple détaillé : Consultation d'un guide}
+
+\textbf{Acteur :} Joueur connecté \\
+\textbf{Déclencheur :} Il veut apprendre un raid \\
+\textbf{Scénario nominal :}
+\begin{enumerate}
+    \item Il choisit un raid dans la liste
+    \item La plateforme affiche le guide avec toutes les étapes
+    \item Il navigue entre les étapes
+    \item Il consulte les recommandations d'équipement
+\end{enumerate}
+
+\section{Les diagrammes de séquence}
+
+Pour chaque cas d'usage important, j'ai modélisé les échanges entre les composants.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{assets/diagramme-seq-auth.png}
-    \caption{Diagramme de séquence - Authentification OAuth}
-    \label{fig:contexte}
+    \caption{Flux d'authentification OAuth avec Bungie}
+    \label{fig:auth}
 \end{figure}
 
-\textbf{Diagramme de séquence - Consultation guide avec cache :}
+\textbf{Pourquoi c'est complexe :} Il faut gérer les allers-retours avec Bungie, stocker le token de manière sécurisée, et le rafraîchir avant expiration. Si Bungie est indisponible, l'utilisateur doit avoir un message clair, pas une erreur technique.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{assets/diagramme-seq-consult.png}
-    \caption{Diagramme de séquence - Consultation guide avec cache}
-    \label{fig:contexte}
+    \caption{Consultation d'un guide avec cache Redis}
+    \label{fig:guide}
 \end{figure}
 
-\textbf{Gestion d'erreurs détaillée :}
-\begin{itemize}
-    \item \textbf{Timeout API Bungie :} Retry automatique (3 tentatives) + Fallback cache
-    \item \textbf{Données corrompues :} Validation schema JSON + Logging erreur
-    \item \textbf{Utilisateur non autorisé :} Redirection login + Message contextuel
-    \item \textbf{Rate limiting :} Backoff exponentiel + Queue de requêtes
-\end{itemize}
+\textbf{L'astuce technique :} Les guides sont stockés dans Redis avec une durée de vie. Si le même guide est demandé plusieurs fois, il est servi depuis le cache, ce qui est plus rapide et évite de surcharger l'API Bungie.
 
-\section{Conception de l'interface graphique}
+\section{La conception de l'interface}
 
-La conception graphique s'appuie sur une charte graphique cohérente avec l'univers Destiny 2. L'approche "Mobile First" garantit une expérience optimale sur tous les devices.
+\subsection{L'architecture des composants React}
 
-\subsection{Architecture des composants React}
+J'ai organisé le frontend de manière modulaire pour faciliter la maintenance et les tests :
 
-\textbf{Structure modulaire des composants :}
 \begin{verbatim}
 src/
 ├── components/
-│   ├── common/
-│   │   ├── Header/
-│   │   ├── Navigation/
-│   │   ├── LoadingSpinner/
-│   │   └── ErrorBoundary/
-│   ├── guides/
-│   │   ├── GuideList/
-│   │   ├── GuideViewer/
-│   │   ├── StepNavigation/
-│   │   └── EquipmentRecommendations/
-│   ├── squads/
-│   │   ├── SquadManager/
-│   │   ├── MemberList/
-│   │   ├── InvitationSystem/
-│   │   └── RoleManagement/
-│   ├── calendar/
-│   │   ├── CalendarView/
-│   │   ├── SessionCreator/
-│   │   ├── AvailabilityChecker/
-│   │   └── NotificationCenter/
-│   └── profile/
-│       ├── UserProfile/
-│       ├── BadgeCollection/
-│       ├── StatisticsDashboard/
-│       └── SettingsPanel/
-├── hooks/
-│   ├── useAuth.js
-│   ├── useSquads.js
-│   ├── useGuides.js
-│   └── useCalendar.js
-└── services/
-    ├── api.js
-    ├── cache.js
-    └── websocket.js
+│   ├── common/        # Boutons, navigation (réutilisables)
+│   ├── guides/        # Affichage des guides
+│   ├── squads/        # Gestion des escouades
+│   ├── calendar/      # Planification
+│   └── profile/       # Profils et badges
+├── hooks/              # useAuth, useSquads (logique réutilisable)
+└── services/           # Appels API (Bungie, backend)
 \end{verbatim}
-\vspace{0.5cm}
-\textbf{Spécifications des composants critiques :}
-\vspace{0.5cm}
-\textbf{GuideViewer Component :}
+
+\subsection{Exemple : le composant GuideViewer}
+
+Ce composant illustre ma démarche de conception par composants réutilisables :
 \begin{itemize}
-    \item \textbf{Props :} guideId, stepNumber, onStepChange, onComplete
-    \item \textbf{State :} currentStep, completedSteps, userProgress
-    \item \textbf{Methods :} loadGuide(), navigateStep(), markComplete()
-    \item \textbf{Events :} stepChanged, guideCompleted, errorOccurred
-    \item \textbf{Performance :} Lazy loading des images, Memoization des données
-\end{itemize}
-\vspace{0.5cm}
-\textbf{SquadManager Component :}
-\begin{itemize}
-    \item \textbf{Props :} squadId, isLeader, onUpdate
-    \item \textbf{State :} squadMembers, pendingInvitations, squadSettings
-    \item \textbf{Methods :} inviteMember(), removeMember(), updateRole()
-    \item \textbf{Real-time :} WebSocket pour updates en temps réel
+    \item \textbf{Entrées :} identifiant du guide, callbacks de navigation
+    \item \textbf{État interne :} étape en cours, progression
+    \item \textbf{Optimisation :} lazy loading des images
 \end{itemize}
 
-\subsection{Charte graphique détaillée}
+\subsection{La charte graphique}
 
-\textbf{Système de design complet :}
-\vspace{0.5cm}
-\textbf{Palette de couleurs :}
+Inspirée de l'univers Destiny 2 :
+
 \begin{itemize}
-    \item \textbf{Primaire :} \#0A0E17 (Noir bleuté Destiny) - Backgrounds principaux
-    \item \textbf{Secondaire :} \#FF6B35 (Orange Vex) - Actions, boutons principaux
-    \item \textbf{Accent :} \#00E0FF (Cyano énergie) - Liens, highlights
-    \item \textbf{Neutre :} \#2D3748 (Gris foncé) - Textes, bordures
-    \item \textbf{Succès :} \#4CAF50 (Vert) - Confirmations, statuts positifs
-    \item \textbf{Alerte :} \#FFC107 (Jaune) - Avertissements
-    \item \textbf{Erreur :} \#F44336 (Rouge) - Erreurs, suppressions
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Typographie :}
-\begin{itemize}
-    \item \textbf{Principale :} Inter (weights: 300, 400, 500, 600, 700)
-    \item \textbf{Hiérarchie :}
-    \begin{itemize}
-        \item H1: 2.5rem (40px) - Weight 700 - Line height 1.2
-        \item H2: 2rem (32px) - Weight 600 - Line height 1.3
-        \item H3: 1.5rem (24px) - Weight 500 - Line height 1.4
-        \item Body: 1rem (16px) - Weight 400 - Line height 1.5
-        \item Small: 0.875rem (14px) - Weight 300 - Line height 1.4
-    \end{itemize}
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Espacement (8px grid system) :}
-\begin{itemize}
-    \item \textbf{Base unit :} 8px
-    \item \textbf{Marges :} 8px, 16px, 24px, 32px, 48px, 64px
-    \item \textbf{Padding :} 4px, 8px, 12px, 16px, 24px
-    \item \textbf{Border radius :} 4px (small), 8px (medium), 16px (large)
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Composants UI standardisés :}
-\begin{itemize}
-    \item \textbf{Boutons :} 3 variantes (primaire, secondaire, ghost)
-    \item \textbf{Inputs :} États normal, focus, error, disabled
-    \item \textbf{Cartes :} Shadows: sm (0 1px 2px), md (0 4px 6px), lg (0 10px 15px)
-    \item \textbf{Modals :} Overlay 50\% opacity, animation slide-in
+    \item \textbf{Couleurs :} Fond \#0A0E17 (noir bleuté), actions \#FF6B35 (orange), accents \#00E0FF (cyan)
+    \item \textbf{Typographie :} Inter (lisible), tailles basées sur 2.5rem/1rem
+    \item \textbf{Espacement :} Base de 8px (marges : 8, 16, 24, 32px)
 \end{itemize}
 
-\subsection{Maquettes et prototypes}
+\section{La conception de la base de données}
 
-\textbf{Workflow de conception :}
-\begin{enumerate}
-    \item \textbf{Wireframes basse fidélité :} Validation structure et flux utilisateur
-    \item \textbf{Maquettes moyenne fidélité :} Intégration charte graphique
-    \item \textbf{Prototypes interactifs :} Tests utilisabilité avec Figma
-    \item \textbf{Maquettes haute fidélité :} Spécifications développeurs
-\end{enumerate}
-\vspace{0.5cm}
-\textbf{Pages principales conçues :}
-\begin{itemize}
-    \item \textbf{Landing Page :} Présentation features + Call-to-action
-    \item \textbf{Dashboard :} Vue d'ensemble activités + Accès rapides
-    \item \textbf{Guide Viewer :} Navigation étapes + Visualisation mécaniques
-    \item \textbf{Squad Management :} Liste membres + Gestion rôles + Invitations
-    \item \textbf{Calendar :} Vue mensuelle/semaine + Création sessions
-    \item \textbf{Profile :} Statistiques + Badges + Historique
-\end{itemize}
+J'ai suivi la méthode Merise (MCD, MLD, MPD) pour une conception rigoureuse.
 
-\section{Conception de base de données}
-
-La conception suit la méthode Merise avec validation des contraintes métier et optimisation des performances.
-
-\subsection{Modèle Conceptuel de Données (MCD)}
-
-\textbf{Entités principales et relations :}
+\subsection{Le Modèle Conceptuel de Données (MCD)}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{assets/entite-relation.png}
-    \caption{Entités principales et relations}
-    \label{fig:contexte}
+    \caption{Entités : Utilisateur, Escouade, Session, Guide, Badge}
+    \label{fig:mcd}
 \end{figure}
 
-\textbf{Diagramme MCD complet :}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.4\textwidth]{assets/diagramme_MCD.png}
-    \caption{Diagramme MCD complet}
-    \label{fig:contexte}
-\end{figure}
-
-\subsection{Modèle Logique de Données (MLD)}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{assets/schema-MLD.png}
-    \caption{Schéma relationnel normalisé}
-    \label{fig:contexte}
-\end{figure}
-
-\subsection{Modèle Physique de Données (MPD)}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{assets/modele-MPD.png}
-    \caption{Modèle Physique de Données}
-    \label{fig:contexte}
-\end{figure}
-
-\textbf{Architecture multi-base :}
+\textbf{Les relations clés :}
 \begin{itemize}
-    \item \textbf{PostgreSQL :} Données transactionnelles (utilisateurs, escouades, sessions)
-    \item \textbf{MongoDB :} Logs d'API, données analytiques, profils étendus
-    \item \textbf{Redis :} Cache sessions, données d'API Bungie, queues
+    \item Un \textbf{Utilisateur} peut créer plusieurs \textbf{Escouades} (en tant que leader)
+    \item Un \textbf{Utilisateur} peut appartenir à plusieurs \textbf{Escouades}
+    \item Une \textbf{Escouade} organise plusieurs \textbf{Sessions} de raid
 \end{itemize}
 
-\section{Architecture technique détaillée}
+\subsection{Le Modèle Physique de Données (MPD) avec Prisma}
 
-L'architecture 3-tiers est conçue pour la scalabilité et la maintenabilité.
+Voici le schéma Prisma qui implémente ce modèle :
+
+\begin{lstlisting}[language=JavaScript]
+model User {
+  id           Int      @id @default(autoincrement())
+  bungie_id    String   @unique
+  display_name String
+  created_at   DateTime @default(now())
+  
+  squads_led   Squad[]  @relation("SquadLeader")
+  squad_members SquadMember[]
+  badges       UserBadge[]
+}
+
+model Squad {
+  id          Int      @id @default(autoincrement())
+  name        String
+  leader_id   Int
+  created_at  DateTime @default(now())
+  max_members Int      @default(6)
+  
+  leader      User     @relation("SquadLeader", fields: [leader_id], references: [id])
+  members     SquadMember[]
+  sessions    Session[]
+}
+
+model Session {
+  id           Int       @id @default(autoincrement())
+  squad_id     Int
+  raid_id      Int
+  scheduled_at DateTime
+  status       String    @default("SCHEDULED")
+  
+  squad        Squad     @relation(fields: [squad_id], references: [id])
+}
+\end{lstlisting}
+
+\subsection{Pourquoi plusieurs bases ?}
+
+\begin{itemize}
+    \item \textbf{PostgreSQL :} Données transactionnelles (utilisateurs, escouades). Besoin de cohérence ACID.
+    \item \textbf{Redis :} Cache (guides, sessions). Rapidité et expiration automatique.
+    \item \textbf{MongoDB (futur) :} Logs et analytics (structure variable, volume important).
+\end{itemize}
+
+\section{L'architecture technique détaillée}
 
 \subsection{Couche Présentation (Frontend)}
 
-\textbf{Stack technique complète :}
-\begin{itemize}
-    \item \textbf{Framework :} React 18+ avec Functional Components + Hooks
-    \item \textbf{Bundler :} Vite pour le développement rapide
-    \item \textbf{Styling :} TailwindCSS + CSS Modules pour les composants complexes
-    \item \textbf{State Management :} React Context + useReducer pour l'état global
-    \item \textbf{Routing :} React Router v6 avec lazy loading
-    \item \textbf{HTTP Client :} Axios avec intercepteurs pour l'authentification
-    \item \textbf{Validation :} Zod pour la validation des schémas
-    \item \textbf{Testing :} Jest + React Testing Library + Cypress
-\end{itemize}
+\textbf{Technologies :} React 18, Vite, TailwindCSS, React Router, Axios
 
-\textbf{Structure des services frontend :}
+L'idée est de séparer la logique d'affichage des appels API. Exemple avec le service d'authentification :
 
-\textbf{Service d'authentification :}
 \begin{lstlisting}[language=JavaScript]
 class AuthService {
   async loginWithBungie() {
     const authUrl = this.buildBungieAuthUrl();
-    window.location.href = authUrl;
+    window.location.href = authUrl; // Redirection vers Bungie
   }
   
   async handleOAuthCallback(code) {
     const response = await api.post('/auth/callback', { code });
-    this.storeTokens(response.data);
+    this.storeTokens(response.data); // Stockage sécurisé du JWT
     return this.getUserProfile();
-  }
-  
-  async refreshToken() {
-    const refreshToken = this.getRefreshToken();
-    const response = await api.post('/auth/refresh', { refreshToken });
-    this.storeTokens(response.data);
-  }
-  
-  isTokenExpired() {
-    const expiresAt = localStorage.getItem('token_expires_at');
-    return Date.now() >= parseInt(expiresAt);
   }
 }
 \end{lstlisting}
 
 \subsection{Couche Métier (Backend)}
 
-\textbf{Architecture Node.js/Express :}
+\textbf{Organisation :} Contrôleurs → Services → Repositories
 
-\textbf{Structure des modules :}
-\begin{verbatim}
-src/
-├── controllers/
-│   ├── authController.js
-│   ├── squadController.js
-│   ├── guideController.js
-│   └── sessionController.js
-├── services/
-│   ├── authService.js
-│   ├── bungieService.js
-│   ├── squadService.js
-│   └── notificationService.js
-├── models/
-│   ├── User.js
-│   ├── Squad.js
-│   ├── Session.js
-│   └── Guide.js
-├── middleware/
-│   ├── auth.js
-│   ├── validation.js
-│   ├── rateLimit.js
-│   └── errorHandler.js
-└── utils/
-    ├── logger.js
-    ├── cache.js
-    └── validators.js
-\end{verbatim}
+Cette séparation garantit que chaque composant a une responsabilité unique et facilite les tests.
 
-\textbf{Service de gestion d'escouades :}
 \begin{lstlisting}[language=JavaScript]
+// Le service contient la logique métier
 class SquadService {
   async createSquad(squadData, leaderId) {
-    // Validation des données
-    const validation = squadSchema.safeParse(squadData);
-    if (!validation.success) {
-      throw new ValidationError(validation.error);
+    // Règles métier : pas plus de 12 membres, max 5 escouades par joueur
+    if (squadData.maxMembers > 12) {
+      throw new BusinessError('Maximum 12 membres');
     }
     
-    // Vérification des limites
-    const userSquadCount = await this.getUserSquadCount(leaderId);
-    if (userSquadCount >= MAX_SQUADS_PER_USER) {
-      throw new BusinessError('Limite d\'escouades atteinte');
+    const userSquadCount = await this.squadRepository.countByUser(leaderId);
+    if (userSquadCount >= 5) {
+      throw new BusinessError('Limite de 5 escouades atteinte');
     }
-    
-    // Création transaction
-    return db.transaction(async (trx) => {
-      const squad = await Squad.create(trx, {
+
+    // Transaction pour garantir l'intégrité des données
+    return await this.db.transaction(async (trx) => {
+      const squad = await this.squadRepository.create(trx, {
         ...squadData,
         leader_id: leaderId
       });
       
-      // Ajout du leader comme membre
-      await SquadMember.create(trx, {
+      // Ajout automatique du leader comme membre
+      await this.squadMemberRepository.create(trx, {
         squad_id: squad.id,
         user_id: leaderId,
-        role: 'leader',
-        joined_at: new Date()
-      });
-      
-      // Audit log
-      await AuditLog.create(trx, {
-        action: 'squad_created',
-        user_id: leaderId,
-        squad_id: squad.id,
-        metadata: { squad_name: squad.name }
+        role: 'leader'
       });
       
       return squad;
@@ -399,319 +228,138 @@ class SquadService {
 }
 \end{lstlisting}
 
-\textbf{Middleware d'authentification :}
-\begin{lstlisting}[language=JavaScript]
-const authenticateToken = async (req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-  
-  if (!token) {
-    return res.status(401).json({ error: 'Token manquant' });
-  }
-  
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.userId);
-    
-    if (!user) {
-      return res.status(401).json({ error: 'Utilisateur non trouvé' });
-    }
-    
-    req.user = user;
-    next();
-  } catch (error) {
-    if (error.name === 'TokenExpiredError') {
-      return res.status(401).json({ error: 'Token expiré' });
-    }
-    return res.status(403).json({ error: 'Token invalide' });
-  }
-};
-\end{lstlisting}
+\textbf{Pourquoi cette organisation ?} Elle rend le code testable et maintenable. Je peux modifier la règle des 5 escouades sans impacter le contrôleur ou le repository.
 
 \subsection{Couche Données}
 
-\textbf{Configuration PostgreSQL :}
+\textbf{Optimisations PostgreSQL :}
 \begin{lstlisting}[language=SQL]
--- Configuration des performances
-ALTER SYSTEM SET shared_buffers = '1GB';
-ALTER SYSTEM SET work_mem = '64MB';
-ALTER SYSTEM SET maintenance_work_mem = '256MB';
-ALTER SYSTEM SET effective_cache_size = '3GB';
-
--- Configuration de la réplication
-ALTER SYSTEM SET wal_level = 'replica';
-ALTER SYSTEM SET max_wal_senders = 10;
-ALTER SYSTEM SET hot_standby = 'on';
-
--- Redémarrage pour appliquer les changements
-SELECT pg_reload_conf();
+ALTER SYSTEM SET shared_buffers = '1GB';  -- Plus de cache
+ALTER SYSTEM SET work_mem = '64MB';      -- Plus de mémoire pour les tris
 \end{lstlisting}
 
 \textbf{Stratégie Redis :}
 \begin{itemize}
-    \item \textbf{Cache :} TTL 1 heure pour les guides, 5 minutes pour les données utilisateur
-    \item \textbf{Sessions :} TTL 24 heures avec refresh à l'activité
-    \item \textbf{Rate Limiting :} Compteurs par utilisateur et endpoint
-    \item \textbf{Queue :} Jobs asynchrones pour notifications et rapports
+    \item Guides : cache 1 heure
+    \item Sessions utilisateur : 24 heures
+    \item Rate limiting : compteurs 15 minutes
 \end{itemize}
 
-\section{Stratégie de tests}
+\section{Ma stratégie de tests}
 
-La stratégie de tests suit l'approche pyramidale avec automatisation complète.
+Je suis la pyramide des tests : nombreux tests unitaires, moins de tests d'intégration, encore moins d'E2E.
 
-\subsection{Couverture de tests}
-
-\textbf{Objectifs de couverture :}
+\subsection{Objectifs de couverture}
 \begin{itemize}
-    \item \textbf{Tests unitaires :} 80\%+ (Jest)
-    \item \textbf{Tests d'intégration :} 70\%+ (Supertest)
-    \item \textbf{Tests E2E :} 100\% des parcours critiques (Cypress)
-    \item \textbf{Tests de performance :} Load testing (k6)
+    \item Unitaires : > 80\% (Jest)
+    \item Intégration : > 70\% (Supertest)
+    \item E2E : parcours critiques (Cypress)
 \end{itemize}
 
-\textbf{Structure des tests :}
+\subsection{Exemple : test du service SquadService}
 
-\textbf{Tests unitaires services :}
 \begin{lstlisting}[language=JavaScript]
 describe('SquadService', () => {
-  describe('createSquad', () => {
-    it('should create squad with valid data', async () => {
-      const mockLeader = { id: 1, squad_count: 2 };
-      const squadData = { name: 'Test Squad', description: 'Test' };
-      
-      userRepository.getUserSquadCount.mockResolvedValue(2);
-      squadRepository.create.mockResolvedValue({ id: 1, ...squadData });
-      
-      const result = await squadService.createSquad(squadData, mockLeader.id);
-      
-      expect(result).toHaveProperty('id', 1);
-      expect(result.name).toBe('Test Squad');
-      expect(userRepository.getUserSquadCount).toHaveBeenCalledWith(1);
-    });
+  it('devrait créer une escouade si les données sont valides', async () => {
+    // Simulation du repository (mock)
+    userRepository.getUserSquadCount.mockResolvedValue(2);
     
-    it('should throw error when user exceeds squad limit', async () => {
-      const mockLeader = { id: 1, squad_count: 5 };
-      userRepository.getUserSquadCount.mockResolvedValue(5);
-      
-      await expect(
-        squadService.createSquad({ name: 'Test' }, mockLeader.id)
-      ).rejects.toThrow('Limite d\'escouades atteinte');
-    });
+    const result = await squadService.createSquad(
+      { name: 'Test Squad', maxMembers: 6 },
+      1 // leaderId
+    );
+    
+    expect(result).toHaveProperty('id');
+    expect(result.name).toBe('Test Squad');
+  });
+
+  it('devrait refuser si limite dépassée', async () => {
+    userRepository.getUserSquadCount.mockResolvedValue(5); // Déjà au max
+    
+    await expect(
+      squadService.createSquad({ name: 'Test' }, 1)
+    ).rejects.toThrow('Limite de 5 escouades atteinte');
   });
 });
 \end{lstlisting}
 
-\textbf{Tests d'intégration API :}
-\begin{lstlisting}[language=JavaScript]
-describe('Squad API', () => {
-  describe('POST /api/squads', () => {
-    it('should create squad with authentication', async () => {
-      const authToken = await createTestUser();
-      const squadData = { name: 'API Test Squad' };
-      
-      const response = await request(app)
-        .post('/api/squads')
-        .set('Authorization', `Bearer ${authToken}`)
-        .send(squadData)
-        .expect(201);
-      
-      expect(response.body).toHaveProperty('id');
-      expect(response.body.name).toBe('API Test Squad');
-      expect(response.body.leader_id).toBe(1);
-    });
-    
-    it('should reject unauthenticated requests', async () => {
-      await request(app)
-        .post('/api/squads')
-        .send({ name: 'Test' })
-        .expect(401);
-    });
-  });
-});
-\end{lstlisting}
+\section{Le déploiement}
 
-\subsection{Automatisation des tests}
-
-\textbf{Pipeline de tests GitHub Actions :}
-\begin{lstlisting}[language=yaml]
-name: Test Pipeline
-on: [push, pull_request]
-jobs:
-  unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with: { node-version: '18' }
-      - run: npm ci
-      - run: npm run test:unit
-      - uses: codecov/codecov-action@v3
-        
-  integration-tests:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:14
-        env: { POSTGRES_PASSWORD: test }
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    steps:
-      - uses: actions/checkout@v3
-      - run: npm ci
-      - run: npm run test:integration
-      
-  e2e-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: npm ci
-      - run: npm run build
-      - run: npm run test:e2e
-\end{lstlisting}
-
-\section{Plan de déploiement et infrastructure}
-
-L'infrastructure est conçue pour la haute disponibilité et la scalabilité.
-
-\subsection{Architecture de déploiement}
-
-\textbf{Environnements multiples :}
+\subsection{Environnements}
 \begin{itemize}
-    \item \textbf{Development :} Docker Compose local
-    \item \textbf{Staging :} Vercel (Frontend) + AWS ECS (Backend)
-    \item \textbf{Production :} AWS ECS (Backend) + Vercel (Frontend) + RDS PostgreSQL
+    \item \textbf{Development :} local, Docker Compose
+    \item \textbf{Staging :} serveur de test, identique à la prod
+    \item \textbf{Production :} accessible aux utilisateurs
 \end{itemize}
 
-\textbf{Configuration Docker :}
+\subsection{Docker Compose}
 
-\textbf{Dockerfile Backend :}
-\begin{lstlisting}[language=dockerfile]
-FROM node:18-alpine
-WORKDIR /app
-
-# Installation des dépendances
-COPY package*.json ./
-RUN npm ci --only=production
-
-# Copie du code
-COPY . .
-
-# Sécurité
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
-USER nextjs
-
-# Exposition du port
-EXPOSE 4000
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:4000/health || exit 1
-
-CMD ["node", "src/server.js"]
-\end{lstlisting}
-
-\textbf{docker-compose.yml :}
 \begin{lstlisting}[language=yaml]
-version: '3.8'
 services:
   frontend:
     build: ./frontend
     ports: ["3000:3000"]
-    environment:
-      - REACT_APP_API_URL=http://localhost:4000
-    depends_on: [backend]
     
   backend:
     build: ./backend
     ports: ["4000:4000"]
     environment:
-      - NODE_ENV=development
       - DATABASE_URL=postgresql://user:pass@db:5432/raidcompanion
-      - REDIS_URL=redis://redis:6379
       - BUNGIE_API_KEY=${BUNGIE_API_KEY}
     depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
-        
-  db:
-    image: postgres:14
-    environment:
-      - POSTGRES_DB=raidcompanion
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=pass
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U user -d raidcompanion"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      
-  redis:
-    image: redis:7-alpine
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 3s
-      retries: 3
-
-volumes:
-  postgres_data:
+      - db
+      - redis
 \end{lstlisting}
 
 \subsection{CI/CD et monitoring}
 
-\textbf{Pipeline de déploiement :}
-\begin{verbatim}
-Pipeline GitHub Actions:
-1. Code Quality Checks (ESLint, Prettier)
-2. Security Scanning (Snyk, npm audit)
-3. Unit Tests + Coverage Report
-4. Build Application
-5. Integration Tests
-6. Docker Image Build + Security Scan
-7. Push to Container Registry
-8. Deploy to Staging
-9. E2E Tests on Staging
-10. Manual Approval for Production
-11. Blue-Green Deployment to Production
-12. Post-Deployment Smoke Tests
-13. Monitoring + Alerting Setup
-\end{verbatim}
-\vspace{0.5cm}
-\textbf{Configuration de monitoring :}
+\textbf{Pipeline :} push → tests → build image → déploiement staging → validation → production
+
+\textbf{Surveillance :} temps de réponse, taux d'erreur, CPU, mémoire. Alertes Slack si anomalie.
+
+\section{Ce que je retire de cette conception}
+
+Cette approche modulaire m'a permis de :
 \begin{itemize}
-    \item \textbf{Métriques applicatives :} Response time, Error rate, Throughput
-    \item \textbf{Métriques système :} CPU, Memory, Disk I/O, Network
-    \item \textbf{Métriques base de données :} Query performance, Connections, Locks
-    \item \textbf{Alerting :} Slack notifications, PagerDuty pour les incidents critiques
+    \item Travailler par itérations sans tout casser
+    \item Tester chaque composant isolément
+    \item Préparer l'évolutivité future (ajout de MongoDB, WebSocket...)
 \end{itemize}
-\vspace{0.5cm}
-\textbf{Plan de reprise d'activité :}
-\begin{itemize}
-    \item \textbf{Sauvegardes :} Automatiques quotidiennes + WAL shipping
-    \item \textbf{Restoration :} Process documenté avec RTO < 4 heures
-    \item \textbf{Scaling :} Auto-scaling basé sur la charge CPU et mémoire
-    \item \textbf{Failover :} Base de données en mode cluster avec réplication
-\end{itemize}
+
+\section{Maquettes et wireframes}
+
+\subsection{Zoning (architecture des pages)}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{assets/zoning.png}
+    \caption{Zoning des pages profil et connexion}
+    \label{fig:zoning}
+\end{figure}
+
+\subsection{Wireframes (maquettes basse fidélité)}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{assets/wireframe.png}
+    \caption{Wireframe des pages profil et connexion}
+    \label{fig:wireframe}
+\end{figure}
+
+\subsection{Maquettes haute fidélité}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{assets/maquette.png}
+    \caption{Maquette des pages profil et connexion}
+    \label{fig:maquette}
+\end{figure}
 
 \section{Liens utiles}
 
 \begin{itemize}
-    \item Documentation React: \url{https://reactjs.org/docs}
-    \item TailwindCSS: \url{https://tailwindcss.com/docs}
-    \item Node.js Best Practices: \url{https://github.com/goldbergyoni/nodebestpractices}
-    \item PostgreSQL Documentation: \url{https://www.postgresql.org/docs/}
-    \item Docker Documentation: \url{https://docs.docker.com/}
-    \item GitHub Actions: \url{https://docs.github.com/actions}
-    \item Jest Testing: \url{https://jestjs.io/docs}
-    \item Cypress E2E Testing: \url{https://docs.cypress.io/}
-    \item Bungie API Documentation: \url{https://bungie-net.github.io/}
-    \item OWASP Security Guidelines: \url{https://cheatsheetseries.owasp.org/}
+    \item React: \url{https://react.dev/}
+    \item Prisma: \url{https://www.prisma.io/docs/}
+    \item Docker: \url{https://docs.docker.com/}
+    \item Bungie API: \url{https://bungie-net.github.io/}
 \end{itemize}

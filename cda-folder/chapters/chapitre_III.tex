@@ -1,320 +1,253 @@
 \chapter{Méthodologie et organisation}
 
-\section{Gestion de projet avec GitHub}
+\section{Comment j'organise mon travail avec GitHub}
 
-\textbf{Votre approche GitHub :} \textit{Le projet Destiny 2 Raid Companion est géré entièrement sur GitHub avec une approche Agile adaptée au développement en solo. L'organisation repose sur GitHub Projects pour le suivi des tâches, les Milestones pour la planification temporelle, et un workflow Git Flow modifié pour assurer la qualité du code.}
+Pour ce projet en solo, j'avais besoin d'une méthode qui me permette à la fois de garder le cap sur mes objectifs et de m'adapter quand je rencontre un imprévu (par exemple, un changement dans l'API Bungie). J'ai choisi GitHub pour tout gérer : le code, bien sûr, mais aussi le suivi des tâches, la planification et la documentation.
 
-\subsection{Adaptation de la méthode Agile au contexte}
+\subsection{Pourquoi j'ai choisi une méthode Agile... adaptée au solo}
 
-\textbf{Pourquoi l'Agile est adapté à ce projet :}
+La méthode Agile est habituellement pensée pour des équipes, mais elle m'a paru parfaitement adaptée à mon contexte pour plusieurs raisons :
+
 \begin{itemize}
-    \item \textbf{Projet innovant :} Besoin de s'adapter aux retours utilisateurs rapidement
-    \item \textbf{API tierce complexe :} Nécessité d'itérer sur l'intégration Bungie API
-    \item \textbf{Développement solo :} Flexibilité pour ajuster les priorités selon les blocages
-    \item \textbf{Validation continue :} MVP à tester rapidement avec la communauté Destiny 2
+    \item \textbf{Le projet est innovant :} Je ne sais pas à l'avance exactement comment les joueurs vont utiliser l'outil. Je dois pouvoir m'adapter à leurs retours.
+    \item \textbf{L'API Bungie est complexe :} Elle peut évoluer, ou je peux découvrir des limitations en cours de route. Il faut que je puisse ajuster mon planning.
+    \item \textbf{Je suis seul :} Cela me donne une grande flexibilité pour réagir vite, mais ça m'oblige aussi à être très discipliné pour ne pas me disperser.
 \end{itemize}
 
-\textbf{Justification de GitFlow pour un projet solo :} Le modèle GitFlow est adapté même en solo car il permet d'isoler les fonctionnalités (feature branches), de préparer les releases (release branches), et de gérer les correctifs urgents (hotfix branches) sans polluer la branche principale. Cette discipline prépare également l'arrivée potentielle de contributeurs supplémentaires et facilite le rollback en cas de problème avec l'API Bungie.
+\subsection{Mon adaptation de GitFlow}
 
-\subsection{Rituels Agile et leur mise en œuvre avec objectifs métier}
+Même seul, j'utilise GitFlow (ou une version simplifiée). Pourquoi ? Parce que ça m'oblige à être propre :
 
-\textbf{Objectif métier de chaque rituel :}
 \begin{itemize}
-    \item \textbf{Daily Standup :} Identifier rapidement les blocages techniques (ex: rate limiting API Bungie) et ajuster les priorités du jour
-    \item \textbf{Sprint Planning :} Aligner les développements avec la roadmap MVP et anticiper les dépendances API externes
-    \item \textbf{Sprint Review :} Valider la valeur métier produite avec des tests utilisateurs (ex: guides validés par des joueurs expérimentés)
-    \item \textbf{Sprint Retrospective :} Améliorer le processus pour réduire le temps de cycle et augmenter la qualité
+    \item Je crée une \texttt{feature/ma-fonctionnalité} pour chaque nouvelle fonction.
+    \item Je prépare les versions dans des branches \texttt{release/v1.0}.
+    \item Si un bug critique apparaît en production, je le corrige dans une branche \texttt{hotfix/...} sans toucher au développement en cours.
 \end{itemize}
+
+Cette discipline peut sembler lourde pour un projet solo, mais elle me prépare à l'éventualité d'avoir des contributeurs plus tard. Surtout, elle me permet de revenir en arrière facilement si une modification pose problème.
+
+\subsection{Mes "rituels" Agiles, version solo}
+
+Même sans réunion d'équipe, j'ai adapté les rituels Agiles pour garder le rythme :
 
 \begin{center}
-\begin{tabular}{|p{3cm}|p{3.5cm}|p{4cm}|}
+\begin{tabular}{|p{3cm}|p{4cm}|p{4cm}|}
 \hline
-\textbf{Rituel} & \textbf{Fréquence} & \textbf{Objectif métier et mise en œuvre} \\
+\textbf{Rituel} & \textbf{Comment je le vis} & \textbf{Pourquoi ça m'aide} \\
 \hline
-\textbf{Daily Standup} & Quotidien (10 min) & Identifier rapidement les blocages (rate limiting API Bungie) et ajuster les priorités. Mise à jour GitHub Projects avec statut réel \\
+\textbf{Daily (quotidien)} & Je regarde mon tableau GitHub, je note ce que j'ai fait hier et ce que je vais faire aujourd'hui. & Ça me force à avancer chaque jour et à identifier vite un blocage. \\
 \hline
-\textbf{Sprint Planning} & Tous les 15 jours & Aligner les développements avec la roadmap MVP et anticiper les dépendances API. Sélection issues, estimation, définition objectifs sprint \\
+\textbf{Sprint Planning (toutes les 2 semaines)} & Je choisis les tâches du prochain sprint dans le backlog, je les estime. & Je garde un rythme régulier et je ne m'éparpille pas. \\
 \hline
-\textbf{Sprint Review} & Fin de sprint & Valider la valeur métier avec tests utilisateurs (guides validés par Sarah, leader expérimentée). Démonstration fonctionnalités, recueil retours \\
+\textbf{Sprint Review (fin de sprint)} & Je teste la fonctionnalité que j'ai développée, je vois si elle répond au besoin. & Je valide que j'avance dans la bonne direction. \\
 \hline
-\textbf{Sprint Retrospective} & Fin de sprint & Améliorer le processus pour réduire le temps de cycle. Identification points d'optimisation, actions correctives \\
+\textbf{Rétrospective (fin de sprint)} & Je note ce qui a bien fonctionné et ce que je dois améliorer. & J'apprends de mes erreurs et j'ajuste ma façon de travailler. \\
 \hline
 \end{tabular}
 \end{center}
-\vspace{0.5cm}
-\textbf{Analyse des métriques Agile et interprétation :}
-\begin{itemize}
-    \item \textbf{Force :} Vélocité stable à 8-12 points/sprint montre une bonne régularité de développement malgré la complexité de l'API Bungie
-    \item \textbf{Risque :} Cycle time de 4.2 jours révèle que certaines issues sont trop larges (nécessite meilleur découpage)
-    \item \textbf{Amélioration :} Les 3 bugs majeurs résolus en 2.5 jours montrent une bonne réactivité, mais le taux de bugs (15\%) indique besoin de plus de tests automatisés
-    \item \textbf{Tendance positive :} Lead time réduit de 7 à 5 jours montre une amélioration de l'efficacité globale
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Métriques de suivi avec interprétation :}
-\begin{itemize}
-    \item \textbf{Vélocité :} 8-12 story points par sprint (stable, bonne prévisibilité)
-    \item \textbf{Taux de complétion :} > 85\% des tâches par sprint (excellente fiabilité)
-    \item \textbf{Bugs ouverts/fermés :} Ratio < 0.5 (2 bugs fermés pour 1 ouvert - bonne réactivité)
-    \item \textbf{Lead time :} < 5 jours pour les issues critiques (efficace pour les blocages)
-    \item \textbf{Cycle time :} 4.2 jours en moyenne (besoin d'amélioration du découpage)
-\end{itemize}
 
-\textbf{Colonnes du tableau Kanban :}
-\begin{itemize}
-    \item \textbf{Backlog :} Fonctionnalités à développer (triées par priorité métier)
-    \item \textbf{Sprint Backlog :} Tâches sélectionnées pour le sprint courant (alignées roadmap)
-    \item \textbf{To Do :} Tâches prêtes pour le développement (DoD vérifié)
-    \item \textbf{In Progress :} Tâches en cours (WIP limit: 2 - focus qualité)
-    \item \textbf{Review :} Code en attente de validation (tests, revue de code)
-    \item \textbf{Done :} Fonctionnalités livrées et validées (critères d'acceptation remplis)
-\end{itemize}
+\subsection{Ce que me disent mes métriques}
 
-\subsection{User Stories et estimation de temps}
-
-\textbf{Système d'estimation justifié :} Les story points sont estimés selon trois critères : complexité technique (intégration API Bungie), incertitude (données non documentées), et effort de test. Par exemple, une fonctionnalité touchant l'API Bungie reçoit automatiquement +2 points pour l'incertitude. La complexité est évaluée sur une échelle de 1 à 8, avec des points bonus pour les dépendances externes.
+Grâce à GitHub, je peux suivre quelques indicateurs qui m'aident à m'améliorer :
 
 \begin{itemize}
-    \item \textbf{1 point :} Tâche simple (< 1 jour) - Configuration, corrections mineures
-    \item \textbf{3 points :} Tâche moyenne (1-2 jours) - Composants frontend simples
-    \item \textbf{5 points :} Tâche complexe (3-4 jours) - Intégration API avec gestion d'erreurs
-    \item \textbf{8 points :} Tâche très complexe (> 5 jours) - Mécaniques de matching algorithmique
+    \item \textbf{Vélocité stable (8-12 points par sprint) :} Je suis régulier, je tiens mes engagements.
+    \item \textbf{Taux de bugs (15\%) :} C'est un peu élevé. Cela me dit que je dois écrire plus de tests avant de livrer.
+    \item \textbf{Temps de cycle (4,2 jours) :} Une tâche met en moyenne 4 jours à être terminée. C'est correct, mais je pourrais découper mes tâches en plus petits morceaux pour aller plus vite.
+    \item \textbf{Temps de lead réduit (de 7 à 5 jours) :} Je vais plus vite qu'au début pour passer de l'idée à la livraison. C'est bon signe.
 \end{itemize}
 
-\textbf{Reliement User Stories → Sprints → Roadmap :} Les US \#101 (Authentification Bungie) et \#102 (Guides interactifs) représentent 70\% du périmètre MVP v1.0 prévu pour le 15 mars 2026. Ces US sont décomposées en 15 sous-tâches réparties sur 3 sprints, avec des dépendances claires (backend → frontend → tests).
+\subsection{Mon tableau Kanban}
 
-\textbf{User stories avec estimations et alignement roadmap :}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{assets/capture_US.png}
-    \caption{User stories}
-    \label{fig:contexte}
-\end{figure}
+Mon tableau GitHub Projects est organisé comme une chaîne de montage, avec une limite de deux tâches en cours pour ne pas me disperser :
 
-\section{Versioning GitHub et conventions}
+\begin{verbatim}
+Backlog → Sprint Backlog → À faire → En cours (max 2) → Revue → Terminé
+\end{verbatim}
 
-Le versioning GitHub suit le modèle Git Flow avec des branches spécialisées pour chaque type de développement. Cette approche est particulièrement adaptée au développement solo car elle permet d'isoler les fonctionnalités, de tester indépendamment les intégrations API Bungie, et de préparer les releases sans interrompre le développement principal. Elle facilite également le rollback en cas de problème avec l'API externe.
-
-\subsection{CONTRIBUTING.md et normalisation}
-
-\textbf{Contenu du CONTRIBUTING.md :}
+Chaque colonne a un sens précis :
 \begin{itemize}
-    \item \textbf{Environnement :} Setup du projet, pré-requis, installation avec variables API Bungie
-    \item \textbf{Conventions de code :} ESLint, Prettier, standards React/Node.js avec règles spécifiques API
-    \item \textbf{Workflow Git :} Processus de création de branches, commits, PR avec validation
-    \item \textbf{Testing :} Comment exécuter les tests, couverture attendue, mocks API Bungie
-    \item \textbf{Code Review :} Checklist pour la revue de code avec focus sécurité OAuth
+    \item \textbf{Backlog :} Toutes les idées, toutes les fonctionnalités futures.
+    \item \textbf{Sprint Backlog :} Celles que j'ai décidé de faire dans les deux prochaines semaines.
+    \item \textbf{En cours :} Ce sur quoi je travaille maintenant (jamais plus de deux).
+    \item \textbf{Revue :} Je vérifie que le code est propre et que ça marche.
+    \item \textbf{Terminé :} La fonctionnalité est livrée et fonctionnelle.
 \end{itemize}
 
-\subsection{Conventions de branches}
+\subsection{Comment j'estime mes tâches}
+
+J'utilise les "story points", une échelle qui mesure la complexité, pas le temps exact. Ça m'aide à prévoir sans me perdre dans les détails :
+
+\begin{itemize}
+    \item \textbf{1 point :} Tâche simple, moins d'une journée (ex: corriger une faute d'orthographe).
+    \item \textbf{3 points :} Tâche moyenne, 1-2 jours (ex: créer un composant React simple).
+    \item \textbf{5 points :} Tâche complexe, 3-4 jours (ex: intégrer un appel API avec gestion d'erreurs).
+    \item \textbf{8 points :} Tâche très complexe, plus de 5 jours (ex: créer un algorithme de matching entre joueurs).
+\end{itemize}
+
+Quand une fonctionnalité touche à l'API Bungie, j'ajoute automatiquement 2 points de plus, car je sais que c'est risqué et imprévisible.
+
+\section{Mes règles pour un code propre (versioning et conventions)}
+
+Travailler seul ne veut pas dire travailler n'importe comment. Je me suis fixé des règles claires pour que mon code reste lisible et maintenable.
+
+\subsection{Le fichier CONTRIBUTING.md}
+
+J'ai créé un fichier \texttt{CONTRIBUTING.md} à la racine du projet. Il explique à quelqu'un (ou à moi dans 6 mois) comment reprendre le projet :
+
+\begin{itemize}
+    \item Comment installer l'environnement (avec les clés API Bungie).
+    \item Quelles sont les règles de code (ESLint, Prettier).
+    \item Comment nommer ses branches et ses commits.
+    \item Comment lancer les tests et ce qu'on attend comme couverture.
+    \item La checklist à vérifier avant de proposer une modification.
+\end{itemize}
+
+\subsection{Comment je nomme mes branches}
+
+Chaque type de modification a sa branche dédiée :
 
 \begin{center}
 \begin{tabular}{|p{3cm}|p{8cm}|}
 \hline
-\textbf{Type de branche} & \textbf{Convention de nommage et justification} \\
+\textbf{Type} & \textbf{Exemple de nom} \\
 \hline
-Feature & \texttt{feature/nom-fonctionnalite} ou \texttt{feature/issue-\#123} - Isolation pour développement et test \\
+Nouvelle fonctionnalité & \texttt{feature/authentification-bungie} ou \texttt{feature/issue-123} \\
 \hline
-Bugfix & \texttt{fix/description-bug} ou \texttt{fix/issue-\#456} - Correction ciblée sans affecter autres features \\
+Correction de bug & \texttt{fix/erreur-connexion} ou \texttt{fix/issue-456} \\
 \hline
-Hotfix & \texttt{hotfix/description-urgente} - Pour correctifs critiques (ex: API Bungie cassée) \\
+Correctif urgent & \texttt{hotfix/api-bungie-cassee} \\
 \hline
-Release & \texttt{release/v1.0.0} - Préparation release avec tests intensifs \\
+Préparation d'une version & \texttt{release/v1.0.0} \\
 \hline
-Documentation & \texttt{docs/sujet-documentation} - Mise à jour documentation sans risque code \\
+Documentation & \texttt{docs/guide-installation} \\
 \hline
 \end{tabular}
 \end{center}
 
-\subsection{Conventions de commits}
+\subsection{Comment je nomme mes commits}
 
-\textbf{Schéma Git Flow adapté au projet solo :}
-\begin{verbatim}
-main (protected) ---------
-  |                      |          
-  |                      |          
-  |                      |
-  +-- develop (protected) ---
-       |                    |          
-       |                    |          
-       |                    |
-       +-- feature/bungie-oauth
-       +-- feature/raid-guides
-       +-- fix/login-validation
-\end{verbatim}
-\vspace{0.5cm}
-\textbf{Exemple réel de PR respectant le DoD (PR \#45) :}
-\begin{itemize}
-    \item \textbf{Fonctionnalité :} Ajout guide interactif "Vault of Glass"
-    \item \textbf{Tests :} 12 tests unitaires passants (guides.spec.js), coverage 92\%
-    \item \textbf{Intégration :} Tests d'intégration API Bungie validés
-    \item \textbf{Review :} Auto-review avec checklist complétée
-    \item \textbf{Déploiement :} Build CI/CD réussi, déployé sur staging
-    \item \textbf{Documentation :} Guide utilisateur mis à jour, commentaires code ajoutés
-    \item \textbf{Sécurité :} Validation OAuth et sanitization des données
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Conventions de commit (Conventional Commits) :}
+J'utilise la convention "Conventional Commits". Ça peut sembler technique, mais ça rend l'historique du projet très clair :
+
 \begin{lstlisting}
-feat: add OAuth Bungie authentication system
-fix: resolve login token expiration issue
-docs: update API integration guide
-test: add unit tests for user service
-refactor: improve raid guide component structure
-style: format code with prettier
-chore: update dependencies to latest versions
+feat: ajout de l'authentification OAuth Bungie
+fix: correction du rafraîchissement du token expiré
+docs: mise à jour du README avec les variables d'environnement
+test: ajout de tests pour le service de gestion des escouades
+refactor: simplification du composant GuideViewer
+style: formatage du code avec Prettier
+chore: mise à jour des dépendances
 \end{lstlisting}
-\vspace{0.5cm}
-\textbf{Definition of Done (DoD) appliqué concrètement :}
+
+\subsection{Ma "Definition of Done"}
+
+Avant de marquer une tâche comme terminée, je vérifie cette liste :
+
 \begin{itemize}
-    \item \textbf{Tests :} Couverture > 80\%, tests unitaires et d'intégration passants
-    \item \textbf{Code Review :} Au moins une review effectuée (auto-review en solo)
-    \item \textbf{CI/CD :} Pipeline GitHub Actions réussie (build, test, scan)
-    \item \textbf{Déploiement :} Déployé sur environnement de test et validé
-    \item \textbf{Documentation :} Code documenté, changelog mis à jour
-    \item \textbf{Sécurité :} Scan de vulnérabilités passé, secrets protégés
-    \item \textbf{Performance :} Tests de performance validés pour l'API Bungie
+    \item Le code est testé (couverture > 80\%).
+    \item J'ai fait une relecture de mon propre code (auto-review).
+    \item La pipeline GitHub Actions passe (build, tests, analyse de sécurité).
+    \item La fonctionnalité est déployée sur mon environnement de test et je l'ai validée manuellement.
+    \item La documentation est à jour (commentaires dans le code, éventuellement README).
+    \item Il n'y a pas de vulnérabilité de sécurité évidente.
 \end{itemize}
 
-\section{Planification et outils de suivi}
+\section{Comment je planifie et je suis mon avancement}
 
-La planification combine une roadmap GitHub pour la vision macro et GitHub Projects pour le suivi opérationnel. Cette approche duale optimise la coordination entre la planification stratégique et l'exécution tactique, particulièrement importante avec les délais imprévisibles de l'API Bungie.
+\subsection{Un outil, deux vues}
 
-\subsection{GitHub Project et Roadmap}
+GitHub me permet d'avoir deux visions complémentaires :
 
-\textbf{Structure du GitHub Project :}
 \begin{itemize}
-    \item \textbf{Vue Kanban :} Suivi visuel de l'état des tâches avec WIP limits
-    \item \textbf{Filtres :} Par label, milestone, assigné, statut, priorité API
-    \item \textbf{Automatisations :} Changement de statut basé sur les PR/issues (ex: auto-move to Review)
-    \item \textbf{Vues personnalisées :} Tableau de bord pour daily standup avec métriques clés
+    \item \textbf{La roadmap} (vue macro) : Je vois les grandes étapes sur plusieurs mois. C'est ce que je montre aux utilisateurs pour leur donner une idée de l'avenir du projet.
+    \item \textbf{Le tableau Kanban} (vue micro) : Je vois ce que je dois faire aujourd'hui et cette semaine. C'est mon outil de pilotage quotidien.
 \end{itemize}
-\vspace{0.5cm}
-\textbf{Roadmap GitHub avec dépendances API :}
-\begin{itemize}
-    \item \textbf{Visibilité :} Roadmap publique pour transparence avec communauté
-    \item \textbf{Milestones :} Dates cibles ajustables selon disponibilité API Bungie
-    \item \textbf{Dépendances :} Liens explicites entre fonctionnalités et endpoints API
-    \item \textbf{Suivi progression :} Avancement visuel avec indicateurs de risque API
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Extrait de roadmap GitHub aligné avec User Stories :}
+
+\subsection{Extrait de ma roadmap}
+
 \begin{verbatim}
-Phase 1: MVP (Oct 2025 - Mars 2026) [US #101-#104]
-+-- Sprint 1: Setup & Auth (4 semaines) [US #101]
-    +-- Environnement dev (1 semaine) [Issue #1]
-    +-- Authentification Bungie (2 semaines) [Issue #2, dépendance API]
-    +-- Base de données (1 semaine) [Issue #3]
-    
-+-- Sprint 2: Core Features (6 semaines) [US #102-#103]
-    +-- Guides interactifs (3 semaines) [Issue #4, dépendance API]
-    +-- Gestion escouades (2 semaines) [Issue #5]
-    +-- Calendrier raids (1 semaine) [Issue #6]
+Phase 1 : MVP (oct. 2025 - mars 2026)
+├── Sprint 1 : Authentification et base de données (4 semaines)
+├── Sprint 2 : Guides interactifs et gestion d'escouades (6 semaines)
+└── Sprint 3 : Calendrier et profils (4 semaines)
 
-Phase 2: Version 1.0 (Avril - Mai 2026) [US #105-#107]
-+-- Sprint 3: Gamification & Analytics [Issue #7]
-+-- Sprint 4: Finalisation & Déploiement [Issue #8]
+Phase 2 : Version 1.1 (avril - mai 2026)
+├── Sprint 4 : Améliorations UX et corrections
+└── Sprint 5 : Déploiement final
 \end{verbatim}
-\vspace{0.5cm}
-\textbf{Configuration GitHub Projects :}
-\begin{itemize}
-    \item \textbf{Colonnes :} Backlog, Sprint Planning, In Progress, Review, Done
-    \item \textbf{WIP Limits :} 2 tâches max en cours par développeur (focus qualité)
-    \item \textbf{Policies :} PR obligatoire pour merge en develop avec DoD vérifié
-    \item \textbf{Automation :} Mise à jour automatique des statuts via GitHub Actions
-\end{itemize}
 
-\subsection{Liaison User Stories - Tests - Milestones}
+\subsection{Le lien entre user stories, tests et jalons}
 
-\textbf{Intégration complète dans GitHub :}
-\begin{itemize}
-    \item \textbf{User Stories :} Créées comme issues avec template dédié et critères d'acceptation
-    \item \textbf{Tests :} Issues liées pour les scénarios de test avec données API Bungie
-    \item \textbf{Milestones :} Regroupement logique par version avec dépendances explicites
-    \item \textbf{Labels :} Complexité (S, M, L, XL), type (bug, feature, docs), priorité API
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Workflow de validation avec exemple concret :}
+Je m'assure que tout est connecté dans GitHub :
+
 \begin{enumerate}
-    \item Issue \#101 créée avec critères d'acceptation spécifiques à l'API Bungie
-    \item Branche \texttt{feature/bungie-oauth} développée avec tests associés
-    \item Pull Request \#45 avec validation des tests automatisés (12 tests passants)
-    \item Revue de code auto-effectuée avec checklist DoD
-    \item Merge et déploiement automatique en environnement de test
-    \item Validation manuelle avec compte Bungie de test
+    \item Je crée une \textbf{user story} (par exemple : "En tant que joueur, je veux me connecter avec Bungie").
+    \item Je lui associe des \textbf{tests} (des issues "Test : connexion réussie", "Test : token expiré").
+    \item Je la rattache à un \textbf{milestone} (par exemple "MVP v1.0").
 \end{enumerate}
 
-\section{Estimation de temps et planification}
+Comme ça, quand je termine une fonctionnalité, je sais exactement ce qui a été testé et pour quelle version c'est prévu.
 
-\textbf{Estimation globale :} \textit{Le projet est estimé à 65 jours de travail effectif répartis sur 8 mois (octobre 2025 à mai 2026), incluant 20\% de marge pour les imprévus liés à l'API Bungie. Cette estimation couvre le développement, les tests d'intégration API, et le déploiement.}
-\vspace{0.5cm}
-\textbf{Estimation détaillée avec justification technique :}
-\begin{longtable}{|p{3cm}|p{2.5cm}|p{1.5cm}|p{1.5cm}|p{3cm}|}
-\toprule
-\textbf{Fonctionnalité} & \textbf{Phase} & \textbf{SP} & \textbf{Jours} & \textbf{Justification estimation} \\
-\midrule
-Environnement de développement & Setup & 3 & 3 & Standard, pas de risque \\
+\section{Estimation globale du projet}
+
+J'ai estimé le projet à \textbf{70 jours de travail effectif}, répartis sur 8 mois. J'ai ajouté une marge de 20\% (14 jours) pour les imprévus liés à l'API Bungie, ce qui porte le total à \textbf{84 jours}.
+
+\subsection{Détail par grande fonctionnalité}
+
+\begin{longtable}{|p{4cm}|p{2cm}|p{2cm}|p{4cm}|}
 \hline
-Authentification Bungie OAuth & Backend & 5 & 5 & Complexité API OAuth + gestion tokens \\
+\textbf{Fonctionnalité} & \textbf{Points} & \textbf{Jours} & \textbf{Pourquoi cette estimation} \\
 \hline
-Base de données PostgreSQL & Backend & 3 & 3 & Standard, schéma validé \\
+Environnement de développement & 3 & 3 & Installation, configuration, rien de risqué \\
 \hline
-API Gestion escouades & Backend & 5 & 5 & Logique métier complexe, tests \\
+Authentification Bungie OAuth & 5 & 5 & Complexité de l'OAuth, gestion des tokens, sécurité \\
 \hline
-Guides interactifs raids & Frontend & 8 & 8 & UI complexe, intégration données API \\
+Base de données PostgreSQL & 3 & 3 & Schéma classique, bien maîtrisé \\
 \hline
-Calendrier raids & Frontend & 5 & 5 & Composants React avancés \\
+API Gestion d'escouades & 5 & 5 & Logique métier à bien définir, tests importants \\
 \hline
-Profils joueurs & Frontend & 3 & 3 & Simple affichage données \\
+Guides interactifs & 8 & 8 & Interface riche, intégration de données variées \\
 \hline
-Intégration API Destiny 2 & Intégration & 8 & 8 & Risque élevé, documentation API limitée \\
+Calendrier collaboratif & 5 & 5 & Composants React avancés, gestion des dates \\
 \hline
-Système de badges & Fonctionnalité & 5 & 5 & Logique métier, tests gamification \\
+Profils joueurs & 3 & 3 & Affichage de données, relativement simple \\
 \hline
-Tests unitaires et intégration & Qualité & 8 & 8 & Couverture élevée requise pour API \\
+Intégration API Destiny 2 & 8 & 8 & RISQUÉ : doc limitée, rate limiting, données complexes \\
 \hline
-Tests E2E & Qualité & 5 & 5 & Scénarios utilisateurs complexes \\
+Système de badges & 5 & 5 & Gamification, logique à inventer \\
 \hline
-Dockerisation & Déploiement & 3 & 3 & Standard, configuration API \\
+Tests (unitaires, intégration) & 8 & 8 & Essentiel pour la qualité, surtout sur l'API externe \\
 \hline
-CI/CD & Déploiement & 5 & 5 & Pipeline complexe avec tests API \\
+Tests E2E & 5 & 5 & Tester les parcours complets utilisateur \\
 \hline
-Documentation technique & Livraison & 3 & 3 & Documentation API spécifique \\
-\midrule
-\textbf{Total} & & \textbf{70} & \textbf{70 jours} & \\
-\textbf{Avec marge 20\% (risques API)} & & \textbf{84} & \textbf{84 jours} & \\
-\bottomrule
+Dockerisation & 3 & 3 & Standard, bien documenté \\
+\hline
+CI/CD (intégration et déploiement continu) & 5 & 5 & Automatisation, pipeline à bien configurer \\
+\hline
+Documentation & 3 & 3 & Pour moi-même et pour d'éventuels contributeurs \\
+\hline
+\textbf{TOTAL} & \textbf{70} & \textbf{70} & \\
+\hline
+\textbf{Avec marge 20\%} & \textbf{84} & \textbf{84} & \\
+\hline
 \end{longtable}
 
-\subsection{Métriques de suivi et amélioration continue}
+\section{Ce que je retire de cette organisation}
 
-\textbf{Métriques collectées avec objectifs d'amélioration :}
+Au début, j'avais tendance à vouloir tout faire en même temps et à noter mes idées sur des Post-It. Avec cette organisation GitHub, j'ai gagné en clarté et en régularité. Je sais toujours où j'en suis, ce qui est prévu pour demain, et ce qui est vraiment important.
+
+En résumé, cette méthode me sert à :
 \begin{itemize}
-    \item \textbf{Vélocité :} Objectif: stabiliser à 10-12 points/sprint (actuel: 8-12)
-    \item \textbf{Burndown chart :} Détection précoce des retards liés à l'API Bungie
-    \item \textbf{Lead time :} Objectif: réduire de 5 à 4 jours via meilleur découpage
-    \item \textbf{Cycle time :} Objectif: réduire de 4.2 à 3.5 jours via automation tests
-    \item \textbf{Taux de bugs :} Objectif: réduire de 15\% à 10\% via plus de tests unitaires
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Amélioration continue basée sur données :}
-\begin{itemize}
-    \item \textbf{Rétrospectives :} Actions concrètes comme "ajouter mocks API pour tests"
-    \item \textbf{Ajustements :} Réduction taille des User Stories basée sur cycle time
-    \item \textbf{Qualité code :} Augmentation couverture tests de 80\% à 85\% ciblée
-    \item \textbf{Satisfaction :} Retours utilisateurs directs intégrés dans backlog
+    \item Garder le cap sur mes objectifs malgré les imprévus techniques.
+    \item Travailler de manière plus professionnelle, comme si j'étais en équipe.
+    \item Apprendre de mes erreurs en mesurant objectivement ma progression.
 \end{itemize}
 
 \section{Liens utiles}
 
 \begin{itemize}
-    \item GitHub Project: \url{https://github.com/xxx/projects/1}
-    \item CONTRIBUTING.md: \url{https://github.com/xxx/CONTRIBUTING.md}
-    \item GitHub Flow/PRs: \url{https://docs.github.com/pull-requests}
-    \item Git Flow: \url{https://bit.ly/gitflow-atlassian}
-    \item GitHub Projects: \url{https://bit.ly/github-projects}
-    \item GitHub Roadmap: \url{https://bit.ly/github-roadmap}
-    \item GitHub Milestones: \url{https://bit.ly/github-milestones}
+    \item Documentation GitHub Projects: \url{https://docs.github.com/fr/issues/planning-and-tracking-with-projects}
+    \item Conventional Commits: \url{https://www.conventionalcommits.org/fr/v1.0.0/}
+    \item Git Flow expliqué: \url{https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow}
     \item User Stories: \url{https://www.mountaingoatsoftware.com/agile/user-stories}
-    \item Estimation de temps: \url{https://bit.ly/time-estimation}
-    \item Conventional Commits: \url{https://www.conventionalcommits.org}
 \end{itemize}

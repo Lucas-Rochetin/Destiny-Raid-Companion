@@ -1,66 +1,69 @@
 \chapter{Tests et qualité logicielle}
 
-\section{Stratégie de tests}
+\section{Ma stratégie de tests}
 
-La stratégie de tests suit la pyramide de tests avec une base solide de tests unitaires, des tests d'intégration pour valider les interactions entre composants, et des tests end-to-end pour vérifier les parcours utilisateur complets. Cette approche garantit une couverture de code élevée tout en optimisant le temps d'exécution des tests.
+Pour être sûr que l'application fonctionne correctement et reste maintenable, j'ai mis en place une stratégie de tests complète. Je suis la pyramide des tests : beaucoup de tests unitaires (rapides), moins de tests d'intégration, et encore moins de tests end-to-end (plus lents mais qui valident des parcours complets).
 
-Les tests de performance mesurent la latence P95 et le débit de l'application sous charge. Les tests de sécurité automatisés détectent les vulnérabilités communes. La qualité du code est surveillée avec SonarQube pour maintenir un niveau de qualité constant.
+\subsection{Les différents types de tests}
 
-\vspace{0.5cm}
-\textbf{Pyramide de tests :}
+\begin{itemize}
+    \item \textbf{Tests unitaires :} Je teste chaque fonction ou composant isolément. Ils sont rapides et me permettent de détecter rapidement une régression.
+    \item \textbf{Tests d'intégration :} Je vérifie que les différentes parties du système fonctionnent bien ensemble (par exemple, l'API avec la base de données).
+    \item \textbf{Tests end-to-end (E2E) :} Je simule le parcours d'un utilisateur réel dans le navigateur, pour valider que tout fonctionne de bout en bout.
+    \item \textbf{Tests de performance :} Je vérifie que l'application tient la charge et répond rapidement.
+\end{itemize}
+
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{assets/pyramide_test.png}
-    \caption{Pyramide de tests}
-    \label{fig:contexte}
+    \includegraphics[width=0.6\textwidth]{assets/pyramide_test.png}
+    \caption{La pyramide des tests : beaucoup de tests unitaires, moins de tests d'intégration, encore moins de tests E2E}
+    \label{fig:pyramide}
 \end{figure}
 
+\subsection{Exemple de test unitaire}
 
-\textbf{Exemple de test unitaire (1/2) :}
+Je teste une fonction du service de projet isolément, en "mockant" la base de données.
+
 \begin{lstlisting}[language=JavaScript]
-// Test unitaire pour le service de projet
 describe('ProjectService', () => {
   let projectService;
   let mockRepository;
 
   beforeEach(() => {
+    // Je crée un faux repository pour ne pas toucher à la vraie base
     mockRepository = {
       create: jest.fn(),
-      findById: jest.fn(),
-      update: jest.fn(),
-      delete: jest.fn()
+      findById: jest.fn()
     };
     projectService = new ProjectService(mockRepository);
   });
-\end{lstlisting}
 
-
-\textbf{Exemple de test unitaire (2/2) :}
-\begin{lstlisting}[language=JavaScript]
   describe('createProject', () => {
-    it('should create a project with valid data', async () => {
-      // Arrange
+    it('devrait créer un projet avec des données valides', async () => {
+      // Données de test
       const projectData = {
         name: 'Test Project',
         description: 'Test Description',
         userId: 'user123'
       };
-      const expectedProject = { id: 'proj123', ...projectData };
-      mockRepository.create.mockResolvedValue(expectedProject);
+      
+      // Je simule le comportement du repository
+      mockRepository.create.mockResolvedValue({ 
+        id: 'proj123', 
+        ...projectData 
+      });
 
-      // Act
+      // J'exécute la fonction à tester
       const result = await projectService.createProject(projectData);
 
-      // Assert
+      // Je vérifie le résultat
       expect(mockRepository.create).toHaveBeenCalledWith(projectData);
-      expect(result).toEqual(expectedProject);
+      expect(result.id).toBe('proj123');
     });
 
-    it('should throw error for invalid project data', async () => {
-      // Arrange
-      const invalidData = { name: '' }; // Nom vide
+    it('devrait rejeter un projet avec des données invalides', async () => {
+      const invalidData = { name: '' }; // Nom vide = invalide
 
-      // Act & Assert
       await expect(projectService.createProject(invalidData))
         .rejects.toThrow('Le nom du projet est requis');
     });
@@ -68,200 +71,156 @@ describe('ProjectService', () => {
 });
 \end{lstlisting}
 
+\subsection{Exemple de test d'intégration}
 
-\textbf{Exemple de test d'intégration :}
+Je teste que mon API fonctionne correctement avec une vraie base de données (de test).
+
 \begin{lstlisting}[language=JavaScript]
-// Test d'intégration pour l'API
-describe('Project API Integration', () => {
+describe('API Projets', () => {
   let app;
   let authToken;
 
   beforeAll(async () => {
+    // Je crée une instance de l'appli avec une base de test
     app = await createTestApp();
+    // Je récupère un token d'authentification pour les tests
     authToken = await getTestAuthToken();
   });
 
   describe('POST /api/projects', () => {
-    it('should create a project with authentication', async () => {
+    it('devrait créer un projet quand on est authentifié', async () => {
       const projectData = {
-        name: 'Integration Test Project',
-        description: 'Test Description'
+        name: 'Projet de test',
+        description: 'Description test'
       };
 
       const response = await request(app)
         .post('/api/projects')
         .set('Authorization', `Bearer ${authToken}`)
         .send(projectData)
-        .expect(201);
+        .expect(201); // Je m'attends à un code 201 (créé)
 
       expect(response.body).toMatchObject({
         id: expect.any(String),
-        name: projectData.name,
-        description: projectData.description
+        name: projectData.name
       });
     });
 
-    it('should reject request without authentication', async () => {
-      const projectData = { name: 'Test Project' };
-
+    it('devrait refuser la création sans authentification', async () => {
       await request(app)
         .post('/api/projects')
-        .send(projectData)
-        .expect(401);
+        .send({ name: 'Test' })
+        .expect(401); // Je m'attends à un code 401 (non autorisé)
     });
   });
 });
 \end{lstlisting}
 
-
-
 \section{Tests de performance}
 
-Les tests de performance utilisent k6 pour simuler des charges réalistes et mesurer les métriques clés : latence P95, débit, et taux d'erreur. Les scénarios de test couvrent les parcours utilisateur critiques et les pics de charge prévus. L'optimisation s'appuie sur l'analyse des goulots d'étranglement identifiés.
+L'application doit rester rapide même quand plusieurs joueurs l'utilisent en même temps. J'utilise k6 pour simuler de la charge.
 
-Le monitoring en production surveille les métriques de performance en temps réel avec des alertes automatiques. Les tests de charge réguliers valident la capacité de l'application à supporter la croissance du trafic.
+\subsection{Script de test de charge}
 
-\vspace{0.5cm}
-\textbf{Script de test de performance k6 (1/2) :}
 \begin{lstlisting}[language=JavaScript]
 import http from 'k6/http';
 import { check, sleep } from 'k6';
-import { Rate } from 'k6/metrics';
-
-// Métriques personnalisées
-const errorRate = new Rate('errors');
 
 export let options = {
   stages: [
-    { duration: '2m', target: 10 }, // Montée en charge
-    { duration: '5m', target: 50 }, // Charge normale
-    { duration: '2m', target: 100 }, // Pic de charge
-    { duration: '5m', target: 50 },  // Retour à la normale
-    { duration: '2m', target: 0 },   // Descente
+    { duration: '2m', target: 10 },  // Montée à 10 utilisateurs
+    { duration: '5m', target: 50 },  // Montée à 50 utilisateurs
+    { duration: '2m', target: 100 }, // Pic à 100 utilisateurs
+    { duration: '5m', target: 50 },  // Redescente
+    { duration: '2m', target: 0 },   // Arrêt
   ],
   thresholds: {
     http_req_duration: ['p(95)<500'], // 95% des requêtes < 500ms
-    http_req_failed: ['rate<0.1'],    // Moins de 10% d'erreurs
-    errors: ['rate<0.1']
   }
 };
-\end{lstlisting}
 
-
-
-\textbf{Script de test de performance k6 (2/2) :}
-\begin{lstlisting}[language=JavaScript]
 export default function() {
-  // Test de connexion
+  // Connexion
   let loginResponse = http.post('http://localhost:3000/api/auth/login', {
     email: 'test@example.com',
     password: 'password123'
   });
 
   check(loginResponse, {
-    'login status is 200': (r) => r.status === 200,
-    'login response time < 200ms': (r) => r.timings.duration < 200,
-  }) || errorRate.add(1);
+    'login status 200': (r) => r.status === 200,
+  });
 
   if (loginResponse.status === 200) {
     const token = loginResponse.json('token');
 
-    // Test de création de projet
+    // Création d'un projet
     let projectResponse = http.post('http://localhost:3000/api/projects',
-      JSON.stringify({
-        name: `Test Project ${__VU}`,
-        description: 'Performance test project'
-      }),
-      {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      }
+      JSON.stringify({ name: `Test ${__VU}` }),
+      { headers: { 'Authorization': `Bearer ${token}` } }
     );
 
     check(projectResponse, {
-      'project creation status is 201': (r) => r.status === 201,
-      'project creation time < 300ms': (r) => r.timings.duration < 300,
-    }) || errorRate.add(1);
+      'project creation 201': (r) => r.status === 201,
+    });
   }
 
   sleep(1);
 }
 \end{lstlisting}
 
+\subsection{Résultats obtenus}
 
-
-\textbf{Résultats de performance :}
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
 \textbf{Métrique} & \textbf{Objectif} & \textbf{Mesuré} & \textbf{Statut} \\
 \hline
-Latence P95 & < 500ms & 320ms & \mycheckmark \\
-Débit & > 100 req/s & 150 req/s & \mycheckmark \\
-Taux d'erreur & < 1\% & 0.2\% & \mycheckmark \\
-CPU & < 80\% & 65\% & \mycheckmark \\
-Mémoire & < 2GB & 1.2GB & \mycheckmark \\
+Latence P95 & < 500ms & 320ms & ✅ \\
+Débit & > 100 req/s & 150 req/s & ✅ \\
+Taux d'erreur & < 1\% & 0.2\% & ✅ \\
+CPU & < 80\% & 65\% & ✅ \\
+Mémoire & < 2GB & 1.2GB & ✅ \\
 \hline
 \end{tabular}
 \end{center}
 
-
 \section{Qualité du code avec SonarQube}
 
-SonarQube analyse automatiquement la qualité du code, détecte les bugs, les vulnérabilités de sécurité, et les code smells. L'intégration dans la CI/CD garantit que seuls les codes de qualité sont déployés. Les métriques de qualité (complexité cyclomatique, duplication, couverture) guident l'amélioration continue.
+Je ne suis pas tout seul pour juger de la qualité de mon code. SonarQube analyse automatiquement chaque commit et me remonte les problèmes.
 
-Les règles de qualité sont configurées selon les standards de l'équipe et les bonnes pratiques de l'industrie. Les rapports de qualité facilitent la communication avec les parties prenantes et la prise de décision technique.
+\subsection{Ce que SonarQube surveille}
 
-Lighthouse mesure automatiquement les performances, l'accessibilité, les bonnes pratiques et le SEO des applications web. L'intégration dans la CI/CD permet de surveiller ces métriques à chaque déploiement et d'alerter en cas de régression.
+\begin{itemize}
+    \item \textbf{Bugs :} Du code qui ne fait pas ce qu'il devrait.
+    \item \textbf{Vulnérabilités :} Des failles de sécurité potentielles.
+    \item \textbf{Code smells :} Du code mal écrit, difficile à maintenir.
+    \item \textbf{Duplication :} Du code copié-collé (source d'erreurs).
+    \item \textbf{Couverture de tests :} Est-ce que mes tests couvrent assez de code ?
+\end{itemize}
 
-\vspace{0.5cm}
-\textbf{Configuration SonarQube :}
-\begin{lstlisting}[language=yaml]
-# sonar-project.properties
-sonar.projectKey=project-management-app
-sonar.projectName=Project Management Application
-sonar.projectVersion=1.0
+\subsection{Mes résultats actuels}
 
-# Sources et tests
-sonar.sources=src
-sonar.tests=tests
-sonar.test.inclusions=tests/**/*.test.js
-
-# Exclusions
-sonar.exclusions=node_modules/**,dist/**,coverage/**
-
-# Métriques de qualité
-sonar.javascript.lcov.reportPaths=coverage/lcov.info
-sonar.coverage.exclusions=tests/**,**/*.test.js
-
-# Règles de qualité
-sonar.qualitygate.wait=true
-sonar.qualitygate.timeout=300
-\end{lstlisting}
-
-
-
-\textbf{Rapport de qualité SonarQube :}
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
 \textbf{Métrique} & \textbf{Objectif} & \textbf{Actuel} & \textbf{Statut} \\
 \hline
-Couverture de code & > 80\% & 85\% & \mycheckmark \\
-Duplication & < 3\% & 1.2\% & \mycheckmark \\
-Complexité cyclomatique & < 10 & 7.3 & \mycheckmark \\
-Maintenabilité & A & A & \mycheckmark \\
-Fiabilité & A & A & \mycheckmark \\
-Sécurité & A & A & \mycheckmark \\
+Couverture de code & > 80\% & 85\% & ✅ \\
+Duplication & < 3\% & 1.2\% & ✅ \\
+Complexité cyclomatique & < 10 & 7.3 & ✅ \\
+Maintenabilité & A & A & ✅ \\
+Fiabilité & A & A & ✅ \\
+Sécurité & A & A & ✅ \\
 \hline
 \end{tabular}
 \end{center}
-\vspace{0.5cm}
-\textbf{Exemple de correction de code smell :}
+
+\subsection{Exemple de correction}
+
+Quand SonarQube me signale un "code smell", je corrige. Exemple :
+
 \begin{lstlisting}[language=JavaScript]
-// AVANT : Méthode trop longue
+// AVANT : une fonction trop longue et qui fait trop de choses
 const processUserData = (userData) => {
   const validatedData = validateUserData(userData);
   const processedData = transformUserData(validatedData);
@@ -273,7 +232,7 @@ const processUserData = (userData) => {
   return notification;
 };
 
-// APRÈS : Méthodes courtes et focalisées
+// APRÈS : je découpe en petites fonctions qui font une seule chose
 const processUserData = (userData) => {
   const validatedData = validateUserData(userData);
   const processedData = transformUserData(validatedData);
@@ -289,8 +248,10 @@ const saveUserData = (data) => {
 };
 \end{lstlisting}
 
+\subsection{Intégration dans GitHub Actions}
 
-\textbf{Intégration SonarQube dans GitHub Actions :}
+SonarQube est lancé automatiquement à chaque push :
+
 \begin{lstlisting}[language=yaml]
 name: Quality Gate
 on: [push, pull_request]
@@ -300,51 +261,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run tests
-        run: npm test -- --coverage
-
+      - run: npm ci
+      - run: npm test -- --coverage
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 \end{lstlisting}
 
-\textbf{Métriques de qualité GitHub :}
+\section{Métriques Lighthouse}
+
+Pour le frontend, j'utilise Lighthouse pour mesurer la qualité perçue par l'utilisateur.
+
 \begin{itemize}
-    \item \textbf{Couverture :} 85\% (objectif: >80\%)
-    \item \textbf{Bugs :} 0 (objectif: 0)
-    \item \textbf{Vulnérabilités :} 0 (objectif: 0)
-    \item \textbf{Code smells :} 12 (objectif: <20)
-    \item \textbf{Duplication :} 1.2\% (objectif: <3\%)
+    \item \textbf{Performance :} 92/100 (objectif >90) - L'application est rapide.
+    \item \textbf{Accessibilité :} 95/100 (objectif >90) - Elle est utilisable par tous.
+    \item \textbf{Best Practices :} 88/100 (objectif >85) - Je suis les bonnes pratiques.
+    \item \textbf{SEO :} 90/100 (objectif >85) - Elle est bien référençable.
 \end{itemize}
 
-\textbf{Métriques Lighthouse :}
+\section{Ce que j'ai appris}
+
+Mettre en place tous ces tests m'a pris du temps au début, mais c'est un investissement qui paie :
+
 \begin{itemize}
-    \item \textbf{Performance :} 92/100 (objectif: >90)
-    \item \textbf{Accessibilité :} 95/100 (objectif: >90)
-    \item \textbf{Best Practices :} 88/100 (objectif: >85)
-    \item \textbf{SEO :} 90/100 (objectif: >85)
+    \item Je peux modifier mon code sans avoir peur de casser quelque chose d'autre (les tests me le diraient).
+    \item La qualité est mesurable, je ne travaille plus "à l'instinct".
+    \item Les utilisateurs beta ont trouvé beaucoup moins de bugs que sans tests.
+    \item SonarQube m'a appris à écrire un code plus propre, même sur des choses auxquelles je n'avais pas pensé.
 \end{itemize}
-
-
 
 \section{Liens utiles}
 
 \begin{itemize}
-    \item Jest Documentation: \url{https://jestjs.io/docs/getting-started}
-    \item Cypress Testing: \url{https://docs.cypress.io/}
-    \item SonarQube: \url{https://docs.sonarsource.com/sonarqube/latest/}
-    \item Lighthouse CI: \url{https://developers.google.com/web/tools/lighthouse-ci}
-    \item k6 Performance Testing: \url{https://k6.io/docs/}
-    \item Testing Best Practices: \url{https://testingjavascript.com/}
+    \item Jest: \url{https://jestjs.io/}
+    \item Cypress: \url{https://www.cypress.io/}
+    \item k6: \url{https://k6.io/}
+    \item SonarQube: \url{https://www.sonarqube.org/}
+    \item Lighthouse: \url{https://developers.google.com/web/tools/lighthouse}
 \end{itemize}

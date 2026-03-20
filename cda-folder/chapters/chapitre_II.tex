@@ -2,647 +2,381 @@
 
 \section{Objectifs métier, techniques et pédagogiques}
 
-\textbf{Objectifs métier :}
+Pour bien démarrer le projet, j'ai structuré mes objectifs en trois catégories. Cette séparation m'aide à vérifier que je réponds aux besoins des joueurs, que je fais les bons choix techniques et que je valide les compétences attendues pour le titre CDA.
+
+\subsection*{Objectifs métier}
 \begin{center}
     \begin{tabular}{|p{4cm}|p{6cm}|p{3cm}|}
         \hline
-        \textbf{Objectif} & \textbf{Justification métier} & \textbf{Livrable} \\
+        \textbf{Objectif} & \textbf{Pourquoi c'est important} & \textbf{Livrable} \\
         \hline
-        Améliorer l'expérience utilisateur des joueurs de Destiny 2 & Réduction mesurée du taux d'abandon de 78\% à 30\% & Plateforme web opérationnelle \\
+        Améliorer l'expérience des joueurs & Passer le taux d'abandon de 78\% à 30\% & Plateforme opérationnelle \\
         \hline
-        Réduire de 55\% le temps moyen d'organisation des raids & Gain de 25 minutes par session × 500 utilisateurs = 833h/mois & Module planning intégré \\
+        Faire gagner du temps aux joueurs & 25 minutes gagnées par session = 833h/mois pour 500 utilisateurs & Module de planning intégré \\
         \hline
-        Fidéliser la communauté via gamification & Augmentation de 25\% du temps de jeu sur activités complexes & Système de badges et scores \\
+        Fidéliser la communauté & Augmenter de 25\% le temps sur les activités complexes & Système de badges \\
         \hline
-        Centraliser les outils dispersés & Élimination de la consultation de 3-4 sources externes & Guides interactifs unifiés \\
+        Centraliser les informations & Éviter aux joueurs de consulter 3-4 sources différentes & Guides unifiés \\
         \hline
     \end{tabular}
 \end{center}
 
-\textbf{Objectifs techniques :}
+\subsection*{Objectifs techniques}
 \begin{center}
     \begin{tabular}{|p{4cm}|p{6cm}|p{3cm}|}
         \hline
-        \textbf{Objectif} & \textbf{Justification technique} & \textbf{Livrable} \\
+        \textbf{Objectif} & \textbf{Pourquoi c'est important} & \textbf{Livrable} \\
         \hline
-        Performance : temps réponse < 2s & Amélioration UX et réduction bounce rate & Monitoring New Relic \\
+        Temps de réponse < 2s & Améliorer l'expérience utilisateur et réduire les abandons & Monitoring New Relic \\
         \hline
-        Scalabilité : 100 users simultanés & Support pics d'activité post-updates & Architecture microservices-ready \\
+        Gérer 100 joueurs simultanés & Tenir les pics après les mises à jour du jeu & Architecture scalable \\
         \hline
-        Disponibilité : 99\% uptime & Continuité de service essentielle & Infrastructure cloud + backup \\
+        Garantir 99\% de disponibilité & Un service de raid doit être fiable & Infrastructure redondante \\
         \hline
-        Sécurité : OAuth Bungie + chiffrement & Protection données utilisateurs RGPD & Audit de sécurité \\
+        Sécuriser les comptes & Protéger les données utilisateur (conformité RGPD) & Audit de sécurité \\
         \hline
-        Maintenabilité : tests > 80\% & Réduction dette technique & Pipeline CI/CD + documentation \\
+        Maintenir le code & Couverture de tests > 80\% pour éviter la dette technique & Pipeline CI/CD \\
         \hline
     \end{tabular}
 \end{center}
 
-\textbf{Objectifs pédagogiques :}
+\subsection*{Objectifs pédagogiques}
 \begin{center}
     \begin{tabular}{|p{4cm}|p{6cm}|p{3cm}|}
         \hline
-        \textbf{Objectif} & \textbf{Lien compétences CDA} & \textbf{Livrable} \\
+        \textbf{Objectif} & \textbf{Lien avec le titre CDA} & \textbf{Livrable} \\
         \hline
-        Maîtriser développement fullstack React/Node.js & Compétence cœur développement applicatif & Code source documenté \\
+        Maîtriser React/Node.js & Compétence cœur du développement applicatif & Code source documenté \\
         \hline
-        Implémenter architecture 3-tiers scalable & Architecture logicielle et conception & Diagrammes d'architecture \\
+        Concevoir une architecture 3-tiers & Compétence en architecture logicielle & Diagrammes techniques \\
         \hline
-        Gérer intégration API tierces complexes & Intégration de services et données & Connecteur API Bungie fonctionnel \\
+        Intégrer une API complexe (Bungie) & Savoir connecter des services externes & Connecteur API fonctionnel \\
         \hline
-        Mettre en œuvre stratégie de tests & Assurance qualité et tests logiciels & Rapports de couverture de tests \\
+        Mettre en place une stratégie de tests & Compétence en assurance qualité & Rapports de couverture \\
         \hline
-        Déployer application cloud CI/CD & Déploiement et maintenance & Pipeline DevOps opérationnel \\
+        Déployer en continu (CI/CD) & Compétence en déploiement et maintenance & Pipeline opérationnel \\
         \hline
     \end{tabular}
 \end{center}
 
-\section{Instrumentation et métriques de suivi}
+\section{Comment je mesure la réussite du projet}
 
-\textbf{Tableau d'instrumentation des KPI :}
+Pour savoir si le projet avance dans la bonne direction, j'ai défini des indicateurs précis. Je les suis régulièrement pendant le développement.
+
 \begin{center}
 \begin{tabular}{|p{3cm}|p{2.5cm}|p{2cm}|p{2cm}|p{2cm}|}
 \hline
-\textbf{KPI} & \textbf{Source} & \textbf{Fréquence} & \textbf{Résultat initial} & \textbf{Seuil cible} \\
+\textbf{Indicateur} & \textbf{Source} & \textbf{Fréquence} & \textbf{Résultat actuel} & \textbf{Objectif} \\
 \hline
-Time-to-Render & New Relic Browser & Temps réel & 1.8s (tests initiaux) & < 2s P95 \\
+Temps d'affichage des pages & New Relic & Temps réel & 1.8s & < 2s \\
 \hline
-Temps planification raid & Logs utilisateur & Par session & 18 minutes (panel test) & < 10 minutes \\
+Temps pour planifier un raid & Logs utilisateur & Par session & 18 min & < 10 min \\
 \hline
-Taux succès authentification & Logs backend & Quotidien & 92\% (tests) & > 95\% \\
+Connexions réussies & Logs backend & Quotidien & 92\% & > 95\% \\
 \hline
-Utilisateurs actifs mensuels & Google Analytics & Mensuel & 0 (lancement) & 500 (juin 2026) \\
+Utilisateurs actifs mensuels & Google Analytics & Mensuel & 0 (lancement) & 500 \\
 \hline
-Couverture tests & GitHub Actions & À chaque PR & 75\% (actuel) & > 80\% \\
+Couverture des tests & GitHub Actions & À chaque PR & 75\% & > 80\% \\
 \hline
-Taux d'abandon premier raid & Tracking comportemental & Hebdomadaire & 78\% (étude) & < 30\% \\
+Abandon au premier raid & Tracking & Hebdomadaire & 78\% & < 30\% \\
 \hline
-Satisfaction utilisateur & Sondage NPS & Mensuel & N/A & ≥ 4.5/5 \\
+Satisfaction utilisateur & Sondages & Mensuel & N/A & ≥ 4.5/5 \\
 \hline
 \end{tabular}
 \end{center}
-\vspace{0.5cm}
-\textbf{Preuves GitHub Projects :}
 
-\textbf{Board GitHub Project - Extrait :}
+\subsection*{Exemple de suivi avec GitHub Projects}
+
+Voici à quoi ressemble mon tableau de bord GitHub Projects. Il me permet de visualiser l'avancement en un coup d'œil :
+
 \begin{verbatim}
-Colonnes: Backlog → Sprint Planning → In Progress → Review → Done
+Colonnes : Backlog → À faire → En cours → Revue → Terminé
 
-Backlog (6 issues):
-- #123 Authentification OAuth Bungie (5 points) [Must Have]
-- #124 Guides interactifs raids (8 points) [Must Have] 
-- #125 Gestion escouades (5 points) [Must Have]
-- #126 Calendrier collaboratif (8 points) [Should Have]
-- #127 Profils joueurs (3 points) [Should Have]
-- #128 Système badges (5 points) [Could Have]
+Backlog (6 tâches) :
+- Authentification OAuth Bungie [Priorité haute]
+- Guides interactifs [Priorité haute]  
+- Gestion des escouades [Priorité haute]
+- Calendrier collaboratif [Priorité moyenne]
+- Profils joueurs [Priorité moyenne]
+- Système de badges [Priorité basse]
 
-In Progress (2 issues):
-- #121 Maquettes UI (5 points) [85% complet]
-- #122 Setup environnement (3 points) [90% complet]
+En cours (2 tâches) :
+- Maquettes UI (85% terminé)
+- Configuration environnement (90% terminé)
 
-Done (3 issues):
-- #119 Spécifications fonctionnelles
-- #120 Architecture technique
-- #118 Étude marché
+Terminé (3 tâches) :
+- Spécifications fonctionnelles
+- Architecture technique
+- Étude de marché
 \end{verbatim}
-\vspace{0.5cm}
-\textbf{Milestones GitHub :}
-\begin{itemize}
-    \item \textbf{MVP v1.0} (15 mars 2026) : 45 story points, 85\% complété
-    \item \textbf{Version 1.1} (15 mai 2026) : 35 story points, 0\% complété
-    \item \textbf{Version 1.2} (15 juillet 2026) : 25 story points, 0\% complété
-\end{itemize}
-\vspace{0.5cm}
-\textbf{PV de validation utilisateur :}
 
-\textbf{Séance de validation technique - 15 février 2026}
+\subsection*{Validation avec de vrais joueurs}
+
+Le 15 février 2026, j'ai organisé une session de validation avec trois profils types : Thomas (débutant), Sarah (leader expérimentée) et Alex (joueur très technique).
+
+\textbf{Ce qu'ils m'ont appris :}
 \begin{itemize}
-    \item \textbf{Participants :} Thomas (débutant), Sarah (experte), Alex (stratège), Développeur
-    \item \textbf{Objectif :} Validation des maquettes Figma et des parcours utilisateurs critiques
-    \item \textbf{Décisions prises :}
-    \begin{itemize}
-        \item Ajouter un glossaire des termes techniques dans les guides débutants
-        \item Simplifier le processus d'invitation aux escouades (max 3 clics)
-        \item Ajouter des indicateurs de progression visuels dans les guides
-        \item Prévoir un mode "débutant" avec explications simplifiées
-    \end{itemize}
-    \item \textbf{Retours utilisateurs :}
-    \begin{itemize}
-        \item \textit{Thomas :} "L'explication des mécaniques est claire, mais il manque les termes de base"
-        \item \textit{Sarah :} "Le processus de création d'escouade est intuitif, gain de temps évident"
-        \item \textit{Alex :} "Les données statistiques sont pertinentes pour optimiser les stratégies"
-    \end{itemize}
-    \item \textbf{Sign-off :} Tous les participants ont validé les spécifications fonctionnelles
+    \item Thomas avait du mal avec certains termes techniques → j'ajoute un glossaire dans les guides.
+    \item Sarah a trouvé la création d'escouade très intuitive, mais voulait inviter ses coéquipiers plus vite → je simplifie le processus à 3 clics maximum.
+    \item Alex aimerait voir sa progression plus clairement → j'ajoute des indicateurs visuels dans les guides.
 \end{itemize}
-\vspace{0.5cm}
-\textbf{Traçabilité User Stories - Issues GitHub :}
+
+Tous ont validé les maquettes et le concept général. Je peux continuer en étant sûr de répondre à leurs vrais besoins.
+
+\section{Pourquoi j'ai choisi cette stack technique}
+
+\subsection*{PostgreSQL + Prisma + React/Node.js}
+
+\textbf{PostgreSQL :}
+\begin{itemize}
+    \item Je peux définir des règles précises entre les tables (clés étrangères, contraintes d'unicité), ce qui garantit que les données des joueurs et des escouades restent cohérentes.
+    \item Le moteur gère très bien les requêtes complexes, comme quand je dois chercher des joueurs selon plusieurs critères.
+    \item Le type JSONB me donne de la flexibilité pour stocker des réglages ou des données de jeu qui peuvent varier.
+    \item Les transactions ACID assurent que si je crée une escouade et que j'ajoute son leader, tout se fait en une seule fois, sans risque d'incohérence.
+\end{itemize}
+
+\textbf{Prisma :}
+\begin{itemize}
+    \item Il génère automatiquement les types TypeScript à partir de mon schéma de base. Je gagne du temps et j'évite des erreurs.
+    \item Les migrations sont versionnées : je peux revenir en arrière si jamais une modification pose problème.
+    \item L'autocomplétion dans mon éditeur me fait gagner un temps précieux au quotidien.
+\end{itemize}
+
+\subsection*{Pourquoi j'ai écarté d'autres solutions}
+
 \begin{center}
-\begin{tabular}{|p{2cm}|p{2.5cm}|p{2cm}|p{2cm}|p{2cm}|}
+\begin{tabular}{|p{3cm}|p{4cm}|p{4cm}|}
 \hline
-\textbf{User Story} & \textbf{Issue GitHub} & \textbf{KPI associé} & \textbf{Résultat prévu} & \textbf{Statut} \\
+\textbf{Alternative} & \textbf{Avantages} & \textbf{Raison du rejet} \\
 \hline
-Authentification OAuth & \#123 & Taux succès > 95\% & 98\% & \textbf{Développement} \\
+MySQL & Mature et performant & PostgreSQL gère mieux les données JSON, utiles pour moi \\
 \hline
-Guides interactifs & \#124 & Satisfaction ≥ 4.5/5 & 4.7/5 & \textbf{Planifié} \\
+TypeORM & Populaire, multi-bases & Prisma offre une meilleure sécurité des types \\
 \hline
-Gestion escouades & \#125 & Temps création < 5min & 3min & \textbf{Backlog} \\
+SQLite & Simple à configurer & Ne passerait pas à l'échelle avec plusieurs utilisateurs \\
 \hline
-Calendrier raids & \#126 & Réduction temps org. & 55\% gain & \textbf{Backlog} \\
-\hline
-Profils joueurs & \#127 & Engagement utilisateur & +25\% & \textbf{Backlog} \\
+Firebase & Développement rapide & Je voulus éviter la dépendance à un fournisseur unique \\
 \hline
 \end{tabular}
 \end{center}
 
-\section{Justification des choix techniques}
+\section{Priorisation des fonctionnalités (MoSCoW)}
 
-\textbf{Stack technique principale : PostgreSQL + Prisma + React/Node.js}
-
-\textbf{Choix PostgreSQL :}
-\begin{itemize}
-    \item \textbf{Intégrité relationnelle :} Contraintes FOREIGN KEY, UNIQUE, CHECK pour la cohérence des données utilisateurs et escouades
-    \item \textbf{Performances requêtes complexes :} Optimiseur de requêtes avancé pour les recherches et statistiques
-    \item \textbf{Support JSONB :} Flexibilité pour stocker les données de jeu variables (settings, metadata)
-    \item \textbf{Transactions ACID :} Garantie de cohérence pour les opérations critiques (création d'escouades, planning)
-    \item \textbf{Communauté et maturité :} Solution éprouvée avec une large communauté et documentation
-\end{itemize}
-
-\textbf{Choix Prisma :}
-\begin{itemize}
-    \item \textbf{Type-safety :} Génération automatique des types TypeScript à partir du schéma, réduisant les erreurs runtime
-    \item \textbf{Migrations versionnées :} Historique des changements de schéma avec rollback possible
-    \item \textbf{Productivité développeur :} Auto-complétion, validation des requêtes, réduction du code boilerplate
-    \item \textbf{Performance :} Génération de requêtes SQL optimisées, connexion pooling intégré
-    \item \textbf{Écosystème :} Intégration avec les outils modernes (GitHub Actions, Vercel, etc.)
-\end{itemize}
-
-\textbf{Alternatives écartées et justification :}
+J'ai classé les fonctionnalités en quatre catégories pour être sûr de livrer l'essentiel en premier.
 
 \begin{center}
-\begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
-\hline
-\textbf{Alternative} & \textbf{Avantages} & \textbf{Inconvénients} & \textbf{Raison rejet} \\
-\hline
-MySQL & Maturité, performance & Moins bon support JSON, écosystème & PostgreSQL offre meilleures perfs JSON \\
-\hline
-TypeORM & Popularité, support multiple DB & Expérience développeur moins bonne & Prisma offre meilleure type-safety \\
-\hline
-SQLite & Simplicité, zero-config & Limitations scaling, concurrence & Inadapté pour application multi-utilisateurs \\
-\hline
-Firebase & Développement rapide, real-time & Vendor lock-in, coût scaling & Autonomie technique limitée \\
-\hline
-\end{tabular}
-\end{center}
-
-\section{Tableau MoSCoW justifié}
-
-\textbf{Tableau MoSCoW détaillé avec justification :}
-\vspace{0.5cm}
-\begin{center}
-    \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+    \begin{tabular}{|p{2.5cm}|p{3.5cm}|p{4cm}|}
         \hline
-        \textbf{Priorité} & \textbf{Fonctionnalité} & \textbf{Pourquoi} & \textbf{Valeur métier} \\
+        \textbf{Priorité} & \textbf{Fonctionnalité} & \textbf{Pourquoi c'est indispensable} \\
         \hline
-        Must Have & Authentification Bungie OAuth & Accès aux données utilisateur, sécurité & Condition sine qua non \\
+        \textbf{Must Have} & Authentification Bungie & Sans ça, pas de compte utilisateur \\
+        \textbf{(Essentiel)} & Guides interactifs & C'est la raison d'être du projet \\
+        & Gestion des escouades & Le cœur de la collaboration \\
+        & Base de données PostgreSQL & Rien ne fonctionne sans données \\
         \hline
-        Must Have & Guides interactifs raids & Cœur valeur ajoutée, différentiation & Résolution problème principal \\
+        \textbf{Should Have} & Calendrier collaboratif & Pour le gain de temps mesurable \\
+        \textbf{(Important)} & Profil + statistiques & Pour l'engagement des joueurs \\
         \hline
-        Must Have & Gestion escouades & Fonctionnalité collaborative essentielle & Rétention utilisateurs \\
+        \textbf{Could Have} & Système de badges & Pour la motivation, mais pas vital \\
+        \textbf{(Accessoire)} & Notifications & Évite les oublis, mais on peut s'en passer au début \\
         \hline
-        Must Have & Base de données PostgreSQL & Persistance données, performances & Fondation technique \\
-        \hline
-        Should Have & Calendrier collaboratif & Réduction temps organisation mesurable & Gain temps 55\% \\
-        \hline
-        Should Have & Profil joueur + statistiques & Personnalisation expérience utilisateur & Engagement +25\% \\
-        \hline
-        Could Have & Système de badges & Gamification, motivation & Augmentation rétention \\
-        \hline
-        Could Have & Notifications & Rappels sessions, engagement & Réduction absentéisme \\
-        \hline
-        Won't Have & App mobile native & Coût développement trop élevé MVP & Report version 2.0 \\
-        \hline
-        Won't Have & Chat temps réel & Complexité technique, coût & Discord reste solution externe \\
-        \hline
-        Won't Have & Streaming intégré & Hors scope, complexité légale & Solutions dédiées existent \\
+        \textbf{Won't Have} & Application mobile native & Trop coûteux pour la V1 \\
+        \textbf{(Pas pour maintenant)} & Chat en temps réel & Discord fait déjà ça très bien \\
+        & Streaming vidéo & Hors sujet pour un MVP \\
         \hline
     \end{tabular}
 \end{center}
-\vspace{0.5cm}
-\textbf{Périmètre MVP - GitHub Milestone :}
+
+\subsection*{Ce que contiendra la version 1.0 (MVP)}
 \begin{itemize}
-    \item \textbf{Milestone: MVP v1.0} - Date cible: 15 mars 2026
-    \item \textbf{Épics principales:} 
-    \begin{itemize}
-        \item Auth-Bungie-OAuth (Must Have)
-        \item Guides-Interactifs (Must Have)
-        \item Gestion-Escouades (Must Have)
-        \item Calendrier-Base (Should Have)
-    \end{itemize}
-    \item \textbf{Scope exclu :} Système badges, notifications push, app mobile, chat
-    \item \textbf{Livrable:} Plateforme web responsive déployée en production
+    \item Authentification complète avec Bungie
+    \item Guides pour 3 raids : Vault of Glass, Last Wish, Deep Stone Crypt
+    \item Création et gestion d'escouades
+    \item Calendrier simple pour planifier des sessions
+    \item Profil basique avec statistiques principales
 \end{itemize}
 
-\section{Critères d'acceptation et scénarios}
+\section{Scénarios de test concrets (format Gherkin)}
 
-\textbf{Critères d'acceptation - Scénarios Gherkin :}
+Pour chaque fonctionnalité, j'ai écrit des scénarios qui décrivent exactement comment elle doit se comporter. Ça m'aide à coder juste ce qu'il faut et à vérifier que ça marche.
 
-\textbf{Scénario 1: Connexion utilisateur via OAuth Bungie}
+\subsection*{Scénario 1 : Connexion avec Bungie}
 \begin{verbatim}
-Étant donné un utilisateur non connecté sur la plateforme
+Étant donné un joueur non connecté
 Quand il clique sur "Se connecter avec Bungie"
-Et il est redirigé vers la page d'authentification Bungie
-Et il saisit ses identifiants valides
-Et il autorise l'application
-Alors il est redirigé vers son tableau de bord personnel
-Et son profil est synchronisé avec l'API Bungie
-Et un token JWT est généré et stocké sécurisé
-
+Et qu'il s'authentifie sur le site de Bungie
+Et qu'il autorise l'application
+Alors il est redirigé vers son tableau de bord
+Et son profil est créé ou mis à jour automatiquement
 \end{verbatim}
 
-\textbf{Scénario 2: Consultation guide interactif raid}
+\subsection*{Scénario 2 : Consultation d'un guide}
 \begin{verbatim}
-Étant donné un utilisateur connecté sur la plateforme
-Quand il sélectionne un raid "Vault of Glass"
-Alors le guide interactif s'affiche avec les étapes détaillées
-Et les mécaniques sont expliquées avec illustrations
-Et le temps estimé est affiché (45-60 minutes)
-Et les recommandations d'équipement sont visibles
-Et la navigation entre étapes est fluide
-
+Étant donné un joueur connecté
+Quand il choisit le raid "Vault of Glass"
+Alors le guide s'affiche avec toutes les étapes
+Et les mécaniques importantes sont illustrées
+Et le temps estimé (45-60 min) est indiqué
+Et les équipements recommandés sont listés
 \end{verbatim}
 
-\textbf{Scénario 3: Création et gestion d'escouade}
+\subsection*{Scénario 3 : Création d'une escouade}
 \begin{verbatim}
-Étant donné un leader d'escouade authentifié
-Quand il crée une nouvelle escouade "Raiders du Dimanche"
-Et il définit les paramètres (visibilité, taille max)
-Et il invite 5 joueurs par leurs pseudos Bungie
-Alors les invitations sont envoyées et visibles en attente
-Et l'escouade apparaît dans la liste avec statut "En recrutement"
-Et les membres peuvent accepter/refuser les invitations
-Et le leader peut gérer les rôles et permissions
-
+Étant donné un joueur connecté
+Quand il crée une nouvelle escouade "Les Raiders du Dimanche"
+Et qu'il fixe la taille maximum à 6 joueurs
+Et qu'il invite 5 amis par leur pseudo Bungie
+Alors l'escouade apparaît dans sa liste
+Et les invitations sont envoyées
+Et il peut voir qui a déjà accepté
 \end{verbatim}
 
-\textbf{Scénario 4: Planification session de raid}
-\begin{verbatim}
-Étant donné un leader d'escouade avec membres
-Quand il accède au calendrier de l'escouade
-Et il sélectionne une date et créneau horaire
-Et il choisit le raid "Last Wish" et difficulté "Normal"
-Alors la session est créée dans le calendrier partagé
-Et tous les membres reçoivent une notification
-Et les disponibilités sont collectées automatiquement
-Et les conflits de planning sont détectés et signalés
+\section{Les personnes concernées et les risques}
 
-\end{verbatim}
+\subsection*{Les trois profils types d'utilisateurs}
 
-\section{Cibles et parties prenantes}
+\textbf{Thomas - Le débutant motivé (25 ans)}
+\begin{itemize}
+    \item \textbf{Profil :} Joue depuis 2 mois, 50 heures de jeu
+    \item \textbf{Ce qui le frustre :} "Je comprends rien aux mécaniques des raids", "Personne veut de moi car je suis débutant", "Je perds une heure à chercher des infos"
+    \item \textbf{Ce dont il a besoin :} Des guides clairs, une équipe patiente, un environnement où il peut apprendre sans stress
+\end{itemize}
 
-\textbf{Matrice des risques et mitigation :}
-\vspace{0.5cm}
+\textbf{Sarah - La leader expérimentée (30 ans)}
+\begin{itemize}
+    \item \textbf{Profil :} 2000+ heures de jeu, organise 3 raids par semaine
+    \item \textbf{Ce qui la frustre :} "Je perds 30 minutes à tout organiser", "Je répète toujours les mêmes explications", "Les outils sont éparpillés"
+    \item \textbf{Ce dont elle a besoin :} Centraliser ses outils, gagner du temps, suivre la progression de son équipe
+\end{itemize}
+
+\textbf{Alex - Le stratège (35 ans)}
+\begin{itemize}
+    \item \textbf{Profil :} Créateur de contenu, il adore optimiser les stratégies
+    \item \textbf{Ce qui le frustre :} "Les infos ne sont jamais à jour", "Pas de données pour comparer les stratégies"
+    \item \textbf{Ce dont il a besoin :} Des analytics fiables, des données en temps réel
+\end{itemize}
+
+\subsection*{Principaux risques et comment je les anticipe}
+
 \begin{center}
-    \begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{3cm}|p{3cm}|}
+    \begin{tabular}{|p{3.5cm}|p{4cm}|p{4cm}|}
         \hline
-        \textbf{Risque} & \textbf{Impact} & \textbf{Probabilité} & \textbf{Mitigation} & \textbf{Plan de secours} \\
+        \textbf{Risque} & \textbf{Impact} & \textbf{Comment je m'y prépare} \\
         \hline
-        Évolution API Bungie & Élevé & Moyenne & Monitoring changements, tests réguliers & Adaptation rapide du connecteur \\
+        L'API Bungie change & Élevé & Je teste régulièrement et je surveille les annonces \\
         \hline
-        Faible adoption communauté & Élevé & Moyenne & Marketing communautaire, beta testeurs & Pivot fonctionnalités, feedback early \\
+    Peu de joueurs adoptent l'outil & Élevé & J'implique des testeurs dès le début pour coller à leurs besoins \\
         \hline
-        Problèmes performance & Moyen & Élevée & Tests de charge early, optimisation continue & Scaling horizontal, cache Redis \\
+        L'application rame & Moyen & Je fais des tests de charge tôt et j'optimise au fur et à mesure \\
         \hline
-        Données corrompues & Élevé & Faible & Sauvegardes automatiques, validation données & Restauration depuis backup, rollback \\
-        \hline
-        Sécurité OAuth & Critique & Faible & Revue de sécurité, tests pénétration & Procédures d'urgence, revocation tokens \\
-        \hline
-    \end{tabular}
-\end{center}
-\vspace{0.5cm}
-\textbf{Personae détaillés :}
-
-\textbf{Thomas - Le Débutant Motivé (25 ans)}
-\begin{itemize}
-    \item \textbf{Profil:} Nouveau joueur, 2 mois d'expérience Destiny 2, 50 heures de jeu
-    \item \textbf{Motivation:} Voir le contenu endgame, progresser dans le jeu, socialiser
-    \item \textbf{Frustrations:} 
-    \begin{itemize}
-        \item "Je ne comprends pas les mécaniques complexes des raids"
-        \item "Personne ne veut jouer avec moi car je suis débutant"
-        \item "Je perds 1h à chercher des infos sur 4 sites différents"
-        \item "J'ai peur de gâcher l'expérience des joueurs expérimentés"
-    \end{itemize}
-    \item \textbf{Besoins:} Guides clairs et progressifs, équipe patiente, apprentissage sécurisé
-    \item \textbf{Objectifs:} Compléter son premier raid dans les 2 semaines
-    \item \textbf{Scénario d'usage:} Consultation guide → Recherche équipe bienveillante → Session apprentissage → Feedback
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Sarah - La Leader Expérimentée (30 ans)}
-\begin{itemize}
-    \item \textbf{Profil:} Joueuse vétéran, 2000+ heures, leader de clan, 3 raids/semaine
-    \item \textbf{Motivation:} Optimiser l'organisation, partager son expertise, performance équipe
-    \item \textbf{Frustrations:}
-    \begin{itemize}
-        \item "Je passe 30min à organiser chaque session entre Discord et calendriers"
-        \item "Je dois tout réexpliquer aux nouveaux à chaque fois"
-        \item "Les outils sont dispersés, je perds du temps à naviguer"
-        \item "Difficile de suivre la progression des membres"
-    \end{itemize}
-    \item \textbf{Besoins:} Centralisation outils, gain de temps, gestion d'équipe efficace, analytics
-    \item \textbf{Objectifs:} Réduire le temps d'organisation de 50\%, améliorer rétention équipe
-    \item \textbf{Scénario d'usage:} Création escouade → Planification rapide → Gestion membres → Analyse performances
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Alex - Le Stratège Data (35 ans)}
-\begin{itemize}
-    \item \textbf{Profil:} Créateur de contenu, théoricien, min-maxer, analyse données
-    \item \textbf{Motivation:} Optimisation parfaite, données précises, création contenu qualité
-    \item \textbf{Frustrations:}
-    \begin{itemize}
-        \item "Les builds ne sont pas à jour avec les derniers patches"
-        \item "Pas de données consolidées sur les stratégies efficaces"
-        \item "Difficile de comparer les performances entre différentes approaches"
-    \end{itemize}
-    \item \textbf{Besoins:} Analytics détaillées, données fiables et temps réel, communauté active
-    \item \textbf{Objectifs:} Créer des guides optimisés basés sur les données, building théorie
-    \item \textbf{Scénario d'usage:} Analyse statistiques → Tests stratégies → Création guides → Partage communauté
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Matrice d'influence des parties prenantes :}
-\vspace{0.5cm}
-\begin{center}
-    \begin{tabular}{|p{3cm}|p{2cm}|p{2cm}|p{3cm}|}
-        \hline
-        \textbf{Partie prenante} & \textbf{Influence} & \textbf{Intérêt} & \textbf{Stratégie d'engagement} \\
-        \hline
-        Utilisateurs finaux & Élevée & Très élevé & Validation continue, feedback régulier, beta testing \\
-        \hline
-        Développeur (moi) & Très élevée & Très élevé & Autonomie totale, prise de décision, veille technique \\
-        \hline
-        Communauté Destiny 2 & Moyenne & Élevé & Implication early, recrutement testeurs, communication transparente \\
-        \hline
-        Bungie (API) & Élevée & Faible & Conformité aux CGU, monitoring changements, dialogue proactif \\
-        \hline
-        Testeurs bêta & Faible & Élevé & Recrutement actif, reconnaissance contribution, feedback structuré \\
-        \hline
-        Jury CDA & Élevée & Moyen & Documentation complète, démonstrations, preuves concrètes \\
+        Une faille de sécurité & Critique & Je fais auditer le code et je suis les bonnes pratiques OWASP \\
         \hline
     \end{tabular}
 \end{center}
 
-\section{Exigences fonctionnelles}
+\section{Les fonctionnalités en détail}
 
-\textbf{Spécification fonctionnelle détaillée :}
+\subsection*{Pour les joueurs (Front Office)}
 
-\textbf{Fonctionnalités Front Office :}
 \begin{center}
-    \begin{tabular}{|p{3cm}|p{6cm}|p{2cm}|}
+    \begin{tabular}{|p{3.5cm}|p{6cm}|}
         \hline
-        \textbf{Fonctionnalité} & \textbf{Description détaillée} & \textbf{Priorité} \\
+        \textbf{Fonctionnalité} & \textbf{Description} \\
         \hline
-        Authentification OAuth Bungie & Connexion sécurisée via Bungie.net, gestion sessions JWT, refresh tokens, déconnexion multi-appareils & Must Have \\
+        Connexion Bungie & S'identifier avec son compte Bungie, gestion sécurisée de la session \\
         \hline
-        Guides interactifs raids & Navigation étape par étape, illustrations mécaniques, recommandations équipement, glossaire termes, timing estimé & Must Have \\
+        Guides interactifs & Suivre les raids étape par étape, avec illustrations et conseils \\
         \hline
-        Gestion escouades & Création/modification escouades, invitation membres, gestion rôles (leader/membre), paramètres visibilité & Must Have \\
+        Gestion d'escouade & Créer un groupe, inviter des joueurs, gérer les rôles \\
         \hline
-        Calendrier collaboratif & Vue mensuelle/semaine, création sessions, gestion disponibilités, notifications, conflits détection & Should Have \\
+        Calendrier & Planifier des sessions, voir les disponibilités de son équipe \\
         \hline
-        Profil personnel & Statistiques jeu, historique raids, badges, équipement favori, préférences notification & Should Have \\
+        Profil personnel & Voir ses statistiques, son historique, ses badges \\
         \hline
-        Recherche joueurs & Filtres par niveau, disponibilité, langues, statut, compatibilité playstyle & Could Have \\
-        \hline
-    \end{tabular}
-\end{center}
-\vspace{0.5cm}
-\textbf{Fonctionnalités Back Office :}
-\vspace{0.5cm}
-\begin{center}
-    \begin{tabular}{|p{3cm}|p{6cm}|p{2cm}|}
-        \hline
-        \textbf{Fonctionnalité} & \textbf{Description détaillée} & \textbf{Priorité} \\
-        \hline
-        Administration utilisateurs & Modération contenu, gestion signalements, suspension comptes, statistiques usage & Must Have \\
-        \hline
-        Gestion contenu guides & CRUD guides, édition contenu, validation modifications, versioning, analytics consultation & Must Have \\
-        \hline
-        Analytics plateforme & Métriques engagement, performance technique, erreurs, comportement utilisateurs & Should Have \\
-        \hline
-        Logs système & Monitoring API Bungie, performances requêtes, erreurs application, audits sécurité & Should Have \\
-        \hline
-        Sauvegardes automatiques & Backup base données, restauration, historique versions, monitoring intégrité & Must Have \\
-        \hline
-    \end{tabular}
-\end{center}
-\vspace{0.5cm}
-\textbf{Matrice des droits d'accès (principe moindre privilège) :}
-\vspace{0.5cm}
-\begin{center}
-    \begin{tabular}{|p{3cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|}
-        \hline
-        \textbf{Permission} & \textbf{Anonyme} & \textbf{Joueur} & \textbf{Leader} & \textbf{Modo} & \textbf{Admin} \\
-        \hline
-        Voir guides publics & \ding{51} & \ding{51} & \ding{51}  & \ding{51}  & \ding{51}  \\
-        \hline
-        Connexion Bungie OAuth & \ding{55} & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}  \\
-        \hline
-        Créer escouade & \ding{55} & \ding{51}  & \ding{51}  & \ding{51}  & \ding{51}  \\
-        \hline
-        Planifier session raid & \ding{55} & \ding{55} & \ding{51}  & \ding{51}  & \ding{51}  \\
-        \hline
-        Modifier guides & \ding{55} & \ding{55} & \ding{55} & \ding{51}  & \ding{51}  \\
-        \hline
-        Admin utilisateurs & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{51}  \\
-        \hline
-        Accès analytics & \ding{55} & \ding{55} & \ding{55} & \ding{51}  & \ding{51}  \\
-        \hline
-        Configuration système & \ding{55} & \ding{55} & \ding{55} & \ding{55} & \ding{51}  \\
-        \hline
-    \end{tabular}
-\end{center}
-\vspace{0.5cm}
-\textbf{Exigences de confidentialité RGPD :}
-\vspace{0.5cm}
-\begin{center}
-    \begin{tabular}{|p{3cm}|p{8cm}|}
-        \hline
-        \textbf{Aspect RGPD} & \textbf{Mesures de conformité implémentées} \\
-        \hline
-        Données collectées & Pseudonyme Bungie, stats jeu, préférences, logs connexion, données de session \\
-        \hline
-        Base légale & Consentement explicite, nécessaire à l'exécution du contrat (CGU) \\
-        \hline
-        Stockage & Chiffrement AES-256 base PostgreSQL, secrets managés avec HashiCorp Vault \\
-        \hline
-        Durée conservation & 3 ans après dernière connexion (conforme durée légale) \\
-        \hline
-        Droits utilisateurs & Accès, rectification, suppression, portabilité via interface dédiée \\
-        \hline
-        Sécurité technique & HTTPS obligatoire, tokens JWT expiration 24h, audit logs, rate limiting \\
-        \hline
-        Sous-traitants & Hébergeur cloud (Scaleway) avec certification ISO 27001, clauses contractuelles \\
-        \hline
-        DPO & Désignation responsable conformité, registre des traitement maintenu \\
-        \hline
-    \end{tabular}
-\end{center}
-\vspace{0.5cm}
-\textbf{Processus d'authentification sécurisé :}
-\begin{itemize}
-    \item \textbf{Flux nominal:} Redirection OAuth Bungie → Callback → Validation code → JWT generation → Session establishment
-    \item \textbf{Gestion d'erreurs:} 
-    \begin{itemize}
-        \item API Bungie indisponible: Message d'erreur + réessai automatique (3 tentatives)
-        \item Token expiré: Refresh automatique via refresh token ou reconnexion forcée
-        \item Compte non autorisé: Message explicite avec redirection vers guide débutants
-        \item Rate limiting: Backoff exponentiel + file d'attente requêtes
-    \end{itemize}
-    \item \textbf{Mesures de sécurité:} 
-    \begin{itemize}
-        \item Verrouillage compte après 5 tentatives échouées (déverrouillage automatique 30min)
-        \item Session expire après 24h d'inactivité, reconnexion requise
-        \item Logout global sur tous devices lors de changement mot de passe Bungie
-        \item Audit logs de toutes les tentatives de connexion (succès/échec)
-    \end{itemize}
-\end{itemize}
-
-\section{Définition du MVP}
-
-\textbf{Périmètre MVP - GitHub Milestones :}
-\begin{itemize}
-    \item \textbf{Milestone: MVP-v1.0} - Due: 15 mars 2026
-    \item \textbf{Épics incluses:}
-    \begin{itemize}
-        \item \textbf{AUTH:} OAuth Bungie complet, gestion sessions, sécurité
-        \item \textbf{GUIDES:} 3 raids détaillés (Vault of Glass, Last Wish, Deep Stone Crypt)
-        \item \textbf{SQUADS:} Création, invitation, gestion basique, rôles
-        \item \textbf{PLANNING:} Calendrier simple, créneaux, notifications basiques
-        \item \textbf{PROFILE:} Profil basique avec stats principales
-    \end{itemize}
-    \item \textbf{Épics exclues (version 1.1+):}
-    \begin{itemize}
-        \item Chat temps réel
-        \item Système de badges avancé
-        \item Analytics détaillées
-        \item App mobile
-        \item Intégration Discord webhooks
-    \end{itemize}
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Parcours utilisateurs complets MVP :}
-\vspace{0.5cm}
-\textbf{Parcours 1: Premier raid réussi (Thomas - Débutant)}
-\begin{enumerate}
-    \item Arrive sur landing page avec présentation features
-    \item Se connecte avec compte Bungie (OAuth flow)
-    \item Consulte le guide "Vault of Glass pour débutants" avec explications détaillées
-    \item Rejoint une escouade "Bienveillante débutants" via système de matching
-    \item Participe à sa première session raid organisée (2h)
-    \item Donne son feedback sur l'expérience via formulaire intégré
-    \item Consulte ses statistiques de progression personnelle
-\end{enumerate}
-
-\textbf{Parcours 2: Organisation optimisée (Sarah - Leader)}
-\begin{enumerate}
-    \item Se connecte (session existante, token valide)
-    \item Crée une escouade "Raiders Expérimentés" avec paramètres personnalisés
-    \item Planifie une session raid pour samedi 20h via calendrier interactif
-    \item Invite 5 coéquipiers par leurs pseudos Bungie
-    \item La session apparaît automatiquement dans tous les agendas membres
-    \item Rappel automatique envoyé 1h avant la session
-    \item Post-session: enregistrement statistiques et feedback équipe
-\end{enumerate}
-\vspace{0.5cm}
-\textbf{Plan de test de validation MVP :}
-\vspace{0.5cm}
-\begin{itemize}
-    \item \textbf{Date:} 1-7 avril 2026 (2 semaines avant release production)
-    \item \textbf{Participants:} 8 utilisateurs recrutés (3 débutants, 3 expérimentés, 2 leaders)
-    \item \textbf{Scénarios testés:} 5 parcours utilisateurs critiques identifiés
-    \item \textbf{Méthodologie:} Tests utilisabilité + questionnaires satisfaction + analytics comportementaux
-    \item \textbf{Métriques évaluées:} Taux de succès parcours, temps completion, score SUS, satisfaction globale
-    \item \textbf{Livrable:} Rapport de validation détaillé avec recommandations et décision go/no-go release
-\end{itemize}
-\vspace{0.5cm}
-\textbf{KPI par fonctionnalité MVP :}
-\vspace{0.5cm}
-\begin{center}
-    \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|}
-        \hline
-        \textbf{Fonctionnalité} & \textbf{Indicateur de succès} & \textbf{Cible MVP} \\
-        \hline
-        Authentification & Taux de succès connexion & > 95\% \\
-        \hline
-        Guides interactifs & Temps moyen consultation guide & < 25 minutes \\
-        \hline
-        Gestion escouades & Nombre escouades créées & 100 premier mois \\
-        \hline
-        Calendrier & Temps moyen planification session & < 10 minutes \\
-        \hline
-        Profil utilisateur & Taux de complétion profil & > 80\% \\
-        \hline
-        Performance technique & Temps réponse API moyen & < 500ms \\
+        Recherche de joueurs & Trouver des coéquipiers selon leur niveau, disponibilité, style de jeu \\
         \hline
     \end{tabular}
 \end{center}
 
-\section{Roadmap produit}
+\subsection*{Pour l'administration (Back Office)}
 
-\textbf{Roadmap stratégique 2025-2027 :}
+\begin{center}
+    \begin{tabular}{|p{3.5cm}|p{6cm}|}
+        \hline
+        \textbf{Fonctionnalité} & \textbf{Description} \\
+        \hline
+    Gestion des utilisateurs & Modérer les contenus, gérer les signalements \\
+        \hline
+        Gestion des guides & Créer, modifier, valider les guides de raids \\
+        \hline
+        Statistiques & Voir comment la plateforme est utilisée \\
+        \hline
+        Sauvegardes & Protéger les données avec des backups automatiques \\
+        \hline
+    \end{tabular}
+\end{center}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{assets/Capture_Milestones.png}
-    \caption{User stories}
-    \label{fig:contexte}
-\end{figure}
-\vspace{0.5cm}
-\textbf{Milestone: Version 1.1 - 15 juillet 2026}
+\subsection*{Respect de la vie privée (RGPD)}
+
+J'ai intégré les règles RGPD dès la conception :
+
+\begin{center}
+    \begin{tabular}{|p{3cm}|p{7cm}|}
+        \hline
+        \textbf{Point clé} & \textbf{Ce que j'ai mis en place} \\
+        \hline
+        Données collectées & Pseudo Bungie, stats de jeu, préférences \\
+        \hline
+    Consentement & L'utilisateur accepte explicitement en se connectant \\
+        \hline
+        Sécurité & Chiffrement des données sensibles, HTTPS partout \\
+        \hline
+        Durée de conservation & 3 ans après la dernière connexion, puis suppression \\
+        \hline
+        Droits des utilisateurs & Possibilité d'exporter ou supprimer ses données depuis son profil \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\section{Feuille de route (Roadmap)}
+
+\subsection*{Version 1.0 - Mars 2026 (MVP)}
 \begin{itemize}
-    \item Chat en temps réel intégré pour les escouades
-    \item Système de recommandations d'équipements optimisés
-    \item Amélioration UX/UI basée sur les retours utilisateurs
-    \item Optimisation des performances et temps de chargement
-    \item Support multilingue (anglais/français)
-    \item Intégration API étendue avec plus de données Bungie
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Milestone: Version 1.2 - 15 septembre 2026}
-\begin{itemize}
-    \item Analytics avancées et rapports détaillés pour leaders
-    \item Intégration avec Discord via webhooks
-    \item Système de clans étendu avec fonctionnalités sociales
-    \item Guides pour tous les raids disponibles dans Destiny 2
-    \item Système de recommandation de groupes intelligent
-    \item \textbf{Objectif utilisateurs:} 300 utilisateurs actifs mensuels
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Milestone: Version 2.0 - 15 janvier 2027}
-\begin{itemize}
-    \item Application mobile React Native (iOS/Android)
-    \item API publique pour développeurs tiers
-    \item Système de streaming et contenu vidéo intégré
-    \item Fonctionnalités sociales avancées (groupes, événements)
-    \item Marketplace d'équipements et builds (si applicable CGU)
-    \item \textbf{Objectif utilisateurs:} 500+ utilisateurs actifs mensuels
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Indicateurs de progression et succès :}
-\begin{itemize}
-    \item \textbf{Code qualité:} Couverture tests > 80\%, dette technique < 5\%, sécurité A+
-    \item \textbf{Utilisateurs:} Croissance mensuelle > 20\%, rétention 30j > 60\%
-    \item \textbf{Performance:} Temps réponse API < 2s, disponibilité > 99\%, Lighthouse > 90
-    \item \textbf{Métier:} Réduction temps organisation < 20 minutes, satisfaction > 4.5/5
-    \item \textbf{Technique:} CI/CD entièrement automatisé, monitoring proactif, documentation complète
+    \item On peut se connecter avec Bungie
+    \item On consulte des guides pour 3 raids
+    \item On crée une escouade et on invite des amis
+    \item On planifie une session dans un calendrier simple
 \end{itemize}
 
+\subsection*{Version 1.1 - Juillet 2026}
+\begin{itemize}
+    \item Chat intégré pour discuter en direct avec son escouade
+    \item Recommandations d'équipement personnalisées
+    \item Interface améliorée selon les retours des premiers utilisateurs
+    \item Version anglaise en plus du français
+\end{itemize}
+
+\subsection*{Version 1.2 - Septembre 2026}
+\begin{itemize}
+    \item Statistiques avancées pour les leaders
+    \item Connexion avec Discord (webhooks)
+    \item Guides pour tous les raids du jeu
+    \item Objectif : 300 utilisateurs actifs par mois
+\end{itemize}
+
+\subsection*{Version 2.0 - Janvier 2027}
+\begin{itemize}
+    \item Application mobile (React Native)
+    \item API ouverte pour que d'autres développeurs créent des outils
+    \item Intégration de vidéos et de streams
+    \item Objectif : 500+ utilisateurs actifs par mois
+\end{itemize}
 
 \section{Liens utiles}
 
 \begin{itemize}
-    \item User Stories: \url{https://www.mountaingoatsoftware.com/agile/user-stories}
-    \item MoSCoW: \url{https://www.productplan.com/glossary/moscow-prioritization/}
-    \item PostgreSQL Docs: \url{https://www.postgresql.org/docs/}
-    \item MongoDB Modeling: \url{https://bit.ly/mongodb-modeling}
-    \item Architecture 3-tier: \url{https://en.wikipedia.org/wiki/Multitier_architecture}
+    \item Documentation sur les User Stories: \url{https://www.mountaingoatsoftware.com/agile/user-stories}
+    \item La méthode MoSCoW expliquée: \url{https://www.productplan.com/glossary/moscow-prioritization/}
+    \item PostgreSQL officiel: \url{https://www.postgresql.org/docs/}
+    \item Architecture 3-tiers: \url{https://en.wikipedia.org/wiki/Multitier_architecture}
 \end{itemize}
