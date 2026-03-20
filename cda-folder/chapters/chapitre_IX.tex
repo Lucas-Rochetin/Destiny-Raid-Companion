@@ -1,92 +1,82 @@
 \chapter{Veille technologique et sécurité}
 
-\section{Veille technologique stack JavaScript}
+\section{Pourquoi une veille technologique ?}
 
-La veille technologique pour Destiny Raid Companion se concentre sur l'écosystème JavaScript fullstack avec un focus particulier sur les performances gaming et l'intégration d'API externes.
-\vspace{0.5cm}
-\textbf{Technologies surveillées :} \textit{
+Les technologies évoluent vite. Ce qui était la meilleure pratique il y a un an peut être obsolète aujourd'hui, voire présenter des failles de sécurité. Pour que Destiny Raid Companion reste performant et sécurisé, je dois me tenir informé des évolutions.
+
+\section{Ma veille sur la stack JavaScript}
+
+\subsection{Les technologies que je surveille}
+
 \begin{itemize}
-    \item \textbf{Frontend :} React 18+, Next.js, WebSocket pour chat raid
-    \item \textbf{Backend :} Node.js 20 LTS, Express, Bungie API client
-    \item \textbf{Base de données :} PostgreSQL 16 avec JSONB, Redis 7.2
-    \item \textbf{Conteneurisation :} Docker, Docker Compose, BuildKit
-    \item \textbf{Sécurité :} OWASP Top 10, CVE npm, Bungie API security guidelines
-\end{itemize}}
-\vspace{0.5cm}
-\textbf{Impact des mises à jour :} \textit{
+    \item \textbf{Frontend :} React 18+ (les nouvelles versions apportent des optimisations), Next.js (pour le SSR si besoin), WebSocket (pour d'éventuelles fonctionnalités temps réel).
+    \item \textbf{Backend :} Node.js 20 LTS (les versions plus récentes sont plus rapides), Express (toujours le standard), les clients API (pour Bungie).
+    \item \textbf{Base de données :} PostgreSQL 16 (améliorations sur le JSON), Redis 7.2 (meilleure gestion des streams).
+    \item \textbf{Conteneurisation :} Docker, Docker Compose, BuildKit (pour des builds plus rapides).
+    \item \textbf{Sécurité :} OWASP Top 10, les CVE (vulnérabilités) des paquets npm, les guidelines de sécurité de l'API Bungie.
+\end{itemize}
+
+\subsection{Comment j'organise ma veille}
+
+\begin{itemize}
+    \item \textbf{Newsletters :} JavaScript Weekly, Node.js Newsletter, PostgreSQL Weekly.
+    \item \textbf{Twitter/X :} Je suis les comptes des technologies que j'utilise (React, Node.js, Docker).
+    \item \textbf{GitHub :} Je surveille les releases des projets que j'utilise en cliquant sur "Watch".
+    \item \textbf{Sites spécialisés :} Dev.to, Medium, les blogs officiels.
+\end{itemize}
+
+\subsection{Impact des mises à jour sur mon projet}
+
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
-\textbf{Technologie} & \textbf{Version actuelle} & \textbf{Version cible} & \textbf{Impact projet} \\
+\textbf{Technologie} & \textbf{Version actuelle} & \textbf{Version cible} & \textbf{Pourquoi c'est intéressant} \\
 \hline
-Node.js & 18.17 & 20.11 & +40\% perf JSON \\
-\hline
-React & 18.2 & 19.0 & Server Components \\
-\hline
-PostgreSQL & 15 & 16 & JSON améliorations \\
-\hline
-Redis & 7.0 & 7.2 & Streams pour chat \\
-\hline
-Docker & 24.0 & 25.0 & BuildKit optimisé \\
+Node.js & 18.17 & 20.11 & 40\% plus rapide pour parser du JSON \\
+React & 18.2 & 19.0 & Server Components (si je veux faire du SSR) \\
+PostgreSQL & 15 & 16 & Meilleure gestion des données JSON \\
+Redis & 7.0 & 7.2 & Streams pour un éventuel chat en direct \\
+Docker & 24.0 & 25.0 & Builds plus rapides avec BuildKit \\
 \hline
 \end{tabular}
-\end{center}}
+\end{center}
 
-\vspace{0.5cm}
-\textbf{Exemple de veille Node.js :}
-\begin{verbatim}
-Node.js 20.11.0 (LTS) - Gaming APIs Optimization
-+-- Performance improvements
-|   +-- V8 12.0 (40% faster JSON parsing)
-|   +-- Improved async_hooks performance
-+-- Security updates
-|   +-- OpenSSL 3.2.0 security patches
-|   +-- Permission Model stable
-+-- Gaming-specific
-    +-- Better WebSocket support (raid chat)
-    +-- Improved Worker Threads for matchmaking
-\end{verbatim}
-\vspace{0.5cm}
-\textbf{Script de monitoring des dépendances :}
+\subsection{Exemple concret : le passage à Node.js 20}
+
+Quand Node.js 20 est sorti, j'ai regardé les nouveautés. La principale amélioration pour moi : le parsing JSON est 40\% plus rapide. Comme mon application fait beaucoup d'appels à l'API Bungie (qui renvoie du JSON), ça vaut le coup de migrer.
+
 \begin{lstlisting}[language=JavaScript]
-// scripts/dependency-monitor.js
+// Un petit script pour vérifier les mises à jour disponibles
 const fs = require('fs');
 const axios = require('axios');
 
-class DependencyMonitor {
-  constructor() {
-    this.packages = ['express', 'pg', 'ioredis', 'jsonwebtoken'];
-  }
+async function checkForUpdates() {
+  const packages = ['express', 'pg', 'ioredis', 'jsonwebtoken'];
   
-  async checkForUpdates() {
-    const updates = [];
-    for (const pkg of this.packages) {
-      const response = await axios.get(
-        `https://registry.npmjs.org/${pkg}`
-      );
-      const latest = response.data['dist-tags'].latest;
-      updates.push({ package: pkg, latest });
-    }
-    return updates;
+  for (const pkg of packages) {
+    const response = await axios.get(`https://registry.npmjs.org/${pkg}`);
+    const latest = response.data['dist-tags'].latest;
+    console.log(`${pkg}: version actuelle ? latest: ${latest}`);
   }
 }
 \end{lstlisting}
 
+\section{La sécurité au cœur du projet}
 
+\subsection{Les protections que j'ai mises en place}
 
-\section{Sécurité applicative}
-
-\textbf{Protections implémentées :} \textit{
 \begin{itemize}
-    \item \textbf{SQL Injection :} Requêtes paramétrées avec `pg`
-    \item \textbf{XSS :} Sanitisation avec DOMPurify et xss
-    \item \textbf{CSRF :} Tokens synchronisés et validation origine
-    \item \textbf{OAuth Sécurité :} PKCE pour Bungie API
-    \item \textbf{DDoS Protection :} Rate limiting adapté aux quotas Bungie
-\end{itemize}}
+    \item \textbf{Injection SQL :} J'utilise Prisma, donc les requêtes sont automatiquement paramétrées. Impossible d'injecter du SQL.
+    \item \textbf{XSS (Cross-Site Scripting) :} React échappe automatiquement tout ce qui est affiché. Pour le contenu riche (guides), j'utilise DOMPurify pour nettoyer.
+    \item \textbf{CSRF :} Je vérifie l'origine des requêtes et j'utilise des tokens pour les actions sensibles.
+    \item \textbf{OAuth :} Je suis les recommandations de Bungie, avec PKCE pour plus de sécurité.
+    \item \textbf{Rate limiting :} Je limite le nombre de requêtes par IP pour éviter les abus.
+\end{itemize}
 
-\vspace{0.5cm}
-\textbf{Chiffrement des tokens Bungie :}
+\subsection{Chiffrement des données sensibles}
+
+Les tokens d'accès Bungie sont des données très sensibles. Je les chiffre avant de les stocker en base.
+
 \begin{lstlisting}[language=JavaScript]
 const crypto = require('crypto');
 
@@ -109,7 +99,10 @@ class TokenEncryptor {
 }
 \end{lstlisting}
 
-\textbf{Validation des guides de raid :}
+\subsection{Validation des entrées}
+
+Tout ce qui vient de l'utilisateur est validé avant d'être traité.
+
 \begin{lstlisting}[language=JavaScript]
 const Joi = require('joi');
 
@@ -134,274 +127,58 @@ function validateRaidGuide(guideData) {
 }
 \end{lstlisting}
 
+\section{Monitoring et détection d'incidents}
 
+\subsection{Métriques de sécurité surveillées}
 
-\section{Architecture Docker}
-
-\textbf{Services Docker :} \textit{
-\begin{center}
-\begin{tabular}{|l|l|l|l|}
-\hline
-\textbf{Service} & \textbf{Image} & \textbf{Port} & \textbf{Rôle} \\
-\hline
-backend & node:20-alpine & 3001 & API Destiny \\
-\hline
-frontend & nginx:alpine & 3000 & Interface React \\
-\hline
-postgres & postgres:16-alpine & 5432 & Base données \\
-\hline
-redis & redis:7-alpine & 6379 & Cache API \\
-\hline
-monitoring & prom/prometheus & 9090 & Métriques \\
-\hline
-\end{tabular}
-\end{center}}
-
-\vspace{0.5cm}
-\textbf{Dockerfile backend optimisé :}
-\begin{lstlisting}[language=dockerfile]
-FROM node:20-alpine AS builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production --audit
-COPY . .
-RUN npm run build
-
-FROM node:20-alpine
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nodeuser -u 1001
-WORKDIR /app
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package*.json ./
-USER nodeuser
-EXPOSE 3000
-CMD ["node", "dist/index.js"]
-\end{lstlisting}
-
-\textbf{Health checks Docker Compose :}
-\begin{lstlisting}[language=yaml]
-services:
-  backend:
-    healthcheck:
-      test: ["CMD", "node", "-e", 
-             "require('http').get('http://localhost:3000/health', 
-             (r) => process.exit(r.statusCode === 200 ? 0 : 1))"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-  
-  postgres:
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U destiny"]
-      interval: 10s
-      timeout: 5s
-\end{lstlisting}
-
-
-
-\section{Base de données PostgreSQL}
-
-\textbf{Schéma optimisé pour gaming :} \textit{
-\begin{itemize}
-    \item Tables normalisées pour utilisateurs et escouades
-    \item JSONB pour flexibilité des configurations
-    \item Index sur les colonnes fréquemment interrogées
-    \item Vues pour les requêtes complexes
-    \item Triggers pour l'audit automatique
-\end{itemize}}
-
-
-\textbf{Tables principales :}
-\begin{lstlisting}[language=SQL]
--- Table des utilisateurs
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    bungie_id VARCHAR(100) UNIQUE NOT NULL,
-    display_name VARCHAR(100) NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Table des escouades
-CREATE TABLE squads (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    leader_id INTEGER REFERENCES users(id),
-    created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Table des sessions de raid
-CREATE TABLE raid_sessions (
-    id SERIAL PRIMARY KEY,
-    squad_id INTEGER REFERENCES squads(id),
-    raid_name VARCHAR(100) NOT NULL,
-    scheduled_at TIMESTAMPTZ NOT NULL
-);
-\end{lstlisting}
-
-\textbf{Index optimisés :}
-\begin{lstlisting}[language=SQL]
-CREATE INDEX idx_users_bungie_id ON users(bungie_id);
-CREATE INDEX idx_squads_leader_id ON squads(leader_id);
-CREATE INDEX idx_raid_sessions_scheduled ON raid_sessions(scheduled_at);
-CREATE INDEX idx_raid_sessions_status ON raid_sessions(status);
-\end{lstlisting}
-
-
-
-\section{Monitoring et métriques}
-
-\textbf{Métriques de sécurité :} \textit{
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
 \textbf{Métrique} & \textbf{Seuil} & \textbf{Actuel} & \textbf{Statut} \\
 \hline
-Tentatives échec login & < 10/jour & 3 & ✅ \\
-\hline
+Tentatives de connexion échouées & < 10/jour & 3 & ✅ \\
 Erreurs API Bungie & < 5\% & 1.2\% & ✅ \\
-\hline
 Latence 95e percentile & < 500ms & 320ms & ✅ \\
-\hline
-Vulnérabilités npm & 0 critique & 0 & ✅ \\
-\hline
+Vulnérabilités npm critiques & 0 & 0 & ✅ \\
 Uptime API & > 99.5\% & 99.8\% & ✅ \\
 \hline
 \end{tabular}
-\end{center}}
+\end{center}
 
-\vspace{0.5cm}
-\textbf{Alertes Prometheus :}
-\begin{lstlisting}[language=yaml]
-groups:
-  - name: destiny-security
-    rules:
-      - alert: HighFailedLogins
-        expr: rate(auth_failed_total[5m]) > 5
-        for: 2m
-        labels:
-          severity: warning
-        annotations:
-          summary: "Trop de tentatives de connexion échouées"
-          
-      - alert: BungieAPIHighErrorRate
-        expr: rate(bungie_api_errors_total[5m]) / 
-              rate(bungie_api_calls_total[5m]) > 0.05
-        for: 5m
-        labels:
-          severity: critical
-\end{lstlisting}
+\subsection{Plan de réponse aux incidents}
 
-\textbf{Script de monitoring :}
-\begin{lstlisting}[language=JavaScript]
-class SecurityMonitor {
-  async checkDependencies() {
-    const packageJson = JSON.parse(
-      fs.readFileSync('./package.json', 'utf8')
-    );
-    
-    // Vérification des vulnérabilités
-    const audit = await this.runNpmAudit();
-    
-    return {
-      dependencies: Object.keys(packageJson.dependencies).length,
-      vulnerabilities: audit.vulnerabilities,
-      timestamp: new Date().toISOString()
-    };
-  }
-}
-\end{lstlisting}
+Si quelque chose tourne mal, j'ai un plan :
 
+\begin{enumerate}
+    \item \textbf{Détection :} Une alerte m'informe du problème (email, Slack).
+    \item \textbf{Analyse :} Je consulte les logs pour comprendre ce qui se passe.
+    \item \textbf{Confinement :} Si nécessaire, je passe en mode maintenance.
+    \item \textbf{Correction :} Je déploie un correctif.
+    \item \textbf{Retour d'expérience :} J'écris un post-mortem pour ne pas refaire la même erreur.
+\end{enumerate}
 
-\section{Plan de réponse aux incidents}
+\section{Amélioration continue}
 
-\textbf{Classification des incidents :} \textit{
+La sécurité et la veille ne sont pas des actions ponctuelles. Je les intègre dans mon quotidien de développeur.
+
+\subsection{Objectifs pour les prochains mois}
+
 \begin{center}
-\begin{tabular}{|l|l|l|l|}
+\begin{tabular}{|l|l|l|}
 \hline
-\textbf{Niveau} & \textbf{Impact} & \textbf{Réponse} & \textbf{Exemple} \\
+\textbf{Période} & \textbf{Objectif} & \textbf{Mesure} \\
 \hline
-Critique & Service down & < 15min & API Bungie inaccessible \\
-\hline
-Élevé & Fonctionnalité majeure & < 1h & Authentification cassée \\
-\hline
-Moyen & Fonctionnalité mineure & < 4h & Guide non affiché \\
-\hline
-Faible & Cosmétique & < 24h & CSS incorrect \\
+Q2 2026 & Mettre en place PKCE pour OAuth & Implémenté \\
+Q3 2026 & Audit de sécurité externe & Score > 90\% \\
+Q4 2026 & Automatiser plus de scans de sécurité & Pipeline complète \\
 \hline
 \end{tabular}
-\end{center}}
+\end{center}
 
-\vspace{0.5cm}
-\textbf{Procédure incident critique :}
-\begin{verbatim}
-1. Détection via monitoring (1 min)
-2. Activation mode dégradé (2 min)
-3. Notification équipe (5 min)
-4. Investigation cause (15 min)
-5. Application correctif (30 min)
-6. Communication utilisateurs (45 min)
-7. Post-mortem (24h)
-\end{verbatim}
-\vspace{0.5cm}
-\textbf{Checklist de réponse :}
-\begin{lstlisting}[language=JavaScript]
-const incidentChecklist = {
-  detection: [
-    "Vérifier les alertes Prometheus",
-    "Consulter les logs d'application",
-    "Tester les endpoints critiques"
-  ],
-  containment: [
-    "Activer le mode maintenance",
-    "Isoler le service affecté",
-    "Sauvegarder les logs pertinents"
-  ],
-  eradication: [
-    "Identifier la cause racine",
-    "Appliquer le correctif",
-    "Valider la correction"
-  ],
-  recovery: [
-    "Redémarrer le service",
-    "Vérifier la fonctionnalité",
-    "Surveiller la stabilité"
-  ]
-};
-\end{lstlisting}
+\subsection{L'intégration dans la CI/CD}
 
+J'ai ajouté des étapes de sécurité dans ma pipeline GitHub Actions :
 
-\section{Améliorations continues}
-
-\textbf{Roadmap sécurité 2024 :} \textit{
-\begin{center}
-\begin{tabular}{|l|l|l|l|}
-\hline
-\textbf{Trimestre} & \textbf{Objectif} & \textbf{Mesure} & \textbf{Responsable} \\
-\hline
-Q1 2025 & PKCE OAuth & 100\% implémentation & Lead Dev \\
-\hline
-Q2 2026 & Audit sécurité & Score > 90\% & Security Lead \\
-\hline
-Q3 2026 & Formation équipe & 100\% complétion & CTO \\
-\hline
-Q4 2026 & Pentest complet & 0 critical & External \\
-\hline
-\end{tabular}
-\end{center}}
-\vspace{0.5cm}
-\textbf{Métriques d'amélioration :} \textit{
-\begin{itemize}
-    \item Tests unitaires : 85\% → 92\% (+7\%) 
-    \item Tests intégration : 70\% → 85\% (+15\%)
-    \item Tests sécurité : 60\% → 80\% (+20\%)
-    \item Vulnérabilités npm : 12 → 0 (-100\%)
-    \item Incidents sécurité : 5/mois → 1/mois (-80\%)
-    \item Temps réponse incidents : 45min → 15min (-67\%)
-\end{itemize}}
-
-\vspace{0.5cm}
-\textbf{Intégration CI/CD sécurité :}
 \begin{lstlisting}[language=yaml]
 name: Security Scan
 on: [push, pull_request]
@@ -419,62 +196,22 @@ jobs:
         uses: aquasecurity/trivy-action@master
 \end{lstlisting}
 
-\textbf{Script d'audit automatisé :}
-\begin{lstlisting}[language=JavaScript]
-const { execSync } = require('child_process');
+\section{Ce que j'ai appris}
 
-class SecurityAudit {
-  async runDailyAudit() {
-    const audit = {
-      date: new Date().toISOString(),
-      npm: await this.auditNpm(),
-      docker: await this.auditDocker(),
-      code: await this.auditCode()
-    };
-    
-    // Génération rapport
-    fs.writeFileSync(
-      `security-audit-${audit.date.split('T')[0]}.json`,
-      JSON.stringify(audit, null, 2)
-    );
-    
-    return audit;
-  }
-}
-\end{lstlisting}
-
-
-
-\section{Conclusion}
-
-\textbf{Approche globale sécurité :} \textit{
 \begin{itemize}
-    \item \textbf{Surveillance proactive} des technologies et vulnérabilités
-    \item \textbf{Automatisation} des audits et scans
-    \item \textbf{Mesures préventives} via validation et sanitisation
-    \item \textbf{Monitoring continu} avec alertes temps réel
-    \item \textbf{Plan de réponse} structuré pour incidents
-    \item \textbf{Amélioration continue} basée sur métriques
-\end{itemize}}
-\vspace{0.5cm}
-\textbf{Résultats atteints :} \textit{
-\begin{itemize}
-    \item 0 vulnérabilité critique en production
-    \item 99.8\% uptime de l'API
-    \item Réponse incidents < 15 minutes
-    \item Conformité aux CGU Bungie
-    \item Satisfaction utilisateurs > 4.5/5
-\end{itemize}}
+    \item \textbf{La veille, ce n'est pas optionnel :} Les failles de sécurité sont découvertes tous les jours. Si je n'écoute pas, je peux laisser une porte ouverte.
+    \item \textbf{La sécurité, ça se pense dès le début :} Ajouter de la sécurité après coup est beaucoup plus difficile que de la concevoir dès le départ.
+    \item \textbf{Les outils aident, mais ne font pas tout :} SonarQube, Snyk, npm audit sont utiles, mais ils ne remplacent pas la réflexion.
+    \item \textbf{Documenter ses incidents :} Chaque incident est une occasion d'apprendre. J'écris toujours un petit post-mortem pour moi-même.
+\end{itemize}
 
 \section{Liens utiles}
 
 \begin{itemize}
-    \item Node.js Security Best Practices: \url{https://nodejs.org/en/docs/guides/security/}
-    \item OWASP Top 10 2024: \url{https://owasp.org/www-project-top-ten/}
-    \item PostgreSQL Security Guide: \url{https://www.postgresql.org/docs/current/security.html}
-    \item Bungie API Security Guidelines: \url{https://bungie-net.github.io/multi/security.html}
-    \item Docker Security Best Practices: \url{https://docs.docker.com/engine/security/}
-    \item npm Security: \url{https://docs.npmjs.com/auditing-package-dependencies}
-    \item GitHub Security Lab: \url{https://securitylab.github.com/}
+    \item Node.js Security: \url{https://nodejs.org/en/docs/guides/security/}
+    \item OWASP Top 10: \url{https://owasp.org/www-project-top-ten/}
+    \item PostgreSQL Security: \url{https://www.postgresql.org/docs/current/security.html}
+    \item Bungie API Security: \url{https://bungie-net.github.io/multi/security.html}
+    \item Docker Security: \url{https://docs.docker.com/engine/security/}
     \item Snyk Vulnerability DB: \url{https://snyk.io/vuln}
 \end{itemize}

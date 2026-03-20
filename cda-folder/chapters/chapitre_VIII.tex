@@ -1,32 +1,21 @@
 \chapter{Déploiement et intégration continue (CI/CD)}
 
-\section{Cadre et objectifs du déploiement}
+\section{Pourquoi automatiser le déploiement ?}
 
-Le déploiement de l’application \textit{Destiny Raid Companion} vise à garantir une mise en production fiable, reproductible et cohérente avec les contraintes d’un projet individuel de niveau Concepteur Développeur d’Applications.
-
-L’approche retenue repose sur :
+Quand on développe seul, on peut être tenté de déployer "à la main" : on fait un changement, on copie les fichiers sur le serveur, on redémarre... Mais ça devient vite source d'erreurs :
 \begin{itemize}
-    \item la containerisation de l’application avec Docker,
-    \item l’automatisation des tests et du build via GitHub Actions,
-    \item une séparation claire entre intégration continue (CI) et déploiement (CD),
-    \item une supervision minimale post-déploiement.
+    \item On oublie une étape.
+    \item On ne teste pas la même chose que ce qui part en production.
+    \item Revenir en arrière est compliqué.
 \end{itemize}
 
-Les choix techniques sont volontairement simples et réalistes afin de rester cohérents avec un contexte de projet solo.
+J'ai donc mis en place une chaîne d'intégration et de déploiement continus (CI/CD) pour que tout soit automatisé, testé, et reproductible.
 
-\section{Containerisation de l’application avec Docker}
+\section{Containerisation avec Docker}
 
-\subsection{Architecture des services}
+Pour que l'application tourne de la même manière sur ma machine, sur le serveur de test, et en production, j'utilise Docker.
 
-L’application est structurée autour de deux composants principaux :
-\begin{itemize}
-    \item un \textbf{backend Node.js} exposant une API REST,
-    \item un \textbf{frontend HTML/CSS/JavaScript} consommant l’API.
-\end{itemize}
-
-Cette architecture permet une séparation claire des responsabilités tout en restant simple à déployer.
-
-\subsection{Dockerfile Backend (Node.js)}
+\subsection{Le backend (Node.js)}
 
 \begin{lstlisting}[language=dockerfile]
 FROM node:18-alpine
@@ -42,30 +31,28 @@ ENV NODE_ENV=production
 CMD ["node", "index.js"]
 \end{lstlisting}
 
-Ce Dockerfile permet :
+Ce fichier dit simplement :
 \begin{itemize}
-    \item un environnement Node.js stable,
-    \item une installation reproductible des dépendances,
-    \item un démarrage simple de l’API.
+    \item On part d'une image Node.js officielle.
+    \item On installe les dépendances.
+    \item On copie le code.
+    \item On expose le port 3000.
+    \item On lance l'application.
 \end{itemize}
 
-\subsection{Dockerfile Frontend (HTML / CSS / JavaScript)}
+\subsection{Le frontend (HTML/CSS/JS)}
+
+Pour le frontend, pas besoin de Node.js en production. Un simple serveur Nginx suffit :
 
 \begin{lstlisting}[language=dockerfile]
 FROM nginx:alpine
-
 COPY ./public /usr/share/nginx/html
 EXPOSE 80
 \end{lstlisting}
 
-Le frontend est servi par Nginx, ce qui permet :
-\begin{itemize}
-    \item un chargement rapide des pages,
-    \item une configuration simple,
-    \item une séparation claire avec la logique backend.
-\end{itemize}
-
 \subsection{Orchestration avec Docker Compose}
+
+Pour lancer tous les services ensemble, j'utilise Docker Compose :
 
 \begin{lstlisting}[language=yaml]
 version: "3.8"
@@ -85,35 +72,37 @@ services:
     environment:
       - NODE_ENV=production
       - BUNGIE_API_KEY=${BUNGIE_API_KEY}
+    # La clé API est dans un fichier .env, pas dans le code !
 \end{lstlisting}
 
-Docker Compose permet de lancer l’application complète avec une seule commande.
+Avec une seule commande, toute l'application démarre :
 
-\section{Gestion des environnements et des variables}
+\begin{verbatim}
+docker-compose up -d
+\end{verbatim}
 
-Les données sensibles (clé API Bungie) sont stockées dans des variables d’environnement et ne figurent jamais dans le code source.
+\section{Gestion des secrets}
 
-Un fichier \texttt{.env} est utilisé en local, tandis que les secrets sont configurés dans GitHub Actions pour les déploiements automatisés.
+Les données sensibles (clé API Bungie) ne doivent jamais être dans le code source. Je les passe par variables d'environnement :
 
-\section{Intégration continue (CI)}
-
-\subsection{Objectifs de la CI}
-
-L’intégration continue vise à :
 \begin{itemize}
-    \item détecter rapidement les erreurs,
-    \item garantir la qualité du code,
-    \item empêcher l’intégration de code non fonctionnel.
+    \item En local : dans un fichier \texttt{.env} (ignoré par Git).
+    \item Sur GitHub : dans les "secrets" du dépôt.
+    \item En production : dans l'environnement du serveur.
 \end{itemize}
 
-\subsection{Pipeline GitHub Actions}
+\section{Intégration continue (CI) avec GitHub Actions}
+
+À chaque fois que je pousse du code, GitHub Actions lance automatiquement une série de vérifications.
+
+\subsection{Ma pipeline CI}
 
 \begin{lstlisting}[language=yaml]
 name: CI Destiny Companion
 
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
   pull_request:
     branches: [main]
 
@@ -143,83 +132,104 @@ jobs:
         run: |
           cd backend
           npm test
+
+      - name: Tests d'intégration
+        run: |
+          cd backend
+          npm run test:integration
 \end{lstlisting}
 
-\section{Quality Gates}
+\subsection{Ce que ça vérifie}
 
-Le pipeline CI applique les règles suivantes :
 \begin{itemize}
-    \item les tests doivent réussir,
-    \item le linting ne doit produire aucune erreur,
-    \item le pipeline est bloqué en cas d’échec.
+    \item Les dépendances s'installent correctement.
+    \item Le code respecte les règles de formatage (linter).
+    \item Tous les tests passent (unitaires et intégration).
 \end{itemize}
 
-Ces contrôles garantissent une validation continue minimale mais efficace.
+Si une étape échoue, le pipeline s'arrête et je reçois une notification. Je ne peux pas merger du code qui casse quelque chose.
 
 \section{Déploiement continu (CD)}
 
-\subsection{Principe de déploiement}
+Quand le code est validé sur la branche principale, je déclenche le déploiement.
 
-Le déploiement est déclenché uniquement après validation complète de la CI.  
-L’image Docker est reconstruite puis redémarrée sur le serveur cible.
+\subsection{Étapes du déploiement}
 
-Cette approche limite les risques tout en restant simple à maintenir.
+\begin{enumerate}
+    \item Les images Docker sont reconstruites.
+    \item Elles sont poussées vers un registre (Docker Hub ou GitHub Container Registry).
+    \item Sur le serveur, je tire la nouvelle image et je redémarre.
+\end{enumerate}
 
-\subsection{Commandes de déploiement}
+\subsection{Commandes de déploiement (manuel pour l'instant)}
+
+En production, je me connecte au serveur et je lance :
 
 \begin{verbatim}
-docker-compose build
+docker-compose pull
 docker-compose up -d
 \end{verbatim}
+
+C'est encore un peu manuel, mais l'automatisation complète viendra en V2.
 
 \section{Monitoring et logs}
 
+Une fois déployé, il faut surveiller que tout va bien.
+
 \subsection{Logs applicatifs}
 
-Les logs générés par l’application Node.js sont accessibles via Docker :
+Les logs des conteneurs sont accessibles avec :
 
 \begin{verbatim}
 docker logs destiny-backend
+docker logs destiny-frontend
 \end{verbatim}
 
-Ils permettent de diagnostiquer rapidement les erreurs applicatives.
+\subsection{Health checks}
 
-\subsection{Surveillance basique}
+Docker peut vérifier automatiquement que l'application est vivante :
 
-Les éléments surveillés sont :
-\begin{itemize}
-    \item disponibilité de l’API,
-    \item erreurs serveur,
-    \item temps de réponse.
-\end{itemize}
+\begin{lstlisting}[language=yaml]
+services:
+  backend:
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+\end{lstlisting}
 
-Ces indicateurs sont suffisants pour un projet individuel.
+Si le health check échoue trop de fois, Docker redémarre le conteneur.
 
-\section{Documentation de déploiement}
+\section{Documentation pour reprendre le projet}
+
+Si quelqu'un veut déployer mon application (ou moi dans 6 mois), j'ai tout documenté :
 
 \subsection{Prérequis}
-
 \begin{itemize}
-    \item Docker installé,
-    \item accès à un terminal,
-    \item clé API Bungie valide.
+    \item Docker et Docker Compose installés
+    \item Une clé API Bungie valide
+    \item Un fichier \texttt{.env} avec les variables nécessaires
 \end{itemize}
 
-\subsection{Lancement de l’application}
-
+\subsection{Lancement}
 \begin{verbatim}
+git clone https://github.com/...
+cd destiny-raid-companion
+cp .env.example .env  # et éditer avec sa clé API
 docker-compose up -d
 \end{verbatim}
 
-\subsection{Arrêt et redémarrage}
-
+\subsection{Arrêt}
 \begin{verbatim}
 docker-compose down
-docker-compose up -d
 \end{verbatim}
 
-\section{Conclusion}
+\section{Ce que j'ai appris}
 
-Ce chapitre présente une chaîne CI/CD complète et réaliste, adaptée à un projet de niveau Concepteur Développeur d’Applications.
-
-La mise en œuvre de Docker, GitHub Actions et des quality gates démontre une compréhension concrète des enjeux de déploiement, tout en respectant les contraintes d’un projet individuel.
+\begin{itemize}
+    \item Automatiser, c'est gagner du temps sur le long terme. Ce qui est long au début (écrire les Dockerfile, configurer la CI) devient un gain énorme ensuite.
+    \item Docker m'a sauvé plusieurs fois : "Ça marche sur ma machine" n'est plus une excuse, ça marche pareil partout.
+    \item La CI m'oblige à être discipliné : je ne peux pas tricher et pousser du code qui ne passe pas les tests.
+    \item Documenter le déploiement, c'est aussi pour moi dans 6 mois quand j'aurai oublié comment ça marche.
+\end{itemize}

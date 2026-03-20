@@ -1,708 +1,335 @@
 \chapter{Sécurité applicative et RGPD}
 
+\section{Pourquoi la sécurité est cruciale pour ce projet}
+
+Une plateforme qui gère des comptes utilisateur et des données personnelles doit être sécurisée. C'est à la fois une obligation légale (RGPD) et une nécessité pour la confiance des utilisateurs. Si un joueur perd l'accès à son compte ou si ses données sont volées, c'est fini : il ne reviendra pas.
+
+Dans ce chapitre, je détaille les mesures que j'ai prises pour :
+\begin{itemize}
+    \item Protéger l'application contre les attaques courantes (OWASP Top 10).
+    \item Sécuriser l'authentification et les données sensibles.
+    \item Être conforme au RGPD (respect de la vie privée des joueurs).
+\end{itemize}
+
 \section{Protection contre les vulnérabilités OWASP}
 
-La sécurité applicative s'appuie sur les recommandations OWASP Top 10 pour protéger contre les vulnérabilités courantes. La protection XSS utilise l'échappement automatique de React et la validation côté serveur. La prévention SQL injection repose sur les requêtes paramétrées de Prisma ORM. La protection CSRF implémente des tokens synchronisés et la validation des origines.
+J'ai suivi les recommandations de l'OWASP (Open Web Application Security Project) pour éviter les failles les plus courantes.
 
-Les headers de sécurité (CSP, HSTS, X-Frame-Options) renforcent la protection au niveau HTTP. La validation stricte des entrées utilisateur et la sanitisation des données réduisent les risques d'injection et de manipulation.
+\subsection{Injection SQL (requêtes paramétrées)}
 
+Le risque : Un attaquant pourrait insérer du code SQL dans un champ de formulaire pour manipuler la base de données.
 
-\textbf{Middleware de sécurité Express spécifique au projet :}
+Comment je m'en protège :
+\begin{itemize}
+    \item Je n'écris jamais de requêtes SQL "à la main". J'utilise \textbf{Prisma}, un ORM qui génère automatiquement des requêtes paramétrées.
+    \item Prisma échappe automatiquement les données avant de les envoyer à PostgreSQL.
+    \item Même si un utilisateur saisit ``'; DROP TABLE users; --`` dans un champ, Prisma le traite comme une chaîne de caractères, pas comme du code SQL.
+\end{itemize}
+
+\subsection{XSS (Cross-Site Scripting)}
+
+Le risque : Un attaquant pourrait injecter du code JavaScript malveillant dans un guide ou un commentaire. Quand un autre utilisateur consulterait la page, ce code s'exécuterait.
+
+Comment je m'en protège :
+\begin{itemize}
+    \item \textbf{React échappe automatiquement} tout ce qui est affiché. Si je mets \texttt{\{userInput\}} dans mon JSX, React transforme les caractères spéciaux en entités HTML.
+    \item Pour les guides qui contiennent du HTML (formatage, images), j'utilise \textbf{DOMPurify} pour nettoyer le contenu avant de l'afficher. Je n'autorise que certaines balises (p, strong, em, ul, li, h2, h3) et j'interdis tout attribut dangereux (comme \texttt{onclick}).
+\end{itemize}
+
+\begin{lstlisting}[language=JavaScript]
+// Nettoyage du contenu des guides avant affichage
+const sanitizeHtml = (html) => {
+  return DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: ['p', 'strong', 'em', 'ul', 'li', 'h2', 'h3'],
+    ALLOWED_ATTR: ['class']  // Seulement les classes CSS, pas les événements JS
+  });
+};
+\end{lstlisting}
+
+\subsection{CSRF (Cross-Site Request Forgery)}
+
+Le risque : Un attaquant pourrait amener un utilisateur connecté à exécuter une action sans son consentement (par exemple, supprimer une escouade) en lui faisant visiter un site malveillant.
+
+Comment je m'en protège :
+\begin{itemize}
+    \item J'utilise des tokens CSRF pour les actions sensibles.
+    \item Les requêtes vers l'API doivent inclure un token spécial, stocké dans un cookie sécurisé et vérifié par le backend.
+    \item Je vérifie aussi l'en-tête \texttt{Origin} ou \texttt{Referer} pour m'assurer que la requête vient bien de mon application.
+\end{itemize}
+
+\subsection{Faille d'authentification}
+
+Le risque : Un attaquant pourrait voler des tokens JWT ou forcer l'accès à des comptes.
+
+Comment je m'en protège :
+\begin{itemize}
+    \item Les tokens JWT ont une durée de vie \textbf{courte} (1 heure). Après ce délai, l'utilisateur doit se réauthentifier ou utiliser un refresh token.
+    \item Les refresh tokens sont stockés dans Redis avec une durée de vie plus longue (30 jours), mais ils sont à usage unique.
+    \item Toutes les communications sont en \textbf{HTTPS} (chiffrement TLS). Les tokens ne circulent jamais en clair.
+    \item Je limite le nombre de tentatives de connexion : 10 par 15 minutes. Au-delà, l'adresse IP est temporairement bloquée.
+\end{itemize}
+
+\begin{lstlisting}[language=JavaScript]
+// Rate limiting pour l'authentification
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,  // 15 minutes
+  max: 10,                    // 10 tentatives max
+  message: 'Trop de tentatives, réessayez dans 15 minutes'
+});
+app.use('/api/auth/login', authLimiter);
+\end{lstlisting}
+
+\subsection{Headers de sécurité}
+
+J'utilise le middleware \texttt{helmet} pour ajouter automatiquement des en-têtes HTTP sécurisés :
+
+\begin{itemize}
+    \item \textbf{CSP (Content Security Policy) :} Je spécifie d'où peuvent venir les ressources (scripts, styles, images). Par exemple, les scripts ne peuvent venir que de mon domaine et de Bungie.net.
+    \item \textbf{HSTS :} Je force le navigateur à toujours utiliser HTTPS pour mon domaine.
+    \item \textbf{X-Frame-Options :} J'interdis l'affichage de mon site dans une iframe (pour éviter le clickjacking).
+\end{itemize}
+
 \begin{lstlisting}[language=JavaScript]
 const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
 
-// Configuration Helmet pour Destiny Raid Companion
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'", "https://www.bungie.net"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       scriptSrc: ["'self'", "https://www.bungie.net"],
-      imgSrc: ["'self'", "data:", "https://www.bungie.net", "https://assets.destinyraidcompanion.com"],
-      connectSrc: ["'self'", "https://www.bungie.net", "https://api.destinyraidcompanion.com"]
+      imgSrc: ["'self'", "https://www.bungie.net"]
     }
   },
   hsts: {
-    maxAge: 31536000,
+    maxAge: 31536000,  // 1 an
     includeSubDomains: true,
     preload: true
-  },
-  xFrameOptions: { action: 'deny' }
+  }
 }));
-
-// Rate limiting adapté aux besoins de l'API Bungie
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 150,
-  message: 'Trop de requêtes vers l\'API Bungie'
-});
-app.use('/api/bungie/', apiLimiter);
-
-const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 10,
-  message: 'Trop de tentatives de connexion'
-});
-app.use('/api/auth/', authLimiter);
-
-// Validation spécifique aux données Destiny 2
-const validateDestinyData = (req, res, next) => {
-  const { characterId, membershipType, destinyMembershipId } = req.body;
-  
-  // Validation des formats Bungie
-  if (characterId && !/^\d{19}$/.test(characterId)) {
-    return res.status(400).json({ error: 'Format de characterId invalide' });
-  }
-  
-  if (membershipType && ![1, 2, 3, 4, 5, 10].includes(Number(membershipType))) {
-    return res.status(400).json({ error: 'Type de membership invalide' });
-  }
-  
-  next();
-};
 \end{lstlisting}
-
-\textbf{Protection XSS pour les guides interactifs :}
-\begin{lstlisting}[language=JavaScript]
-// Composant sécurisé pour les guides de raid
-const RaidGuide = ({ guideData }) => {
-  const sanitizeHtml = (html) => {
-    // Utilisation de DOMPurify pour le contenu dynamique
-    return DOMPurify.sanitize(html, {
-      ALLOWED_TAGS: ['p', 'strong', 'em', 'ul', 'li', 'h2', 'h3'],
-      ALLOWED_ATTR: ['class']
-    });
-  };
-
-  return (
-    <div className="raid-guide">
-      <h1>{guideData.title}</h1>
-      <div 
-        className="guide-content"
-        dangerouslySetInnerHTML={{
-          __html: sanitizeHtml(guideData.content)
-        }}
-      />
-      {/* Données utilisateur échappées automatiquement */}
-      <div className="author-info">
-        <span>Auteur: {guideData.author}</span>
-        <span>Mis à jour: {new Date(guideData.updatedAt).toLocaleDateString()}</span>
-      </div>
-    </div>
-  );
-};
-
-// Validation des données de raid avec Zod
-const raidSchema = z.object({
-  name: z.string().min(1).max(100),
-  description: z.string().max(1000),
-  difficulty: z.enum(['novice', 'normal', 'maître']),
-  recommendedPower: z.number().min(0).max(2000),
-  estimatedTime: z.number().min(15).max(180)
-});
-\end{lstlisting}
-
-
-\textbf{Stratégie de sécurité pour l'API Bungie :}
-\begin{itemize}
-    \item \textbf{Tokens OAuth :} Gestion sécurisée des tokens d'accès Bungie avec chiffrement AES-256
-    \item \textbf{Refresh automatique :} Système de renouvellement automatique avant expiration
-    \item \textbf{Quotas API :} Monitoring des limites d'appels (25 req/min par utilisateur)
-    \item \textbf{Cache sécurisé :} Stockage Redis avec expiration et chiffrement des données sensibles
-    \item \textbf{Validation de signature :} Vérification des webhooks Bungie avec clés HMAC
-\end{itemize}
-
 
 \section{Authentification et autorisation}
 
-L'authentification utilise OAuth 2.0 avec Bungie.net comme fournisseur d'identité, combiné avec JWT pour la gestion des sessions internes. Les tokens d'accès Bungie sont stockés de manière sécurisée avec chiffrement et rotation automatique. Le système d'autorisation implémente des rôles spécifiques (Joueur, Leader, Admin) avec des permissions granulaires adaptées aux besoins de la plateforme.
+\subsection{Le flux OAuth avec Bungie}
 
-\vspace{0.5cm}
-\textbf{Configuration OAuth Bungie et JWT :}
+Je n'invente pas mon propre système d'authentification. Je délègue à Bungie via OAuth 2.0. Voici comment ça fonctionne :
+
+\begin{enumerate}
+    \item L'utilisateur clique sur "Se connecter avec Bungie".
+    \item Il est redirigé vers le site de Bungie, où il saisit ses identifiants.
+    \item Bungie demande à l'utilisateur s'il autorise mon application à accéder à ses données (pseudo, statistiques, personnages).
+    \item Si l'utilisateur accepte, Bungie redirige vers mon application avec un code temporaire.
+    \item Mon backend échange ce code contre un token d'accès Bungie (valable 1 heure) et un refresh token.
+    \item Je crée ou mets à jour l'utilisateur dans ma base, et je lui génère un token JWT interne pour les futures requêtes.
+\end{enumerate}
+
+\subsection{Gestion sécurisée des tokens}
+
+Les tokens Bungie sont très sensibles : ils donnent accès aux données du joueur. Je les protège ainsi :
+
+\begin{itemize}
+    \item Ils sont \textbf{chiffrés} en base de données avec AES-256 avant stockage.
+    \item La clé de chiffrement n'est pas dans le code source. Elle est dans les variables d'environnement, et tournée tous les 90 jours.
+    \item Les tokens ne sont \textbf{jamais envoyés au frontend}. Seul le JWT interne circule entre le frontend et le backend.
+\end{itemize}
+
 \begin{lstlisting}[language=JavaScript]
-const axios = require('axios');
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-
-// Configuration Bungie OAuth
-const BUNGIE_CLIENT_ID = process.env.BUNGIE_CLIENT_ID;
-const BUNGIE_CLIENT_SECRET = process.env.BUNGIE_CLIENT_SECRET;
-const BUNGIE_OAUTH_URL = 'https://www.bungie.net/en/OAuth/Authorize';
-const BUNGIE_TOKEN_URL = 'https://www.bungie.net/platform/app/oauth/token/';
-
-// Configuration JWT interne
-const JWT_SECRET = process.env.JWT_SECRET;
-const JWT_EXPIRES_IN = '1h'; // Court pour la sécurité
-const REFRESH_EXPIRES_IN = '30d';
-
-// Échange du code OAuth contre un token Bungie
-const exchangeBungieCode = async (code) => {
-  const response = await axios.post(BUNGIE_TOKEN_URL, 
-    new URLSearchParams({
-      grant_type: 'authorization_code',
-      code: code,
-      client_id: BUNGIE_CLIENT_ID,
-      client_secret: BUNGIE_CLIENT_SECRET
-    }), {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    }
-  );
+// Chiffrement d'un token avant stockage
+const encryptToken = (token) => {
+  const iv = crypto.randomBytes(16);
+  const cipher = crypto.createCipheriv('aes-256-gcm', encryptionKey, iv);
+  
+  let encrypted = cipher.update(JSON.stringify(token), 'utf8', 'hex');
+  encrypted += cipher.final('hex');
+  const authTag = cipher.getAuthTag();
   
   return {
-    accessToken: response.data.access_token,
-    refreshToken: response.data.refresh_token,
-    expiresIn: response.data.expires_in,
-    membershipId: response.data.membership_id
+    encrypted,
+    iv: iv.toString('hex'),
+    authTag: authTag.toString('hex')
   };
-};
-
-// Génération des tokens JWT internes
-const generateInternalTokens = (bungieMembershipId, displayName, role) => {
-  const accessToken = jwt.sign(
-    { 
-      bungieId: bungieMembershipId,
-      displayName: displayName,
-      role: role,
-      type: 'access',
-      iss: 'destiny-raid-companion'
-    },
-    JWT_SECRET,
-    { expiresIn: JWT_EXPIRES_IN }
-  );
-
-  const refreshToken = crypto.randomBytes(64).toString('hex');
-  
-  // Stockage sécurisé du refresh token
-  await redis.setex(
-    `refresh:${bungieMembershipId}`,
-    30 * 24 * 60 * 60, // 30 jours
-    refreshToken
-  );
-
-  return { accessToken, refreshToken };
-};
-
-// Middleware d'authentification hybride (Bungie + JWT)
-const authenticateUser = async (req, res, next) => {
-  try {
-    // Vérification du token JWT
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    
-    if (!token) {
-      return res.status(401).json({ error: 'Token manquant' });
-    }
-
-    const decoded = jwt.verify(token, JWT_SECRET);
-    
-    // Vérification de la validité du token Bungie
-    const bungieToken = await redis.get(`bungie_token:${decoded.bungieId}`);
-    if (!bungieToken) {
-      // Tentative de refresh
-      const newToken = await refreshBungieToken(decoded.bungieId);
-      if (!newToken) {
-        return res.status(401).json({ error: 'Session expirée' });
-      }
-    }
-    
-    req.user = decoded;
-    req.user.bungieToken = bungieToken;
-    next();
-  } catch (error) {
-    return res.status(403).json({ error: 'Token invalide' });
-  }
 };
 \end{lstlisting}
 
+\subsection{Système de rôles et permissions}
 
-\textbf{Système de rôles et permissions spécifique :}
+Tous les utilisateurs n'ont pas les mêmes droits. J'ai défini plusieurs rôles :
+
+\begin{itemize}
+    \item \textbf{PLAYER :} Peut consulter les guides, créer une escouade, rejoindre des sessions.
+    \item \textbf{SQUAD\_LEADER :} Peut en plus inviter/kicker des membres, modifier les sessions de son escouade.
+    \item \textbf{GUIDE\_WRITER :} Peut créer et modifier des guides (après validation).
+    \item \textbf{MODERATOR :} Peut bannir des utilisateurs, modérer les contenus.
+    \item \textbf{ADMIN :} Tous les droits, y compris la configuration système.
+\end{itemize}
+
+Chaque requête sensible vérifie que l'utilisateur a la permission nécessaire :
+
 \begin{lstlisting}[language=JavaScript]
-// Permissions spécifiques à Destiny Raid Companion
-const PERMISSIONS = {
-  // Guides
-  GUIDE_CREATE: 'guide:create',
-  GUIDE_READ: 'guide:read',
-  GUIDE_UPDATE: 'guide:update',
-  GUIDE_DELETE: 'guide:delete',
-  
-  // Escouades
-  SQUAD_CREATE: 'squad:create',
-  SQUAD_INVITE: 'squad:invite',
-  SQUAD_KICK: 'squad:kick',
-  SQUAD_DELETE: 'squad:delete',
-  
-  // Calendrier
-  EVENT_CREATE: 'event:create',
-  EVENT_EDIT: 'event:edit',
-  EVENT_DELETE: 'event:delete',
-  
-  // Administration
-  USER_BAN: 'user:ban',
-  CONTENT_MODERATE: 'content:moderate',
-  SYSTEM_CONFIG: 'system:config'
-};
-
-// Rôles avec permissions adaptées
-const ROLES = {
-  PLAYER: [
-    PERMISSIONS.GUIDE_READ,
-    PERMISSIONS.SQUAD_CREATE,
-    PERMISSIONS.EVENT_CREATE
-  ],
-  
-  SQUAD_LEADER: [
-    ...ROLES.PLAYER,
-    PERMISSIONS.SQUAD_INVITE,
-    PERMISSIONS.SQUAD_KICK,
-    PERMISSIONS.EVENT_EDIT,
-    PERMISSIONS.EVENT_DELETE
-  ],
-  
-  GUIDE_WRITER: [
-    ...ROLES.PLAYER,
-    PERMISSIONS.GUIDE_CREATE,
-    PERMISSIONS.GUIDE_UPDATE
-  ],
-  
-  MODERATOR: [
-    ...ROLES.SQUAD_LEADER,
-    ...ROLES.GUIDE_WRITER,
-    PERMISSIONS.USER_BAN,
-    PERMISSIONS.CONTENT_MODERATE
-  ],
-  
-  ADMIN: Object.values(PERMISSIONS)
-};
-
-// Middleware de vérification de permission
 const requirePermission = (permission) => {
   return (req, res, next) => {
     const userRole = req.user.role;
-    const userPermissions = ROLES[userRole] || [];
+    const permissions = ROLES[userRole] || [];
     
-    if (!userPermissions.includes(permission)) {
-      return res.status(403).json({
-        error: 'Permission refusée',
-        required: permission,
-        userPermissions: userPermissions
+    if (!permissions.includes(permission)) {
+      return res.status(403).json({ 
+        error: 'Permission refusée' 
       });
     }
-    
-    // Audit log
-    await auditService.logPermissionCheck(
-      req.user.bungieId,
-      permission,
-      req.path,
-      'success'
-    );
-    
     next();
   };
 };
 
-// Utilisation dans les routes
-router.post('/squads',
-  authenticateUser,
-  requirePermission(PERMISSIONS.SQUAD_CREATE),
-  squadController.createSquad
-);
-
-router.put('/guides/:id',
-  authenticateUser,
-  requirePermission(PERMISSIONS.GUIDE_UPDATE),
-  guideController.updateGuide
+// Utilisation dans une route
+router.post('/guides', 
+  authenticateToken,
+  requirePermission('GUIDE_CREATE'),
+  guideController.createGuide
 );
 \end{lstlisting}
-
 
 \section{Conformité RGPD}
 
-La conformité RGPD est cruciale pour une plateforme hébergeant des données de joueurs. Un registre des traitements spécifique a été établi, détaillant chaque type de donnée collectée, sa finalité, sa base légale et sa durée de conservation. Les droits des utilisateurs sont implémentés via une interface dédiée dans le profil utilisateur.
+Le RGPD n'est pas une option. J'ai conçu l'application pour respecter la vie privée des utilisateurs dès le départ (privacy by design).
 
-\vspace{0.5cm}
-\textbf{Registre des traitements pour Destiny Raid Companion :}
+\subsection{Quelles données je collecte et pourquoi}
+
+\begin{center}
+\begin{tabular}{|p{4cm}|p{6cm}|}
+\hline
+\textbf{Donnée} & \textbf{Pourquoi je la collecte} \\
+\hline
+Bungie ID & Identifier l'utilisateur de manière unique \\
+\hline
+Nom d'affichage & Afficher le pseudo dans les escouades, les guides \\
+\hline
+Tokens d'accès Bungie & Récupérer les données de jeu (personnages, stats) \\
+\hline
+Historique des raids & Suivre la progression, afficher des badges \\
+\hline
+Messages d'escouade & Permettre la communication entre joueurs \\
+\hline
+Logs de connexion & Sécurité (détecter les accès suspects) \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Base légale du traitement}
+
+Pour chaque donnée, j'ai une base légale :
+\begin{itemize}
+    \item \textbf{Consentement :} L'utilisateur accepte explicitement en se connectant avec Bungie.
+    \item \textbf{Exécution du contrat :} Certaines données sont nécessaires au fonctionnement du service (ex: les membres d'une escouade).
+    \item \textbf{Intérêt légitime :} Les logs de sécurité sont nécessaires pour protéger l'application.
+\end{itemize}
+
+\subsection{Droits des utilisateurs}
+
+Le RGPD donne des droits aux utilisateurs. J'ai implémenté les moyens de les exercer :
+
+\begin{itemize}
+    \item \textbf{Droit d'accès :} L'utilisateur peut exporter toutes ses données depuis son profil (format JSON ou CSV).
+    \item \textbf{Droit de rectification :} Il peut modifier ses informations personnelles (sauf le Bungie ID, qui est lié à son compte).
+    \item \textbf{Droit à l'effacement :} Il peut demander la suppression de son compte. Je supprime ou anonymise toutes ses données.
+    \item \textbf{Droit d'opposition :} Il peut refuser certains traitements (ex: analytics).
+    \item \textbf{Portabilité :} L'export des données est dans un format standard, réutilisable ailleurs.
+\end{itemize}
+
 \begin{lstlisting}[language=JavaScript]
-const gdprRegistry = {
-  'user-authentication': {
-    purpose: 'Authentification via Bungie.net et gestion du compte',
-    legalBasis: 'Consentement explicite lors de la connexion OAuth',
-    dataCategories: [
-      'Bungie Membership ID',
-      'Nom d\'affichage',
-      'Tokens d\'accès OAuth',
-      'Date de dernière connexion'
-    ],
-    retentionPeriod: '3 ans après dernière activité',
-    recipients: ['Équipe technique', 'Bungie (via API)'],
-    transfers: ['France (hébergement)', 'États-Unis (API Bungie)'],
-    safeguards: 'Clauses contractuelles types avec Bungie'
-  },
+// API d'export des données utilisateur
+app.get('/api/user/export', authenticateToken, async (req, res) => {
+  const userData = {
+    profile: await userService.getProfile(req.user.id),
+    squads: await squadService.getUserSquads(req.user.id),
+    sessions: await sessionService.getUserSessions(req.user.id),
+    badges: await badgeService.getUserBadges(req.user.id)
+  };
   
-  'game-statistics': {
-    purpose: 'Affichage des statistiques de jeu et progression',
-    legalBasis: 'Exécution du contrat (service demandé)',
-    dataCategories: [
-      'Niveau de lumière',
-      'Temps de jeu',
-      'Raids complétés',
-      'Succès débloqués',
-      'Équipement possédé'
-    ],
-    retentionPeriod: '5 ans après fermeture du compte',
-    recipients: ['Utilisateur uniquement'],
-    transfers: ['France uniquement'],
-    safeguards: 'Chiffrement AES-256 au repos'
-  },
-  
-  'squad-management': {
-    purpose: 'Gestion des escouades et communication entre joueurs',
-    legalBasis: 'Intérêt légitime (fonctionnalité collaborative)',
-    dataCategories: [
-      'Liste des membres d\'escouade',
-      'Messages dans le chat d\'escouade',
-      'Dates des sessions planifiées',
-      'Notes de progression'
-    ],
-    retentionPeriod: '2 ans après dissolution de l\'escouade',
-    recipients: ['Membres de l\'escouade'],
-    transfers: ['France uniquement'],
-    safeguards: 'Accès contrôlé par système de permissions'
-  },
-  
-  'raid-guides': {
-    purpose: 'Publication et consultation de guides de raids',
-    legalBasis: 'Intérêt légitime (partage communautaire)',
-    dataCategories: [
-      'Contenu des guides',
-      'Auteur',
-      'Date de publication',
-      'Notes et commentaires'
-    ],
-    retentionPeriod: 'Indéfiniment (contenu public)',
-    recipients: ['Tous les utilisateurs'],
-    transfers: ['France uniquement'],
-    safeguards: 'Modération manuelle et automatique'
-  }
-};
-
-// API RGPD complète
-const gdprController = {
-  // Droit d'accès - Export complet des données
-  async exportUserData(req, res) {
-    const bungieId = req.user.bungieId;
-    
-    // Récupération de toutes les données
-    const userData = {
-      profile: await userService.getProfile(bungieId),
-      statistics: await statsService.getUserStats(bungieId),
-      squads: await squadService.getUserSquads(bungieId),
-      events: await calendarService.getUserEvents(bungieId),
-      guides: await guideService.getUserGuides(bungieId),
-      processingPurposes: gdprRegistry
-    };
-    
-    // Format standardisé RGPD
-    res.json({
-      requestDate: new Date().toISOString(),
-      userId: bungieId,
-      data: userData,
-      metadata: {
-        format: 'JSON',
-        version: '1.0',
-        schema: 'https://gdpr.destinyraidcompanion.com/schema.json'
-      }
-    });
-  },
-  
-  // Droit à l'effacement - Anonymisation progressive
-  async deleteUserData(req, res) {
-    const bungieId = req.user.bungieId;
-    
-    // 1. Marquer le compte comme supprimé
-    await userService.softDelete(bungieId);
-    
-    // 2. Anonymiser les données personnelles
-    await userService.anonymizePersonalData(bungieId);
-    
-    // 3. Conserver les données nécessaires (facturation, légal)
-    await auditService.logGdprDeletion(bungieId, req.ip);
-    
-    // 4. Planifier la suppression complète après délai
-    scheduleCompleteDeletion(bungieId, 30); // 30 jours
-    
-    res.json({
-      message: 'Demande de suppression prise en compte',
-      deletionDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-      reference: generateDeletionReference(bungieId)
-    });
-  },
-  
-  // Droit à la portabilité - Format standard
-  async exportDataPortability(req, res) {
-    const bungieId = req.user.bungieId;
-    const format = req.query.format || 'json';
-    
-    const data = await gdprService.exportForPortability(bungieId);
-    
-    if (format === 'csv') {
-      const csv = convertToCSV(data);
-      res.attachment(`destiny-data-${bungieId}.csv`);
-      res.type('text/csv').send(csv);
-    } else {
-      res.attachment(`destiny-data-${bungieId}.json`);
-      res.json(data);
-    }
-  },
-  
-  // Droit d'opposition - Désinscription ciblée
-  async updateConsent(req, res) {
-    const { bungieId } = req.user;
-    const { processing, consent } = req.body;
-    
-    if (!gdprRegistry[processing]) {
-      return res.status(400).json({ error: 'Traitement inconnu' });
-    }
-    
-    await consentService.updateConsent(bungieId, processing, consent);
-    
-    // Appliquer immédiatement si refus
-    if (!consent) {
-      await gdprService.stopProcessing(bungieId, processing);
-    }
-    
-    res.json({
-      message: 'Consentement mis à jour',
-      processing: processing,
-      consent: consent,
-      effectiveDate: new Date().toISOString()
-    });
-  }
-};
+  res.json({
+    exportDate: new Date().toISOString(),
+    data: userData,
+    format: 'RGPD-compliant'
+  });
+});
 \end{lstlisting}
 
-\vspace{0.5cm}
-\textbf{Mesures techniques de protection des données :}
-\begin{itemize}
-    \item \textbf{Chiffrement :} AES-256 pour les données sensibles au repos
-    \item \textbf{Anonymisation :} Pseudonymisation des données pour l'analytics
-    \item \textbf{Accès :} Principe du moindre privilège avec audit logs
-    \item \textbf{Sauvegarde :} Chiffrées et stockées dans une zone séparée
-    \item \textbf{Suppression :} Processus en 2 étapes (marquage puis suppression définitive)
-\end{itemize}
-\vspace{0.5cm}
-\textbf{Politique de conservation des données :}
+\subsection{Durée de conservation}
+
+Je ne garde pas les données indéfiniment :
+
 \begin{center}
 \begin{tabular}{|p{4cm}|p{3cm}|p{4cm}|}
 \hline
 \textbf{Type de donnée} & \textbf{Durée} & \textbf{Justification} \\
 \hline
-Données de connexion & 3 ans & Sécurité et prévention des fraudes \\
-Statistiques de jeu & 5 ans & Historique de progression \\
+Données de connexion & 3 ans & Sécurité (détection d'intrusion) \\
+\hline
 Messages d'escouade & 2 ans & Vie privée des conversations \\
-Contenu des guides & Indéfinie & Contribution communautaire publique \\
-Logs d'audit & 7 ans & Obligations légales \\
+\hline
+Guides créés & Indéfinie & Contribution publique \\
+\hline
+Statistiques de jeu & 5 ans & Historique de progression \\
 \hline
 \end{tabular}
 \end{center}
 
+Après ces durées, les données sont anonymisées ou supprimées.
 
-\section{Sécurité des données et monitoring}
+\subsection{Sécurité technique des données}
 
-\textbf{Système de chiffrement pour les données Destiny 2 :}
-\begin{lstlisting}[language=JavaScript]
-const crypto = require('crypto');
-
-class DestinyDataEncryptor {
-  constructor() {
-    this.algorithm = 'aes-256-gcm';
-    this.key = Buffer.from(process.env.ENCRYPTION_KEY, 'hex');
-    
-    if (this.key.length !== 32) {
-      throw new Error('Clé de chiffrement invalide (doit être 32 bytes)');
-    }
-  }
-  
-  // Chiffrement des tokens Bungie (très sensibles)
-  encryptBungieToken(tokenData) {
-    const iv = crypto.randomBytes(16);
-    const cipher = crypto.createCipheriv(this.algorithm, this.key, iv);
-    
-    // Données additionnelles pour authentification
-    const aad = Buffer.from('bungie-token');
-    cipher.setAAD(aad);
-    
-    let encrypted = cipher.update(JSON.stringify(tokenData), 'utf8', 'hex');
-    encrypted += cipher.final('hex');
-    const authTag = cipher.getAuthTag();
-    
-    return {
-      encrypted,
-      iv: iv.toString('hex'),
-      authTag: authTag.toString('hex'),
-      version: '1.0',
-      timestamp: new Date().toISOString()
-    };
-  }
-  
-  // Chiffrement des données utilisateur sensibles
-  encryptUserData(userData, userId) {
-    const iv = crypto.randomBytes(16);
-    const cipher = crypto.createCipheriv(this.algorithm, this.key, iv);
-    
-    // Associer le chiffrement à l'utilisateur
-    const aad = Buffer.from(`user:${userId}`);
-    cipher.setAAD(aad);
-    
-    let encrypted = cipher.update(JSON.stringify(userData), 'utf8', 'hex');
-    encrypted += cipher.final('hex');
-    const authTag = cipher.getAuthTag();
-    
-    // Hacher pour vérification d'intégrité
-    const hash = crypto.createHash('sha256')
-      .update(encrypted)
-      .digest('hex');
-    
-    return {
-      encrypted,
-      iv: iv.toString('hex'),
-      authTag: authTag.toString('hex'),
-      hash,
-      userId,
-      encryptedAt: new Date().toISOString()
-    };
-  }
-  
-  // Vérification et déchiffrement
-  decryptAndVerify(encryptedData) {
-    try {
-      const decipher = crypto.createDecipheriv(
-        this.algorithm,
-        this.key,
-        Buffer.from(encryptedData.iv, 'hex')
-      );
-      
-      // Vérification des données additionnelles
-      if (encryptedData.userId) {
-        decipher.setAAD(Buffer.from(`user:${encryptedData.userId}`));
-      } else {
-        decipher.setAAD(Buffer.from('bungie-token'));
-      }
-      
-      decipher.setAuthTag(Buffer.from(encryptedData.authTag, 'hex'));
-      
-      // Vérification de l'intégrité
-      if (encryptedData.hash) {
-        const currentHash = crypto.createHash('sha256')
-          .update(encryptedData.encrypted)
-          .digest('hex');
-        
-        if (currentHash !== encryptedData.hash) {
-          throw new Error('Hash de vérification invalide');
-        }
-      }
-      
-      let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
-      decrypted += decipher.final('utf8');
-      
-      return JSON.parse(decrypted);
-    } catch (error) {
-      // Log de sécurité en cas d'échec
-      securityLogger.logDecryptionFailure({
-        error: error.message,
-        dataId: encryptedData.userId || 'unknown',
-        timestamp: new Date().toISOString()
-      });
-      throw new Error('Échec du déchiffrement');
-    }
-  }
-}
-
-// Rotation automatique des clés
-class KeyManager {
-  constructor() {
-    this.currentKey = process.env.ENCRYPTION_KEY;
-    this.previousKey = process.env.PREVIOUS_ENCRYPTION_KEY;
-    this.rotationInterval = 90 * 24 * 60 * 60 * 1000; // 90 jours
-  }
-  
-  async rotateKeys() {
-    const newKey = crypto.randomBytes(32).toString('hex');
-    
-    // 1. Chiffrer toutes les données avec la nouvelle clé
-    await this.reencryptAllData(newKey);
-    
-    // 2. Mettre à jour les variables d'environnement
-    process.env.PREVIOUS_ENCRYPTION_KEY = this.currentKey;
-    process.env.ENCRYPTION_KEY = newKey;
-    
-    // 3. Loguer la rotation
-    await auditService.logKeyRotation({
-      oldKeyHash: crypto.createHash('sha256').update(this.currentKey).digest('hex'),
-      newKeyHash: crypto.createHash('sha256').update(newKey).digest('hex'),
-      rotatedBy: 'system',
-      timestamp: new Date().toISOString()
-    });
-    
-    this.currentKey = newKey;
-  }
-  
-  async reencryptAllData(newKey) {
-    // Implémentation de re-chiffrement progressif
-    const batchSize = 100;
-    let lastId = 0;
-    
-    do {
-      const users = await db.users.findMany({
-        where: { id: { gt: lastId } },
-        take: batchSize,
-        orderBy: { id: 'asc' }
-      });
-      
-      for (const user of users) {
-        // Décrypter avec l'ancienne clé
-        const decryptor = new DestinyDataEncryptor(this.currentKey);
-        const decrypted = decryptor.decryptAndVerify(user.encryptedData);
-        
-        // Recrypter avec la nouvelle clé
-        const newEncryptor = new DestinyDataEncryptor(newKey);
-        const reencrypted = newEncryptor.encryptUserData(decrypted, user.id);
-        
-        // Mettre à jour en base
-        await db.users.update({
-          where: { id: user.id },
-          data: { encryptedData: reencrypted }
-        });
-      }
-      
-      lastId = users[users.length - 1]?.id || 0;
-    } while (lastId > 0);
-  }
-}
-\end{lstlisting}
-
-\textbf{Monitoring de sécurité et détection d'intrusion :}
 \begin{itemize}
-    \item \textbf{Logs structurés :} Centralisation avec ELK Stack
-    \item \textbf{Détection d'anomalies :} Machine learning sur les patterns d'usage
-    \item \textbf{Alertes automatiques :} Notification sur activités suspectes
-    \item \textbf{Audit continu :} Vérification automatique des configurations
-    \item \textbf{Pentest régulier :} Tests de sécurité trimestriels
+    \item \textbf{Chiffrement au repos :} Les données sensibles (tokens) sont chiffrées en base avec AES-256.
+    \item \textbf{Chiffrement en transit :} HTTPS partout, TLS 1.3.
+    \item \textbf{Accès :} Principe du moindre privilège. Le compte de la base de données n'a que les droits nécessaires.
+    \item \textbf{Sauvegardes :} Quotidiennes, chiffrées, stockées dans une région différente.
+    \item \textbf{Logs d'accès :} Toute consultation de données sensibles est loguée et auditable.
+\end{itemize}
+
+\section{Monitoring et détection d'incidents}
+
+La sécurité, ce n'est pas que de la prévention. C'est aussi de la détection et de la réaction.
+
+\subsection{Ce que je surveille}
+
+\begin{itemize}
+    \item \textbf{Tentatives de connexion échouées :} Si un utilisateur échoue 10 fois, je bloque temporairement et j'envoie une alerte.
+    \item \textbf{Requêtes anormales :} Trop de requêtes d'un même IP, accès à des endpoints sensibles, etc.
+    \item \textbf{Erreurs applicatives :} Certaines erreurs peuvent cacher des tentatives d'exploitation.
+    \item \textbf{Changements dans les tokens Bungie :} Si un refresh token est utilisé alors qu'il ne devrait pas, c'est peut-être un vol.
+\end{itemize}
+
+\subsection{Plan de réponse à incident}
+
+Si un incident de sécurité survient (ex: compte compromis, faille découverte), j'ai un plan :
+
+\begin{enumerate}
+    \item \textbf{Détection :} Alerte reçue (logs, utilisateur qui signale).
+    \item \textbf{Analyse :} Comprendre ce qui s'est passé, quelles données sont touchées.
+    \item \textbf{Confinement :} Bloquer l'attaque (bannir IP, révoquer tokens, désactiver compte).
+    \item \textbf{Récupération :} Restaurer les données si nécessaire, corriger la faille.
+    \item \textbf{Notification :} Informer les utilisateurs concernés et la CNIL si nécessaire (obligation légale dans les 72h).
+    \item \textbf{Post-mortem :} Analyser pourquoi c'est arrivé et comment éviter que ça se reproduise.
+\end{enumerate}
+
+\section{Ce que j'ai appris sur la sécurité}
+
+Travailler sur ce projet m'a fait prendre conscience que la sécurité, ce n'est pas une fonctionnalité qu'on ajoute à la fin. C'est quelque chose qu'on doit penser dès la conception.
+
+Quelques principes simples mais efficaces :
+\begin{itemize}
+    \item \textbf{Ne jamais faire confiance aux entrées utilisateur.} Tout ce qui vient du frontend doit être validé et nettoyé.
+    \item \textbf{Moins on a de données sensibles, mieux c'est.} Je ne stocke que ce dont j'ai vraiment besoin.
+    \item \textbf{Les failles les plus graves sont souvent les plus simples.} Un oubli de validation, un message d'erreur trop bavard, un token en clair dans une URL...
+    \item \textbf{Les audits et les tests sont essentiels.} Je ne peux pas penser à tout tout seul. Les outils d'analyse (Snyk, npm audit) m'aident à détecter ce que j'aurais pu rater.
 \end{itemize}
 
 \section{Liens utiles}
 
 \begin{itemize}
     \item OWASP Top 10: \url{https://owasp.org/www-project-top-ten/}
-    \item CNIL RGPD pour les jeux vidéo: \url{https://www.cnil.fr/fr/jeux-video-et-reseaux-sociaux}
-    \item Guide sécurité Bungie API: \url{https://bungie-net.github.io/multi/security.html}
-    \item RFC 6749 OAuth 2.0: \url{https://tools.ietf.org/html/rfc6749}
-    \item NIST Cybersecurity Framework: \url{https://www.nist.gov/cyberframework}
-    \item Guide RGPD pour développeurs: \url{https://www.cnil.fr/fr/guide-rgpd-du-developpeur}
-    \item OWASP Cheat Sheets: \url{https://cheatsheetseries.owasp.org/}
-    \item CNIL RGPD: \url{https://www.cnil.fr/fr/rgpd-de-quoi-parle-t-on}
-    \item Argon2: \url{https://github.com/P-H-C/phc-winner-argon2}
-    \item JWT Best Practices: \url{https://tools.ietf.org/html/rfc8725}
+    \item Guide RGPD pour développeurs (CNIL): \url{https://www.cnil.fr/fr/guide-rgpd-du-developpeur}
+    \item Helmet.js (sécurité des headers): \url{https://helmetjs.github.io/}
+    \item Documentation Bungie sur la sécurité OAuth: \url{https://bungie-net.github.io/multi/security.html}
+    \item JWT Best Practices: \url{https://datatracker.ietf.org/doc/html/rfc8725}
+    \item DOMPurify (anti-XSS): \url{https://github.com/cure53/DOMPurify}
 \end{itemize}

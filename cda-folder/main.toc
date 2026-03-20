@@ -1,129 +1,172 @@
 \babel@toc {french}{}\relax 
-\contentsline {chapter}{\numberline {1}Présentation personnelle et du projet}{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Rôle du candidat et contexte}{5}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Problématique et objectifs SMART}{6}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Liens utiles}{7}{section.1.3}%
+\contentsline {chapter}{\numberline {1}Présentation personnelle et du projet}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Rôle du candidat et contexte}{6}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Problématique et objectifs SMART}{7}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Liens utiles}{8}{section.1.3}%
 \contentsline {chapter}{\numberline {2}Cadrage et cahier des charges}{9}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Objectifs métier, techniques et pédagogiques}{9}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Instrumentation et métriques de suivi}{9}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Justification des choix techniques}{11}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Tableau MoSCoW justifié}{12}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Critères d'acceptation et scénarios}{13}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Cibles et parties prenantes}{14}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Exigences fonctionnelles}{15}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Définition du MVP}{18}{section.2.8}%
-\contentsline {section}{\numberline {2.9}Roadmap produit}{19}{section.2.9}%
-\contentsline {section}{\numberline {2.10}Liens utiles}{20}{section.2.10}%
-\contentsline {chapter}{\numberline {3}Méthodologie et organisation}{21}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Gestion de projet avec GitHub}{21}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Adaptation de la méthode Agile au contexte}{21}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Rituels Agile et leur mise en œuvre avec objectifs métier}{21}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}User Stories et estimation de temps}{23}{subsection.3.1.3}%
-\contentsline {section}{\numberline {3.2}Versioning GitHub et conventions}{23}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}CONTRIBUTING.md et normalisation}{23}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Conventions de branches}{23}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Conventions de commits}{24}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}Planification et outils de suivi}{25}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}GitHub Project et Roadmap}{25}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Liaison User Stories - Tests - Milestones}{26}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Estimation de temps et planification}{26}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Métriques de suivi et amélioration continue}{27}{subsection.3.4.1}%
-\contentsline {section}{\numberline {3.5}Liens utiles}{28}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Conception fonctionnelle et technique}{29}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Use Cases et diagrammes UML}{29}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Diagrammes de séquence}{31}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Conception de l'interface graphique}{31}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Architecture des composants React}{31}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Charte graphique détaillée}{33}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Maquettes et prototypes}{34}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Conception de base de données}{34}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Modèle Conceptuel de Données (MCD)}{34}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Modèle Logique de Données (MLD)}{34}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Modèle Physique de Données (MPD)}{34}{subsection.4.4.3}%
-\contentsline {section}{\numberline {4.5}Architecture technique détaillée}{35}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Couche Présentation (Frontend)}{35}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Couche Métier (Backend)}{35}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Couche Données}{37}{subsection.4.5.3}%
-\contentsline {section}{\numberline {4.6}Stratégie de tests}{37}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Couverture de tests}{38}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Automatisation des tests}{39}{subsection.4.6.2}%
-\contentsline {section}{\numberline {4.7}Plan de déploiement et infrastructure}{39}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}Architecture de déploiement}{39}{subsection.4.7.1}%
-\contentsline {subsection}{\numberline {4.7.2}CI/CD et monitoring}{41}{subsection.4.7.2}%
-\contentsline {section}{\numberline {4.8}Liens utiles}{41}{section.4.8}%
-\contentsline {chapter}{\numberline {5}Architecture 3 tiers}{45}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Architecture 3 tiers}{45}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Couche Présentation (Frontend)}{45}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Couche Logique Métier (Backend)}{46}{subsection.5.1.2}%
-\contentsline {subsubsection}{Controller}{46}{subsection.5.1.2}%
-\contentsline {subsubsection}{Service}{47}{lstnumber.-11.37}%
-\contentsline {subsubsection}{Repository (DAO)}{47}{lstnumber.-12.40}%
-\contentsline {subsection}{\numberline {5.1.3}Couche Données (Database)}{48}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Communication entre les tiers}{49}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Avantages de l'architecture 3 tiers}{49}{subsection.5.1.5}%
-\contentsline {section}{\numberline {5.2}Développement Frontend}{50}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Développement Backend}{53}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Gestion des données}{57}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Liens utiles}{61}{section.5.5}%
-\contentsline {chapter}{\numberline {6}Sécurité applicative et RGPD}{63}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Protection contre les vulnérabilités OWASP}{63}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Authentification et autorisation}{65}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Conformité RGPD}{68}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Sécurité des données et monitoring}{71}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Liens utiles}{75}{section.6.5}%
-\contentsline {chapter}{\numberline {7}Tests et qualité logicielle}{77}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Stratégie de tests}{77}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Tests de performance}{79}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Qualité du code avec SonarQube}{81}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Liens utiles}{83}{section.7.4}%
-\contentsline {chapter}{\numberline {8}Déploiement et intégration continue (CI/CD)}{85}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Cadre et objectifs du déploiement}{85}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Containerisation de l’application avec Docker}{85}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Architecture des services}{85}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}Dockerfile Backend (Node.js)}{85}{subsection.8.2.2}%
-\contentsline {subsection}{\numberline {8.2.3}Dockerfile Frontend (HTML / CSS / JavaScript)}{85}{subsection.8.2.3}%
-\contentsline {subsection}{\numberline {8.2.4}Orchestration avec Docker Compose}{86}{subsection.8.2.4}%
-\contentsline {section}{\numberline {8.3}Gestion des environnements et des variables}{86}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Intégration continue (CI)}{86}{section.8.4}%
-\contentsline {subsection}{\numberline {8.4.1}Objectifs de la CI}{86}{subsection.8.4.1}%
-\contentsline {subsection}{\numberline {8.4.2}Pipeline GitHub Actions}{86}{subsection.8.4.2}%
-\contentsline {section}{\numberline {8.5}Quality Gates}{87}{section.8.5}%
-\contentsline {section}{\numberline {8.6}Déploiement continu (CD)}{87}{section.8.6}%
-\contentsline {subsection}{\numberline {8.6.1}Principe de déploiement}{87}{subsection.8.6.1}%
-\contentsline {subsection}{\numberline {8.6.2}Commandes de déploiement}{87}{subsection.8.6.2}%
-\contentsline {section}{\numberline {8.7}Monitoring et logs}{87}{section.8.7}%
-\contentsline {subsection}{\numberline {8.7.1}Logs applicatifs}{87}{subsection.8.7.1}%
-\contentsline {subsection}{\numberline {8.7.2}Surveillance basique}{87}{subsection.8.7.2}%
-\contentsline {section}{\numberline {8.8}Documentation de déploiement}{88}{section.8.8}%
-\contentsline {subsection}{\numberline {8.8.1}Prérequis}{88}{subsection.8.8.1}%
-\contentsline {subsection}{\numberline {8.8.2}Lancement de l’application}{88}{subsection.8.8.2}%
-\contentsline {subsection}{\numberline {8.8.3}Arrêt et redémarrage}{88}{subsection.8.8.3}%
-\contentsline {section}{\numberline {8.9}Conclusion}{88}{section.8.9}%
-\contentsline {chapter}{\numberline {9}Veille technologique et sécurité}{89}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Veille technologique stack JavaScript}{89}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Sécurité applicative}{90}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Architecture Docker}{91}{section.9.3}%
-\contentsline {section}{\numberline {9.4}Base de données PostgreSQL}{91}{section.9.4}%
-\contentsline {section}{\numberline {9.5}Monitoring et métriques}{92}{section.9.5}%
-\contentsline {section}{\numberline {9.6}Plan de réponse aux incidents}{93}{section.9.6}%
-\contentsline {section}{\numberline {9.7}Améliorations continues}{94}{section.9.7}%
-\contentsline {section}{\numberline {9.8}Conclusion}{95}{section.9.8}%
-\contentsline {section}{\numberline {9.9}Liens utiles}{95}{section.9.9}%
-\contentsline {chapter}{\numberline {10}Bilan et retour d'expérience (REX)}{97}{chapter.10}%
-\contentsline {section}{\numberline {10.1}Objectifs atteints et non atteints}{97}{section.10.1}%
-\contentsline {section}{\numberline {10.2}Difficultés rencontrées et solutions}{97}{section.10.2}%
-\contentsline {section}{\numberline {10.3}Dettes techniques et apprentissages}{98}{section.10.3}%
-\contentsline {section}{\numberline {10.4}Liens utiles}{100}{section.10.4}%
-\contentsline {chapter}{\numberline {11}Conclusion et remerciements}{101}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Synthèse du projet}{101}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Perspectives d'évolution}{102}{section.11.2}%
-\contentsline {section}{\numberline {11.3}Remerciements}{103}{section.11.3}%
-\contentsline {section}{\numberline {11.4}Déploiement et documentation}{103}{section.11.4}%
-\contentsline {subsection}{\numberline {11.4.1}Docker}{104}{subsection.11.4.1}%
-\contentsline {subsubsection}{Conteneurisation}{104}{subsection.11.4.1}%
-\contentsline {subsubsection}{Compose}{104}{lstnumber.-52.21}%
-\contentsline {subsection}{\numberline {11.4.2}GitHub (code source)}{105}{subsection.11.4.2}%
-\contentsline {subsection}{\numberline {11.4.3}CI/CD}{106}{subsection.11.4.3}%
-\contentsline {subsection}{\numberline {11.4.4}SonarQube}{106}{subsection.11.4.4}%
-\contentsline {subsection}{\numberline {11.4.5}Swagger}{107}{subsection.11.4.5}%
-\contentsline {section}{\numberline {11.5}Liens utiles}{109}{section.11.5}%
+\contentsline {section}{\numberline {2.2}Comment je mesure la réussite du projet}{10}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Pourquoi j'ai choisi cette stack technique}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Priorisation des fonctionnalités (MoSCoW)}{11}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Scénarios de test concrets (format Gherkin)}{12}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Les personnes concernées et les risques}{13}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Les fonctionnalités en détail}{13}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Feuille de route (Roadmap)}{14}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Liens utiles}{15}{section.2.9}%
+\contentsline {chapter}{\numberline {3}Méthodologie et organisation}{16}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Comment j'organise mon travail avec GitHub}{16}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Pourquoi j'ai choisi une méthode Agile... adaptée au solo}{16}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Mon adaptation de GitFlow}{16}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Mes "rituels" Agiles, version solo}{16}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Ce que me disent mes métriques}{17}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Mon tableau Kanban}{17}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.6}Comment j'estime mes tâches}{17}{subsection.3.1.6}%
+\contentsline {section}{\numberline {3.2}Mes règles pour un code propre (versioning et conventions)}{17}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Le fichier CONTRIBUTING.md}{17}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Comment je nomme mes branches}{18}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Comment je nomme mes commits}{18}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Ma "Definition of Done"}{18}{subsection.3.2.4}%
+\contentsline {section}{\numberline {3.3}Comment je planifie et je suis mon avancement}{18}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Un outil, deux vues}{18}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Extrait de ma roadmap}{18}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Le lien entre user stories, tests et jalons}{19}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Estimation globale du projet}{19}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Détail par grande fonctionnalité}{19}{subsection.3.4.1}%
+\contentsline {section}{\numberline {3.5}Ce que je retire de cette organisation}{20}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Liens utiles}{20}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Conception fonctionnelle et technique}{21}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Les cas d'usage (Use Cases)}{21}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Les acteurs du système}{21}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Les cas d'usage principaux}{21}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Exemple détaillé : Consultation d'un guide}{21}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Les diagrammes de séquence}{21}{section.4.2}%
+\contentsline {section}{\numberline {4.3}La conception de l'interface}{22}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}L'architecture des composants React}{22}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Exemple : le composant GuideViewer}{22}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}La charte graphique}{22}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}La conception de la base de données}{23}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Le Modèle Conceptuel de Données (MCD)}{23}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Le Modèle Physique de Données (MPD) avec Prisma}{24}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Pourquoi plusieurs bases ?}{24}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}L'architecture technique détaillée}{24}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Couche Présentation (Frontend)}{24}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Couche Métier (Backend)}{25}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Couche Données}{25}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}Ma stratégie de tests}{26}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Objectifs de couverture}{26}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Exemple : test du service SquadService}{26}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.7}Le déploiement}{26}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Environnements}{26}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Docker Compose}{26}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}CI/CD et monitoring}{27}{subsection.4.7.3}%
+\contentsline {section}{\numberline {4.8}Ce que je retire de cette conception}{27}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Maquettes et wireframes}{27}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Zoning (architecture des pages)}{27}{subsection.4.9.1}%
+\contentsline {subsection}{\numberline {4.9.2}Wireframes (maquettes basse fidélité)}{27}{subsection.4.9.2}%
+\contentsline {subsection}{\numberline {4.9.3}Maquettes haute fidélité}{28}{subsection.4.9.3}%
+\contentsline {section}{\numberline {4.10}Liens utiles}{28}{section.4.10}%
+\contentsline {chapter}{\numberline {5}Architecture 3 tiers}{29}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Architecture 3 tiers}{29}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Couche Présentation (Frontend)}{29}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Couche Logique Métier (Backend)}{29}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Couche Données (Database)}{31}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Communication entre les tiers}{32}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Avantages de l'architecture 3 tiers}{32}{subsection.5.1.5}%
+\contentsline {section}{\numberline {5.2}Liens utiles}{32}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Sécurité applicative et RGPD}{33}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Pourquoi la sécurité est cruciale pour ce projet}{33}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Protection contre les vulnérabilités OWASP}{33}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Injection SQL (requêtes paramétrées)}{33}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}XSS (Cross-Site Scripting)}{33}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}CSRF (Cross-Site Request Forgery)}{34}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Faille d'authentification}{34}{subsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.2.5}Headers de sécurité}{34}{subsection.6.2.5}%
+\contentsline {section}{\numberline {6.3}Authentification et autorisation}{35}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Le flux OAuth avec Bungie}{35}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Gestion sécurisée des tokens}{35}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Système de rôles et permissions}{35}{subsection.6.3.3}%
+\contentsline {section}{\numberline {6.4}Conformité RGPD}{36}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Quelles données je collecte et pourquoi}{36}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Base légale du traitement}{36}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}Droits des utilisateurs}{36}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.4}Durée de conservation}{37}{subsection.6.4.4}%
+\contentsline {subsection}{\numberline {6.4.5}Sécurité technique des données}{37}{subsection.6.4.5}%
+\contentsline {section}{\numberline {6.5}Monitoring et détection d'incidents}{37}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Ce que je surveille}{38}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Plan de réponse à incident}{38}{subsection.6.5.2}%
+\contentsline {section}{\numberline {6.6}Ce que j'ai appris sur la sécurité}{38}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Liens utiles}{38}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Tests et qualité logicielle}{39}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Ma stratégie de tests}{39}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Les différents types de tests}{39}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Exemple de test unitaire}{40}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Exemple de test d'intégration}{40}{subsection.7.1.3}%
+\contentsline {section}{\numberline {7.2}Tests de performance}{41}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Script de test de charge}{41}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Résultats obtenus}{42}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Qualité du code avec SonarQube}{42}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Ce que SonarQube surveille}{42}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Mes résultats actuels}{42}{subsection.7.3.2}%
+\contentsline {subsection}{\numberline {7.3.3}Exemple de correction}{43}{subsection.7.3.3}%
+\contentsline {subsection}{\numberline {7.3.4}Intégration dans GitHub Actions}{43}{subsection.7.3.4}%
+\contentsline {section}{\numberline {7.4}Métriques Lighthouse}{43}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Ce que j'ai appris}{44}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Liens utiles}{44}{section.7.6}%
+\contentsline {chapter}{\numberline {8}Déploiement et intégration continue (CI/CD)}{45}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Pourquoi automatiser le déploiement ?}{45}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Containerisation avec Docker}{45}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Le backend (Node.js)}{45}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Le frontend (HTML/CSS/JS)}{45}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Orchestration avec Docker Compose}{45}{subsection.8.2.3}%
+\contentsline {section}{\numberline {8.3}Gestion des secrets}{46}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Intégration continue (CI) avec GitHub Actions}{46}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Ma pipeline CI}{46}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Ce que ça vérifie}{47}{subsection.8.4.2}%
+\contentsline {section}{\numberline {8.5}Déploiement continu (CD)}{47}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Étapes du déploiement}{47}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}Commandes de déploiement (manuel pour l'instant)}{47}{subsection.8.5.2}%
+\contentsline {section}{\numberline {8.6}Monitoring et logs}{47}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Logs applicatifs}{47}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Health checks}{48}{subsection.8.6.2}%
+\contentsline {section}{\numberline {8.7}Documentation pour reprendre le projet}{48}{section.8.7}%
+\contentsline {subsection}{\numberline {8.7.1}Prérequis}{48}{subsection.8.7.1}%
+\contentsline {subsection}{\numberline {8.7.2}Lancement}{48}{subsection.8.7.2}%
+\contentsline {subsection}{\numberline {8.7.3}Arrêt}{48}{subsection.8.7.3}%
+\contentsline {section}{\numberline {8.8}Ce que j'ai appris}{48}{section.8.8}%
+\contentsline {chapter}{\numberline {9}Veille technologique et sécurité}{49}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Pourquoi une veille technologique ?}{49}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Ma veille sur la stack JavaScript}{49}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}Les technologies que je surveille}{49}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}Comment j'organise ma veille}{49}{subsection.9.2.2}%
+\contentsline {subsection}{\numberline {9.2.3}Impact des mises à jour sur mon projet}{49}{subsection.9.2.3}%
+\contentsline {subsection}{\numberline {9.2.4}Exemple concret : le passage à Node.js 20}{49}{subsection.9.2.4}%
+\contentsline {section}{\numberline {9.3}La sécurité au cœur du projet}{50}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Les protections que j'ai mises en place}{50}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Chiffrement des données sensibles}{50}{subsection.9.3.2}%
+\contentsline {subsection}{\numberline {9.3.3}Validation des entrées}{50}{subsection.9.3.3}%
+\contentsline {section}{\numberline {9.4}Monitoring et détection d'incidents}{51}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Métriques de sécurité surveillées}{51}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}Plan de réponse aux incidents}{51}{subsection.9.4.2}%
+\contentsline {section}{\numberline {9.5}Amélioration continue}{51}{section.9.5}%
+\contentsline {subsection}{\numberline {9.5.1}Objectifs pour les prochains mois}{51}{subsection.9.5.1}%
+\contentsline {subsection}{\numberline {9.5.2}L'intégration dans la CI/CD}{51}{subsection.9.5.2}%
+\contentsline {section}{\numberline {9.6}Ce que j'ai appris}{52}{section.9.6}%
+\contentsline {section}{\numberline {9.7}Liens utiles}{52}{section.9.7}%
+\contentsline {chapter}{\numberline {10}Bilan et retour d'expérience (REX)}{53}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Objectifs atteints et non atteints}{53}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Difficultés rencontrées et solutions}{53}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Dettes techniques et apprentissages}{54}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Liens utiles}{56}{section.10.4}%
+\contentsline {chapter}{\numberline {11}Conclusion et remerciements}{57}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Synthèse du projet}{57}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Perspectives d'évolution}{58}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Remerciements}{59}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Déploiement et documentation}{59}{section.11.4}%
+\contentsline {subsection}{\numberline {11.4.1}Docker}{60}{subsection.11.4.1}%
+\contentsline {subsubsection}{Conteneurisation}{60}{subsection.11.4.1}%
+\contentsline {subsubsection}{Compose}{60}{lstnumber.-33.21}%
+\contentsline {subsection}{\numberline {11.4.2}GitHub (code source)}{61}{subsection.11.4.2}%
+\contentsline {subsection}{\numberline {11.4.3}CI/CD}{62}{subsection.11.4.3}%
+\contentsline {subsection}{\numberline {11.4.4}SonarQube}{62}{subsection.11.4.4}%
+\contentsline {subsection}{\numberline {11.4.5}Swagger}{63}{subsection.11.4.5}%
+\contentsline {section}{\numberline {11.5}Liens utiles}{65}{section.11.5}%
