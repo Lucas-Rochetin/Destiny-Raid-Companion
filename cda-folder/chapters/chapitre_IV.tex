@@ -63,20 +63,20 @@ Pour chaque cas d'usage important, j'ai modélisé les échanges entre les compo
 
 \section{La conception de l'interface}
 
-\subsection{L'architecture des composants React}
+\subsection{Architecture des composants Next.js}
 
-J'ai organisé le frontend de manière modulaire pour faciliter la maintenance et les tests :
+J'ai choisi Next.js pour le frontend. L'avantage principal : les guides de raids sont rendus côté serveur (SSR), ce qui améliore le SEO et le temps d'affichage initial.
 
 \begin{verbatim}
-src/
-├── components/
-│   ├── common/        # Boutons, navigation (réutilisables)
-│   ├── guides/        # Affichage des guides
-│   ├── squads/        # Gestion des escouades
-│   ├── calendar/      # Planification
-│   └── profile/       # Profils et badges
-├── hooks/              # useAuth, useSquads (logique réutilisable)
-└── services/           # Appels API (Bungie, backend)
+frontend/
++-- app/
+|   +-- (dashboard)/        # Routes principales
+|   |   +-- guides/
+|   |   |   +-- [raidId]/   # Affichage d'un guide (SSR)
+|   |   +-- squads/         # Gestion des escouades
+|   +-- api/                # API Routes pour callbacks
++-- components/             # Composants réutilisables
++-- lib/                    # Utilitaires (auth, Prisma)
 \end{verbatim}
 
 \subsection{Exemple : le composant GuideViewer}
@@ -169,7 +169,7 @@ model Session {
 
 \subsection{Couche Présentation (Frontend)}
 
-\textbf{Technologies :} React 18, Vite, TailwindCSS, React Router, Axios
+\textbf{Technologies :} Next, Vite, TailwindCSS, Axios
 
 L'idée est de séparer la logique d'affichage des appels API. Exemple avec le service d'authentification :
 
@@ -358,7 +358,6 @@ Cette approche modulaire m'a permis de :
 \section{Liens utiles}
 
 \begin{itemize}
-    \item React: \url{https://react.dev/}
     \item Prisma: \url{https://www.prisma.io/docs/}
     \item Docker: \url{https://docs.docker.com/}
     \item Bungie API: \url{https://bungie-net.github.io/}
