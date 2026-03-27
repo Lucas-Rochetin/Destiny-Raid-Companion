@@ -2,207 +2,137 @@
 
 \section{Objectifs atteints et non atteints}
 
-L'analyse des objectifs initiaux révèle un taux d'atteinte de 85\% des objectifs SMART définis. Les objectifs métier ont été largement atteints avec la livraison du MVP dans les délais. Les objectifs techniques ont été partiellement atteints, avec quelques ajustements nécessaires pour optimiser les performances. Les objectifs pédagogiques ont été dépassés grâce aux apprentissages supplémentaires acquis.
+Le projet Destiny Raid Companion a été développé sur une période de 8 mois, à raison de deux jours par semaine (environ 60 jours ouvrés). Le MVP a été livré dans les délais prévus, avec une stack technique maîtrisée (Next.js côté frontend, Node.js/PostgreSQL côté backend) et une intégration fonctionnelle de l'API Bungie.
 
-Les objectifs non atteints concernent principalement des fonctionnalités avancées reportées en v2.0 pour respecter les contraintes temporelles. Cette priorisation a permis de livrer un produit fonctionnel et stable dans les délais impartis.
+\subsection*{Objectifs atteints}
 
-\begin{exemple}
-\textbf{Bilan des objectifs SMART :}
-\begin{center}
-\begin{tabular}{|l|l|l|l|}
-\hline
-\textbf{Objectif} & \textbf{Statut} & \textbf{Mesure} & \textbf{Commentaire} \\
-\hline
-Réduction temps reporting & \mycheckmark Atteint & -42\% & Dépassé l'objectif de -40\% \\
-Livraison MVP 6 mois & \mycheckmark Atteint & 5.5 mois & Livré en avance \\
-Adoption utilisateurs & \mywarning Partiel & 78\% & Objectif 90\%, formation nécessaire \\
-Performance P95 < 500ms & \mycheckmark Atteint & 320ms & Dépassé l'objectif \\
-Sécurité 0 vulnérabilité & \mycheckmark Atteint & 0 & Objectif atteint \\
-\hline
-\end{tabular}
-\end{center}
-
-\textbf{Objectifs non atteints :}
 \begin{itemize}
-    \item \textbf{Analytics avancées :} Reporté en v2.0 (complexité technique)
-    \item \textbf{Intégrations externes :} Reporté en v2.0 (priorités métier)
-    \item \textbf{Mobile native :} Reporté en v2.0 (PWA suffisant)
-    \item \textbf{IA prédictive :} Reporté en v2.0 (ROI incertain)
+    \item \textbf{Livraison du MVP :} La version 1.0 a été livrée en mars 2026, conformément au planning.
+    \item \textbf{Authentification OAuth Bungie :} Le flux d'authentification fonctionne correctement, avec gestion sécurisée des tokens et rafraîchissement automatique.
+    \item \textbf{Guides interactifs :} Les guides pour 3 raids (Vault of Glass, Last Wish, Deep Stone Crypt) sont disponibles et consultables.
+    \item \textbf{Gestion d'escouades :} La création d'escouades, l'invitation de membres et la gestion des rôles sont opérationnelles.
+    \item \textbf{Qualité du code :} Couverture de tests unitaires à 85\%, analyse SonarQube sans vulnérabilité critique.
+    \item \textbf{Sécurité :} Toutes les mesures OWASP prévues ont été implémentées (Prisma contre les injections SQL, DOMPurify contre le XSS, helmet pour les en-têtes HTTP, rate limiting).
 \end{itemize}
-\end{exemple}
 
-\begin{conseil}
-\begin{itemize}
-    \item Analyser objectivement l'atteinte des objectifs
-    \item Identifier les causes des non-atteintes
-    \item Documenter les ajustements nécessaires
-    \item Prévoir les actions correctives pour v2.0
-    \item Communiquer les résultats aux parties prenantes
-\end{itemize}
-\end{conseil}
+\subsection*{Objectifs partiellement atteints ou reportés}
 
-\begin{jury}
 \begin{itemize}
-    \item Quels objectifs avez-vous atteints ?
-    \item Pourquoi certains objectifs n'ont-ils pas été atteints ?
-    \item Comment mesurez-vous le succès de votre projet ?
-    \item Avez-vous ajusté vos objectifs en cours de projet ?
-    \item Quels sont vos objectifs pour la v2.0 ?
+    \item \textbf{Calendrier collaboratif :} Une version simple permet de planifier des sessions, mais les fonctionnalités avancées (récurrence, notifications) sont reportées en v1.1.
+    \item \textbf{Système de badges :} La logique de gamification est définie, mais l'interface d'affichage reste basique. À enrichir dans une version ultérieure.
+    \item \textbf{Intégration avancée de l'API Destiny 2 :} La synchronisation des personnages et des statistiques fonctionne, mais le rate limiting de Bungie (40 requêtes toutes les 10 secondes) impose une gestion de cache qui n'est pas encore optimale.
 \end{itemize}
-\end{jury}
+
+\subsection*{Retours des testeurs (février 2026)}
+
+Trois joueurs ont testé les maquettes et les premières versions fonctionnelles :
+
+\begin{itemize}
+    \item \textbf{Thomas (débutant) :} "Les guides sont clairs, mais certains termes techniques mériteraient un glossaire." → Correction intégrée.
+    \item \textbf{Sarah (leader expérimentée) :} "La création d'escouade est intuitive, mais j'aimerais pouvoir inviter plus vite." → Le processus a été simplifié à trois clics maximum.
+    \item \textbf{Alex (joueur technique) :} "Je voudrais voir ma progression plus clairement." → Des indicateurs visuels ont été ajoutés dans les guides.
+\end{itemize}
+
+Aucun bug bloquant n'a été remonté lors de ces tests préliminaires.
 
 \section{Difficultés rencontrées et solutions}
 
-Les principales difficultés ont concerné l'intégration des bases de données hétérogènes, la gestion des performances sous charge, et la coordination des équipes distribuées. Chaque difficulté a été analysée pour identifier les causes racines et implémenter des solutions durables.
+\subsection*{Difficulté 1 : Intégration de l'API Bungie}
 
-L'approche de résolution de problèmes a combiné l'analyse technique, la recherche de solutions existantes, et l'innovation pour des cas spécifiques. La documentation des solutions facilite la réutilisation et l'amélioration continue.
+La documentation de l'API Bungie est volumineuse et parfois imprécise. Les premiers appels échouaient à cause de mauvais en-têtes d'authentification.
 
-\begin{exemple}
-\textbf{Tableau risques \myarrow mitigation \myarrow résultat :}
-\begin{center}
-\begin{tabular}{|l|l|l|l|}
-\hline
-\textbf{Risque} & \textbf{Mitigation} & \textbf{Résultat} & \textbf{Apprentissage} \\
-\hline
-Performance DB & Index + cache Redis & Latence -60\% & Cache stratégique \\
-Intégration équipes & Daily standups & Communication +40\% & Processus agile \\
-Sécurité données & Chiffrement + audit & 0 incident & Sécurité by design \\
-Délais serrés & MVP + priorités & Livraison à temps & Focus sur l'essentiel \\
-Complexité technique & Architecture simple & Maintenance facile & KISS principle \\
-\hline
-\end{tabular}
-\end{center}
-
-\textbf{Exemple de difficulté résolue :}
-\begin{verbatim}
-Problème: Latence élevée des requêtes PostgreSQL
-+-- Symptômes
-|   +-- Temps de réponse > 2s
-|   +-- Timeout des requêtes complexes
-|   +-- Surcharge CPU base de données
-+-- Analyse
-|   +-- Requêtes sans index appropriés
-|   +-- Jointures sur de gros volumes
-|   +-- Pas de cache applicatif
-+-- Solutions implémentées
-|   +-- Création d'index composites
-|   +-- Optimisation des requêtes
-|   +-- Mise en place de Redis cache
-|   +-- Pagination des résultats
-+-- Résultat
-    +-- Latence réduite à 200ms
-    +-- CPU base stabilisé
-    +-- Expérience utilisateur améliorée
-\end{verbatim}
-\end{exemple}
-
-\begin{conseil}
+J'ai donc créé un module dédié \texttt{bungieApiClient.js} qui centralise tous les appels. Cette séparation m'a permis de :
 \begin{itemize}
-    \item Documenter toutes les difficultés rencontrées
-    \item Analyser les causes racines des problèmes
-    \item Rechercher des solutions existantes avant d'innover
-    \item Tester les solutions avant déploiement
-    \item Partager les apprentissages avec l'équipe
+    \item Tester unitairement le client sans appeler la vraie API (en mockant les réponses)
+    \item Changer la façon dont les tokens sont envoyés sans impacter le reste du code
 \end{itemize}
-\end{conseil}
 
-\begin{jury}
+\subsection*{Difficulté 2 : Gestion du rate limiting de l'API Bungie}
+
+L'API Bungie limite à 40 requêtes toutes les 10 secondes. Sans précaution, les appels parallèles déclenchaient des erreurs 429 (Too Many Requests).
+
+La solution a été double :
 \begin{itemize}
-    \item Quelles ont été vos principales difficultés ?
-    \item Comment avez-vous résolu ces difficultés ?
-    \item Avez-vous documenté vos solutions ?
-    \item Ces difficultés étaient-elles prévisibles ?
-    \item Comment éviterez-vous ces difficultés à l'avenir ?
+    \item Un cache Redis pour les données qui changent peu (profils, statistiques agrégées)
+    \item Un système de queue avec retry exponentiel pour les appels critiques
 \end{itemize}
-\end{jury}
+
+Le code ci-dessous illustre la logique de retry : si l'API répond avec un code 429, on attend un temps qui double à chaque tentative, puis on réessaie. Cela évite d'écraser l'API tout en garantissant que l'appel finit par aboutir.
+
+\begin{lstlisting}[language=JavaScript]
+// Queue avec retry pour les appels Bungie
+async function callBungieWithRetry(endpoint, maxRetries = 3) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await bungieApi.get(endpoint);
+    } catch (error) {
+      if (error.response?.status === 429) {
+        const waitTime = Math.pow(2, i) * 1000;
+        await new Promise(resolve => setTimeout(resolve, waitTime));
+        continue;
+      }
+      throw error;
+    }
+  }
+  throw new Error('Max retries exceeded');
+}
+\end{lstlisting}
+
+L'idée derrière cette approche est de rendre le client résilient face aux limitations de l'API externe, sans avoir à modifier le reste de l'application.
+
+\subsection*{Difficulté 3 : Performance des requêtes PostgreSQL}
+
+Au début du projet, les requêtes pour afficher la liste des escouades avec leurs membres prenaient plus de deux secondes. C'était inacceptable pour une expérience utilisateur fluide.
+
+J'ai appliqué trois correctifs :
+\begin{itemize}
+    \item Ajout d'index composites sur les clés étrangères fréquemment utilisées
+    \item Optimisation des requêtes Prisma en utilisant \texttt{include} sélectif (plutôt que de charger toutes les relations systématiquement)
+    \item Mise en cache Redis des données consultées fréquemment (durée de vie : 5 minutes)
+\end{itemize}
+
+Le résultat est une latence moyenne tombée à 200 ms, ce qui rend l'application réactive même sous charge.
+
+\subsection*{Difficulté 4 : Gestion du temps en solo}
+
+En développant seul, j'avais tendance à vouloir tout faire en même temps. Cela générait de la dispersion et des fonctionnalités à moitié terminées.
+
+Pour y remédier, j'ai adopté une discipline stricte :
+\begin{itemize}
+    \item Tableau Kanban avec une limite de deux tâches "En cours"
+    \item Un "daily" personnel chaque matin pour définir l'objectif de la journée
+    \item Des sprints de deux semaines avec une revue pour vérifier que ce que j'ai livré correspond bien au besoin
+\end{itemize}
+
+Cette organisation m'a permis de livrer des fonctionnalités complètes plutôt que des morceaux éparpillés.
 
 \section{Dettes techniques et apprentissages}
 
-Les dettes techniques identifiées incluent la refactorisation de certains composants React, l'optimisation des requêtes MongoDB, et l'amélioration de la couverture de tests. Ces dettes sont documentées avec des priorités et des estimations pour faciliter la planification des futures itérations.
+\subsection*{Dettes techniques identifiées}
 
-Les apprentissages techniques couvrent l'architecture microservices, la gestion des performances, et les bonnes pratiques de sécurité. Ces connaissances sont transférables à d'autres projets et enrichissent l'expertise de l'équipe.
-
-\begin{exemple}
-\textbf{Registre des dettes techniques :}
 \begin{center}
-\begin{tabular}{|l|l|l|l|l|}
+\begin{tabular}{|l|l|l|l|}
 \hline
-\textbf{Dette} & \textbf{Priorité} & \textbf{Effort} & \textbf{Impact} & \textbf{Planification} \\
+\textbf{Dette} & \textbf{Priorité} & \textbf{Estimation} & \textbf{Planification} \\
 \hline
-Refactor composants React & Moyenne & 2 semaines & Maintenabilité & v1.2 \\
-Optimisation requêtes Mongo & Haute & 1 semaine & Performance & v1.1 \\
-Tests E2E manquants & Haute & 1 semaine & Qualité & v1.1 \\
-Documentation API & Basse & 3 jours & Développement & v1.3 \\
-Migration TypeScript & Moyenne & 3 semaines & Robustesse & v2.0 \\
+Refactor des composants Next.js trop gros & Moyenne & 2 jours & v1.1 \\
+Tests E2E manquants pour les parcours critiques & Haute & 3 jours & v1.1 \\
+Optimisation du cache Redis pour l'API Bungie & Moyenne & 1 jour & v1.2 \\
+Documentation Swagger à compléter & Basse & 1 jour & v1.1 \\
 \hline
 \end{tabular}
 \end{center}
 
-\textbf{Apprentissages transférables :}
-\begin{itemize}
-    \item \textbf{Architecture :} Pattern Repository pour l'abstraction des données
-    \item \textbf{Performance :} Stratégies de cache multi-niveaux
-    \item \textbf{Sécurité :} Implémentation JWT avec refresh tokens
-    \item \textbf{Tests :} Pyramide de tests avec couverture optimale
-    \item \textbf{DevOps :} Pipeline CI/CD avec déploiement blue-green
-\end{itemize}
-
-\textbf{Exemple d'apprentissage concret :}
-\begin{lstlisting}[language=JavaScript]
-// AVANT : Gestion d'état complexe
-const [projects, setProjects] = useState([]);
-const [loading, setLoading] = useState(false);
-const [error, setError] = useState(null);
-
-// APRÈS : Hook personnalisé réutilisable
-const useProjects = () => {
-  const [state, setState] = useState({
-    data: [],
-    loading: false,
-    error: null
-  });
-
-  const fetchProjects = useCallback(async () => {
-    setState(prev => ({ ...prev, loading: true }));
-    try {
-      const projects = await projectService.getAll();
-      setState({ data: projects, loading: false, error: null });
-    } catch (err) {
-      setState(prev => ({ ...prev, loading: false, error: err.message }));
-    }
-  }, []);
-
-  return { ...state, fetchProjects };
-};
-\end{lstlisting}
-\end{exemple}
-
-\begin{conseil}
-\begin{itemize}
-    \item Identifier et documenter toutes les dettes techniques
-    \item Prioriser les dettes selon leur impact et urgence
-    \item Planifier la résolution des dettes dans les futures versions
-    \item Capitaliser sur les apprentissages pour les futurs projets
-    \item Partager les bonnes pratiques avec l'équipe
-\end{itemize}
-\end{conseil}
-
-\begin{jury}
-\begin{itemize}
-    \item Quelles dettes techniques avez-vous identifiées ?
-    \item Comment priorisez-vous ces dettes ?
-    \item Quels apprentissages tirez-vous de ce projet ?
-    \item Ces apprentissages sont-ils transférables ?
-    \item Comment capitalisez-vous sur ces expériences ?
-\end{itemize}
-\end{jury}
-
-\section{Liens utiles}
+\subsection*{Apprentissages clés}
 
 \begin{itemize}
-    \item Postmortems (Google SRE): \url{https://sre.google/sre-book/postmortem-culture/}
-    \item Technical Debt: \url{https://martinfowler.com/bliki/TechnicalDebt.html}
-    \item Retrospectives: \url{https://www.atlassian.com/team-playbook/plays/retrospective}
-    \item Lessons Learned: \url{https://bit.ly/lessons-learned}
-    \item Knowledge Management: \url{https://bit.ly/knowledge-management}
+    \item \textbf{Architecture :} Le pattern Controller-Service-Repository a prouvé son utilité. Lorsque j'ai dû modifier la règle métier sur le nombre maximum d'escouades par utilisateur, la modification a été localisée dans le service. Je n'ai eu à toucher ni au contrôleur (qui gère les requêtes HTTP) ni au repository (qui interagit avec la base de données).
+    
+    \item \textbf{API externes :} Intégrer l'API Bungie m'a appris à ne jamais supposer qu'une API externe est fiable. La gestion des erreurs, du rate limiting et du cache est aussi importante que le code métier lui-même.
+    
+    \item \textbf{Sécurité :} Les principes OWASP sont devenus un réflexe. Je valide désormais systématiquement toutes les entrées utilisateur, et je n'envoie jamais de données sensibles au frontend sans les avoir chiffrées ou filtrées.
+    
+    \item \textbf{Gestion de projet solo :} L'organisation avec GitHub Projects et la méthode Agile adaptée m'ont évité de me disperser. Le tableau Kanban avec limite de tâches en cours est devenu mon outil de pilotage quotidien.
+    
+    \item \textbf{Documentation :} Écrire la documentation au fur et à mesure (CONTRIBUTING.md, README, commentaires de code) m'a fait gagner du temps quand j'ai dû reprendre une partie du code après plusieurs semaines d'interruption. Sans elle, j'aurais perdu des heures à me rappeler comment démarrer l'environnement.
 \end{itemize}

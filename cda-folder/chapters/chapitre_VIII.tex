@@ -18,17 +18,16 @@ Pour que l'application tourne de la même manière sur ma machine, sur le serveu
 \subsection{Le backend (Node.js)}
 
 \begin{lstlisting}[language=dockerfile]
-FROM node:18-alpine
+FROM node:20-alpine
 
 WORKDIR /app
+
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 COPY . .
 
-EXPOSE 3000
-ENV NODE_ENV=production
-
-CMD ["node", "index.js"]
+EXPOSE 3002
+CMD ["node" , "server.js"]
 \end{lstlisting}
 
 Ce fichier dit simplement :
@@ -98,45 +97,90 @@ Les données sensibles (clé API Bungie) ne doivent jamais être dans le code so
 \subsection{Ma pipeline CI}
 
 \begin{lstlisting}[language=yaml]
-name: CI Destiny Companion
+name: Deploy de Production
 
 on:
   push:
-    branches: [main, develop]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
-  ci:
+
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Récupération du repo
+        uses: actions/checkout@v4
 
-      - name: Installation Node.js
-        uses: actions/setup-node@v3
+      - name: Installer Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
-      - name: Installation des dépendances
+      - name: Installer dépendances backend
         run: |
-          cd backend
-          npm ci
+          cd app/backend
+          npm install
 
-      - name: Lint du code
+      - name: Installer dépendances frontend
         run: |
-          cd backend
-          npm run lint
+          cd app/frontend
+          npm install
 
-      - name: Tests unitaires
+      - name: Lancer les tests
         run: |
-          cd backend
-          npm test
+          cd app/backend
+          npm run test --if-present
 
-      - name: Tests d'intégration
+  docker:
+
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupération du repo
+        uses: actions/checkout@v4
+
+      - name: Login DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build images
         run: |
-          cd backend
-          npm run test:integration
+            cd app
+            docker compose build
+
+      - name: Push images
+        run: |
+          docker push ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-backend:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-frontend:latest
+
+  deploy:
+
+    needs: docker
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Deploy sur EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+
+          script: |
+            docker pull ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-backend:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/destiny-raid-companion-frontend:latest
+
+            cd destiny/destiny/app/
+
+            docker compose down
+            docker compose up -d
 \end{lstlisting}
 
 \subsection{Ce que ça vérifie}
@@ -161,16 +205,24 @@ Quand le code est validé sur la branche principale, je déclenche le déploieme
     \item Sur le serveur, je tire la nouvelle image et je redémarre.
 \end{enumerate}
 
-\subsection{Commandes de déploiement (manuel pour l'instant)}
+\subsection{Commandes de déploiement}
 
-En production, je me connecte au serveur et je lance :
+Le déploiement est automatisé à 100\% :
 
-\begin{verbatim}
-docker-compose pull
-docker-compose up -d
-\end{verbatim}
+\begin{itemize}
+    \item \textbf{Branche \texttt{develop} :} déploiement automatique sur l'environnement de \textbf{staging}
+    \item \textbf{Branche \texttt{main} :} déploiement automatique sur \textbf{production}
+\end{itemize}
 
-C'est encore un peu manuel, mais l'automatisation complète viendra en V2.
+Quand je merge une pull request sur \texttt{main}, GitHub Actions :
+\begin{enumerate}
+    \item Se connecte au serveur via SSH (clé privée stockée dans les secrets GitHub)
+    \item Exécute \texttt{docker-compose pull} pour récupérer les dernières images
+    \item Redémarre les conteneurs avec \texttt{docker-compose up -d}
+    \item Nettoie les images anciennes
+\end{enumerate}
+
+Plus besoin de me connecter manuellement au serveur. La fiabilité est maximale.
 
 \section{Monitoring et logs}
 

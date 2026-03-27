@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Homebrew) (preloaded format=xelatex 2025.11.7)  19 MAR 2026 17:47
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Homebrew) (preloaded format=xelatex 2025.11.7)  26 MAR 2026 19:02
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1682,41 +1682,11 @@ File: assets/diagramme-seq-consult.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
 
 
 [21
 
 ]
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no │ (U+2502) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-
 Overfull \hbox (0.4106pt too wide) in paragraph at lines 96--97
 []\TU/Helvetica(0)/b/n/10.95 Couleurs : \TU/Helvetica(0)/m/sc/10.95 Fond #0A0E1
 7 (noir bleuté), actions #FF6B35 (orange), accents #00E0FF (cyan) 
@@ -1762,14 +1732,17 @@ File: assets/zoning.png Graphic file (type bmp)
 <assets/zoning.png>
 File: assets/wireframe.png Graphic file (type bmp)
 <assets/wireframe.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 File: assets/maquette.png Graphic file (type bmp)
 <assets/maquette.png>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+) (./chapters/chapitre_V.tex
 
-
-[27]) (./chapters/chapitre_V.tex
+[27]
 
 [28]
 Chapitre 5.
@@ -1881,9 +1854,14 @@ Overfull \hbox (51.11906pt too wide) in paragraph at lines 1--1
 
 [46]
 
-[47]) (./chapters/chapitre_IX.tex
+[47]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 213.
 
-[48]
+
+[48]) (./chapters/chapitre_IX.tex
+
+[49]
 Chapitre 9.
 
 Overfull \hbox (25.86366pt too wide) in paragraph at lines 31--42
@@ -1892,11 +1870,11 @@ Overfull \hbox (25.86366pt too wide) in paragraph at lines 31--42
 
 
 
-[49
+[50
 
 ]
 
-[50]
+[51]
 Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
 t;!
 Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
@@ -1909,30 +1887,29 @@ Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-te
 t;!
 
 
-[51]) (./chapters/chapitre_X.tex
+[52]) (./chapters/chapitre_X.tex
 
-[52]
+[53]
 Chapitre 10.
-Missing character: There is no ^^Z ("1A) in font pzdr!
+Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
+t;!
 
 
-[53
+[54
 
 ]
-Overfull \hbox (17.89479pt too wide) in paragraph at lines 63--74
- [] 
+
+[55]
+Overfull \hbox (10.64946pt too wide) in paragraph at lines 137--138
+[]\TU/Helvetica(0)/b/n/10.95 Documentation : \TU/Helvetica(0)/m/sc/10.95 Écrire
+ la documentation au fur et à mesure (CONTRIBUTING.md, README,
  []
 
-
-
-[54]
-Overfull \hbox (4.32161pt too wide) in paragraph at lines 128--139
- [] 
- []
-
-
-
-[55]) (./chapters/chapitre_XI.tex
+) (./chapters/chapitre_XI.tex
 
 [56]
 Chapitre 11.
@@ -1946,17 +1923,9 @@ Chapitre 11.
 
 [59]
 
-[60]
+[60])
 
-[61]
-
-[62]
-
-[63]
-
-[64])
-
-[65] (./main.aux)
+[61] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1966,15 +1935,15 @@ L3 programming layer <2025-01-18>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 42541C7AA6E07D071559ECD08E6D2183;34805.
+(rerunfilecheck)             Checksum: F927671C878811CD2168A9ECDB2170FE;34549.
  ) 
 Here is how much of TeX's memory you used:
- 33690 strings out of 473832
- 696674 string characters out of 5719382
- 1535756 words of memory out of 5000000
- 56219 multiletter control sequences out of 15000+600000
- 564903 words of font info for 83 fonts, out of 8000000 for 9000
+ 33627 strings out of 473832
+ 695559 string characters out of 5719382
+ 1535347 words of memory out of 5000000
+ 56155 multiletter control sequences out of 15000+600000
+ 564911 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,12n,101p,483b,1928s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,12n,101p,449b,1928s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (65 pages, 1810348 bytes).
+Output written on main.xdv (61 pages, 1707452 bytes).
