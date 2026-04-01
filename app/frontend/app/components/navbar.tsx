@@ -1,20 +1,59 @@
+import Link from "next/link"
+
 export default function Navbar() {
   return (
-    <header className="navbar">
 
-      <div className="logo">
-        Destiny Raid Companion
+    <header className="w-full bg-[#1c2f57] shadow-md">
+
+      <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+
+        {/* Logo */}
+
+        <div className="flex items-center gap-2">
+
+          <div className="w-8 h-8 bg-blue-400 rounded-md flex items-center justify-center text-black font-bold">
+            D
+          </div>
+
+          <span className="font-bold text-lg text-white">
+            Destiny Raid Companion
+          </span>
+
+        </div>
+
+        {/* Navigation */}
+
+        <nav className="flex gap-6 text-white font-medium">
+
+          <Link href="/" className="hover:text-blue-300 transition">
+            Accueil
+          </Link>
+
+          <Link href="#" className="hover:text-blue-300 transition">
+            Actualités
+          </Link>
+
+          <Link href="#" className="hover:text-blue-300 transition">
+            Guildes
+          </Link>
+
+          <Link href="#" className="hover:text-blue-300 transition">
+            Escouade
+          </Link>
+
+          <Link href="#" className="hover:text-blue-300 transition">
+            Calendrier
+          </Link>
+
+          <Link href="/profile" className="hover:text-blue-300 transition">
+            Profil
+          </Link>
+
+        </nav>
+
       </div>
 
-      <nav>
-        <a href="/">Accueil</a>
-        <a href="#">Actualités</a>
-        <a href="#">Guildes</a>
-        <a href="#">Escouade</a>
-        <a href="#">Calendrier</a>
-        <a href="/profile">Profil</a>
-      </nav>
-
     </header>
+
   )
 }
