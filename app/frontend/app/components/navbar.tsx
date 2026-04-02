@@ -1,4 +1,6 @@
 import Link from "next/link"
+import Image from "next/image"
+import logo from "../../../assets/logo_drc.png"  
 
 export default function Navbar() {
   return (
@@ -11,11 +13,15 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
 
-          <img 
-            src="/assets/logo_drc.png"  // Remplace par ton chemin réel
-            alt="Logo"
-            className="w-8 h-8 rounded-md object-cover"
-          />
+          <div className="w-8 h-8 relative">
+            <Image 
+              src={logo}  // Utilise l'import
+              alt="Logo Destiny Raid Companion"
+              width={32}
+              height={32}
+              className="rounded-md object-cover"
+            />
+          </div>
 
           <span className="font-bold text-lg text-white">
             Destiny Raid Companion
