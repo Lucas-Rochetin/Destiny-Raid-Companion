@@ -11,9 +11,11 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
 
-          <div className="w-8 h-8 bg-blue-400 rounded-md flex items-center justify-center text-black font-bold">
-            D
-          </div>
+          <img 
+            src="../assets/logo_drc.png"  // Remplace par ton chemin réel
+            alt="Logo"
+            className="w-8 h-8 rounded-md object-cover"
+          />
 
           <span className="font-bold text-lg text-white">
             Destiny Raid Companion

@@ -16,7 +16,7 @@ export default function Home() {
         <div className="bg-black/50 p-10 rounded-xl">
 
           <h1 className="text-5xl font-bold mb-6">
-            Organisez vos raids comme un pro
+            Organisez vos raids et donjon
           </h1>
 
           <p className="mb-6 text-lg">
