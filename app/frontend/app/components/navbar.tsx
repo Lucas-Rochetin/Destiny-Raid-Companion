@@ -1,6 +1,5 @@
 import Link from "next/link"
 import Image from "next/image"
-import logo from "../../../frontend/assets/logo_drc.png"  
 
 export default function Navbar() {
   return (
@@ -15,7 +14,7 @@ export default function Navbar() {
 
           <div className="w-8 h-8 relative">
             <Image 
-              src={logo}  // Utilise l'import
+              src="/assets/logo_drc.png" // Utilise l'import
               alt="Logo Destiny Raid Companion"
               width={32}
               height={32}
