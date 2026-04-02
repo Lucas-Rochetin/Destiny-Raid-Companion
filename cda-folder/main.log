@@ -1284,9 +1284,11 @@ File: assets/diagramme.png Graphic file (type bmp)
 LaTeX Font Warning: Font shape `TU/Helvetica(0)/m/sc' undefined
 (Font)              using `TU/Helvetica(0)/m/n' instead on input line 137.
 
-) (./chapters/chapitre_II.tex
 
-[8]
+
+[8]) (./chapters/chapitre_II.tex
+
+[9]
 Chapitre 2.
 
 Underfull \hbox (badness 4673) in paragraph at lines 13--13
@@ -1365,7 +1367,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 57--58
 
 
 
-[9
+[10
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 69--69
@@ -1420,7 +1422,7 @@ Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-te
 t;!
 
 
-[10]
+[11]
 Underfull \hbox (badness 10000) in paragraph at lines 152--153
 []\TU/Helvetica(0)/m/n/10.95 PostgreSQL gère
  []
@@ -1482,9 +1484,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 184--184
 
 
 
-[11]
-
 [12]
+
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 266--266
 []\TU/Helvetica(0)/m/n/10.95 L’API Bungie
  []
@@ -1516,7 +1518,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 296--296
 
 
 
-[13]
+[14]
 Underfull \hbox (badness 10000) in paragraph at lines 328--328
 []\TU/Helvetica(0)/m/n/10.95 Données collec-
  []
@@ -1528,7 +1530,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
 
 
-[14]
+[15]
 Overfull \hbox (62.56532pt too wide) in paragraph at lines 379--380
 []\TU/Helvetica(0)/m/n/10.95 La méthode MoSCoW expliquée : [][]$[][][][][] [] [
 ] [] [][][] [] [][][][][][][][][][][] [] [][][] [] [][][][][][][][] [] [][][][]
@@ -1537,7 +1539,7 @@ Overfull \hbox (62.56532pt too wide) in paragraph at lines 379--380
 
 ) (./chapters/chapitre_III.tex
 
-[15]
+[16]
 Chapitre 3.
 
 Underfull \hbox (badness 2503) in paragraph at lines 40--40
@@ -1556,7 +1558,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--44
 
 
 
-[16
+[17
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 115--115
@@ -1576,25 +1578,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--121
 
 
 
-[17]
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
-
-
 [18]
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ├ (U+251C) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no └ (U+2514) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+Missing character: There is no ─ (U+2500) in font [lmmono10-regular]:!
+
+
+[19]
 Underfull \hbox (badness 5533) in paragraph at lines 199--200
 []|\TU/Helvetica(0)/b/n/10.95 Pourquoi cette esti-
  []
@@ -1654,7 +1656,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 227--228
 \TU/Helvetica(0)/m/n/10.95 d’éventuels contribu-
  []
 
-[19]
+[20]
 Overfull \hbox (118.29056pt too wide) in paragraph at lines 249--250
 []\TU/Helvetica(0)/m/n/10.95 Documentation GitHub Projects : [][]$[][][][][] []
  [] [] [][][][] [] [][][][][][] [] [][][] [] [][] [] [][][][][][] [] [][][][][]
@@ -1670,7 +1672,7 @@ Overfull \hbox (12.91423pt too wide) in paragraph at lines 251--252
 
 ) (./chapters/chapitre_IV.tex
 
-[20]
+[21]
 Chapitre 4.
 File: assets/diagramme-seq-auth.png Graphic file (type bmp)
 <assets/diagramme-seq-auth.png>
@@ -1684,7 +1686,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 
 
-[21
+[22
 
 ]
 Overfull \hbox (0.4106pt too wide) in paragraph at lines 96--97
@@ -1694,17 +1696,17 @@ Overfull \hbox (0.4106pt too wide) in paragraph at lines 96--97
 
 
 
-[22]
+[23]
 File: assets/entite-relation.png Graphic file (type bmp)
 <assets/entite-relation.png>
 
 
-[23]
+[24]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 177.
 
 
-[24]
+[25]
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
 t;!
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
@@ -1715,9 +1717,9 @@ tlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 
-[25]
-
 [26]
+
+[27]
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
 t;!
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
@@ -1732,9 +1734,6 @@ File: assets/zoning.png Graphic file (type bmp)
 <assets/zoning.png>
 File: assets/wireframe.png Graphic file (type bmp)
 <assets/wireframe.png>
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 File: assets/maquette.png Graphic file (type bmp)
 <assets/maquette.png>
 
@@ -1742,15 +1741,15 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 ) (./chapters/chapitre_V.tex
 
-[27]
-
 [28]
+
+[29]
 Chapitre 5.
 File: assets/architecture_destiny.png Graphic file (type bmp)
 <assets/architecture_destiny.png>
 
 
-[29
+[30
 
 ]
 
@@ -1941,6 +1940,6 @@ Here is how much of TeX's memory you used:
  56157 multiletter control sequences out of 15000+600000
  564911 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,12n,101p,449b,1928s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,12n,101p,449b,1926s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on main.xdv (60 pages, 1675256 bytes).
