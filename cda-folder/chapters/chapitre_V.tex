@@ -2,205 +2,125 @@
 
 \section{Architecture 3 tiers}
 
-L'architecture Destiny Raid Companion suit une approche 3-tiers classique avec séparation nette entre présentation, logique métier et données. Cette séparation permet une maintenance simplifiée, une scalabilité indépendante de chaque couche et une meilleure testabilité.
+L'architecture Destiny Raid Companion suit une approche 3-tiers classique avec séparation nette entre présentation (Next.js), logique métier (Express.js) et données (PostgreSQL/Redis). Cette séparation permet une maintenance simplifiée, une scalabilité indépendante de chaque couche et une meilleure testabilité.
 
-\subsection{Couche Présentation (Frontend)}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{assets/architecture_destiny.png}
+    \caption{Architecture 3 tiers de Destiny Raid Companion}
+    \label{fig:3tiers}
+\end{figure}
 
-Le frontend est développé avec \textbf{Next.js 14} et TypeScript.
+\subsection{Couche Présentation (Next.js)}
 
-\subsubsection*{Pourquoi ces choix techniques ?}
+Le frontend est développé avec Next.js 14 et TypeScript. J'ai choisi Next.js pour plusieurs raisons :
 
 \begin{itemize}
-    \item \textbf{Next.js 14 :} Je bénéficie du Server-Side Rendering pour les guides, ce qui les rend indexables par les moteurs de recherche et plus rapides à l'affichage.
-    \item \textbf{TypeScript :} J'évite les erreurs de type au développement.
-    \item \textbf{TailwindCSS :} Je stylise sans quitter mon HTML.
+    \item \textbf{Server-Side Rendering (SSR) :} Les guides de raids peuvent être pré-rendus côté serveur, ce qui les rend indexables par les moteurs de recherche et plus rapides à l'affichage initial.
+    \item \textbf{App Router :} Structure de routage intuitive basée sur les fichiers.
+    \item \textbf{Image Optimization :} Optimisation automatique des images, cruciale pour les illustrations des raids.
 \end{itemize}
 
-\subsubsection*{Structure des composants}
+\subsubsection*{Structure simplifiée}
 
 \begin{verbatim}
-src/
-+-- components/                    
-|   +-- common/                    
-|   |   +-- Header/
-|   |   +-- Navigation/
-|   |   +-- LoadingSpinner/
-|   +-- guides/                    
-|   |   +-- GuideList.tsx
-|   |   +-- GuideViewer.tsx
-|   +-- squads/                    
-|   |   +-- SquadManager.tsx
-|   |   +-- MemberList.tsx
-|   +-- calendar/                  
-|   |   +-- CalendarView.tsx
-|   +-- profile/                   
-|       +-- UserProfile.tsx
-+-- hooks/                         
-|   +-- useAuth.ts
-|   +-- useSquads.ts
-+-- services/                      
-    +-- api.ts
-    +-- authService.ts
+frontend/
++-- app/
+|   +-- (dashboard)/           # Routes principales
+|   |   +-- guides/[raidId]/   # Affichage d'un guide (SSR)
+|   |   +-- squads/            # Gestion des escouades
+|   +-- api/                   # API Routes (callbacks OAuth)
++-- components/                # Composants réutilisables
++-- middleware.ts              # Protection des routes
 \end{verbatim}
 
-\subsection{Couche Logique Métier (Backend)}
+\subsection{Couche Logique Métier (Express.js)}
 
-Le backend utilise Node.js avec Express.js, structuré selon le pattern Controller-Service-Repository.
+Le backend utilise Node.js avec Express.js, structuré selon le pattern Controller-Service-Repository. \textbf{L'idée est de garder le code testable et de pouvoir faire évoluer la logique sans tout casser.}
 
-\subsubsection*{Pourquoi cette organisation ?}
+\subsubsection*{Organisation des responsabilités}
 
-Séparer les responsabilités rend le code plus clair et plus facile à faire évoluer. Si je dois changer une règle métier, je sais exactement où la trouver.
+\begin{itemize}
+    \item \textbf{Controllers :} Gèrent les requêtes HTTP, valident les entrées, renvoient les réponses
+    \item \textbf{Services :} Contiennent la logique métier (règles de l'application)
+    \item \textbf{Repositories :} Accès à la base de données, isolation de Prisma
+\end{itemize}
 
-\subsubsection*{Exemple : le contrôleur}
+\paragraph{Exemple : création d'une escouade}
+
+Le contrôleur reçoit la requête, valide les données avec Zod, puis appelle le service :
 
 \begin{lstlisting}[language=JavaScript]
 const createSquad = async (req, res, next) => {
-  try {
-    const validation = squadSchema.safeParse(req.body);
-    if (!validation.success) {
-      return res.status(400).json({
-        error: 'Données invalides'
-      });
-    }
-
-    const squad = await this.squadService.createSquad(
-      validation.data, 
-      req.user.id
-    );
-
-    res.status(201).json({
-      success: true,
-      data: squad
-    });
-  } catch (error) {
-    next(error);
+  const validation = squadSchema.safeParse(req.body);
+  if (!validation.success) {
+    return res.status(400).json({ error: 'Données invalides' });
   }
+  const squad = await squadService.createSquad(validation.data, req.user.id);
+  res.status(201).json({ success: true, data: squad });
 };
 \end{lstlisting}
 
-\subsubsection*{Exemple : le service}
+Le service applique les règles métier. Ici, deux règles importantes :
+\begin{enumerate}
+    \item Une escouade ne peut pas dépasser 12 membres
+    \item Un joueur ne peut pas créer plus de 5 escouades
+\end{enumerate}
+
+La transaction Prisma garantit que l'escouade et l'ajout du leader comme membre sont créés ensemble, sans risque d'incohérence.
 
 \begin{lstlisting}[language=JavaScript]
 class SquadService {
   async createSquad(squadData, leaderId) {
+    // Règles métier
     if (squadData.maxMembers > 12) {
-      throw new BusinessError('Une escouade ne peut pas dépasser 12 membres');
+      throw new BusinessError('Maximum 12 membres');
     }
-
     const userSquadCount = await this.squadRepository.countByUser(leaderId);
     if (userSquadCount >= 5) {
-      throw new BusinessError('Limite de 5 escouades par utilisateur atteinte');
+      throw new BusinessError('Limite de 5 escouades atteinte');
     }
 
+    // Transaction pour garantir l'intégrité
     return await this.db.transaction(async (trx) => {
       const squad = await this.squadRepository.create(trx, {
         ...squadData,
         leader_id: leaderId
       });
-
       await this.squadMemberRepository.create(trx, {
         squad_id: squad.id,
         user_id: leaderId,
         role: 'leader'
       });
-
       return squad;
     });
   }
 }
 \end{lstlisting}
 
-\subsubsection*{Exemple : le repository}
+L'intérêt de cette séparation est concret : si demain la règle passe de 5 à 10 escouades, je modifie \textbf{uniquement le service}. Le contrôleur et le repository restent inchangés.
 
-\begin{lstlisting}[language=JavaScript]
-class SquadRepository {
-  async create(trx, squadData) {
-    return await trx.squad.create({
-      data: {
-        name: squadData.name,
-        description: squadData.description,
-        leader_id: squadData.leader_id,
-        max_members: squadData.maxMembers
-      }
-    });
-  }
+\subsection{Couche Données}
 
-  async countByUser(userId) {
-    return await this.db.squad.count({
-      where: {
-        OR: [
-          { leader_id: userId },
-          { members: { some: { user_id: userId } } }
-        ]
-      }
-    });
-  }
-}
-\end{lstlisting}
-
-\subsection{Couche Données (Database)}
-
-Une architecture multi-base optimisée pour chaque type d'usage.
-
+Une architecture multi-base optimisée pour chaque type d'usage :
 \begin{itemize}
-    \item \textbf{PostgreSQL :} Données transactionnelles (utilisateurs, escouades, sessions)
-    \item \textbf{Redis :} Cache sessions, données d'API Bungie
-    \item \textbf{Prisma :} ORM pour PostgreSQL avec migrations versionnées
+    \item \textbf{PostgreSQL :} Données transactionnelles (utilisateurs, escouades). J'utilise Prisma comme ORM pour les migrations et la sécurité des types.
+    \item \textbf{Redis :} Cache des guides (1 heure), sessions utilisateur (24h), rate limiting pour l'API Bungie (15 min).
 \end{itemize}
-
-\subsubsection*{Schéma Prisma}
-
-\begin{lstlisting}[language=JavaScript]
-model User {
-  id           Int      @id @default(autoincrement())
-  bungie_id    String   @unique
-  display_name String
-  created_at   DateTime @default(now())
-  
-  squads_led   Squad[]  @relation("SquadLeader")
-  squad_members SquadMember[]
-  sessions     Session[]
-}
-
-model Squad {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String?
-  leader_id   Int
-  created_at  DateTime @default(now())
-  max_members Int      @default(6)
-  
-  leader      User     @relation("SquadLeader", fields: [leader_id], references: [id])
-  members     SquadMember[]
-  sessions    Session[]
-}
-\end{lstlisting}
-
-\subsection{Communication entre les tiers}
-
-Communication via APIs REST avec JSON, WebSocket pour le temps réel.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.5\textwidth]{assets/architecture_destiny.png}
-    \caption{Architecture 3 tiers de Destiny Raid Companion}
-    \label{fig:3tiers_original}
-\end{figure}
 
 \subsection{Avantages de l'architecture 3 tiers}
 
 \begin{itemize}
-    \item \textbf{Séparation des responsabilités :} Chaque couche a un rôle unique.
-    \item \textbf{Scalabilité indépendante :} Je peux faire évoluer chaque couche séparément.
-    \item \textbf{Maintenabilité :} Les modifications sont isolées.
-    \item \textbf{Sécurité :} Authentification centralisée.
-    \item \textbf{Testabilité :} Tests unitaires par couche facilités.
+    \item \textbf{Séparation des responsabilités :} Chaque couche a un rôle unique, ce qui rend le code plus lisible.
+    \item \textbf{Testabilité :} Je peux tester chaque couche indépendamment (mock du repository pour tester le service).
+    \item \textbf{Maintenabilité :} Une modification est isolée à une couche, réduisant les risques de régression.
+    \item \textbf{SEO optimisé :} Grâce au SSR de Next.js, les guides sont indexables.
 \end{itemize}
 
 \section{Liens utiles}
 
 \begin{itemize}
-    \item OpenAPI/Swagger: \url{https://swagger.io/specification/}
-    \item PostgreSQL Tutorial: \url{https://www.postgresql.org/docs/current/tutorial.html}
-    \item Prisma Documentation: \url{https://www.prisma.io/docs/}
+    \item Next.js: \url{https://nextjs.org/docs}
+    \item Prisma: \url{https://www.prisma.io/docs/}
+    \item PostgreSQL: \url{https://www.postgresql.org/docs/}
 \end{itemize}
