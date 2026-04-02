@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import logo from "../../../assets/logo_drc.png"  
+import logo from "../../../frontend/assets/logo_drc.png"  
 
 export default function Navbar() {
   return (
