@@ -12,7 +12,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
 
           <img 
-            src=".../assets/logo_drc.png"  // Remplace par ton chemin réel
+            src="/assets/logo_drc.png"  // Remplace par ton chemin réel
             alt="Logo"
             className="w-8 h-8 rounded-md object-cover"
           />
