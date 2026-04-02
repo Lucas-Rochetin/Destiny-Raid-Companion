@@ -1,4 +1,5 @@
 const express = require("express");
+const guideController = require("./controllers/guideController");
 
 const app = express();
 const PORT = 3002;
@@ -19,7 +20,7 @@ app.get("/api", (req, res) => {
 // exemple de données
 let raids = [
   { id: 1, name: "Vault of Glass", players: 6 },
-  { id: 2, name: "King's Fall", players: 6 }
+  { id: 2, name: "The Last Wish", players: 6 }
 ];
 
 // récupérer les raids
@@ -38,6 +39,9 @@ app.post("/api/raids", (req, res) => {
   raids.push(newRaid);
   res.status(201).json(newRaid);
 });
+
+app.get("/api/guides", guideController.getGuides);
+app.get("/api/guides/:id", guideController.getGuideById);
 
 // lancer serveur
 app.listen(PORT, "0.0.0.0", () => {
