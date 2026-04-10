@@ -47,7 +47,7 @@ export default function Home() {
       <section className="py-20 bg-[#1c2f57]">
 
         <h2 className="text-center text-3xl font-bold mb-12">
-          Fonctionnalités
+          Présentation
         </h2>
 
         <div className="flex justify-center gap-8 flex-wrap">
