@@ -6,8 +6,6 @@ export default function Home() {
 
       <Navbar/>
 
-      {/* HERO */}
-
       <section
         className="h-[600px] flex flex-col justify-center items-center text-center bg-cover bg-center"
         style={{ backgroundImage: "url('/hero.jpg')" }}
@@ -45,7 +43,6 @@ export default function Home() {
 
       </section>
 
-      {/* FONCTIONNALITES */}
 
       <section className="py-20 bg-[#1c2f57]">
 
@@ -70,7 +67,7 @@ export default function Home() {
             <h3 className="text-xl font-bold mb-2">📖 Guides</h3>
 
             <p className="text-sm">
-              Découvre les stratégies de raid
+              Découvre les stratégies des raids
             </p>
 
           </div>
