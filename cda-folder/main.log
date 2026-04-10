@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Homebrew) (preloaded format=xelatex 2025.11.7)  8 APR 2026 16:29
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025/Homebrew) (preloaded format=xelatex 2025.11.7)  10 APR 2026 14:39
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1734,6 +1734,9 @@ File: assets/zoning.png Graphic file (type bmp)
 <assets/zoning.png>
 File: assets/wireframe.png Graphic file (type bmp)
 <assets/wireframe.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 File: assets/maquette.png Graphic file (type bmp)
 <assets/maquette.png>
 
@@ -1744,26 +1747,28 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [28]
 
 [29]
+
+[30]
 Chapitre 5.
 File: assets/architecture_destiny.png Graphic file (type bmp)
 <assets/architecture_destiny.png>
 
 
-[30
+[31
 
 ]
 
-[31]) (./chapters/chapitre_VI.tex
+[32]) (./chapters/chapitre_VI.tex
 
-[32]
+[33]
 Chapitre 6.
 
 
-[33
+[34
 
 ]
 
-[34]
+[35]
 Overfull \hbox (1.49239pt too wide) in paragraph at lines 120--121
 []\TU/Helvetica(0)/m/sc/10.95 Bungie demande à l’utilisateur s’il autorise mon 
 application à accéder à ses données (pseudo,
@@ -1771,7 +1776,7 @@ application à accéder à ses données (pseudo,
 
 
 
-[35]
+[36]
 Underfull \hbox (badness 4403) in paragraph at lines 202--203
 []\TU/Helvetica(0)/m/sc/10.95 Identifier l’utilisateur de manière
  []
@@ -1783,9 +1788,9 @@ Underfull \hbox (badness 2096) in paragraph at lines 204--205
 
 
 
-[36]
-
 [37]
+
+[38]
 Overfull \hbox (34.5947pt too wide) in paragraph at lines 330--331
 []\TU/Helvetica(0)/m/sc/10.95 Guide RGPD pour développeurs (CNIL) : [][]$[][][]
 [][] [] [] [] [][][] [] [][][][] [] [][] [] [][] [] [][][][][][][][][][][][][][
@@ -1794,48 +1799,48 @@ Overfull \hbox (34.5947pt too wide) in paragraph at lines 330--331
 
 ) (./chapters/chapitre_VII.tex
 
-[38]
+[39]
 Chapitre 7.
 File: assets/pyramide_test.png Graphic file (type bmp)
 <assets/pyramide_test.png>
 
 
-[39
+[40
 
 ]
 
-[40]
-
 [41]
-Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
-t;!
-Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
-t;!
-
 
 [42]
+Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
+t;!
+Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
+t;!
 
-[43]) (./chapters/chapitre_VIII.tex
 
-[44]
+[43]
+
+[44]) (./chapters/chapitre_VIII.tex
+
+[45]
 Chapitre 8.
 
 Overfull \hbox (51.11906pt too wide) in paragraph at lines 1--1
@@ -1844,20 +1849,20 @@ Overfull \hbox (51.11906pt too wide) in paragraph at lines 1--1
 
 
 
-[45
+[46
 
 ]
 
-[46]
-
 [47]
+
+[48]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 215.
 
 
-[48]) (./chapters/chapitre_IX.tex
+[49]) (./chapters/chapitre_IX.tex
 
-[49]
+[50]
 Chapitre 9.
 
 Overfull \hbox (25.86366pt too wide) in paragraph at lines 31--42
@@ -1866,11 +1871,11 @@ Overfull \hbox (25.86366pt too wide) in paragraph at lines 31--42
 
 
 
-[50
+[51
 
 ]
 
-[51]
+[52]
 Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
 t;!
 Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-tex
@@ -1883,9 +1888,9 @@ Missing character: There is no ✅ (U+2705) in font Helvetica/AAT:mapping=tex-te
 t;!
 
 
-[52]) (./chapters/chapitre_X.tex
+[53]) (./chapters/chapitre_X.tex
 
-[53]
+[54]
 Chapitre 10.
 Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-tex
 t;!
@@ -1895,11 +1900,11 @@ Missing character: There is no → (U+2192) in font Helvetica/AAT:mapping=tex-te
 t;!
 
 
-[54
+[55
 
 ]
 
-[55]
+[56]
 Overfull \hbox (10.64946pt too wide) in paragraph at lines 137--138
 []\TU/Helvetica(0)/b/n/10.95 Documentation : \TU/Helvetica(0)/m/sc/10.95 Écrire
  la documentation au fur et à mesure (CONTRIBUTING.md, README,
@@ -1907,21 +1912,21 @@ Overfull \hbox (10.64946pt too wide) in paragraph at lines 137--138
 
 ) (./chapters/chapitre_XI.tex
 
-[56]
+[57]
 Chapitre 11.
 
 
-[57
+[58
 
 ]
 
-[58]
-
 [59]
 
-[60])
+[60]
 
-[61] (./main.aux)
+[61])
+
+[62] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1931,7 +1936,7 @@ L3 programming layer <2025-01-18>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 76F503427BB06BDB27202894AA40BE29;34413.
+(rerunfilecheck)             Checksum: 09E242A6F0C9BFF68864B5F5944BC1C4;34293.
  ) 
 Here is how much of TeX's memory you used:
  33629 strings out of 473832
@@ -1940,6 +1945,6 @@ Here is how much of TeX's memory you used:
  56157 multiletter control sequences out of 15000+600000
  564911 words of font info for 84 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 98i,12n,101p,449b,1926s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,12n,101p,449b,1928s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.xdv (61 pages, 1676516 bytes).
+Output written on main.xdv (62 pages, 1673452 bytes).
