@@ -1,10 +1,19 @@
 # Fdb version 4
+<<<<<<< HEAD
 ["xdvipdfmx"] 1775824785.25069 "main.xdv" "main.pdf" "main" 1775824788.7074 0
   "main.xdv" 1775824785.08397 1673452 ac89ecf4fc9b058cdf06e2fe36e1d787 "xelatex"
   (generated)
   "main.pdf"
   (rewritten before read)
 ["xelatex"] 1775824782.43968 "main.tex" "main.xdv" "main" 1775824788.7042 0
+=======
+["xdvipdfmx"] 1775658570.6149 "main.xdv" "main.pdf" "main" 1775658574.07143 0
+  "main.xdv" 1775658570.46151 1676516 01a4866c16d3068d53bbd351d9259b52 "xelatex"
+  (generated)
+  "main.pdf"
+  (rewritten before read)
+["xelatex"] 1775658567.99505 "main.tex" "main.xdv" "main" 1775658574.06882 0
+>>>>>>> refs/remotes/origin/main
   "/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/map/fontname/texfonts.map" 1741388039 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1741388039 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1741388039 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -207,10 +216,17 @@
   "chapters/chapitre_VIII.tex" 1775123515.16475 8183 f7c5aa33014de08f36337d67ae237b11 ""
   "chapters/chapitre_X.tex" 1774616126.89768 8346 1b74fda62de6087dc1ff6c8fcc2cbb3e ""
   "chapters/chapitre_XI.tex" 1774616126.89825 9345 4b0e228e16af6ccf4bf81805fd411d35 ""
+<<<<<<< HEAD
   "main.aux" 1775824785.07788 26203 517873e3349cfafc2b2c1c6de416682d "xelatex"
   "main.out" 1775824785.08171 34293 09e242a6f0c9bff68864b5f5944bc1c4 "xelatex"
   "main.tex" 1774616126.90123 9646 96995c25c6f021d1532e23fc5c67c62d ""
   "main.toc" 1775824785.08233 15752 5ac4bdea53d7c8ccf20a2d6ff498f4fe "xelatex"
+=======
+  "main.aux" 1775658570.45545 26319 af6cfa45fc1aea8edc9da746bdefd79a "xelatex"
+  "main.out" 1775658570.45924 34413 76f503427bb06bdb27202894aa40be29 "xelatex"
+  "main.tex" 1774616126.90123 9646 96995c25c6f021d1532e23fc5c67c62d ""
+  "main.toc" 1775658570.4598 15827 c6e0107663ad38ac3f5a35855451eb11 "xelatex"
+>>>>>>> refs/remotes/origin/main
   (generated)
   "main.aux"
   "main.log"
